@@ -1,0 +1,14 @@
+# Conclusion {-}
+
+
+This study has embarked on a comprehensive journey through three decades of active travel behavior in Canada, from 1986 to 2015, leveraging data from the General Social Survey (GSS) to shed light on individual preferences and behaviors regarding walking and cycling. This exploration is particularly relevant as it spans a period of significant urban development, evolving societal attitudes towards health and the environment, and transformations in transportation infrastructure and policies.
+Our results show that walking and cycling have consistently longer trip times, with shorter walking trips. Between 1986 and 2005, this gap shrunk, suggesting the intricate interactions between urban sprawl, a greater reliance on motorized transportation, and shifting preferences. From 2005 to 2015, walking and cycling trip durations increased, likely influenced by heightened urbanization, health and sustainability concerns awareness, and urban planning shifts towards active transportation.
+
+
+The study also uncovered trends in trip destinations, with cycling trips in 2015 primarily directed towards homes, schools, and workplaces, highlighting cycling's emergence as a sustainable commuting option. Walking trips predominantly originated from residential areas to workplaces and educational institutions, reflecting a shift towards walking for eco-friendly and health-conscious commuting.
+However, the research encountered limitations, notably in handling weighted data for statistical tests and model diagnostics. The reliance on AIC, BIC, and log-likelihood values underscores the necessity for advanced tools that accommodate weighted data, addressing a methodological gap in statistical practices. The absence of cycling data further limits our analysis, presenting an avenue for future research to explore cycling trends and its potential as an alternative transportation mode for accessing cultural venues.
+
+
+In light of these limitations, future research should prioritize the development of methodologies and diagnostic tools that effectively incorporate weighted data, enhancing the robustness and representativeness of findings in survey-based analyses. Investigating cycling data could also provide a fuller picture of active travel behaviors and their implications for urban planning and policy-making.
+In conclusion, this thesis presents a detailed account of the evolution of active travel behaviors in Canada over three decades, highlighting the resurgence of walking and cycling as key modes of transportation. These insights are invaluable for urban planners, policymakers, and researchers striving to foster sustainable and active transportation systems. Future research can further enrich our understanding of active travel behaviors and support efforts to promote sustainable mobility options by addressing the identified methodological challenges and exploring underrepresented areas such as cycling trends.
+
