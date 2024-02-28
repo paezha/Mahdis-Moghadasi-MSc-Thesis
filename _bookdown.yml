@@ -6,3 +6,10 @@ download: [
     ["thesis.docx", "Word"]
   ]
 delete_merged_file: true
+rmd_files:
+  - "index.Rmd"
+  - "01-introduction.Rmd"
+  - "02-data-sources-needs.Rmd"
+  - "03-active-impedance-functions.Rmd"
+  - "04-conclusion.Rmd"
+  - "99-references.Rmd"

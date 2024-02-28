@@ -1,0 +1,34 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Active Transportation Modes: Data Requirements and Historical Analysis of Impedance Functions
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+This is the repository with the M.Sc. thesis of Mahdis Moghadasi. Written using [{macdown}](https://paezha.github.io/macdown/)
+
+## Abstract
+
+
+WRITE AN ABSTRACT.

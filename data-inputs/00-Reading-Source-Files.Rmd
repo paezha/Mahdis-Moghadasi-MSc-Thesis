@@ -1,0 +1,2451 @@
+---
+title: "R Notebook"
+---
+
+Begin by loading the packages used in this notebook: 
+```{r}
+library(dplyr) # A Grammar of Data Manipulation
+library(ggplot2) # Create Elegant Data Visualisations Using the Grammar of Graphics
+library(here) # A Simpler Way to Find Your Files
+library(readxl) # Read Excel Files
+library(tidyr) # Tidy Messy Data
+library(usethis) # Automate Package and Project Setup
+library(fitdistrplus)
+#library("writexl")
+```
+
+
+## Source Files
+
+In Canada, there is a survey program run by Statistics Canada called General Social Surveys or GSS for short. GSS collects data on social trends in order to track changes in Canadians' living conditions and well-being over time, as well as to provide immediate information on specific social policy issues of current or emerging interest. This survey tracks changes in time use to better understand how Canadians spend and manage their time, as well as what factors contribute to their happiness and stress .This program in Canada was established in 1985 as a series of independent, annual, cross-sectional surveys, each covering one topic in depth. Caregiving, families, time use, social identity, volunteering, and victimization are among the current GSS themes.
+
+Each of the six survey themes listed above is thoroughly repeated every 5 years. In addition to the core topic, each cycle includes new content that addresses emerging, policy-relevant issues. In addition, each survey collects detailed socio-demographic information such as age, gender, education, religion, ethnicity, income, and so on.
+
+Time-use surveys gather data on all human activities and can thus inform a wide range of policies. In particular, three key themes have been identified as essential for informed policymaking and for which no other data sources are adequate: unpaid work and non-market production; well-being; and gender equality. Leisure time, work-life balance, health, commuting, culture, and sports are among the other topics covered by time use surveys. In addition, statistics Canada has been conducting time-use surveys at five- to seven-year intervals since 1986, most recently in 2015 (1986,1992,1998, 2005 ,2010 and 2015). This means that there is information about time use patterns covering a period of so many years.
+The GSS on time use collects information on respondents' participation in, and time spent on, a wide range of day-to-day activities using a retrospective 24-hour time diary. Furthermore, information is gathered on the location of these activities (e.g., at home, at work, etc.) and, for non-personal activities, the people who were present with the respondent at the time of the activity.
+
+
+The surveys (obtained from [here](http://odesi2.scholarsportal.info/webview/)) consist of two files: a main file and an episode file. These are their characteristics.
+
+#The main file...contains info about respondents and their socio-economic...blah blah
+
+#The episode file...contains blah blah
+
+For the purpose of this notebook, the following definitions are important:
+
+| **Code** 	| **Location**                             	| **Year** 	| **Description**                                                 	|
+|----------	|------------------------------------------	|----------	|-----------------------------------------------------------------	|
+|    300   	| At home or on property                   	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    301   	| At place of work or school               	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|   302    	| Away on business                         	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    303   	| At someone else's home or property       	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    304   	| In the neighbourhood                     	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    305   	| Outdoors                                 	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    306   	| Grocery store, other stores or mall      	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    307   	| Library, museum or theatre               	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    308   	| Sports centre, field or arena            	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    309   	| Restaurant, bar or club                  	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    310   	| Place of worship                         	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    311   	| Medical, dental or other health   clinic 	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|    312   	| Elsewhere                                	|   2015   	| Walking (code = 315) and Cycling (code = 318) to this location  	|
+|     1    	| R's home                                 	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     2    	| Work place                               	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     3    	| Someone else's home                      	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     4    	| Restaurant/bar                           	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     5    	| Place of worship                         	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     6    	| Grocery store                            	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     7    	| Other store/Mall                         	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     8    	| School                                   	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     9    	| Outdoors away from   home                	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|    10    	| Library                                  	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|    11    	| Other place                              	|   2010   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     1    	| Respondent's home                        	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     2    	| Work place                               	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     3    	| Someone else's home                      	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     4    	| Restaurant/bar                           	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     5    	| Place of worship                         	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     6    	| Grocery store                            	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     7    	| Other store/Mall                         	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     8    	| School                                   	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|     9    	| Outdoors away from home                  	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|    10    	| Library                                  	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|    11    	| Other place                              	|   2005   	| Walking (code = 14) and Cycling (code = 17) to this location    	|
+|    1     	| Respondent's home                        	|   1998   	| Walking (code = 7) and Cycling (code = 9) to this location      	|
+|     2    	| Work place                               	|   1998   	| Walking (code = 7) and Cycling (code = 9) to this location      	|
+|     3    	| Someone else's home                      	|   1998   	| Walking (code = 7) and Cycling (code = 9) to this location      	|
+|     4    	| Other plourhood                          	|   1998   	| Walking (code = 7) and Cycling (code = 9) to this location      	|
+|     1    	| Respondent's home                        	|   1992   	| Walking (code = 7) and Cycling (code = 9) to this location      	|
+|     2    	| Work place                               	|   1992   	| Walking (code = 7) and Cycling (code = 9) to this location      	|
+|     3    	| Someone else's home                      	|   1992   	| Walking (code = 7) and Cycling (code = 9) to this location      	|
+|    4     	| Other place                              	|   1992   	| Walking (code = 7) and Cycling (code = 9) to this location      	|
+|     1    	| Respondent's home                        	|   1886   	| Walking (code = 5) to this location                             	|
+|     2    	| Work place                               	|   1886   	| Walking (code = 5) to this location                             	|
+|     3    	| AT other places                          	|   1886   	| Walking (code = 5) to this location                             	|
+|     7    	| other                                    	|   1886   	| Walking (code = 5) to this location                             	|
+
+### What are the bootstrap weights?
+
+Bootstrap weights are only available for 2015 and this variable have been created for the purpose of design-based variance estimation. In general, bootstrap weights are generated by randomly drawing samples from each stratum of primary sampling units, with replacement; each sample drawn is equal in size to the number of units in the data set; and then the weight is assigned to each unit in the selected primary sampling unit, using the same clustering and multi-stage sampling that is used to generate the final (design) weight; the weight is adjusted to reflect the probability of selection into the random sample. Furthermore, observations or sampling units chosen at random receive a positive bootstrap weight, while units not chosen receive a weight of zero [Satin and Shastry, 1993]. This sampling is repeated many times in order to generate a large enough set of bootstrap weights that are consistent; the number of times this process is repeated equals the number of bootstrap samples. The GSS typically uses B=500, to produce 500 bootstrap weights.
+
+
+gss_e_2015 |> 
+  slice_head() |>
+  select(WGHT_EPI, starts_with("WEPI")) |>
+  pivot_longer(cols = -WGHT_EPI, 
+               names_to = "Bootstrap_number",
+               values_to = "Bootstrap_weight") |>
+  ggplot() +
+  geom_histogram(aes(x = Bootstrap_weight)) +
+  geom_vline(aes(xintercept = WGHT_EPI))
+
+WE don't plan to use the bootstrap weights.
+
+## Reading Source Files
+
+In this notebook I experiment with reading the files and then saving them to an R native format for ease of use.
+
+
+Read main files of GSS survey (Episode Files) from 1986 to 2015:
+```{r}
+gss_e_2015 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_2015/gss-e.csv"))
+gss_e_2010 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_2010/gss-12M0018-E-2010-c-24-tus-ef_F1.csv"))
+gss_e_2005 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_2005/gss-12M0019-E-2005-c-19-e_F1.csv"))
+gss_e_1998 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_1998/gss-12M0012-E-1998-c-12e_F1.csv"))
+gss_e_1992 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_1992/gss-12M0007-E-1992-c-7-ep_F1.csv"))
+gss_e_1986 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_1986/gss-12M0002-E-1986-c-2-ep_F1.csv"))
+```
+
+
+### Walking_2015
+
+We begin by creating a data set for walking using the 2015 data table.
+
+Create a table with origins and destinations for walking in 2015. First, I'll identify the rows in the episode file where the location of the activity was `315`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for walking 2015, include=FALSE, cache=FALSE}
+
+# **walking 2015**
+# Creating data of origins and destinations of walking trip 2015
+inds <- which(gss_e_2015$LOCATION == 315)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as PUMFID (Record identification), WGHT_EPI (Episode weight), TUI_01 (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and LOCATION (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+
+```{r}
+walking_2015 <- gss_e_2015 |>
+  dplyr::slice(unlist(rows)) |>
+  dplyr::select(PUMFID, WGHT_EPI,DDAY,TUI_01:LOCATION) |> 
+  #dplyr::slice_head(n = 15) |>
+  group_by(PUMFID) |>
+  mutate(origin = lag(LOCATION),
+         destination = lead(LOCATION)) |>
+  #  group_by(PUMFID) %>% 
+  filter(LOCATION == 315) |> 
+  ungroup()
+```
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+```{r}
+walking_2015 <- walking_2015 |>
+  filter(origin == 300 | 
+           origin == 301 | 
+           origin == 303 | 
+           origin == 302 | 
+           origin == 304 |
+           origin == 305 | 
+           origin == 306 | 
+           origin == 307 |
+           origin == 308 |
+           origin == 309 | 
+           origin == 310 |
+           origin == 311) |>
+  mutate(orig_label =
+           case_when(origin == 300 ~ "Home", 
+                     origin == 301 ~ "Work or school",
+                     origin == 303 ~ "Other's home",
+                     origin == 302 ~ "Business",
+                     origin == 304 ~ "In the neighbourhood",
+                     origin == 305 ~ "Outdoors",
+                     origin == 306 ~ "Grocery store, other stores or mall",
+                     origin == 308 ~ "Sports centre, field or arena",
+                     origin == 307 ~ "Library, museum or theatre",
+                     origin == 309 ~ "Restaurant, bar or club",
+                     origin == 310 ~ "Place of worship",
+                     origin == 311 ~ "Medical, dental or other health clinic"),
+         orig_label = factor(orig_label))
+```
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+# change destination and origins to text column
+walking_2015 <- walking_2015 |>  
+  # Choose destinations of interest
+  filter(destination == 300 | 
+           destination == 301 | 
+           destination == 303 |
+           destination == 304 |
+           destination == 302 | 
+           destination == 305 |
+           destination == 306 | 
+           destination == 307 |
+           destination == 308 |
+           destination == 309 | 
+           destination == 310 |
+           destination == 311)  |>
+  # Label the destinations
+  mutate(dest_label =
+           case_when(destination == 300 ~ "Home", 
+                     destination == 301 ~ "Work or school",
+                     destination == 303 ~ "Other's home",
+                     destination == 304 ~ "In the neighbourhood",
+                     destination == 302 ~ "Business",
+                     destination == 305 ~ "Outdoors",
+                     destination == 306 ~ "Grocery store, other stores or mall",
+                     destination == 307 ~ "Library, museum or theatre",
+                     destination == 308 ~ "Sports centre, field or arena",
+                     destination == 309 ~ "Restaurant, bar or club",
+                     destination == 310 ~ "Place of worship",
+                     destination == 311 ~ "Medical, dental or other health clinic"),
+         dest_label = factor(dest_label))
+```
+
+Here, I'll add two columns of year and mode to walking_2015 dataset and change the name of TUI_01 to ACTCODE align with other years.
+```{r}
+walking_2015 <- walking_2015 |>
+  dplyr::select(PUMFID, WGHT_EPI,TUI_01, STARTIME, ENDTIME, DURATION:dest_label) |>
+  mutate(YEAR = 2015,
+         MODE = "Walking")
+walking_2015 <- walking_2015 |> dplyr::rename(ACTCODE = TUI_01)
+```
+
+
+Sanity check!
+```{r}
+walking_2015 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a walking trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+walking_2015 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+
+See PUMFID == 10041 and check the walking episode:
+```{r}
+gss_e_2015 |>
+  filter(PUMFID == 10041) |>
+  slice(unique(c(which(LOCATION == 315) - 1, 
+                 which(LOCATION == 315),
+                 which(LOCATION == 315) + 1))) |>
+  dplyr::select(PUMFID:LOCATION)
+```
+
+The person was at home doing 27 (personal care), then went for walk that lasted 15 minutes, came back home and spent 180 doing 9 (looking for work). So, this was a recreational/leisure trip!
+
+Note: TUI_01 is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes (001-095) can be found in an appendix of the User Guide.According to this list, 27 is "personal care", 7 is "Transport to or from activity" and 9 is "Looking for work"
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+Save data for later use:
+```{r}
+save(walking_2015,
+     file = paste0(here(), "/data/walking_2015.Rda"))
+```
+
+
+### Cycling 2015
+
+In the next step, We begin by creating a data set for cycling using the 2015 data table.
+
+Create a table with origins and destinations for cycling in 2015. First, I'll identify the rows in the episode file where the location of the activity was `318`, which is code for `cycling`, as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent.
+
+```{r creating dataset for cycling 2015, include=FALSE, cache=FALSE}
+
+# cycling _2015
+# Creating data of origins and destinations of cycling trip 2015
+inds <- which(gss_e_2015$LOCATION == 318)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as PUMFID (Record identification), WGHT_EPI (Episode weight), TUI_01 (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and LOCATION (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+
+```{r}
+cycling_2015 <- gss_e_2015[unlist(rows),] |> 
+  dplyr::select(PUMFID, WGHT_EPI, TUI_01:LOCATION) |>
+  mutate(origin = lag(LOCATION, order_by = PUMFID)) |> 
+  mutate(destination = lead(LOCATION, order_by = PUMFID)) |>
+  group_by(PUMFID) |>
+  filter(LOCATION == 318)
+```
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+
+```{r}
+cycling_2015 <- cycling_2015 |>
+  filter(origin == 300 | 
+           origin == 301 | 
+           origin == 303 | 
+           origin == 302 | 
+           origin == 304 |
+           origin == 305 | 
+           origin == 306 | 
+           origin == 307 |
+           origin == 308 |
+           origin == 309 | 
+           origin == 310 |
+           origin == 311) |>
+  mutate(orig_label =
+           case_when(origin == 300 ~ "Home", 
+                     origin == 301 ~ "Work or school",
+                     origin == 303 ~ "Other's home",
+                     origin == 302 ~ "Business",
+                     origin == 304 ~ "In the neighbourhood",
+                     origin == 305 ~ "Outdoors",
+                     origin == 306 ~ "Grocery store, other stores or mall",
+                     origin == 308 ~ "Sports centre, field or arena",
+                     origin == 307 ~ "Library, museum or theatre",
+                     origin == 309 ~ "Restaurant, bar or club",
+                     origin == 310 ~ "Place of worship",
+                     origin == 311 ~ "Medical, dental or other health clinic"),
+         orig_label = factor(orig_label))
+```
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+# change destination and origins to text column
+cycling_2015 <- cycling_2015 |>  
+  # Choose destinations of interest
+  filter(destination == 300 | 
+           destination == 301 | 
+           destination == 303 |
+           destination == 304 |
+           destination == 302 | 
+           destination == 305 |
+           destination == 306 | 
+           destination == 307 |
+           destination == 308 |
+           destination == 309 | 
+           destination == 310 |
+           destination == 311)  |>
+  # Label the destinations
+  mutate(dest_label =
+           case_when(destination == 300 ~ "Home", 
+                     destination == 301 ~ "Work or school",
+                     destination == 303 ~ "Other's home",
+                     destination == 304 ~ "In the neighbourhood",
+                     destination == 302 ~ "Business",
+                     destination == 305 ~ "Outdoors",
+                     destination == 306 ~ "Grocery store, other stores or mall",
+                     destination == 307 ~ "Library, museum or theatre",
+                     destination == 308 ~ "Sports centre, field or arena",
+                     destination == 309 ~ "Restaurant, bar or club",
+                     destination == 310 ~ "Place of worship",
+                     destination == 311 ~ "Medical, dental or other health clinic"),
+         dest_label = factor(dest_label))
+```
+
+
+Here, I'll add two columns of year and mode to cycling_2015 dataset and change the name of TUI_01 to ACTCODE align with other years
+
+```{r}
+cycling_2015 <- cycling_2015 |>
+  dplyr::select(PUMFID:ENDTIME, DURATION:dest_label) |>
+  mutate(YEAR = 2015,
+         MODE = "cycling") |>
+  dplyr::rename(ACTCODE = TUI_01)
+```
+
+Sanity check!
+```{r}
+cycling_2015 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+cycling_2015 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+
+
+See PUMFID == 10511 and check the cycling episode:
+```{r}
+gss_e_2015 |>
+  filter(PUMFID == 10511) |>
+  slice(unique(c(which(LOCATION == 318) - 1, 
+                 which(LOCATION == 318),
+                 which(LOCATION == 318) + 1))) |>
+   dplyr::select(PUMFID:LOCATION)
+```
+
+#Here there is a problem- there is not any home to home trip for user 10511. check the excel file
+
+Note: TUI_01 is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes (001-095) can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+Save data for later use:
+```{r}
+save(cycling_2015,
+    file = paste0(here(), "/data/cycling_2015.Rda"))
+```
+
+
+
+
+
+## Walking 2010
+
+
+Here a table with origins and destinations for walking in 2010 will be created. First, I'll identify the rows in the episode file where the location of the activity was `14`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for walking 2010, include=FALSE, cache=FALSE}
+
+# **walking 2010**
+# Creating data of origins and destinations of walking trip 2010
+inds <- which(gss_e_2010$PLACE == 14)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as RECID (Record identification), EPINO (Sequential episode number), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+
+
+```{r}
+walking_2010 <- gss_e_2010[unlist(rows),] |> 
+  dplyr::select(RECID,WGHT_EPI, ACTCODE:ENDTIME,DURATION,PLACE) |>
+  mutate(origin = lag(PLACE, order_by = RECID)) |> 
+  mutate(destination = lead(PLACE, order_by = RECID)) |>
+  group_by(RECID) |>
+  filter(PLACE == 14)
+```
+
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+```{r}
+walking_2010 <- walking_2010 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3 | 
+           origin == 4 | 
+           origin == 5 |
+           origin == 6 | 
+           origin == 7 | 
+           origin == 8 |
+           origin == 9 |
+           origin == 10 ) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home",
+                     origin == 9 ~ "Outdoors",
+                     origin == 6 ~ "Grocery store, other stores or mall",
+                     origin == 10 ~ "Library, museum or theatre",
+                     origin == 4 ~ "Restaurant, bar or club",
+                     origin == 5 ~ "Place of worship",
+                     origin == 7 ~ "Grocery store, other stores or mall",                     
+                     origin == 8 ~ "Work or school"),
+         orig_label = factor(orig_label))
+```
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+walking_2010 <- walking_2010 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 | 
+           destination == 4 | 
+           destination == 5 |
+           destination == 6 | 
+           destination == 7 | 
+           destination == 8 |
+           destination == 9 |
+           destination == 10 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home",
+                     destination == 9 ~ "Outdoors",
+                     destination == 6 ~ "Grocery store, other stores or mall",
+                     destination == 10 ~ "Library, museum or theatre",
+                     destination == 4 ~ "Restaurant, bar or club",
+                     destination == 5 ~ "Place of worship",
+                     destination == 7 ~ "Grocery store, other stores or mall",                     
+                     destination == 8 ~ "Work or school"),
+         dest_label = factor(dest_label))
+```
+
+Here, I'll add two columns of year and mode to walking_2010 dataset and change the name of `RECID` and `PLACE` TO `PUMFID` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+```{r}
+walking_2010 <- walking_2010 |>
+  dplyr::select(RECID, WGHT_EPI,ACTCODE, STARTIME:dest_label) |>
+  mutate(YEAR = 2010,
+         MODE = "Walking")
+walking_2010 <- walking_2010 %>% dplyr::rename(
+    PUMFID = RECID,
+    LOCATION = PLACE)
+```
+
+
+Sanity check!
+```{r}
+walking_2010 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a walking trip that starts at home is `HOME and work or school`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+walking_2010 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+See RECID == 3 and check the walking episode:
+```{r}
+gss_e_2010 |>
+  filter(RECID == 3) |>
+  slice(unique(c(which(PLACE == 14) - 1, 
+                 which(PLACE == 14),
+                 which(PLACE == 14) + 1))) |>
+   dplyr::select(RECID:PLACE)
+```
+
+The person was at home doing 390 (Food (or meal) cleanup), then went for walking that lasted 15 minutes, came back home and spent 5 doing 181.1 (Household management (organizing/planning activities, etc.). So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+### Cycling 2010
+
+
+Here a table with origins and destinations for cycling in 2010 will be created. First, I'll identify the rows in the episode file where the location of the activity was `17`, which is code for `Cycling`, as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for cycling 2010, include=FALSE, cache=FALSE}
+
+# **cycling 2010**
+# Creating data of origins and destinations of cycling trip 2010
+inds <- which(gss_e_2010$PLACE == 17)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+
+
+```{r}
+cycling_2010 <- gss_e_2010[unlist(rows),] |> 
+  dplyr::select(RECID:PLACE) |>
+  mutate(origin = lag(PLACE, order_by = RECID)) |> 
+  mutate(destination = lead(PLACE, order_by = RECID)) |>
+  group_by(RECID) |>
+  filter(PLACE == 17)
+```
+
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+```{r}
+cycling_2010 <- cycling_2010 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3 | 
+           origin == 4 | 
+           origin == 5 |
+           origin == 6 | 
+           origin == 7 | 
+           origin == 8 |
+           origin == 9 |
+           origin == 10 ) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home",
+                     origin == 9 ~ "Outdoors",
+                     origin == 6 ~ "Grocery store, other stores or mall",
+                     origin == 10 ~ "Library, museum or theatre",
+                     origin == 4 ~ "Restaurant, bar or club",
+                     origin == 5 ~ "Place of worship",
+                     origin == 7 ~ "Grocery store, other stores or mall",                     
+                     origin == 8 ~ "Work or school"),
+         orig_label = factor(orig_label))
+```
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+cycling_2010 <- cycling_2010 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 | 
+           destination == 4 | 
+           destination == 5 |
+           destination == 6 | 
+           destination == 7 | 
+           destination == 8 |
+           destination == 9 |
+           destination == 10 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home",
+                     destination == 9 ~ "Outdoors",
+                     destination == 6 ~ "Grocery store, other stores or mall",
+                     destination == 10 ~ "Library, museum or theatre",
+                     destination == 4 ~ "Restaurant, bar or club",
+                     destination == 5 ~ "Place of worship",
+                     destination == 7 ~ "Grocery store, other stores or mall",                     
+                     destination == 8 ~ "Work or school"),
+         dest_label = factor(dest_label))
+```
+
+Here, I'll add two columns of year and mode to cycling_2010 dataset and change the name of `RECID` and `PLACE` TO `PUMFID` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+```{r}
+cycling_2010 <- cycling_2010 |>
+  dplyr::select(RECID, WGHT_EPI,ACTCODE:ENDTIME, DURATION:dest_label) |>
+  mutate(YEAR = 2010,
+         MODE = "cycling")
+cycling_2010 <- cycling_2010 %>% dplyr::rename(
+    PUMFID = RECID,
+    LOCATION = PLACE)
+```
+
+
+Sanity check!
+```{r}
+cycling_2010 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+cycling_2010 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+
+
+See RECID == 3668 and check the walking episode:
+```{r}
+gss_e_2010 |>
+  filter(RECID == 3668) |>
+  slice(unique(c(which(PLACE == 17) - 1, 
+                 which(PLACE == 17),
+                 which(PLACE == 17) + 1))) |>
+   dplyr::select(RECID:PLACE)
+```
+
+
+The person was at home doing 430 (Food (or meal) cleanup), then went for cycling that lasted 35 minutes, came back home and spent 160 doing 11 (Work for pay at main job). So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+
+
+### Walking 2005
+
+
+Here a table with origins and destinations for walking in 2005 will be created. First, I'll identify the rows in the episode file where the location of the activity was `14`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for walking 2005, include=FALSE, cache=FALSE}
+
+# **walking 2005**
+# Creating data of origins and destinations of walking trip 2005
+inds = which(gss_e_2005$PLACE == 14)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+
+```{r}
+walking_2005 <- gss_e_2005 [unlist(rows),] |>
+  dplyr::select(RECID:PLACE) |> 
+  mutate(origin = lag(PLACE, order_by = RECID)) |>
+  mutate(destination = lead(PLACE, order_by = RECID)) |> 
+  group_by(RECID) |> 
+  filter(PLACE == 14) 
+```
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+
+
+```{r}
+walking_2005 <- walking_2005 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3 | 
+           origin == 4 | 
+           origin == 5 |
+           origin == 6 | 
+           origin == 7 | 
+           origin == 8 |
+           origin == 9 |
+           origin == 10 ) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home",
+                     origin == 9 ~ "Outdoors",
+                     origin == 6 ~ "Grocery store, other stores or mall",
+                     origin == 10 ~ "Library, museum or theatre",
+                     origin == 4 ~ "Restaurant, bar or club",
+                     origin == 5 ~ "Place of worship",
+                     origin == 7 ~ "Grocery store, other stores or mall",                     
+                     origin == 8 ~ "Work or school"),
+         orig_label = factor(orig_label))
+```
+
+
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+walking_2005 <- walking_2005 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 | 
+           destination == 4 | 
+           destination == 5 |
+           destination == 6 | 
+           destination == 7 | 
+           destination == 8 |
+           destination == 9 |
+           destination == 10 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home",
+                     destination == 9 ~ "Outdoors",
+                     destination == 6 ~ "Grocery store, other stores or mall",
+                     destination == 10 ~ "Library, museum or theatre",
+                     destination == 4 ~ "Restaurant, bar or club",
+                     destination == 5 ~ "Place of worship",
+                     destination == 7 ~ "Grocery store, other stores or mall",                     
+                     destination == 8 ~ "Work or school"),
+         dest_label = factor(dest_label))
+```
+
+
+Here, I'll add two columns of year and mode to walking_2005 dataset and change the name of `RECID` and `PLACE` TO `PUMFID` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+```{r}
+walking_2005 <- walking_2005 |>
+  dplyr::select(RECID, WGHT_EPI, ACTCODE:ENDTIME, DURATION:dest_label) |>
+  mutate(YEAR = 2005,
+         MODE = "Walking")
+walking_2005 <- walking_2005 |> dplyr::rename(
+    PUMFID = RECID,
+    LOCATION = PLACE) 
+```
+
+
+Sanity check!
+```{r}
+walking_2005 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a walking trip that starts at home is `work or school`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+walking_2005 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+See RECID == 89 and check the walking episode:
+```{r}
+gss_e_2005 |>
+  filter(RECID == 89) |>
+  slice(unique(c(which(PLACE == 14) - 1, 
+                 which(PLACE == 14),
+                 which(PLACE == 14) + 1))) |>
+   dplyr::select(RECID:PLACE)
+```
+
+The person was at home doing 390 (Food (or meal) cleanup), then went for cycling that lasted 15 minutes, came back home and spent 5 doing 181.1 (Household management (organizing/planning activities, etc.). So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+Save data for later use:
+```{r}
+save(walking_2005,
+     file = paste0(here(), "/data/walking_2005.Rda"))
+```
+
+
+# Cycling_2005
+
+
+Here a table with origins and destinations for cycling in 2005 will be created. First, I'll identify the rows in the episode file where the location of the activity was `17`, which is code for `Cycling`, as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for cycling 2005, include=FALSE, cache=FALSE}
+
+# **cycling 2005**
+# Creating data of origins and destinations of cycling trip 2005
+inds <- which(gss_e_2005$PLACE == 17)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+
+
+```{r}
+cycling_2005 <- gss_e_2005[unlist(rows),] |> 
+  dplyr::select(RECID:PLACE) |>
+  mutate(origin = lag(PLACE, order_by = RECID)) |> 
+  mutate(destination = lead(PLACE, order_by = RECID)) |>
+  group_by(RECID) |>
+  filter(PLACE == 17)
+```
+
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+```{r}
+cycling_2005 <- cycling_2005 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3 | 
+           origin == 4 | 
+           origin == 5 |
+           origin == 6 | 
+           origin == 7 | 
+           origin == 8 |
+           origin == 9 |
+           origin == 10 ) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home",
+                     origin == 9 ~ "Outdoors",
+                     origin == 6 ~ "Grocery store, other stores or mall",
+                     origin == 10 ~ "Library, museum or theatre",
+                     origin == 4 ~ "Restaurant, bar or club",
+                     origin == 5 ~ "Place of worship",
+                     origin == 7 ~ "Grocery store, other stores or mall",                     
+                     origin == 8 ~ "Work or school"),
+         orig_label = factor(orig_label))
+```
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+cycling_2005 <- cycling_2005 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 | 
+           destination == 4 | 
+           destination == 5 |
+           destination == 6 | 
+           destination == 7 | 
+           destination == 8 |
+           destination == 9 |
+           destination == 10 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home",
+                     destination == 9 ~ "Outdoors",
+                     destination == 6 ~ "Grocery store, other stores or mall",
+                     destination == 10 ~ "Library, museum or theatre",
+                     destination == 4 ~ "Restaurant, bar or club",
+                     destination == 5 ~ "Place of worship",
+                     destination == 7 ~ "Grocery store, other stores or mall",                     
+                     destination == 8 ~ "Work or school"),
+         dest_label = factor(dest_label))
+```
+
+Here, I'll add two columns of year and mode to cycling_2005 dataset and change the name of `RECID` and `PLACE` TO `PUMFID` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+```{r}
+cycling_2005 <- cycling_2005 |>
+  dplyr::select(RECID, WGHT_EPI, ACTCODE:ENDTIME, DURATION:dest_label) |>
+  mutate(YEAR = 2005,
+         MODE = "cycling")
+cycling_2005 <- cycling_2005 |> dplyr::rename(
+    PUMFID = RECID,
+    LOCATION = PLACE) 
+```
+
+
+Sanity check!
+```{r}
+cycling_2005 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+cycling_2005 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+
+
+See RECID == 1903 and check the cycling episode:
+```{r}
+gss_e_2005 |>
+  filter(RECID == 1903) |>
+  slice(unique(c(which(PLACE == 17) - 1, 
+                 which(PLACE == 17),
+                 which(PLACE == 17) + 1))) |>
+   dplyr::select(RECID:PLACE)
+```
+
+
+The person was at home doing 11 (work at home as a main workplace), then went for cycling that lasted 30 minutes, came back home and spent 90 minutes doing 911 (Watching sports on television).So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+Save data for later use:
+```{r}
+save(cycling_2005,
+     file = paste0(here(), "/data/cycling_2005.Rda"))
+```
+
+
+
+# Walking 1998
+
+
+Here a table with origins and destinations for walking in 1998 will be created. First, I'll identify the rows in the episode file where the location of the activity was `7`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for walking 1998, include=FALSE, cache=FALSE}
+
+# **walking 1998**
+# Creating data of origins and destinations of walking trip 1998
+inds = which(gss_e_1998$PLACE == 7)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+
+```{r}
+walking_1998 <- gss_e_1998 [unlist(rows),] |>
+  dplyr::select(RECID:PLACE) |> 
+  mutate(origin = lag(PLACE, order_by = RECID)) |>
+  mutate(destination = lead(PLACE, order_by = RECID)) |> 
+  group_by(RECID) |> 
+  filter(PLACE == 7) 
+```
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+
+
+```{r}
+walking_1998 <- walking_1998 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3 ) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home"),
+         orig_label = factor(orig_label))
+```
+
+
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+walking_1998 <- walking_1998 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home"),
+         dest_label = factor(dest_label))
+```
+
+
+Here, I'll add two columns of year and mode to walking_1998 dataset and change the name of `RECID`, `WGHTEPI` and `PLACE` TO `PUMFID`,`WGHT_EPI` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+```{r}
+walking_1998 <- walking_1998 |>
+  dplyr::select(RECID, WGHTEPI,ACTCODE: ENDTIME, DURATION:dest_label) |>
+  mutate(YEAR = 1998,
+         MODE = "Walking")
+walking_1998 <- walking_1998|> dplyr::rename(
+    PUMFID = RECID,
+    WGHT_EPI = WGHTEPI,
+    LOCATION = PLACE) 
+```
+
+
+Sanity check!
+```{r}
+walking_1998 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a walking trip that starts at home is `other's home`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+walking_1998 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+See RECID == 15 and check the walking episode:
+```{r}
+gss_e_1998 |>
+  filter(RECID == 15) |>
+  slice(unique(c(which(PLACE == 7) - 1, 
+                 which(PLACE == 7),
+                 which(PLACE == 7) + 1))) |>
+   dplyr::select(RECID:PLACE)
+```
+
+The person was at home doing 430 (MEALS AT HOME/SNACKS/COFFEE), then went for walking that lasted 45 minutes, came back home and spent 240 min doing 911 (WATCHING TELEVISION (REGULAR SCHEDULED TELEVISION)). So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+Save data for later use:
+```{r}
+save(walking_1998,
+     file = paste0(here(), "/data/walking_1998.Rda"))
+```
+
+
+
+# Cycling_1998
+
+Here a table with origins and destinations for cycling in 1998 will be created. First, I'll identify the rows in the episode file where the location of the activity was `9`, which is code for `Cycling`, as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for cycling 1998, include=FALSE, cache=FALSE}
+# **cycling 1998**
+# Creating data of origins and destinations of cycling trip 1998
+inds <- which(gss_e_1998$PLACE == 9)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as RECID (Record identification), WGHTEPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+
+
+```{r}
+cycling_1998 <- gss_e_1998[unlist(rows),] |> 
+  dplyr::select(RECID:PLACE) |>
+  mutate(origin = lag(PLACE, order_by = RECID)) |> 
+  mutate(destination = lead(PLACE, order_by = RECID)) |>
+  group_by(RECID) |>
+  filter(PLACE == 9)
+```
+
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+```{r}
+cycling_1998 <- cycling_1998 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3 ) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home"),
+         orig_label = factor(orig_label))
+```
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+cycling_1998 <- cycling_1998 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home"),
+         dest_label = factor(dest_label))
+```
+
+Here, I'll add two columns of year and mode to cycling_1998 dataset and change the name of `RECID`, `WGHTEPI` and `PLACE` TO `PUMFID`,`WGHT_EPI` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015.
+```{r}
+cycling_1998 <- cycling_1998 |>
+  dplyr::select(RECID, WGHTEPI,ACTCODE: ENDTIME, DURATION:dest_label) |>
+  mutate(YEAR = 1998,
+         MODE = "cycling")
+cycling_1998 <- cycling_1998|> dplyr::rename(
+    PUMFID = RECID,
+    WGHT_EPI = WGHTEPI,
+    LOCATION = PLACE) 
+```
+
+
+Sanity check!
+```{r}
+cycling_1998 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+cycling_1998 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+
+
+See RECID == 656 and check the cycling episode:
+```{r}
+gss_e_1998 |>
+  filter(RECID == 656) |>
+  slice(unique(c(which(PLACE == 9) - 1, 
+                 which(PLACE == 9),
+                 which(PLACE == 9) + 1))) |>
+   dplyr::select(RECID:PLACE)
+```
+
+
+The person was at home doing 801 (FOOTBALL, BASEBALL, HOCKEY, ETC.), then went for cycling that lasted 10 minutes, came back home and spent 40 minutes doing 163 (Vehicle Maintenance).So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+Save data for later use:
+```{r}
+save(cycling_1998,
+     file = paste0(here(), "/data/cycling_1998.Rda"))
+```
+
+
+
+# Walking_1992
+
+
+Here a table with origins and destinations for walking in 1992 will be created. First, I'll identify the rows in the episode file where the location of the activity was `7`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for walking 1992, include=FALSE, cache=FALSE}
+
+# **walking 1992**
+# Creating data of origins and destinations of walking trip 1992
+inds = which(gss_e_1992$PLACE == 7)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as SEQNUM (Record identification), TIMEWGT (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+
+```{r}
+walking_1992 <- gss_e_1992 [unlist(rows),] |>
+  dplyr::select(SEQNUM:PLACE,TIMEWGT) |> 
+  mutate(origin = lag(PLACE, order_by = SEQNUM)) |>
+  mutate(destination = lead(PLACE, order_by = SEQNUM)) |> 
+  group_by(SEQNUM) |> 
+  filter(PLACE == 7) 
+```
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+
+```{r}
+walking_1992 <- walking_1992 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home"),
+         orig_label = factor(orig_label))
+```
+
+
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+walking_1992 <- walking_1992 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home"),
+         dest_label = factor(dest_label))
+```
+
+
+Here, I'll add two columns of year and mode to walking_1992 dataset and change the name of `SEQNUM`, `TIMEWGT` and `PLACE` TO `PUMFID`,`WGHT_EPI` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015.
+```{r}
+walking_1992 <- walking_1992 |>
+  dplyr::select(SEQNUM,TIMEWGT,ACTCODE:dest_label) |>
+  mutate(YEAR = 1992,
+         MODE = "Walking")
+walking_1992 <- walking_1992 |> dplyr::rename(
+    PUMFID = SEQNUM,
+    WGHT_EPI = TIMEWGT,
+    LOCATION = PLACE)
+```
+
+
+Sanity check!
+```{r}
+walking_1992 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a walking trip that starts at home is `Home`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+walking_1992 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+See SEQNUM == 218 and check the walking episode:
+```{r}
+gss_e_1992 |>
+  filter(SEQNUM == 218) |>
+  slice(unique(c(which(PLACE == 7) - 1, 
+                 which(PLACE == 7),
+                 which(PLACE == 7) + 1))) |>
+   dplyr::select(SEQNUM:PLACE)
+```
+
+The person was at home doing 430 (Meals at Home/Snacks/Coffee), then went for walking that lasted 5 minutes, came back home and spent 35 doing 181 (Household management (Household Administration, e.g.Paying Bills, Menu Planning, etc.). So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+Save data for later use:
+```{r}
+save(walking_1992,
+     file = paste0(here(), "/data/walking_1992.Rda"))
+```
+
+
+
+
+# Cycling_1992
+
+
+Here a table with origins and destinations for cycling in 1992 will be created. First, I'll identify the rows in the episode file where the location of the activity was `9`, which is code for `Cycling` as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for cycling 1992, include=FALSE, cache=FALSE}
+# **cycling 1992**
+# Creating data of origins and destinations of cycling trip 1992
+inds <- which(gss_e_1992$PLACE == 9)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as SEQNUM (Record identification), TIMEWGT (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+
+
+```{r}
+cycling_1992 <- gss_e_1992[unlist(rows),] |> 
+  dplyr::select(SEQNUM:PLACE, TIMEWGT) |>
+  mutate(origin = lag(PLACE, order_by = SEQNUM)) |> 
+  mutate(destination = lead(PLACE, order_by = SEQNUM)) |>
+  group_by(SEQNUM) |>
+  filter(PLACE == 9)
+```
+
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+```{r}
+cycling_1992 <- cycling_1992 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3 ) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home"),
+         orig_label = factor(orig_label))
+```
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+cycling_1992 <- cycling_1992 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home"),
+         dest_label = factor(dest_label))
+```
+
+Here, I'll add two columns of year and mode to cycling_1992 dataset and change the name of `SEQNUM`, `TIMEWGT` and `PLACE` TO `PUMFID`,`WGHT_EPI` and `LOCATION` . Indeed, Changes names to align with the name of variables in 2015.
+```{r}
+cycling_1992 <- cycling_1992 |>
+  dplyr::select(SEQNUM,TIMEWGT,ACTCODE:dest_label) |>
+  mutate(YEAR = 1992,
+         MODE = "cycling")
+cycling_1992 <- cycling_1992 |> dplyr::rename(
+    PUMFID = SEQNUM,
+    WGHT_EPI = TIMEWGT,
+    LOCATION = PLACE)
+```
+
+
+Sanity check!
+```{r}
+cycling_1992 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+cycling_1992 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+
+
+See SEQNUM == 3622 and check the cycling episode:
+```{r}
+gss_e_1992 |>
+  filter(SEQNUM == 3622) |>
+  slice(unique(c(which(PLACE == 9) - 1, 
+                 which(PLACE == 9),
+                 which(PLACE == 9) + 1))) |>
+   dplyr::select(SEQNUM:PLACE)
+```
+
+
+The person was at home doing 950 (Talking, conversation, phone), then went for cycling that lasted 120 minutes, came back home and spent 30 minutes doing 130 (outdoor cleaning (garbage, snow, removal, garage)).So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+Save data for later use:
+```{r}
+save(cycling_1992,
+     file = paste0(here(), "/data/cycling_1992.Rda"))
+```
+
+
+
+# Walking 1986
+
+Here a table with origins and destinations for walking in 1986 will be created. First, I'll identify the rows in the episode file where the location of the activity was `5`, which is code for `walking` as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+
+```{r creating dataset for walking 1986, include=FALSE, cache=FALSE}
+
+# **walking 1986**
+# Creating data of origins and destinations of walking trip 1986
+inds = which(gss_e_1986$PLACE == 5)
+rows <- lapply(inds, function(x) (x-1):(x+1))
+```
+
+Second, I'll select the required columns (required variables such as SEQNUM (Record identification), ACT_CODE (Activity code of the episode), STARTTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+
+```{r}
+walking_1986 <- gss_e_1986 [unlist(rows),] |>
+  dplyr::select(SEQNUM:PLACE,FWGT_MS) |> 
+  mutate(origin = lag(PLACE, order_by = SEQNUM)) |>
+  mutate(destination = lead(PLACE, order_by = SEQNUM)) |> 
+  group_by(SEQNUM) |> 
+  filter(PLACE == 5) 
+```
+
+
+Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+
+```{r}
+walking_1986 <- walking_1986 |>
+  filter(origin == 1 | 
+           origin == 2 | 
+           origin == 3) |>
+  mutate(orig_label =
+           case_when(origin == 1 ~ "Home", 
+                     origin == 2 ~ "Work or school",
+                     origin == 3 ~ "Other's home"),
+         orig_label = factor(orig_label))
+```
+
+
+
+Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+```{r}
+walking_1986 <- walking_1986 |>
+  filter(destination == 1 | 
+           destination == 2 | 
+           destination == 3 ) |>
+  mutate(dest_label =
+           case_when(destination == 1 ~ "Home", 
+                     destination == 2 ~ "Work or school",
+                     destination == 3 ~ "Other's home"),
+         dest_label = factor(dest_label))
+```
+
+
+Here, I'll add two columns of year and mode to walking_1986 dataset and change the name of `SEQNUM`, `FWGT_MS`, `ACT_CODE`, `STRTTIME` and `PLACE` TO `PUMFID`,`WGHT_EPI`, `ACTCODE`, `STARTIME` and `LOCATION` . Indeed, Changes names to align with the name of variables in 2015.
+```{r}
+walking_1986 <- walking_1986 |>
+  dplyr::select(SEQNUM,ACT_CODE:dest_label) |>
+  mutate(YEAR = 1986,
+         MODE = "Walking")
+walking_1986 <- walking_1986 |> dplyr::rename(
+    PUMFID = SEQNUM,
+    STARTIME= STRTTIME,
+    WGHT_EPI = FWGT_MS,
+    ACTCODE = ACT_CODE,
+    LOCATION = PLACE)
+```
+
+
+Sanity check!
+```{r}
+walking_1986 |> 
+  group_by(orig_label, 
+           dest_label) |>
+  count() |>
+  pivot_wider(names_from = "dest_label", values_from = "n")
+```
+
+The most common destination for a walking trip that starts at home is `OTHER'S HOME`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
+
+Check those home-to-home trips:
+```{r}
+walking_1986 |>
+  filter(orig_label == "Home" & dest_label == "Home")
+```
+See SEQNUM == 26 and check the walking episode:
+```{r}
+gss_e_1986 |>
+  filter(SEQNUM == 26) |>
+  slice(unique(c(which(PLACE == 5) - 1, 
+                 which(PLACE == 5),
+                 which(PLACE == 5) + 1))) |>
+   dplyr::select(SEQNUM:PLACE)
+```
+
+The person was at home doing 24 (play with children), then went for walking that lasted 120 minutes, came back home and spent 30 minutes doing 43 (Household management (Meals at home/snacks/ coffee). So, this was a recreational/leisure trip!
+
+Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
+
+QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+Save data for later use:
+```{r}
+save(walking_1986,
+     file = paste0(here(), "/data/walking_1986.Rda"))
+```
+
+
+
+##calculating impedance function for walking trip during 1986- 2015:
+
+### Walking_2015
+
+First, we examine the variable of travel time (DURATION) in 2015. The minimum time for walking trip is 5 minutes, the maximum is 900 minutes, and the average time for walking trip is 17.49 minutes.
+
+```{r}
+summary(walking_2015$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(walking_2015, aes(x = DURATION )) + geom_histogram(binwidth = 30) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(walking_2015$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our walk trips, we see that lnorm or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+#gamma_ <- fitdistrplus::fitdist(data=walking_2015$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(walking_2015$WGHT_EPI), optim.method= "Brent") 
+#lnorm_ <- fitdistrplus::fitdist(data=walking_2015$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(walking_2015$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=walking_2015%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead")
+exp_ <- fitdistrplus::fitdist(data=walking_2015$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(walking_2015$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=walking_2015%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead")
+# nbinom_ <- fitdistrplus::fitdist(data=walking_2015%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead")
+# geom_ <- fitdistrplus::fitdist(data=walking_2015%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead")
+#beta_ <- fitdistrplus::fitdist(data=walking_2015$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead")
+#logis_ <- fitdistrplus::fitdist(data=walking_2015%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead")
+
+```
+
+
+```{r}
+summary(walking_2015$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the walking_2015 data best:
+```{r}
+broom::glance(MASS::fitdistr(walking_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+broom::glance(MASS::fitdistr(walking_2015$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(walking_2015$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(walking_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(walking_2015$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for walk trips!
+
+```{r}
+walking_2015_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+walking_2015 <- walking_2015 %>%
+ mutate(f = dexp(DURATION, walking_2015_exp$estimate["rate"])) 
+summary(walking_2015$f)
+```
+
+
+### cycling_2015
+
+First, we examine the variable of travel time (DURATION) in 2015. The minimum time for cycling trip is 5 minutes, the maximum is 120 minutes, and the average time for walking trip is 23.71 minutes.
+
+```{r}
+summary(cycling_2015$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(cycling_2015, aes(x = DURATION )) + geom_histogram(binwidth = 5) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(cycling_2015$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our cycling trips, we see that exponentil or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+gamma_ <- fitdistrplus::fitdist(data=cycling_2015$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2015$WGHT_EPI)) 
+#lnorm_ <- fitdistrplus::fitdist(data=cycling_2015$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2015$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=cycling_2015%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2015$WGHT_EPI))
+exp_ <- fitdistrplus::fitdist(data=cycling_2015$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(cycling_2015$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=cycling_2015%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2015$WGHT_EPI))
+# nbinom_ <- fitdistrplus::fitdist(data=cycling_2015%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2015$WGHT_EPI))
+# geom_ <- fitdistrplus::fitdist(data=cycling_2015%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2015$WGHT_EPI))
+#beta_ <- fitdistrplus::fitdist(data=cycling_2015$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2015$WGHT_EPI))
+#logis_ <- fitdistrplus::fitdist(data=cycling_2015%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2015$WGHT_EPI))
+
+```
+
+
+```{r}
+summary(cycling_2015$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the walking_2015 data best:
+```{r}
+broom::glance(MASS::fitdistr(cycling_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+broom::glance(MASS::fitdistr(cycling_2015$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(cycling_2015$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(cycling_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(cycling_2015$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for cycling trips!
+
+```{r}
+cycling_2015_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+cycling_2015 <- cycling_2015 %>%
+ mutate(f = dexp(DURATION, cycling_2015_exp$estimate["rate"])) 
+summary(cycling_2015$f)
+```
+
+##Walking_2010
+
+First, we examine the variable of travel time (DURATION) in 2010. The minimum time for walking trip is 0 minutes, the maximum is 480 minutes, and the average time for walking trip is 12.38 minutes.
+
+```{r}
+summary(walking_2010$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(walking_2010, aes(x = DURATION )) + geom_histogram(binwidth = 10) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(walking_2010$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our walk trips, we see that lnorm or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+#gamma_ <- fitdistrplus::fitdist(data=walking_2010$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(walking_2010$WGHT_EPI), optim.method= "Brent") 
+#lnorm_ <- fitdistrplus::fitdist(data=walking_2010$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(walking_2010$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=walking_2010%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead")
+exp_ <- fitdistrplus::fitdist(data=walking_2010$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(walking_2010$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=walking_2010%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead")
+# nbinom_ <- fitdistrplus::fitdist(data=walking_2010%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead")
+# geom_ <- fitdistrplus::fitdist(data=walking_2010%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead")
+#beta_ <- fitdistrplus::fitdist(data=walking_2010$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead")
+#logis_ <- fitdistrplus::fitdist(data=walking_2010%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead")
+
+```
+
+
+```{r}
+summary(walking_2010$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the walking_2010 data best:
+```{r}
+#broom::glance(MASS::fitdistr(walking_2010$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+#broom::glance(MASS::fitdistr(walking_2010$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(walking_2010$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(walking_2010$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(walking_2010$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for walk trips!
+
+```{r}
+walking_2010_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+walking_2010 <- walking_2010 %>%
+ mutate(f = dexp(DURATION, walking_2010_exp$estimate["rate"])) 
+summary(walking_2010$f)
+```
+
+### cycling_2010
+
+First, we examine the variable of travel time (DURATION) in 2010. The minimum time for cycling trip is 1 minutes, the maximum is 153 minutes, and the average time for walking trip is 21.18 minutes.
+
+```{r}
+summary(cycling_2010$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(cycling_2010, aes(x = DURATION )) + geom_histogram(binwidth = 5) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(cycling_2010$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our cycling trips, we see that exponentil or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+gamma_ <- fitdistrplus::fitdist(data=cycling_2010$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2010$WGHT_EPI)) 
+#lnorm_ <- fitdistrplus::fitdist(data=cycling_2010$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2010$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=cycling_2010%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2010$WGHT_EPI))
+exp_ <- fitdistrplus::fitdist(data=cycling_2010$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(cycling_2010$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=cycling_2010%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2010$WGHT_EPI))
+# nbinom_ <- fitdistrplus::fitdist(data=cycling_2010%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2010$WGHT_EPI))
+# geom_ <- fitdistrplus::fitdist(data=cycling_2010%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2010$WGHT_EPI))
+#beta_ <- fitdistrplus::fitdist(data=cycling_2010$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2010$WGHT_EPI))
+#logis_ <- fitdistrplus::fitdist(data=cycling_2010%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2010$WGHT_EPI))
+
+```
+
+
+```{r}
+summary(cycling_2010$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the cycling_2010 data best:
+```{r}
+broom::glance(MASS::fitdistr(cycling_2010$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+broom::glance(MASS::fitdistr(cycling_2010$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(cycling_2010$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(cycling_2010$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(cycling_2010$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for cycling trips!
+
+```{r}
+cycling_2010_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+cycling_2010 <- cycling_2010 %>%
+ mutate(f = dexp(DURATION, cycling_2010_exp$estimate["rate"])) 
+summary(cycling_2010$f)
+```
+
+##Walking_2005
+
+First, we examine the variable of travel time (DURATION) in 2005. The minimum time for walking trip is 5 minutes, the maximum is 515 minutes, and the average time for walking trip is 12.07 minutes.
+
+```{r}
+summary(walking_2005$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(walking_2005, aes(x = DURATION )) + geom_histogram(binwidth = 5) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(walking_2005$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our walk trips, we see that lnorm or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r walk-itting-impedance-function}
+#gamma_ <- fitdistrplus::fitdist(data=walking_2005$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(walking_2005$WGHT_EPI), optim.method= "Brent") 
+#lnorm_ <- fitdistrplus::fitdist(data=walking_2005$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(walking_2005$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=walking_2005%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead")
+exp_ <- fitdistrplus::fitdist(data=walking_2005$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(walking_2005$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=walking_2005%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead")
+# nbinom_ <- fitdistrplus::fitdist(data=walking_2005%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead")
+# geom_ <- fitdistrplus::fitdist(data=walking_2005%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead")
+#beta_ <- fitdistrplus::fitdist(data=walking_2005$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead")
+#logis_ <- fitdistrplus::fitdist(data=walking_2005%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead")
+
+```
+
+
+```{r}
+summary(walking_2005$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the walking_2010 data best:
+```{r}
+#broom::glance(MASS::fitdistr(walking_2005$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+#broom::glance(MASS::fitdistr(walking_2005$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(walking_2005$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(walking_2005$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(walking_2005$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for walk trips!
+
+```{r}
+walking_2005_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+walking_2005 <- walking_2005 %>%
+ mutate(f = dexp(DURATION, walking_2005_exp$estimate["rate"])) 
+summary(walking_2005$f)
+```
+
+
+### cycling_2005
+
+First, we examine the variable of travel time (DURATION) in 2005. The minimum time for cycling trip is 1 minutes, the maximum is 180 minutes, and the average time for walking trip is 19.29 minutes.
+
+```{r}
+summary(cycling_2005$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(cycling_2005, aes(x = DURATION )) + geom_histogram(binwidth = 5) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(cycling_2005$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our cycling trips, we see that exponentil or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+gamma_ <- fitdistrplus::fitdist(data=cycling_2005$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2005$WGHT_EPI)) 
+#lnorm_ <- fitdistrplus::fitdist(data=cycling_2005$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2005$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=cycling_2005%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2005$WGHT_EPI))
+exp_ <- fitdistrplus::fitdist(data=cycling_2005$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(cycling_2005$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=cycling_2005%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2005$WGHT_EPI))
+# nbinom_ <- fitdistrplus::fitdist(data=cycling_2005%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2005$WGHT_EPI))
+# geom_ <- fitdistrplus::fitdist(data=cycling_2005%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2005$WGHT_EPI))
+#beta_ <- fitdistrplus::fitdist(data=cycling_2005$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2005$WGHT_EPI))
+#logis_ <- fitdistrplus::fitdist(data=cycling_2005%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead", weights = round(cycling_2005$WGHT_EPI))
+
+```
+
+
+```{r}
+summary(cycling_2005$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the cycling_2005 data best:
+```{r}
+broom::glance(MASS::fitdistr(cycling_2005$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+broom::glance(MASS::fitdistr(cycling_2005$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(cycling_2005$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(cycling_2005$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(cycling_2005$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for cycling trips!
+
+```{r}
+cycling_2005_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+cycling_2005 <- cycling_2005 %>%
+ mutate(f = dexp(DURATION, cycling_2005_exp$estimate["rate"])) 
+summary(cycling_2005$f)
+```
+```{r}
+summary(cycling_2005$f)
+print(summary)
+```
+
+##Walking_1998
+
+First, we examine the variable of travel time (DURATION) in 1998. The minimum time for walking trip is 1 minutes, the maximum is 255 minutes, and the average time for walking trip is 11.26 minutes.
+
+```{r}
+summary(walking_1998$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(walking_1998, aes(x = DURATION )) + geom_histogram(binwidth = 5) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(walking_1998$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our walk trips, we see that lnorm or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+#gamma_ <- fitdistrplus::fitdist(data=walking_1998$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(walking_1998$WGHT_EPI), optim.method= "Brent") 
+#lnorm_ <- fitdistrplus::fitdist(data=walking_1998$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(walking_1998$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=walking_1998%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead")
+exp_ <- fitdistrplus::fitdist(data=walking_1998$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(walking_1998$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=walking_1998%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead")
+# nbinom_ <- fitdistrplus::fitdist(data=walking_1998%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead")
+# geom_ <- fitdistrplus::fitdist(data=walking_1998%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead")
+#beta_ <- fitdistrplus::fitdist(data=walking_1998$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead")
+#logis_ <- fitdistrplus::fitdist(data=walking_1998%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead")
+
+```
+
+
+```{r}
+summary(walking_1998$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the walking_1998 data best:
+```{r}
+#broom::glance(MASS::fitdistr(walking_1998$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+#broom::glance(MASS::fitdistr(walking_1998$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(walking_1998$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(walking_1998$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(walking_1998$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for walk trips!
+
+```{r}
+walking_1998_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+walking_1998 <- walking_1998 %>%
+ mutate(f = dexp(DURATION, walking_1998_exp$estimate["rate"])) 
+summary(walking_1998$f)
+```
+
+### cycling_1998
+
+First, we examine the variable of travel time (DURATION) in 1998. The minimum time for cycling trip is 2 minutes, the maximum is 90 minutes, and the average time for walking trip is 1920.61.29 minutes.
+
+```{r}
+summary(cycling_1998$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(cycling_1998, aes(x = DURATION )) + geom_histogram(binwidth = 5) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(cycling_1998$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our cycling trips, we see that exponentil or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+gamma_ <- fitdistrplus::fitdist(data=cycling_1998$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1998$WGHT_EPI)) 
+#lnorm_ <- fitdistrplus::fitdist(data=cycling_1998$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1998$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=cycling_1998%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1998$WGHT_EPI))
+exp_ <- fitdistrplus::fitdist(data=cycling_1998$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(cycling_1998$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=cycling_1998%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1998$WGHT_EPI))
+# nbinom_ <- fitdistrplus::fitdist(data=cycling_1998%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1998$WGHT_EPI))
+# geom_ <- fitdistrplus::fitdist(data=cycling_1998%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1998$WGHT_EPI))
+#beta_ <- fitdistrplus::fitdist(data=cycling_1998$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1998$WGHT_EPI))
+#logis_ <- fitdistrplus::fitdist(data=cycling_1998%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1998$WGHT_EPI))
+
+```
+
+
+```{r}
+summary(cycling_1998$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the cycling_2005 data best:
+```{r}
+broom::glance(MASS::fitdistr(cycling_1998$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+broom::glance(MASS::fitdistr(cycling_1998$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(cycling_1998$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(cycling_1998$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(cycling_1998$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for cycling trips!
+
+```{r}
+cycling_1998_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+cycling_1998 <- cycling_1998 %>%
+ mutate(f = dexp(DURATION, cycling_1998_exp$estimate["rate"])) 
+summary(cycling_1998$f)
+```
+
+
+##Walking_1992
+
+First, we examine the variable of travel time (DURATION) in 1992. The minimum time for walking trip is 1 minutes, the maximum is 300 minutes, and the average time for walking trip is 19.11 minutes.
+
+```{r}
+summary(walking_1992$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(walking_1992, aes(x = DURATION )) + geom_histogram(binwidth = 5) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(walking_1992$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+```{r}
+
+walking_1992[is.na(walking_1992)] <- 1
+summary(walking_1992$WGHT_EPI)
+```
+
+
+Let's test out different models for our walk trips, we see that lnorm or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+#gamma_ <- fitdistrplus::fitdist(data=walking_1992$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(walking_1992$WGHT_EPI), optim.method= "Brent") 
+#lnorm_ <- fitdistrplus::fitdist(data=walking_1992$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(walking_1992$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=walking_1992%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead")
+exp_ <- fitdistrplus::fitdist(data=walking_1992$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(walking_1992$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=walking_1992%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead")
+# nbinom_ <- fitdistrplus::fitdist(data=walking_1992%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead")
+# geom_ <- fitdistrplus::fitdist(data=walking_1992%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead")
+#beta_ <- fitdistrplus::fitdist(data=walking_1992$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead")
+#logis_ <- fitdistrplus::fitdist(data=walking_1992%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead")
+
+```
+
+
+
+
+now let's compare these models AIC and BIC to see which fits the walking_1998 data best:
+```{r}
+#broom::glance(MASS::fitdistr(walking_1992$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+#broom::glance(MASS::fitdistr(walking_1992$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(walking_1992$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(walking_1992$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(walking_1992$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for walk trips!
+
+```{r}
+walking_1992_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+walking_1992 <- walking_1992 %>%
+ mutate(f = dexp(DURATION, walking_1992_exp$estimate["rate"])) 
+summary(walking_1992$f)
+```
+
+### cycling_1992
+
+First, we examine the variable of travel time (DURATION) in 1992. The minimum time for cycling trip is 5 minutes, the maximum is 240 minutes, and the average time for walking trip is 30.93 minutes.
+
+```{r}
+summary(cycling_1992$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(cycling_1992, aes(x = DURATION )) + geom_histogram(binwidth = 5) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(cycling_1992$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our cycling trips, we see that exponentil or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+gamma_ <- fitdistrplus::fitdist(data=cycling_1992$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1992$WGHT_EPI)) 
+#lnorm_ <- fitdistrplus::fitdist(data=cycling_1992$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1992$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=cycling_1992%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1992$WGHT_EPI))
+exp_ <- fitdistrplus::fitdist(data=cycling_1992$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(cycling_1992$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=cycling_1992%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1992$WGHT_EPI))
+# nbinom_ <- fitdistrplus::fitdist(data=cycling_1992%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1992$WGHT_EPI))
+# geom_ <- fitdistrplus::fitdist(data=cycling_1992%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1992$WGHT_EPI))
+#beta_ <- fitdistrplus::fitdist(data=cycling_1992$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1992$WGHT_EPI))
+#logis_ <- fitdistrplus::fitdist(data=cycling_1992%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead", weights = round(cycling_1992$WGHT_EPI))
+
+```
+
+
+now let's compare these models AIC and BIC to see which fits the cycling_1992 data best:
+```{r}
+broom::glance(MASS::fitdistr(cycling_1992$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+broom::glance(MASS::fitdistr(cycling_1992$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(cycling_1992$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(cycling_1992$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(cycling_1992$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for cycling trips!
+
+```{r}
+cycling_1992_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+cycling_1992 <- cycling_1992 %>%
+ mutate(f = dexp(DURATION, cycling_1992_exp$estimate["rate"])) 
+summary(cycling_1992$f)
+```
+
+
+##Walking_1986
+
+First, we examine the variable of travel time (DURATION) in 1986. The minimum time for walking trip is 1 minutes, the maximum is 660 minutes, and the average time for walking trip is 20.85 minutes.
+
+```{r}
+summary(walking_1986$DURATION)
+```
+
+Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+
+```{r}
+ggplot(walking_1986, aes(x = DURATION )) + geom_histogram(binwidth = 15) + geom_vline(aes(xintercept=mean(DURATION)),
+            color="blue", linetype="dashed", size=1)
+```
+
+
+skewness-kurtosis plot: 
+This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
+
+
+
+```{r}
+descdist(walking_1986$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+```
+
+Let's test out different models for our walk trips, we see that lnorm or gamma will likely be the best fit according to the graph above. using fitdist function to fit a distribution using the default maximum likelihood estimation method and Nelder-Mead method for direct optimization
+
+```{r}
+#gamma_ <- fitdistrplus::fitdist(data=walking_1986$DURATION%>% unlist() %>% as.numeric(), "gamma", method="mle", optim.method="Nelder-Mead", weights = round(walking_1986$WGHT_EPI), optim.method= "Brent") 
+#lnorm_ <- fitdistrplus::fitdist(data=walking_1986$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(walking_1986$WGHT_EPI))
+#norm_ <-fitdistrplus::fitdist(data=walking_1986%>% unlist() %>% as.numeric(), "norm", method="mle", optim.method="Nelder-Mead")
+exp_ <- fitdistrplus::fitdist(data=walking_1986$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead",weights = round(walking_1986$WGHT_EPI) )
+# pois_ <- fitdistrplus::fitdist(data=walking_1986%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead")
+# nbinom_ <- fitdistrplus::fitdist(data=walking_1986%>% unlist() %>% as.numeric(), "nbinom", method="mle", optim.method="Nelder-Mead")
+# geom_ <- fitdistrplus::fitdist(data=walking_1986%>% unlist() %>% as.numeric(), "geom", method="mle", optim.method="Nelder-Mead")
+#beta_ <- fitdistrplus::fitdist(data=walking_1986$DURATION%>% unlist() %>% as.numeric(), "beta", method="mle", optim.method="Nelder-Mead")
+#logis_ <- fitdistrplus::fitdist(data=walking_1986%>% unlist() %>% as.numeric(), "logis", method="mle", optim.method="Nelder-Mead")
+
+```
+
+
+```{r}
+summary(walking_1986$WGHT_EPI)
+print(summary)
+```
+
+
+now let's compare these models AIC and BIC to see which fits the walking_1998 data best:
+```{r}
+#broom::glance(MASS::fitdistr(walking_1986$DURATION%>% unlist() %>% as.numeric(),"gamma"))
+#broom::glance(MASS::fitdistr(walking_1986$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
+#broom::glance(MASS::fitdistr(walking_1986$DURATION%>% unlist() %>% as.numeric(),"normal"))
+broom::glance(MASS::fitdistr(walking_1986$DURATION%>% unlist() %>% as.numeric(),"exponential"))
+#broom::glance(MASS::fitdistr(walking_1986$DURATION%>% unlist() %>% as.numeric(),"logistic"))
+```
+
+Exponential has largest LOgLiklihood and the smallest AIC and BIC. we will pick exponential function for walk trips!
+
+```{r}
+walking_1986_exp <- exp_
+summary(exp_)
+```
+
+now populate our dataframe with the impedance value (i.e. travel cost) based on their travel time, and then creating a new column based on multiple weight in value of impedance function. 
+
+```{r}
+walking_1986 <- walking_1986 %>%
+ mutate(f = dexp(DURATION, walking_1986_exp$estimate["rate"])) 
+summary(walking_1986$f)
+```
+
+
+
+
+# creating an integrated data frame from 1992 to 2015
+
+
+```{r}
+trip_w_f <- rbind(walking_2015,walking_2010, walking_2005, walking_1998 ,walking_1992,  walking_1986) 
+trip_c_f <- rbind(cycling_2015,cycling_2010, cycling_2005, cycling_1998 ,cycling_1992)
+trip_f <-  rbind(walking_2015,walking_2010, walking_2005, walking_1998 ,walking_1992,  walking_1986, cycling_2015,cycling_2010, cycling_2005, cycling_1998 ,cycling_1992)
+```
+
+
+Here, creating a figure of impedance function for walking trips during 1986- 2015.
+```{r}
+ggplot(data = trip_w_f, aes(x = DURATION, y = f)) + 
+geom_line(linetype = "solid", color = "blue", size =1.25) +
+  facet_grid(. ~ YEAR) +
+  scale_x_continuous("Time in minutes") +
+  scale_y_continuous("Cumulative Percentage of Trips") +
+  labs(title = "Impedance function for walking trip from 1986 - 2015")
+#ggsave("IP_W.png", dpi = 600)
+```
+
+```{r}
+summary(trip_c_f)
+print(summary)
+```
+Here, creating a figure of impedance function for cycling trips during 1986- 2015
+
+```{r}
+ggplot(data = trip_c_f, aes(x = DURATION, y = f)) + 
+geom_line(linetype = "solid", na.rm=TRUE, color = "red", size =1.25) +
+  facet_grid(. ~ YEAR) +
+  scale_x_continuous("Time in minutes") +
+  scale_y_continuous("Cumulative Percentage of Trips") +
+  labs(title = "Impedance function for cycling trip from 1986 - 2015")
+#ggsave("IP_C.png", dpi = 600)
+```
+
+creating a figure of impedance function of walking and cycling to different destinations in 2015 
+
+```{r}
+trip__f_2015 <- rbind(walking_2015,cycling_2015)
+```
+
+```{r}
+ggplot(data = trip__f_2015, aes(x = DURATION, y = f, color = MODE)) + 
+geom_line() +
+  facet_wrap(facets = vars(dest_label)) +
+  scale_x_continuous("Time in minutes") +
+  scale_y_continuous("Cumulative Percentage of Trips") +
+  labs(title = "Impedance function to different destinations in 2015")
+#ggsave("IP_2015.png", dpi = 600)
+```
+
+creating a figure of impedance function of walking and cycling to different destinations in 2010
+```{r}
+trip__f_2010 <- rbind(walking_2010,cycling_2010)
+```
+
+```{r}
+ggplot(data = trip__f_2010, aes(x = DURATION, y = f, color = MODE)) + 
+geom_line() +
+  facet_wrap(facets = vars(dest_label)) +
+  scale_x_continuous("Time in minutes") +
+  scale_y_continuous("Cumulative Percentage of Trips") +
+  labs(title = "Impedance function to different destinations in 2010")
+#ggsave("IP_2010.png", dpi = 600)
+```
+
+creating a figure of impedance function of walking and cycling to different destinations in 2005
+
+```{r}
+trip__f_2005 <- rbind(walking_2005,cycling_2005)
+```
+
+```{r}
+ggplot(data = trip__f_2005, aes(x = DURATION, y = f, color = MODE)) + 
+geom_line() +
+  facet_wrap(facets = vars(dest_label)) +
+  scale_x_continuous("Time in minutes") +
+  scale_y_continuous("Cumulative Percentage of Trips") +
+  labs(title = "Impedance function to different destinations in 2005")
+#ggsave("IP_2005.png", dpi = 600)
+```
+
+creating a figure of impedance function of walking and cycling to different destinations in 1998
+
+```{r}
+trip__f_1998 <- rbind(walking_1998,cycling_1998)
+```
+
+```{r}
+ggplot(data = trip__f_1998, aes(x = DURATION, y = f, color = MODE)) + 
+geom_line() +
+  facet_wrap(facets = vars(dest_label)) +
+  scale_x_continuous("Time in minutes") +
+  scale_y_continuous("Cumulative Percentage of Trips") +
+  labs(title = "Impedance function to different destinations in 1998")
+#ggsave("IP_1998.png", dpi = 600)
+```
+
+creating a figure of impedance function of walking and cycling to different destinations in 1992
+```{r}
+trip__f_1992 <- rbind(walking_1992,cycling_1992)
+```
+
+```{r}
+ggplot(data = trip__f_1992, aes(x = DURATION, y = f, color = MODE)) + 
+geom_line() +
+  facet_wrap(facets = vars(dest_label)) +
+  scale_x_continuous("Time in minutes") +
+  scale_y_continuous("Cumulative Percentage of Trips") +
+  labs(title = "Impedance function to different destinations in 1992")
+#ggsave("IP_1992.png", dpi = 600)
+```
+
+
+creating a figure of impedance function of walking and cycling to different destinations in 1986
+```{r}
+ggplot(data = walking_1986, aes(x = DURATION, y = f, color = MODE)) + 
+geom_line() +
+  facet_wrap(facets = vars(dest_label)) +
+  scale_x_continuous("Time in minutes") +
+  scale_y_continuous("Cumulative Percentage of Trips") +
+  labs(title = "Impedance function to different destinations in 1986")
+#ggsave("IP_1986.png", dpi = 600)
+```
+
+
+
+4.1 Walking and cycling duration 
+
+Table 1. shows home is the most destination for walking trips.
+
+```{r}
+Table_1 <- trip_f %>% filter(MODE == "walking") %>% 
+  group_by(dest_label, YEAR) %>%
+ summarise(across(.cols = c(DURATION),  # columns
+                   .fns =  list("mean" = mean, "Maximum" = max, "Median" = median),                               # 
+                   na.rm=T))  
+  walking_2015 %>%  count(dest_label) %>%
+  mutate(percent = scales::percent(n / sum(n)))
+  
+   walking_2005 %>%  count(dest_label) %>%
+  mutate(percent = scales::percent(n / sum(n)))
+   
+    walking_1998 %>%  count(dest_label) %>%
+  mutate(percent = scales::percent(n / sum(n)))
+     
+    walking_1992 %>%  count(dest_label) %>%
+  mutate(percent = scales::percent(n / sum(n)))
+  
+
+```
+
+
+
+
+```{r}
+Table_1 <- trip_f %>% filter(MODE == "walking") %>% 
+  group_by(dest_label, YEAR) %>%
+ summarise(across(.cols = c(DURATION),  # columns
+                   .fns =  list("mean" = mean, "Maximum" = max, "Median" = median),                               # 
+                   na.rm=T))  
+ walking_2015 %>%  count(dest_label) %>%
+  mutate(percent = scales::percent(n / sum(n)))
+  kable(Table_1) %>%
+  kable_styling(latex_options = c("scale_down")) 
+kbl(caption = "Summary statistics on walking trips in 2015") %>% kable_classic(full_width = F, html_font = "Cambria") %>%  add_header_above(c(" " = 1, "Duration" = 3))
+  
+```
+
+
+
+
+
