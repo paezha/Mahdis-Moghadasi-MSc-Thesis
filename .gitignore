@@ -1,11 +1,6 @@
 .Rproj.user
 .Rhistory
-<<<<<<< HEAD
-.RData
-.Ruserdata
-=======
 .Rdata
 .httr-oauth
 .DS_Store
-.quarto
->>>>>>> a5fa502f1b8712950b4c521ae330f69964e2be56
+data-inputs/source-files
