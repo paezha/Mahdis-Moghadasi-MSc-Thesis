@@ -1543,28 +1543,28 @@ save(walking_1986,
 No data are available regarding cycling trips in 1986.
 
 
+
+
 ##calculating impedance function for walking trip during 1986- 2015:
 
 ### Walking_2015
 
-First, we examine the variable of travel time (DURATION) in 2015. The minimum time for walking trip is 5 minutes, the maximum is 900 minutes, and the average time for walking trip is 17.49 minutes.
+Initially, we analyzed the travel time variable (DURATION) for 2015. The minimum recorded duration for walking trips is 5 minutes, while the maximum extends to 900 minutes. Furthermore, the average and median durations for walking trips are calculated to be 17.49 minutes and 10 minutes, respectively.
 
 ```{r}
 summary(walking_2015$DURATION)
 ```
 
-Then, I'll plot weighted histograms.A histogram is a graph that depicts the frequency distribution of a few data points from a single variable. Histograms frequently divide data into "bins" or "range groups" and count the number of data points that belong to each of those bins. 
+Subsequently, a weighted histogram was constructed. A histogram serves as a graphical representation that illustrates the frequency distribution of a dataset corresponding to a single variable. Typically, histograms organize data into 'bins' or 'range groups,' tallying the quantity of data points within each bin. This method effectively visualizes the distribution and variability of the dataset, providing insights into its underlying structure and patterns.
 
 ```{r}
-ggplot(walking_2015, aes(x = DURATION )) + geom_histogram(binwidth = 30) + geom_vline(aes(xintercept=mean(DURATION)),
-            color="blue", linetype="dashed", size=1)
+ggplot(walking_2015, aes(x = DURATION )) + 
+  geom_histogram(binwidth = 30) + 
+  geom_vline(aes(xintercept=mean(DURATION)), color="blue", linetype="dashed", linewidth=1)
 ```
-
 
 skewness-kurtosis plot: 
 This plot helps to identify a suitable Pearson distribution. The descdist function provides classical descriptive statistics (minimum, maximum, median, mean, standard deviation),skewness and kurtosis.A skewness kurtosis plot such as the one proposed by Cullen and Frey(1999)is provided by the descdist function for the empirical distribution. On this plot, values for common distributions are displayed in order to help the choice of distributions to fit to data. For some distributions (normal, uniform, logistic, exponential), there is only one possible value for the skewness and the kurtosis. Thus, the distribution is represented by a single point on the plot. For other distributions, are as of possible values are represented, consisting in lines(as for gamma and lognormal distributions), or larger areas(as for beta distribution).
-
-
 
 ```{r}
 descdist(walking_2015$DURATION%>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
