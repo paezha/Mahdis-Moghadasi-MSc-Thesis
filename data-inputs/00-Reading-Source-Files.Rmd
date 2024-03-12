@@ -11,25 +11,29 @@ library(readxl) # Read Excel Files
 library(tidyr) # Tidy Messy Data
 library(usethis) # Automate Package and Project Setup
 library(fitdistrplus)
-#library("writexl")
+library(purrr)
 ```
 
 
 ## Source Files
 
-In Canada, there is a survey program run by Statistics Canada called General Social Surveys or GSS for short. GSS collects data on social trends in order to track changes in Canadians' living conditions and well-being over time, as well as to provide immediate information on specific social policy issues of current or emerging interest. This survey tracks changes in time use to better understand how Canadians spend and manage their time, as well as what factors contribute to their happiness and stress .This program in Canada was established in 1985 as a series of independent, annual, cross-sectional surveys, each covering one topic in depth. Caregiving, families, time use, social identity, volunteering, and victimization are among the current GSS themes.
+In Canada, a survey program is run by Statistics Canada called General Social Surveys, or GSS for short. GSS collects data on social trends in order to track changes in Canadians' living conditions and well-being over time, as well as to provide immediate information on specific social policy issues of current or emerging interest. This survey tracks changes in time used to better understand how Canadians spend and manage their time and what factors contribute to their happiness and stress. This program in Canada was established in 1985 as a series of independent, annual, cross-sectional surveys, each covering one topic in depth. Caregiving, families, time use, social identity, volunteering, and victimization are among the current GSS themes.
 
-Each of the six survey themes listed above is thoroughly repeated every 5 years. In addition to the core topic, each cycle includes new content that addresses emerging, policy-relevant issues. In addition, each survey collects detailed socio-demographic information such as age, gender, education, religion, ethnicity, income, and so on.
+The six survey themes listed above are thoroughly repeated every five years. In addition to the core topic, each cycle includes new content that addresses emerging, policy-relevant issues. In addition, each survey collects detailed socio-demographic information such as age, gender, education, religion, ethnicity, income, etc.
 
-Time-use surveys gather data on all human activities and can thus inform a wide range of policies. In particular, three key themes have been identified as essential for informed policymaking and for which no other data sources are adequate: unpaid work and non-market production; well-being; and gender equality. Leisure time, work-life balance, health, commuting, culture, and sports are among the other topics covered by time use surveys. In addition, statistics Canada has been conducting time-use surveys at five- to seven-year intervals since 1986, most recently in 2015 (1986,1992,1998, 2005 ,2010 and 2015). This means that there is information about time use patterns covering a period of so many years.
+Time-use surveys gather data on all human activities and can thus inform a wide range of policies. In particular, three key themes have been identified as essential for informed policymaking and for which no other data sources are adequate: unpaid work and non-market production, well-being, and gender equality. Leisure time, work-life balance, health, commuting, culture, and sports are among the other topics covered by time-use surveys. In addition, statistics Canada has been conducting time-use surveys at five- to seven-year intervals since 1986, most recently in 2015 (1986,1992,1998, 2005,2010, and 2015). This means that there is information about time use patterns covering a period of so many years.
 The GSS on time use collects information on respondents' participation in, and time spent on, a wide range of day-to-day activities using a retrospective 24-hour time diary. Furthermore, information is gathered on the location of these activities (e.g., at home, at work, etc.) and, for non-personal activities, the people who were present with the respondent at the time of the activity.
 
 
 The surveys (obtained from [here](http://odesi2.scholarsportal.info/webview/)) consist of two files: a main file and an episode file. These are their characteristics.
 
-#The main file...contains info about respondents and their socio-economic...blah blah
+**The main file** : The Main File from the referenced survey compiles an extensive array of aggregated data, summarizing the answers to the questionnaire and derived variables that summarize the respondents' time use across various activities, locations, and social interactions. This file methodically documents the total time respondents allocate to distinct activities, the aggregate time spent at different locations, and the cumulative duration of engagement with various individuals. While providing a comprehensive overview of daily routines and social dynamics, the Main File does not delve into the specifics of individual activity episodes, offering instead a macro-level perspective of time use patterns.
 
-#The episode file...contains blah blah
+Furthermore, this file categorizes activities into significant groups and subcategories, enhancing the data's analytical utility with additional metrics such as total transit time, duration spent with household members, and counts of activities and episodes. Notably, the Main File's data aggregation prohibits directly associating specific activities with particular locations or companions, a level of detail reserved for the Episode File. As such, the Main File is a crucial resource for comprehensive analyses, establishing a contextual foundation for the detailed analysis available through the Episode File, thereby enhancing both the cohesion and coherence of research endeavors in time-use studies.
+
+**The episode file**: The Episode File from the GSS survey meticulously records detailed data for each activity episode reported by respondents, providing granular insights into daily activities. Each episode entry includes the start and end times, duration, location, and accompanying social context, delineating when and where activities occurred and with whom. The file distinguishes itself by focusing on individual episodes rather than respondents, with the data structured around the numerous activity instances—333,654 records in total—that compose a respondent's day.
+
+This file is unique in that it arranges contact details according to variables particular to each interaction that occurs within an episode, guaranteeing a thorough recording of social interactions. Although respondent-specific characteristics are not included within the Episode File, linkage to the Main File via the RECID enables the integration of episode-specific data with respondent demographics for richer analyses. 
 
 For the purpose of this notebook, the following definitions are important:
 
@@ -98,7 +102,9 @@ gss_e_2015 |>
   geom_histogram(aes(x = Bootstrap_weight)) +
   geom_vline(aes(xintercept = WGHT_EPI))
 
-WE don't plan to use the bootstrap weights.
+WE don't plan to use the bootstrap weights. Furthermore, the Episode File includes critical metadata like diary day, total episodes per respondent, and relevant weighting factors (WGHT_EPI for episode-based estimates and WGHT_PER for respondent-based characteristics, the latter added to each respondent's final episode record). This meticulous structure enhances the utility of the Episode File for detailed time-use analysis, facilitating nuanced understandings of individual behaviors within broader societal patterns, thereby elevating the cohesion and coherence of related research studies.
+
+
 
 ## Reading Source Files
 
@@ -118,19 +124,17 @@ gss_e_1986 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_1986/g
 
 ### Walking_2015
 
-We begin by creating a data set for walking using the 2015 data table.
-
-Create a table with origins and destinations for walking in 2015. First, I'll identify the rows in the episode file where the location of the activity was `315`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+The analysis initiates by constructing a data set specifically for walking, which name is walking_2015, utilizing the episode file of the GSS dataset in 2015. The primary step involves generating a table delineating the origins and destinations associated with walking activities in 2015. To achieve this, the episode file is carefully examined to identify instances where the activity location, corresponding to walking, is denoted by code 315. To comprehensively understand the spatial dynamics, not only the identified walking instances are considered, but also the preceding and succeeding entries are incorporated. These adjacent entries are instrumental in ascertaining the origins and destinations for each respondent's walking activity, thereby offering a nuanced perspective on walking patterns within the data set.
 
 ```{r creating dataset for walking 2015, include=FALSE, cache=FALSE}
 
-# **walking 2015**
+# walking 2015
 # Creating data of origins and destinations of walking trip 2015
 inds <- which(gss_e_2015$LOCATION == 315)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as PUMFID (Record identification), WGHT_EPI (Episode weight), TUI_01 (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and LOCATION (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+Second, this analysis phase is dedicated to establishing a focused data set about walking activities derived from the 2015 data collection. The process involves a selection of relevant columns from the data table—specifically, those representing crucial variables such as PUMFID (Record identification), WGHT_EPI (Episode weight), TUI_01 (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration of the episode in minutes), and LOCATION (Location of the episode). Following the extraction of these variables, the analytical procedure progresses to the innovative construction of 'origins' and 'destinations' columns. These are meticulously formulated based on the data of location immediately preceding and succeeding each walking episode for every participant. 
 
 ```{r}
 walking_2015 <- gss_e_2015 |>
@@ -146,7 +150,8 @@ walking_2015 <- gss_e_2015 |>
 ```
 
 
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+The 'origin' column was filtered in the subsequent analysis phase. Utilizing the code presented below, we developed a methodology to assign labels to various origins, thereby categorizing them into distinct groups for further examination.
+
 ```{r}
 walking_2015 <- walking_2015 |>
   filter(origin == 300 | 
@@ -177,7 +182,8 @@ walking_2015 <- walking_2015 |>
          orig_label = factor(orig_label))
 ```
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+This step focuses on finding and filtering the destinations of interest in the dataset. After that, a new column will be added to comprehensively list a label for every destination's code.
+
 ```{r}
 # change destination and origins to text column
 walking_2015 <- walking_2015 |>  
@@ -211,13 +217,14 @@ walking_2015 <- walking_2015 |>
          dest_label = factor(dest_label))
 ```
 
-Here, I'll add two columns of year and mode to walking_2015 dataset and change the name of TUI_01 to ACTCODE align with other years.
+In this section, two additional columns ('year' and 'mode') will be integrated into the walking_2015 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore, the column named TUI_01 will be renamed to ACTCODE to ensure consistency with the naming conventions used in other years.
+
 ```{r}
 walking_2015 <- walking_2015 |>
-  dplyr::select(PUMFID, WGHT_EPI,TUI_01, STARTIME, ENDTIME, DURATION:dest_label) |>
+  dplyr::select(PUMFID:ENDTIME, DURATION:dest_label) |>
   mutate(YEAR = 2015,
-         MODE = "Walking")
-walking_2015 <- walking_2015 |> dplyr::rename(ACTCODE = TUI_01)
+         MODE = "Walking") |>
+  dplyr::rename(ACTCODE = TUI_01)
 ```
 
 
@@ -230,7 +237,7 @@ walking_2015 |>
   pivot_wider(names_from = "dest_label", values_from = "n")
 ```
 
-The most common destination for a walking trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+The most common destination for a walking trip that starts at home are `Home` and `Work or school`. Notice, though, that quite a few trips start _and_ end at Home. What are those supposed to be?
 
 Check those home-to-home trips:
 ```{r}
@@ -250,7 +257,7 @@ gss_e_2015 |>
 
 The person was at home doing 27 (personal care), then went for walk that lasted 15 minutes, came back home and spent 180 doing 9 (looking for work). So, this was a recreational/leisure trip!
 
-Note: TUI_01 is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes (001-095) can be found in an appendix of the User Guide.According to this list, 27 is "personal care", 7 is "Transport to or from activity" and 9 is "Looking for work"
+Note: TUI_01 is an activity code of the episode (What were you doing at minute).The list of main activity codes (001-095) can be found in an appendix of the User Guide. According to this list, 27 is "personal care", 7 is "Transport to or from activity" and 9 is "Looking for work".
 
 QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
 
@@ -264,19 +271,31 @@ save(walking_2015,
 
 ### Cycling 2015
 
-In the next step, We begin by creating a data set for cycling using the 2015 data table.
+This section delineates how to construct a dataset for cycling trips using the 2015 data repository, which is named cycling_2015. The objective is to identify and catalog the origins and destinations associated with cycling trips, thereby facilitating subsequent analysis. To construct a data table for cycling, we initiate the following steps:
 
-Create a table with origins and destinations for cycling in 2015. First, I'll identify the rows in the episode file where the location of the activity was `318`, which is code for `cycling`, as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent.
+1. Identification of Cycling Episodes:
+We analyze the episode file to locate all activities with activity code 318, corresponding to cycling activities. This identification serves as the primary criterion for selecting relevant data points.
+
+2. Inclusion of Adjacent Locations:
+We extend our selection for each identified cycling episode to encompass the immediately preceding and succeeding entries. This approach allows us to ascertain the locations immediately before and after cycling, which are subsequently annotated as the origin and destination, respectively, for each identified cycling episode.
+
+3. Data Tabulation:
+The extracted information is systematically tabulated, including the cycling activity and its corresponding origin and destination. This table will be a foundational resource for in-depth analysis of cycling patterns within the dataset.
+
 
 ```{r creating dataset for cycling 2015, include=FALSE, cache=FALSE}
-
-# cycling _2015
 # Creating data of origins and destinations of cycling trip 2015
 inds <- which(gss_e_2015$LOCATION == 318)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as PUMFID (Record identification), WGHT_EPI (Episode weight), TUI_01 (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and LOCATION (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+Following identifying relevant cycling episodes, the subsequent step involves carefully selecting the required variables for the analysis. This stage is integral to refining the dataset to include only essential information directly contributing to our understanding of cycling patterns. The variables chosen in our dataset include:
+PUMFID: Serves as the unique record identifier.
+WGHT_EPI: This represents the weight of each episode, which is critical for ensuring representativeness in the analysis.
+TUI_01: The episode's activity code allows for the categorization of the data based on the activity type.
+STARTIME and ENDTIME: These variables provide each episode's start and end times, which are essential for temporal analysis.
+DURATION: Indicates the total time spent in the activity, measured in minutes.
+LOCATION: Denotes the geographical point of the episode, which is pivotal for spatial analysis.
 
 ```{r}
 cycling_2015 <- gss_e_2015[unlist(rows),] |> 
@@ -287,7 +306,7 @@ cycling_2015 <- gss_e_2015[unlist(rows),] |>
   filter(LOCATION == 318)
 ```
 
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+Once the dataset has been structured with designated origins and destinations for each cycling individual, the next critical phase involves creating a column that describes each origin's code. For instance, if an origin code is '300', the descriptive column would show it as "Home". 
 
 ```{r}
 cycling_2015 <- cycling_2015 |>
@@ -319,7 +338,7 @@ cycling_2015 <- cycling_2015 |>
          orig_label = factor(orig_label))
 ```
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+Similarly to the previous step, the description column will also be created for destinations.
 ```{r}
 # change destination and origins to text column
 cycling_2015 <- cycling_2015 |>  
@@ -354,7 +373,7 @@ cycling_2015 <- cycling_2015 |>
 ```
 
 
-Here, I'll add two columns of year and mode to cycling_2015 dataset and change the name of TUI_01 to ACTCODE align with other years
+In this section, two additional columns (`year` and `mode`) will be integrated into the cycling_2015 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore, the column named TUI_01 will be renamed to ACTCODE to ensure consistency with the naming conventions used in other years.
 
 ```{r}
 cycling_2015 <- cycling_2015 |>
@@ -382,20 +401,17 @@ cycling_2015 |>
 ```
 
 
-See PUMFID == 10511 and check the cycling episode:
+See PUMFID == 16591 and check the cycling episode:
 ```{r}
 gss_e_2015 |>
-  filter(PUMFID == 10511) |>
-  slice(unique(c(which(LOCATION == 318) - 1, 
-                 which(LOCATION == 318),
-                 which(LOCATION == 318) + 1))) |>
+  filter(PUMFID == 16591) |>
+  slice(unique(c(reduce(map(which(LOCATION == 318), ~ c(.x - 1, .x, .x + 1)), c)))) |>
    dplyr::select(PUMFID:LOCATION)
 ```
 
-#Here there is a problem- there is not any home to home trip for user 10511. check the excel file
+Note: TUI_01 is an activity code of the episode (What were you doing in minutes?).The list of main activity codes (001-095) can be found in an appendix of the User Guide.
 
-Note: TUI_01 is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes (001-095) can be found in an appendix of the User Guide.
-
+The individual was at home engaged in personal care activities (TUI_01=2) before cycling for approximately 10 minutes to a grocery store. After spending 30 minutes at the store, they cycled back home. Upon returning, the person prepared a meal and performed house cleaning for approximately 85 minutes. Subsequently, the individual embarked on another bicycle trip to the store, which took 10 minutes, and thereafter returned home.
 QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
 
 
@@ -407,12 +423,10 @@ save(cycling_2015,
 
 
 
-
-
 ## Walking 2010
 
 
-Here a table with origins and destinations for walking in 2010 will be created. First, I'll identify the rows in the episode file where the location of the activity was `14`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+The analysis initiates by constructing a data set specifically for walking, which name is walking_2010, utilizing the episode file of the GSS dataset in 2010. The primary step involves generating a table delineating the origins and destinations associated with walking activities in 2010. To achieve this, the episode file is carefully examined to identify instances where the activity location, corresponding to walking, is denoted by code 14. To comprehensively understand the spatial dynamics, not only the identified walking instances are considered, but also the preceding and succeeding entries are incorporated. These adjacent entries are instrumental in ascertaining the origins and destinations for each respondent's walking activity, thereby offering a nuanced perspective on walking patterns within the data set.
 
 ```{r creating dataset for walking 2010, include=FALSE, cache=FALSE}
 
@@ -422,8 +436,7 @@ inds <- which(gss_e_2010$PLACE == 14)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as RECID (Record identification), EPINO (Sequential episode number), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
-
+Second, this analysis phase is dedicated to establishing a focused data set about walking activities derived from the 2010 data collection. The process involves a selection of relevant columns from the data table—specifically, those representing crucial variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration of the episode in minutes), and PLACE (Location of the episode). Following the extraction of these variables, the analytical procedure progresses to the innovative construction of 'origins' and 'destinations' columns. These are meticulously formulated based on the data of location immediately preceding and succeeding each walking episode for every participant.
 
 ```{r}
 walking_2010 <- gss_e_2010[unlist(rows),] |> 
@@ -434,9 +447,8 @@ walking_2010 <- gss_e_2010[unlist(rows),] |>
   filter(PLACE == 14)
 ```
 
+The 'origin' column was filtered in the subsequent analysis phase. Utilizing the code presented below, we developed a methodology to assign labels to various origins, thereby categorizing them into distinct groups for further examination.
 
-
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
 ```{r}
 walking_2010 <- walking_2010 |>
   filter(origin == 1 | 
@@ -463,7 +475,7 @@ walking_2010 <- walking_2010 |>
          orig_label = factor(orig_label))
 ```
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+This step focuses on finding and filtering the destinations of interest in the dataset. After that, a new column will be added to comprehensively list a label for every destination's code.
 ```{r}
 walking_2010 <- walking_2010 |>
   filter(destination == 1 | 
@@ -490,7 +502,8 @@ walking_2010 <- walking_2010 |>
          dest_label = factor(dest_label))
 ```
 
-Here, I'll add two columns of year and mode to walking_2010 dataset and change the name of `RECID` and `PLACE` TO `PUMFID` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+In this section, two additional columns ('year' and 'mode') will be integrated into the walking_2010 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore,  columns including `RECID` and `PLACE`  were changed to `PUMFID` and `LOCATION.`  Indeed, the initial names were renamed to align with the names of the variables in 2015.
+
 ```{r}
 walking_2010 <- walking_2010 |>
   dplyr::select(RECID, WGHT_EPI,ACTCODE, STARTIME:dest_label) |>
@@ -511,34 +524,52 @@ walking_2010 |>
   pivot_wider(names_from = "dest_label", values_from = "n")
 ```
 
-The most common destination for a walking trip that starts at home is `HOME and work or school`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
+The most common destination for a walking trip that starts at home are `Home` and `Work or school`. Notice, though, that quite a few trips start _and_ end at Home. What are those supposed to be? Check those home-to-home trips:
 
-Check those home-to-home trips:
 ```{r}
 walking_2010 |>
   filter(orig_label == "Home" & dest_label == "Home")
 ```
 See RECID == 3 and check the walking episode:
+
 ```{r}
-gss_e_2010 |>
-  filter(RECID == 3) |>
-  slice(unique(c(which(PLACE == 14) - 1, 
-                 which(PLACE == 14),
-                 which(PLACE == 14) + 1))) |>
-   dplyr::select(RECID:PLACE)
+
+gss_e_2010 %>%
+  filter(RECID == 3) %>%
+  slice(unique(c(reduce(map(which(PLACE == 14), ~ c(.x - 1, .x, .x + 1)), c)))) %>%
+  dplyr::select(RECID:PLACE)
+
 ```
 
-The person was at home doing 390 (Food (or meal) cleanup), then went for walking that lasted 15 minutes, came back home and spent 5 doing 181.1 (Household management (organizing/planning activities, etc.). So, this was a recreational/leisure trip!
 
-Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
+The individual spent their time at home engaging in meal preparation (ACTCODE=430) for a duration of 15 minutes, followed by a walk lasting approximately 20 minutes to reach a grocery store. After spending 15 minutes there, the person walked an additional 10 minutes to another grocery store, where they stayed for 10 minutes before returning home in 20 minutes. Once home, the individual engaged in socialization for approximately 10 minutes (ACTCODE=751) before taking a 10-minute walk to another location. At this new location, the person undertook activities related to washing and dressing (ACTCODE=400) for around 10 minutes, then went for a 10-minute walk, returning home after that. Subsequently, they dedicated 10 minutes to meal preparation (ACTCODE=101), followed by a 10-minute session of food (or meal) cleanup (ACTCODE=110). The individual then took a 15-minute walk, returned home, and spent 5 minutes on household management tasks, which included organizing and planning activities.
 
+Note: ACTCODE is an activity code of the episode (What were you doing in minute).The list of main activity codes  can be found in an appendix of the User Guide.
 QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+
+
+
+Save data for later use:
+```{r}
+save(walking_2010,
+    file = paste0(here(), "/data/walking_2010.Rda"))
+```
 
 
 ### Cycling 2010
 
 
-Here a table with origins and destinations for cycling in 2010 will be created. First, I'll identify the rows in the episode file where the location of the activity was `17`, which is code for `Cycling`, as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent. 
+This section delineates how to construct a dataset for cycling trips using the 2010 data repository, which is named cycling_2010. The objective is to identify and catalog the origins and destinations associated with cycling trips, thereby facilitating subsequent analysis. To construct a data table for cycling, we initiate the following steps:
+
+1. Identification of Cycling Episodes:
+We analyze the episode file to locate all activities with activity code 17, corresponding to cycling activities. This identification serves as the primary criterion for selecting relevant data points.
+
+2. Inclusion of Adjacent Locations:
+We extend our selection for each identified cycling episode to encompass the immediately preceding and succeeding entries. This approach allows us to ascertain the locations immediately before and after cycling, which are subsequently annotated as the origin and destination, respectively, for each identified cycling episode.
+
+3. Data Tabulation:
+The extracted information is systematically tabulated, including the cycling activity and its corresponding origin and destination. This table will be a foundational resource for in-depth analysis of cycling patterns within the dataset.
+
 
 ```{r creating dataset for cycling 2010, include=FALSE, cache=FALSE}
 
@@ -548,8 +579,14 @@ inds <- which(gss_e_2010$PLACE == 17)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+Following identifying relevant cycling episodes, the subsequent step involves carefully selecting the required variables for the analysis. This stage is integral to refining the dataset to include only essential information directly contributing to our understanding of cycling patterns. The variables chosen in our dataset include:
 
+RECID: Serves as the unique record identifier.
+WGHT_EPI: This represents the weight of each episode, which is critical for ensuring representativeness in the analysis.
+ACTCODE: The episode's activity code allows for the categorization of the data based on the activity type.
+STARTIME and ENDTIME: These variables provide each episode's start and end times, which are essential for temporal analysis.
+DURATION: Indicates the total time spent in the activity, measured in minutes.
+LOCATION: Denotes the geographical point of the episode, which is pivotal for spatial analysis.
 
 ```{r}
 cycling_2010 <- gss_e_2010[unlist(rows),] |> 
@@ -561,8 +598,7 @@ cycling_2010 <- gss_e_2010[unlist(rows),] |>
 ```
 
 
-
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+Once the dataset has been structured with designated origins and destinations for each cycling individual, the next critical phase involves creating a column that describes each origin's code. For instance, if an origin code is '1', the descriptive column would show it as "Home".
 ```{r}
 cycling_2010 <- cycling_2010 |>
   filter(origin == 1 | 
@@ -589,7 +625,7 @@ cycling_2010 <- cycling_2010 |>
          orig_label = factor(orig_label))
 ```
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+Similarly to the previous step, the description column will also be created for destinations.
 ```{r}
 cycling_2010 <- cycling_2010 |>
   filter(destination == 1 | 
@@ -616,7 +652,7 @@ cycling_2010 <- cycling_2010 |>
          dest_label = factor(dest_label))
 ```
 
-Here, I'll add two columns of year and mode to cycling_2010 dataset and change the name of `RECID` and `PLACE` TO `PUMFID` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+In this section, two additional columns (`year` and `mode`) will be integrated into the cycling_2010 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore, columns including `RECID` and `PLACE`  were changed to `PUMFID` and `LOCATION.`  Indeed, the initial names were renamed to align with the names of the variables in 2015.
 ```{r}
 cycling_2010 <- cycling_2010 |>
   dplyr::select(RECID, WGHT_EPI,ACTCODE:ENDTIME, DURATION:dest_label) |>
@@ -637,39 +673,39 @@ cycling_2010 |>
   pivot_wider(names_from = "dest_label", values_from = "n")
 ```
 
-The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are some trips that start _and_ end at Home. What are those supposed to be?
 
 Check those home-to-home trips:
+
 ```{r}
 cycling_2010 |>
   filter(orig_label == "Home" & dest_label == "Home")
 ```
 
 
-See RECID == 3668 and check the walking episode:
+See RECID == 6301 and check the walking episode:
 ```{r}
 gss_e_2010 |>
-  filter(RECID == 3668) |>
-  slice(unique(c(which(PLACE == 17) - 1, 
-                 which(PLACE == 17),
-                 which(PLACE == 17) + 1))) |>
+  filter(RECID == 6301) |>
+    slice(unique(c(reduce(map(which(PLACE == 17), ~ c(.x - 1, .x, .x + 1)), c)))) |>
    dplyr::select(RECID:PLACE)
 ```
 
+The individual engaged in watching television at their residence for approximately 160 minutes before cycling for about 15 minutes. Upon returning home, they socialized for roughly 165 minutes. Following this period of socialization at a private residence, the person embarked on another cycling session for 15 minutes, after which they returned home once more. Subsequently, the individual carried out various household chores for about 10 minutes.
 
-The person was at home doing 430 (Food (or meal) cleanup), then went for cycling that lasted 35 minutes, came back home and spent 160 doing 11 (Work for pay at main job). So, this was a recreational/leisure trip!
 
-Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
-
-QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
-
+Save data for later use:
+```{r}
+save(cycling_2010,
+    file = paste0(here(), "/data/cycling_2010.Rda"))
+```
 
 
 
 ### Walking 2005
 
 
-Here a table with origins and destinations for walking in 2005 will be created. First, I'll identify the rows in the episode file where the location of the activity was `14`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+The analysis begins by constructing a data set specifically for walking, which name is walking_2005, utilizing the episode file of the GSS dataset in 2005. The primary step involves generating a table delineating the origins and destinations associated with walking activities in 2005. To achieve this, the episode file is carefully examined to identify instances where the activity location, corresponding to walking, is denoted by code 14. To comprehensively understand the spatial dynamics, not only the identified walking instances are considered, but also the preceding and succeeding entries are incorporated. These adjacent entries are instrumental in ascertaining the origins and destinations for each respondent's walking activity, thereby offering a nuanced perspective on walking patterns within the data set.
 
 ```{r creating dataset for walking 2005, include=FALSE, cache=FALSE}
 
@@ -679,7 +715,7 @@ inds = which(gss_e_2005$PLACE == 14)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+Second, this analysis phase is dedicated to establishing a focused data set about walking activities derived from the 2005 data collection. The process involves a selection of relevant columns from the data table—specifically, those representing crucial variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration of the episode in minutes), and PLACE (Location of the episode). Following the extraction of these variables, the analytical procedure progresses to the innovative construction of 'origins' and 'destinations' columns. These are meticulously formulated based on the data of location immediately preceding and succeeding each walking episode for every participant.
 
 ```{r}
 walking_2005 <- gss_e_2005 [unlist(rows),] |>
@@ -691,7 +727,7 @@ walking_2005 <- gss_e_2005 [unlist(rows),] |>
 ```
 
 
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+The 'origin' column was filtered in the subsequent analysis phase. Utilizing the code presented below, we developed a methodology to assign labels to various origins, thereby categorizing them into distinct groups for further examination.
 
 
 ```{r}
@@ -721,8 +757,8 @@ walking_2005 <- walking_2005 |>
 ```
 
 
+This step focuses on finding and filtering the destinations of interest in the dataset. After that, a new column will be added to comprehensively list a label for every destination's code.
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
 ```{r}
 walking_2005 <- walking_2005 |>
   filter(destination == 1 | 
@@ -750,7 +786,9 @@ walking_2005 <- walking_2005 |>
 ```
 
 
-Here, I'll add two columns of year and mode to walking_2005 dataset and change the name of `RECID` and `PLACE` TO `PUMFID` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+In this section, two additional columns ('year' and 'mode') will be integrated into the walking_2005 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore,  columns including `RECID` and `PLACE`  were changed to `PUMFID` and `LOCATION.`  Indeed, the initial names were renamed to align with the names of the variables in 2015.
+
+
 ```{r}
 walking_2005 <- walking_2005 |>
   dplyr::select(RECID, WGHT_EPI, ACTCODE:ENDTIME, DURATION:dest_label) |>
@@ -771,29 +809,27 @@ walking_2005 |>
   pivot_wider(names_from = "dest_label", values_from = "n")
 ```
 
-The most common destination for a walking trip that starts at home is `work or school`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
+The most common destination for a walking trip that starts at home are  `work or school`, `Other's home` and `home`. Notice, though that one of the most trips start _and_ end at Home. What are those supposed to be?
 
 Check those home-to-home trips:
+
 ```{r}
 walking_2005 |>
   filter(orig_label == "Home" & dest_label == "Home")
 ```
+
+
 See RECID == 89 and check the walking episode:
 ```{r}
 gss_e_2005 |>
   filter(RECID == 89) |>
-  slice(unique(c(which(PLACE == 14) - 1, 
-                 which(PLACE == 14),
-                 which(PLACE == 14) + 1))) |>
-   dplyr::select(RECID:PLACE)
+  slice(unique(c(reduce(map(which(PLACE == 14), ~ c(.x - 1, .x, .x + 1)), c)))) |>
+  dplyr::select(RECID:PLACE)
 ```
+The individual engaged in personal grooming and dressing activities (ACTCODE=400) before embarking on a brief walk lasting approximately 5 minutes, after which they returned home. Subsequently, the person participated in religious activities at their residence, which included services, prayer, and Bible readings (ACTCODE=640). Following these activities, the individual undertook another walk of around 5 minutes, returning home once more. At home, they engaged in various activities, including socializing with friends and relatives and sleeping. Later, the person walked for approximately 5 minutes to reach a different location and then spent an additional 5 minutes walking to return home.
 
-The person was at home doing 390 (Food (or meal) cleanup), then went for cycling that lasted 15 minutes, came back home and spent 5 doing 181.1 (Household management (organizing/planning activities, etc.). So, this was a recreational/leisure trip!
 
-Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
-
-QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
-
+Note: ACTCODE is an activity code of the episode (What were you doing in  minutes).The list of main activity codes  can be found in an appendix of the User Guide. QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
 
 Save data for later use:
 ```{r}
@@ -805,7 +841,17 @@ save(walking_2005,
 # Cycling_2005
 
 
-Here a table with origins and destinations for cycling in 2005 will be created. First, I'll identify the rows in the episode file where the location of the activity was `17`, which is code for `Cycling`, as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent. 
+This section delineates how to construct a dataset for cycling trips using the 2005 data repository, which is named cycling_2005. The objective is to identify and catalog the origins and destinations associated with cycling trips, thereby facilitating subsequent analysis. To construct a data table for cycling, we initiate the following steps:
+
+1. Identification of Cycling Episodes:
+We analyze the episode file to locate all activities with activity code 17, corresponding to cycling activities. This identification serves as the primary criterion for selecting relevant data points.
+
+2. Inclusion of Adjacent Locations:
+We extend our selection for each identified cycling episode to encompass the immediately preceding and succeeding entries. This approach allows us to ascertain the locations immediately before and after cycling, which are subsequently annotated as the origin and destination, respectively, for each identified cycling episode.
+
+3. Data Tabulation:
+The extracted information is systematically tabulated, including the cycling activity and its corresponding origin and destination. This table will be a foundational resource for in-depth analysis of cycling patterns within the dataset.
+
 
 ```{r creating dataset for cycling 2005, include=FALSE, cache=FALSE}
 
@@ -815,8 +861,14 @@ inds <- which(gss_e_2005$PLACE == 17)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+Following identifying relevant cycling episodes, the subsequent step involves carefully selecting the required variables for the analysis. This stage is integral to refining the dataset to include only essential information directly contributing to our understanding of cycling patterns. The variables chosen in our dataset include:
 
+RECID: Serves as the unique record identifier.
+WGHT_EPI: This represents the weight of each episode, which is critical for ensuring representativeness in the analysis.
+ACTCODE: The episode's activity code allows for the categorization of the data based on the activity type.
+STARTIME and ENDTIME: These variables provide each episode's start and end times, which are essential for temporal analysis.
+DURATION: Indicates the total time spent in the activity, measured in minutes.
+PLACE: Denotes the geographical point of the episode, which is pivotal for spatial analysis.
 
 ```{r}
 cycling_2005 <- gss_e_2005[unlist(rows),] |> 
@@ -827,9 +879,7 @@ cycling_2005 <- gss_e_2005[unlist(rows),] |>
   filter(PLACE == 17)
 ```
 
-
-
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+Once the dataset has been structured with designated origins and destinations for each cycling individual, the next critical phase involves creating a column that describes each origin's code. For instance, if an origin code is '1', the descriptive column would show it as "Home".
 ```{r}
 cycling_2005 <- cycling_2005 |>
   filter(origin == 1 | 
@@ -856,7 +906,7 @@ cycling_2005 <- cycling_2005 |>
          orig_label = factor(orig_label))
 ```
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+Similarly to the previous step, the description column will also be created for destinations.
 ```{r}
 cycling_2005 <- cycling_2005 |>
   filter(destination == 1 | 
@@ -883,7 +933,7 @@ cycling_2005 <- cycling_2005 |>
          dest_label = factor(dest_label))
 ```
 
-Here, I'll add two columns of year and mode to cycling_2005 dataset and change the name of `RECID` and `PLACE` TO `PUMFID` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+In this section, two additional columns (`year` and `mode`) will be integrated into the cycling_2005 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore,  columns including `RECID` and `PLACE`  were changed to `PUMFID` and `LOCATION.`  Indeed, the initial names were renamed to align with the names of the variables in 2015.
 ```{r}
 cycling_2005 <- cycling_2005 |>
   dplyr::select(RECID, WGHT_EPI, ACTCODE:ENDTIME, DURATION:dest_label) |>
@@ -904,7 +954,7 @@ cycling_2005 |>
   pivot_wider(names_from = "dest_label", values_from = "n")
 ```
 
-The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are some trips that start _and_ end at Home. What are those supposed to be?
 
 Check those home-to-home trips:
 ```{r}
@@ -917,18 +967,11 @@ See RECID == 1903 and check the cycling episode:
 ```{r}
 gss_e_2005 |>
   filter(RECID == 1903) |>
-  slice(unique(c(which(PLACE == 17) - 1, 
-                 which(PLACE == 17),
-                 which(PLACE == 17) + 1))) |>
+  slice(unique(c(reduce(map(which(PLACE == 17), ~ c(.x - 1, .x, .x + 1)), c)))) |>  
    dplyr::select(RECID:PLACE)
 ```
 
-
-The person was at home doing 11 (work at home as a main workplace), then went for cycling that lasted 30 minutes, came back home and spent 90 minutes doing 911 (Watching sports on television).So, this was a recreational/leisure trip!
-
-Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes can be found in an appendix of the User Guide.
-
-QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+The individual remained at home, where they slept for approximately 420 minutes. Subsequently, they ventured out for a 15-minute cycling session before returning home. Upon their return, they engaged in an activity labeled as ACTCODE=11 for 465 minutes, which denotes working from home as their primary workplace. Following this work period, the person went out for another 15-minute cycling session, then returned home once more and spent 90 minutes watching television.
 
 Save data for later use:
 ```{r}
@@ -941,7 +984,7 @@ save(cycling_2005,
 # Walking 1998
 
 
-Here a table with origins and destinations for walking in 1998 will be created. First, I'll identify the rows in the episode file where the location of the activity was `7`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+The analysis initiates by constructing a data set specifically for walking, which name is walking_1998, utilizing the episode file of the GSS dataset in 1998. The primary step involves generating a table delineating the origins and destinations associated with walking activities in 1998. To achieve this, the episode file is carefully examined to identify instances where the activity location, corresponding to walking, is denoted by code 7. To comprehensively understand the spatial dynamics, not only the identified walking instances are considered, but also the preceding and succeeding entries are incorporated. These adjacent entries are instrumental in ascertaining the origins and destinations for each respondent's walking activity, thereby offering a nuanced perspective on walking patterns within the data set.
 
 ```{r creating dataset for walking 1998, include=FALSE, cache=FALSE}
 
@@ -951,7 +994,7 @@ inds = which(gss_e_1998$PLACE == 7)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+Second, this analysis phase is dedicated to establishing a focused data set about walking activities derived from the 1998 data collection. The process involves a selection of relevant columns from the data table—specifically, those representing crucial variables such as RECID (Record identification), WGHT_EPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration of the episode in minutes), and PLACE (Location of the episode). Following the extraction of these variables, the analytical procedure progresses to the innovative construction of 'origins' and 'destinations' columns. These are meticulously formulated based on the data of location immediately preceding and succeeding each walking episode for every participant.
 
 ```{r}
 walking_1998 <- gss_e_1998 [unlist(rows),] |>
@@ -963,7 +1006,7 @@ walking_1998 <- gss_e_1998 [unlist(rows),] |>
 ```
 
 
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+The 'origin' column was filtered in the subsequent analysis phase. Utilizing the code presented below, we developed a methodology to assign labels to various origins, thereby categorizing them into distinct groups for further examination.
 
 
 ```{r}
@@ -978,9 +1021,8 @@ walking_1998 <- walking_1998 |>
          orig_label = factor(orig_label))
 ```
 
+This step focuses on finding and filtering the destinations of interest in the dataset. After that, a new column will be added to comprehensively list a label for every destination's code.
 
-
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
 ```{r}
 walking_1998 <- walking_1998 |>
   filter(destination == 1 | 
@@ -994,7 +1036,8 @@ walking_1998 <- walking_1998 |>
 ```
 
 
-Here, I'll add two columns of year and mode to walking_1998 dataset and change the name of `RECID`, `WGHTEPI` and `PLACE` TO `PUMFID`,`WGHT_EPI` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015. 
+In this section, two additional columns (`year` and `mode`) will be integrated into the walking_1998 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore,  columns including `RECID`, `WGHTEPI` and `PLACE`  were changed to `PUMFID`, `WGHT_EPI` and `LOCATION`  Indeed, the initial names were renamed to align with the names of the variables in 2015.
+
 ```{r}
 walking_1998 <- walking_1998 |>
   dplyr::select(RECID, WGHTEPI,ACTCODE: ENDTIME, DURATION:dest_label) |>
@@ -1016,26 +1059,23 @@ walking_1998 |>
   pivot_wider(names_from = "dest_label", values_from = "n")
 ```
 
-The most common destination for a walking trip that starts at home is `other's home`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
-
-Check those home-to-home trips:
+The most common destination for a walking trip that starts at home are `other's Home` and `Work or school`. Check those home-to-home trips:
 ```{r}
 walking_1998 |>
   filter(orig_label == "Home" & dest_label == "Home")
 ```
+
+
 See RECID == 15 and check the walking episode:
 ```{r}
 gss_e_1998 |>
   filter(RECID == 15) |>
-  slice(unique(c(which(PLACE == 7) - 1, 
-                 which(PLACE == 7),
-                 which(PLACE == 7) + 1))) |>
-   dplyr::select(RECID:PLACE)
+  slice(unique(c(reduce(map(which(PLACE == 7), ~ c(.x - 1, .x, .x + 1)), c)))) |>
+  dplyr::select(RECID:PLACE)
+
 ```
 
 The person was at home doing 430 (MEALS AT HOME/SNACKS/COFFEE), then went for walking that lasted 45 minutes, came back home and spent 240 min doing 911 (WATCHING TELEVISION (REGULAR SCHEDULED TELEVISION)). So, this was a recreational/leisure trip!
-
-Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
 
 QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
 
@@ -1050,7 +1090,16 @@ save(walking_1998,
 
 # Cycling_1998
 
-Here a table with origins and destinations for cycling in 1998 will be created. First, I'll identify the rows in the episode file where the location of the activity was `9`, which is code for `Cycling`, as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent. 
+This section delineates how to construct a dataset for cycling trips using the 1998 data repository, which is named cycling_1998. The objective is to identify and catalog the origins and destinations associated with cycling trips, thereby facilitating subsequent analysis. To construct a data table for cycling, we initiate the following steps:
+
+1. Identification of Cycling Episodes:
+We analyze the episode file to locate all activities with activity code 9, corresponding to cycling activities. This identification serves as the primary criterion for selecting relevant data points.
+
+2. Inclusion of Adjacent Locations:
+We extend our selection for each identified cycling episode to encompass the immediately preceding and succeeding entries. This approach allows us to ascertain the locations immediately before and after cycling, which are subsequently annotated as the origin and destination, respectively, for each identified cycling episode.
+
+3. Data Tabulation:
+The extracted information is systematically tabulated, including the cycling activity and its corresponding origin and destination. This table will be a foundational resource for in-depth analysis of cycling patterns within the dataset.
 
 ```{r creating dataset for cycling 1998, include=FALSE, cache=FALSE}
 # **cycling 1998**
@@ -1059,7 +1108,15 @@ inds <- which(gss_e_1998$PLACE == 9)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as RECID (Record identification), WGHTEPI (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+Following identifying relevant cycling episodes, the subsequent step involves carefully selecting the required variables for the analysis. This stage is integral to refining the dataset to include only essential information directly contributing to our understanding of cycling patterns. The variables chosen in our dataset include:
+
+RECID: Serves as the unique record identifier.
+WGHTEPI: This represents the weight of each episode, which is critical for ensuring representativeness in the analysis.
+ACTCODE: The episode's activity code allows for the categorization of the data based on the activity type.
+STARTIME and ENDTIME: These variables provide each episode's start and end times, which are essential for temporal analysis.
+DURATION: Indicates the total time spent in the activity, measured in minutes.
+PLACE: Denotes the geographical point of the episode, which is pivotal for spatial analysis.
+
 
 
 ```{r}
@@ -1071,9 +1128,8 @@ cycling_1998 <- gss_e_1998[unlist(rows),] |>
   filter(PLACE == 9)
 ```
 
+Once the dataset has been structured with designated origins and destinations for each cycling individual, the next critical phase involves creating a column that describes each origin's code. For instance, if an origin code is '1', the descriptive column would show it as "Home".
 
-
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
 ```{r}
 cycling_1998 <- cycling_1998 |>
   filter(origin == 1 | 
@@ -1086,7 +1142,7 @@ cycling_1998 <- cycling_1998 |>
          orig_label = factor(orig_label))
 ```
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+Similarly to the previous step, the description column will also be created for destinations.
 ```{r}
 cycling_1998 <- cycling_1998 |>
   filter(destination == 1 | 
@@ -1099,7 +1155,7 @@ cycling_1998 <- cycling_1998 |>
          dest_label = factor(dest_label))
 ```
 
-Here, I'll add two columns of year and mode to cycling_1998 dataset and change the name of `RECID`, `WGHTEPI` and `PLACE` TO `PUMFID`,`WGHT_EPI` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015.
+In this section, two additional columns (`year` and `mode`) will be integrated into the cycling_1998 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore,  columns including `RECID`, `WGHTEPI` and `PLACE`  were changed to `PUMFID`,`WGHT_EPI` and `LOCATION`.  Indeed, the initial names were renamed to align with the names of the variables in 2015.
 ```{r}
 cycling_1998 <- cycling_1998 |>
   dplyr::select(RECID, WGHTEPI,ACTCODE: ENDTIME, DURATION:dest_label) |>
@@ -1121,7 +1177,7 @@ cycling_1998 |>
   pivot_wider(names_from = "dest_label", values_from = "n")
 ```
 
-The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are quite a few trips that start _and_ end at Home. What are those supposed to be?
+The most common destination for a cycling trip that starts at home is `Work or school`. Notice, though that there are some trips that start _and_ end at Home. What are those supposed to be?
 
 Check those home-to-home trips:
 ```{r}
@@ -1134,18 +1190,10 @@ See RECID == 656 and check the cycling episode:
 ```{r}
 gss_e_1998 |>
   filter(RECID == 656) |>
-  slice(unique(c(which(PLACE == 9) - 1, 
-                 which(PLACE == 9),
-                 which(PLACE == 9) + 1))) |>
+  slice(unique(c(reduce(map(which(PLACE == 9), ~ c(.x - 1, .x, .x + 1)), c)))) |>  
    dplyr::select(RECID:PLACE)
 ```
-
-
-The person was at home doing 801 (FOOTBALL, BASEBALL, HOCKEY, ETC.), then went for cycling that lasted 10 minutes, came back home and spent 40 minutes doing 163 (Vehicle Maintenance).So, this was a recreational/leisure trip!
-
-Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes can be found in an appendix of the User Guide.
-
-QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
+The individual engaged in personal care activities at home before embarking on a cycling excursion for approximately 5 minutes. Upon returning home, they participated in various sports, including football, baseball, hockey, among others. Subsequently, the person undertook another 5-minute cycling session before returning home.
 
 Save data for later use:
 ```{r}
@@ -1158,7 +1206,7 @@ save(cycling_1998,
 # Walking_1992
 
 
-Here a table with origins and destinations for walking in 1992 will be created. First, I'll identify the rows in the episode file where the location of the activity was `7`, which is code for `walking`, as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
+The analysis initiates by constructing a data set specifically for walking, which name is walking_1992, utilizing the episode file of the GSS dataset in 1992. The primary step involves generating a table delineating the origins and destinations associated with walking activities in 1992. To achieve this, the episode file is carefully examined to identify instances where the activity location, corresponding to walking, is denoted by code 7. To comprehensively understand the spatial dynamics, not only the identified walking instances are considered, but also the preceding and succeeding entries are incorporated. These adjacent entries are instrumental in ascertaining the origins and destinations for each respondent's walking activity, thereby offering a nuanced perspective on walking patterns within the data set.
 
 ```{r creating dataset for walking 1992, include=FALSE, cache=FALSE}
 
@@ -1168,7 +1216,7 @@ inds = which(gss_e_1992$PLACE == 7)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as SEQNUM (Record identification), TIMEWGT (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+Second, this analysis phase is dedicated to establishing a focused data set about walking activities derived from the 1992 data collection. The process involves a selection of relevant columns from the data table—specifically, those representing crucial variables such as SEQNUM (Record identification), TIMEWGT (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration of the episode in minutes), and PLACE (Location of the episode). Following the extraction of these variables, the analytical procedure progresses to the innovative construction of `origins` and `destinations` columns. These are meticulously formulated based on the data of location immediately preceding and succeeding each walking episode for every participant.
 
 ```{r}
 walking_1992 <- gss_e_1992 [unlist(rows),] |>
@@ -1179,8 +1227,7 @@ walking_1992 <- gss_e_1992 [unlist(rows),] |>
   filter(PLACE == 7) 
 ```
 
-
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+The 'origin' column was filtered in the subsequent analysis phase. Utilizing the code presented below, we developed a methodology to assign labels to various origins, thereby categorizing them into distinct groups for further examination.
 
 ```{r}
 walking_1992 <- walking_1992 |>
@@ -1194,9 +1241,8 @@ walking_1992 <- walking_1992 |>
          orig_label = factor(orig_label))
 ```
 
+This step focuses on finding and filtering the destinations of interest in the dataset. After that, a new column will be added to comprehensively list a label for every destination's code.
 
-
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
 ```{r}
 walking_1992 <- walking_1992 |>
   filter(destination == 1 | 
@@ -1209,8 +1255,7 @@ walking_1992 <- walking_1992 |>
          dest_label = factor(dest_label))
 ```
 
-
-Here, I'll add two columns of year and mode to walking_1992 dataset and change the name of `SEQNUM`, `TIMEWGT` and `PLACE` TO `PUMFID`,`WGHT_EPI` and `LOCATION` . Indeed Changes names to align with the name of variables in 2015.
+In this section, two additional columns (`year` and `mode`) will be integrated into the walking_1992 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore,  columns including `SEQNUM`, `TIMEWGT`  and `PLACE`  were changed to `PUMFID`, `WGHT_EPI` and `LOCATION.`  Indeed, the initial names were renamed to align with the names of the variables in 2015.
 ```{r}
 walking_1992 <- walking_1992 |>
   dplyr::select(SEQNUM,TIMEWGT,ACTCODE:dest_label) |>
@@ -1239,14 +1284,15 @@ Check those home-to-home trips:
 walking_1992 |>
   filter(orig_label == "Home" & dest_label == "Home")
 ```
+
+
 See SEQNUM == 218 and check the walking episode:
 ```{r}
 gss_e_1992 |>
   filter(SEQNUM == 218) |>
-  slice(unique(c(which(PLACE == 7) - 1, 
-                 which(PLACE == 7),
-                 which(PLACE == 7) + 1))) |>
-   dplyr::select(SEQNUM:PLACE)
+  slice(unique(c(reduce(map(which(PLACE == 7), ~ c(.x - 1, .x, .x + 1)), c)))) |>
+  dplyr::select(SEQNUM:PLACE)
+
 ```
 
 The person was at home doing 430 (Meals at Home/Snacks/Coffee), then went for walking that lasted 5 minutes, came back home and spent 35 doing 181 (Household management (Household Administration, e.g.Paying Bills, Menu Planning, etc.). So, this was a recreational/leisure trip!
@@ -1268,7 +1314,17 @@ save(walking_1992,
 # Cycling_1992
 
 
-Here a table with origins and destinations for cycling in 1992 will be created. First, I'll identify the rows in the episode file where the location of the activity was `9`, which is code for `Cycling` as well as one row before and after them to identify the locations before and after the cycling that will be considered as the origin and destination for each respondent. 
+This section delineates how to construct a dataset for cycling trips using the 1992 data repository, which is named cycling_1992. The objective is to identify and catalog the origins and destinations associated with cycling trips, thereby facilitating subsequent analysis. To construct a data table for cycling, we initiate the following steps:
+
+1. Identification of Cycling Episodes:
+We analyze the episode file to locate all activities with activity code 318, corresponding to cycling activities. This identification serves as the primary criterion for selecting relevant data points.
+
+2. Inclusion of Adjacent Locations:
+We extend our selection for each identified cycling episode to encompass the immediately preceding and succeeding entries. This approach allows us to ascertain the locations immediately before and after cycling, which are subsequently annotated as the origin and destination, respectively, for each identified cycling episode.
+
+3. Data Tabulation:
+The extracted information is systematically tabulated, including the cycling activity and its corresponding origin and destination. This table will be a foundational resource for in-depth analysis of cycling patterns within the dataset.
+
 
 ```{r creating dataset for cycling 1992, include=FALSE, cache=FALSE}
 # **cycling 1992**
@@ -1277,7 +1333,14 @@ inds <- which(gss_e_1992$PLACE == 9)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as SEQNUM (Record identification), TIMEWGT (Episode weight), ACTCODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the cycling for each respondent.
+Following identifying relevant cycling episodes, the subsequent step involves carefully selecting the required variables for the analysis. This stage is integral to refining the dataset to include only essential information directly contributing to our understanding of cycling patterns. The variables chosen in our dataset include:
+
+SEQNUM: Serves as the unique record identifier.
+TIMEWGT: This represents the weight of each episode, which is critical for ensuring representativeness in the analysis.
+ACTCODE: The episode's activity code allows for the categorization of the data based on the activity type.
+STARTIME and ENDTIME: These variables provide each episode's start and end times, which are essential for temporal analysis.
+DURATION: Indicates the total time spent in the activity, measured in minutes.
+PLACE: Denotes the geographical point of the episode, which is pivotal for spatial analysis.
 
 
 ```{r}
@@ -1289,9 +1352,8 @@ cycling_1992 <- gss_e_1992[unlist(rows),] |>
   filter(PLACE == 9)
 ```
 
+Once the dataset has been structured with designated origins and destinations for each cycling individual, the next critical phase involves creating a column that describes each origin's code. For instance, if an origin code is '1', the descriptive column would show it as "Home".
 
-
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
 ```{r}
 cycling_1992 <- cycling_1992 |>
   filter(origin == 1 | 
@@ -1304,7 +1366,7 @@ cycling_1992 <- cycling_1992 |>
          orig_label = factor(orig_label))
 ```
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
+Similarly to the previous step, the description column will also be created for destinations.
 ```{r}
 cycling_1992 <- cycling_1992 |>
   filter(destination == 1 | 
@@ -1317,7 +1379,7 @@ cycling_1992 <- cycling_1992 |>
          dest_label = factor(dest_label))
 ```
 
-Here, I'll add two columns of year and mode to cycling_1992 dataset and change the name of `SEQNUM`, `TIMEWGT` and `PLACE` TO `PUMFID`,`WGHT_EPI` and `LOCATION` . Indeed, Changes names to align with the name of variables in 2015.
+In this section, two additional columns (`year` and `mode`) will be integrated into the cycling_1992 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore,  columns including `SEQNUM`, `TIMEWGT` and `PLACE` were changed to `PUMFID`,`WGHT_EPI` and `LOCATION`.  Indeed, the initial names were renamed to align with the names of the variables in 2015.
 ```{r}
 cycling_1992 <- cycling_1992 |>
   dplyr::select(SEQNUM,TIMEWGT,ACTCODE:dest_label) |>
@@ -1352,9 +1414,7 @@ See SEQNUM == 3622 and check the cycling episode:
 ```{r}
 gss_e_1992 |>
   filter(SEQNUM == 3622) |>
-  slice(unique(c(which(PLACE == 9) - 1, 
-                 which(PLACE == 9),
-                 which(PLACE == 9) + 1))) |>
+  slice(unique(c(reduce(map(which(PLACE == 9), ~ c(.x - 1, .x, .x + 1)), c)))) |>   
    dplyr::select(SEQNUM:PLACE)
 ```
 
@@ -1377,6 +1437,8 @@ save(cycling_1992,
 
 Here a table with origins and destinations for walking in 1986 will be created. First, I'll identify the rows in the episode file where the location of the activity was `5`, which is code for `walking` as well as one row before and after them to identify the locations before and after the walking that will be considered as the origin and destination for each respondent. 
 
+The analysis initiates by constructing a data set specifically for walking, which name is walking_1986, utilizing the episode file of the GSS dataset in 1986. The primary step involves generating a table delineating the origins and destinations associated with walking activities in 1986. To achieve this, the episode file is carefully examined to identify instances where the activity location, corresponding to walking, is denoted by code 5. To comprehensively understand the spatial dynamics, not only the identified walking instances are considered, but also the preceding and succeeding entries are incorporated. These adjacent entries are instrumental in ascertaining the origins and destinations for each respondent's walking activity, thereby offering a nuanced perspective on walking patterns within the data set.
+
 ```{r creating dataset for walking 1986, include=FALSE, cache=FALSE}
 
 # **walking 1986**
@@ -1385,7 +1447,8 @@ inds = which(gss_e_1986$PLACE == 5)
 rows <- lapply(inds, function(x) (x-1):(x+1))
 ```
 
-Second, I'll select the required columns (required variables such as SEQNUM (Record identification), ACT_CODE (Activity code of the episode), STARTTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration (in minutes) of the episode) and Place (Location of the episode) and then I'll create origins and destinations columns based on the locations before and after the walking for each respondent.
+
+Second, this analysis phase is dedicated to establishing a focused data set about walking activities derived from the 1986  data collection. The process involves a selection of relevant columns from the data table—specifically, those representing crucial variables such as SEQNUM (Record identification), FWGT_MS (Episode weight), ACT_CODE (Activity code of the episode), STARTIME (Start time of the episode), ENDTIME (End time of the episode), DURATION (Duration of the episode in minutes), and PLACE (Location of the episode). Following the extraction of these variables, the analytical procedure progresses to the innovative construction of `origins` and `destinations` columns. These are meticulously formulated based on the data of location immediately preceding and succeeding each walking episode for every participant.
 
 ```{r}
 walking_1986 <- gss_e_1986 [unlist(rows),] |>
@@ -1396,8 +1459,7 @@ walking_1986 <- gss_e_1986 [unlist(rows),] |>
   filter(PLACE == 5) 
 ```
 
-
-Similarly, I'll filter origins of interest and then create a column with a description of each origin's code:
+The 'origin' column was filtered in the subsequent analysis phase. Utilizing the code presented below, we developed a methodology to assign labels to various origins, thereby categorizing them into distinct groups for further examination.
 
 ```{r}
 walking_1986 <- walking_1986 |>
@@ -1412,8 +1474,8 @@ walking_1986 <- walking_1986 |>
 ```
 
 
+This step focuses on finding and filtering the destinations of interest in the dataset. After that, a new column will be added to comprehensively list a label for every destination's code.
 
-Then, I'll filter destinations of interest and then create a column with a description of each destination's code
 ```{r}
 walking_1986 <- walking_1986 |>
   filter(destination == 1 | 
@@ -1426,8 +1488,8 @@ walking_1986 <- walking_1986 |>
          dest_label = factor(dest_label))
 ```
 
+In this section, two additional columns (`year` and `mode`) will be integrated into the walking_1986 dataset. This process makes the dataset more compatible and simplifies comparing for various years. Furthermore,  columns including `SEQNUM`, `FWGT_MS`, `ACT_CODE`, `STRTTIME` and `PLACE`  were changed to `PUMFID`,`WGHT_EPI`, `ACTCODE`, `STARTIME` and `LOCATION`.  Indeed, the initial names were renamed to align with the names of the variables in 2015.
 
-Here, I'll add two columns of year and mode to walking_1986 dataset and change the name of `SEQNUM`, `FWGT_MS`, `ACT_CODE`, `STRTTIME` and `PLACE` TO `PUMFID`,`WGHT_EPI`, `ACTCODE`, `STARTIME` and `LOCATION` . Indeed, Changes names to align with the name of variables in 2015.
 ```{r}
 walking_1986 <- walking_1986 |>
   dplyr::select(SEQNUM,ACT_CODE:dest_label) |>
@@ -1451,36 +1513,34 @@ walking_1986 |>
   pivot_wider(names_from = "dest_label", values_from = "n")
 ```
 
-The most common destination for a walking trip that starts at home is `OTHER'S HOME`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
+One of the most common destination for a walking trip that starts at home is `HOME`. Notice, though that the most trips start _and_ end at Home. What are those supposed to be?
 
 Check those home-to-home trips:
 ```{r}
 walking_1986 |>
   filter(orig_label == "Home" & dest_label == "Home")
 ```
+
 See SEQNUM == 26 and check the walking episode:
 ```{r}
 gss_e_1986 |>
   filter(SEQNUM == 26) |>
-  slice(unique(c(which(PLACE == 5) - 1, 
-                 which(PLACE == 5),
-                 which(PLACE == 5) + 1))) |>
-   dplyr::select(SEQNUM:PLACE)
+  slice(unique(c(reduce(map(which(PLACE == 5), ~ c(.x - 1, .x, .x + 1)), c)))) |>
+  dplyr::select(SEQNUM:PLACE)
+
 ```
 
-The person was at home doing 24 (play with children), then went for walking that lasted 120 minutes, came back home and spent 30 minutes doing 43 (Household management (Meals at home/snacks/ coffee). So, this was a recreational/leisure trip!
-
-Note: ACTCODE is an activity code of the episode (What were you doing at [hour:minute]?).The list of main activity codes  can be found in an appendix of the User Guide.
-
-QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
-
-
+The person was at home doing 24 (play with children), then went for walking that lasted 120 minutes, came back home and spent 30 minutes doing 43 (Household management (Meals at home/snacks/ coffee). So, this was a recreational/leisure trip! QUESTION: Should we include recreational trips in our analysis? If not, then we need to filter out all home-to-home trips.
 Save data for later use:
 ```{r}
 save(walking_1986,
      file = paste0(here(), "/data/walking_1986.Rda"))
 ```
 
+
+# Cycling 1986
+
+No data are available regarding cycling trips in 1986.
 
 
 ##calculating impedance function for walking trip during 1986- 2015:
