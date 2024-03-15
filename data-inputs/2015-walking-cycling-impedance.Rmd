@@ -2,19 +2,7 @@
 title: "Calculating Walking and cycling trips impedance function- 2015 "
 ---
 
-# Active-transport walking and cycling behaviour in Canada
-
-## Introduction
-
-## Data and Method
-
-Data on walking and cycling trips to different destinations was derived from Canada's General Social Survey (GSS) from 1986 to 2015. GSS is a social trends survey in order to monitor changes in the living conditions and well-being of Canadians and to provide information on specific social policy issues. one of the important information of GSS is about Time-use surveys. This survey collects information on all human activities and can therefore inform a broad range of policies. Statistics Canada has been conducting time-use surveys since 1986 at approximately five- to seven- year intervals, most recently in 2015.The GSS on time use employs a retrospective 24-hour time diary to collect information on respondents' participation in, and time spent on, a wide variety of day-to-day activities. In addition, information is collected on the location where these activities occurred (e.g., at home, at work, etc.).in addition, This dataset contains travel time data of Many of the Census Metropolitan Areas (CMAs) and non-CMA areas all over Canada. CMAs are including St. John's, Halifax, Saint John, Montreal, Quebec City, Toronto, Ottawa, Hamilton, Winnipeg, Regina, Saskatoon, Calgary, Edmonton, and Vancouver. and the non-CMA areas of each of the ten provinces were also grouped to form ten more strata.
-
-walking and cycling data are categorized based on the three different destinations such as home, school and work, and others' homes. every episode includes, the start and end time of each event, duration, weight, and concurrent contextual information, such as the location of the activities (e.g., home, work, schools,...).
-
-complete method
-
-# Result
+# Calculating Walking trips impedance function- 2015
 
 First load all of the libraries
 
@@ -22,6 +10,7 @@ First load all of the libraries
 #load all packages:
 library(fitdistrplus) # Help to Fit of a Parametric Distribution to Non-Censored or Censored Data
 library(tidyverse) # Easily Install and Load the 'Tidyverse'
+library(here)
 library(dplyr) # A Grammar of Data Manipulation
 library(ggplot2) # Create Elegant Data Visualisations Using the Grammar of Graphics
 library(readxl) # Read Excel Files 
@@ -30,125 +19,52 @@ library(tibble) # Simple Data Frames
 library(readr) # Read Rectangular Text Data
 library(tabulate) # Pretty Console Output for Tables
 library(janitor) # Simple Tools for Examining and Cleaning Dirty Data
-library(kableExtra) # Construct Complex Table with 'kable' and Pipe Syntax
 library(flextable) # Functions for Tabular Reporting
 ```
 
-Here, we are loading all the primary files of the GSS dataset to create our database for analysis.
-
-```{r, include=FALSE, cache=FALSE}
-#Read main file:
-gss_e_2015 <- read.csv("D:/GSS Data/gss-e.csv")
-#gss_e_2005 <- read.csv("D:/First Article/Data/Time use_2005/gss-12M0019-E-2005-c-19-e_F1.csv")
-#gss_e_2010 <- read.csv("D:/First Article/Data/Time use_2010/gss-12M0018-E-2010-c-24-tus-ef_F1.csv")
-#gss_e_1998 <- read.csv("D:/First Article/Data/Time use_1998/gss-12M0012-E-1998-c-12e_F1.csv")
-#gss_e_1992 <- read.csv("D:/First Article/Data/Time use_1992/gss-12M0007-E-1992-c-7-ep_F1.csv")
-#gss_e_1986 <- read.csv("D:/First Article/Data/Time use_1986/gss-12M0002-E-1986-c-2-ep_F1.csv")
-```
-
-First, we create a dataset about walking and cycling trips in 2015. Then, we add two extra columns to this data. These columns show where people started their walks and where they ended them (origin and destination). Here's how we do it:
-
-
-```{r creating dataset for walking 2015, include=FALSE, cache=FALSE}
-
-# **walking 2015**
-# Creating data of origins and destinations of walking trip 2015
-inds = which(gss_e_2015$LOCATION == 315)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-walking_2015 <- gss_e_2015 [unlist(rows),] %>% 
-  dplyr::select(PUMFID:LOCATION) %>% 
-  mutate(origin = lag(LOCATION, order_by = PUMFID)) %>% 
-  mutate(destination = lead(LOCATION, order_by = PUMFID)) %>% 
-  group_by(PUMFID) %>% 
-  filter(LOCATION == 315) %>% 
-  ungroup()
-
-# change destination and origins to text column
-walking_2015 <- walking_2015 %>%  filter(destination == 300 | destination == 301 | destination == 303 | destination == 302 | destination == 305 |destination == 306 | destination == 307 |destination == 309 | destination == 310 ) %>% filter(origin == 300 | origin == 301 | origin == 303 | origin == 302 | origin == 305 | origin == 306 | origin == 307  | origin == 309 | origin == 310 ) %>% 
-  mutate(dest =
-                     case_when(destination == 300 ~ "home", 
-                               destination == 301 ~ "work or school",
-                               destination == 303 ~ "other's home",
-                               destination == 302 ~ "business",
-                               destination == 305 ~ "outdoors",
-                               destination == 306 ~ "Grocery store, other stores or mall",
-                               destination == 307 ~ "Library, museum or theatre",
-                               destination == 309 ~ "Restaurant, bar or club",
-                               destination == 310 ~ "Place of worship")) %>% 
-  mutate(orig =
-                     case_when(origin == 300 ~ "home", 
-                               origin == 301 ~ "work or school",
-                               origin == 303 ~ "other's home",
-                               origin == 302 ~ "business",
-                               origin == 305 ~ "outdoors",
-                               origin == 306 ~ "Grocery store, other stores or mall",
-                               origin == 307 ~ "Library, museum or theatre",
-                               origin == 309 ~ "Restaurant, bar or club",
-                               origin == 310 ~ "Place of worship"))
-
-walking_2015 <- walking_2015 %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-walking_2015$YEAR <-  2015
-walking_2015$MODE <-  "walking"
-```
-
-
-```{r creating dataset for cycling 2015, include=FALSE, cache=FALSE}
-
-# cycling _2015
-# Creating data of origins and destinations of cycling trip 2015
-inds = which(gss_e_2015$LOCATION == 318)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-cycling_2015 <- gss_e_2015[unlist(rows),] %>% 
-  dplyr::select(PUMFID:LOCATION) %>% 
-  mutate(origin = lag(LOCATION, order_by = PUMFID)) %>% 
-  mutate(destination = lead(LOCATION, order_by = PUMFID)) %>% 
-  group_by(PUMFID) %>% 
-  filter(LOCATION == 318)
-
-# change destination and origins to text column
-cycling_2015 <- cycling_2015 %>%  filter(destination == 300 | destination == 301 | destination == 303 | destination == 302 | destination == 305 |destination == 306 | destination == 307 | destination == 309 | destination == 310 ) %>% filter(origin == 300 | origin == 301 | origin == 303 | origin == 302 | origin == 305 | origin == 306 | origin == 307 | origin == 309 | origin == 310) %>% 
-  mutate(dest =
-                     case_when(destination == 300 ~ "home", 
-                               destination == 301 ~ "work or school",
-                               destination == 303 ~ "other's home",
-                               destination == 302 ~ "business",
-                               destination == 305 ~ "outdoors",
-                               destination == 306 ~ "Grocery store, other stores or mall",
-                               destination == 307 ~ "Library, museum or theatre",
-                               destination == 309 ~ "Restaurant, bar or club",
-                               destination == 310 ~ "Place of worship")) %>% 
-  mutate(orig =
-                     case_when(origin == 300 ~ "home", 
-                               origin == 301 ~ "work or school",
-                               origin == 303 ~ "other's home",
-                               origin == 302 ~ "business",
-                               origin == 305 ~ "outdoors",
-                               origin == 306 ~ "Grocery store, other stores or mall",
-                               origin == 307 ~ "Library, museum or theatre",
-                               origin == 309 ~ "Restaurant, bar or club",
-                               origin == 310 ~ "Place of worship"))
-
-cycling_2015 <- cycling_2015 %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-cycling_2015$YEAR <-  2015
-cycling_2015$MODE <-  "cycling"
-```
-
-
-
-### Calculating impedance function for walking in 2015
-
-using a skew vs. kurtois graph to descriptive statistics of data
-
+Here, the "walking_2015" dataset, which was constructed using the General Social Survey (GSS) dataset for walking trips in 2015, has been loaded.
 
 ```{r}
+# Load the dataset
+load(file = paste0(here(), "/data/walking_2015.Rda"))
+```
 
-count <- sum(walking_2015$DURATION > 100)
-print (count)
+Initially, we analyzed the travel time variable (DURATION) for 2015. The minimum recorded duration for walking trips is 5 minutes, while the maximum extends to 900 minutes. Furthermore, the average and median duration for walking trips are calculated to be 17.49 minutes and 10 minutes, respectively.
 
-walking_2015 <- walking_2015 %>% filter(DURATION <= 100)
+```{r}
+walking_2015$DURATION[walking_2015$DURATION == 0] <- 5
 summary(walking_2015$DURATION)
 ```
 
+Subsequently, a weighted histogram was constructed. A histogram serves as a graphical representation that illustrates the frequency distribution of a dataset corresponding to a single variable. Typically, histograms organize data into `bins` or `range groups`, tallying the quantity of data points within each bin. This method effectively visualizes the distribution and variability of the dataset, providing insights into its underlying structure and patterns.
+
+```{r}
+ggplot(walking_2015, aes(x = DURATION )) + 
+  geom_histogram(binwidth = 30) + 
+  geom_vline(aes(xintercept=mean(DURATION)), color="blue", linetype="dashed", linewidth=1)
+```
+
+Here, we aim to analyze individuals who engaged in walking for more than 100 minutes, focusing on their origins and destinations. Additionally, we seek to ascertain the number of trips with a DURATION exceeding 100 minutes.
+
+```{r}
+walking_2015[walking_2015$DURATION > 100, ]
+count_duration <- sum(walking_2015$DURATION > 100)
+count_duration
+```
+As observed, out of 3246 trips, 26 trips exceed 100 minutes in duration. Consequently, we have decided to exclude these trips from our analysis because they are all recreational.
+
+```{r}
+walking_2015 <- walking_2015 %>% filter(DURATION < 100)
+summary(walking_2015$DURATION)
+```
+
+In our analysis to calculate the impedance function, we turned to the `Fitdistrplus` package in R, an essential tool for fitting distributions to data. In the first step, the skewness-kurtosis plot was created. This plot is crucial for pinpointing the Pearson distribution that best matches our data. The process starts with the `descdist` function, which calculates key descriptive statistics like the minimum, maximum, median, mean, standard deviation, skewness, and kurtosis.
+
+Building on the groundwork laid by Cullen and Frey in 1999, our skewness-kurtosis plot helps us scrutinize the empirical distribution of our dataset. This plot clearly demarcates specific values or regions associated with common statistical distributions, aiding us in visually identifying the optimal model for our analysis. Distributions that exhibit fixed skewness and kurtosis values—such as normal, uniform, logistic, and exponential—appear as distinct points on the plot. This feature is particularly handy, as it indicates that data conforming to these distributions will align with those precise points, simplifying the identification process.
+
+However, the plot also caters to distributions like gamma and log-normal, represented as lines, suggesting a variety of potential skewness and kurtosis values they can embody. This aspect is vital for understanding the flexibility these distributions offer when fitting data that may not align perfectly with a single model. Similarly, the beta distribution's broader areas on the plot signify its adaptability in form, accommodating a wider array of data shapes.
+
+This visual tool, enriched by the comparative ease it brings to distribution selection, underscores the value of nuanced data analysis. By integrating these insights, we are better equipped to select the distribution that most accurately reflects the underlying characteristics of our data, enhancing the reliability and precision of our findings.
 
 ```{r creating Cullen and Frey graph for walkig 2015}
 # creating a skew vs. kurtois graph for walking 2015
@@ -156,7 +72,7 @@ summary(walking_2015$DURATION)
 descdist(walking_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -180,25 +96,21 @@ fit_dexp <- data.frame(f = dexp(walking_2015$DURATION,  exp_w_2015_$estimate[1])
                        x = walking_2015$DURATION, type = "exp")
 
 plot(x = fit_dexp$x, y = fit_dexp$f)
-
-#plot <- ggplot(walking_2015, aes(x = DURATION, y =f)) +
-  #geom_line(aes(group = 1)) +  # Ensure there's a group aesthetic for line plots
-  #labs(title = "Line Chart", x = "X Axis Label", y = "Y Axis Label") +
-  #theme_minimal()
-
-#print(plot)
 ```
 
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(walking_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(walking_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
 ```
 
-So, gamma has largest logLik and the smallest AIC and BIC. we will pick gamma function for walking trips in 2015!
+In the evaluation of different statistical models, we often rely on metrics such as the log-likelihood, Akaike Information Criterion (AIC), and Bayesian Information Criterion (BIC). The log-likelihood provides an estimate of the probability of observing our data under each model, with higher values being preferable. Both the AIC and BIC extend beyond mere goodness of fit, incorporating a penalty for excessive complexity to strike a balance between model accuracy and simplicity. The objective is to identify a model that not only fits the data well but also adheres to the principle of parsimony. Typically, models with lower AIC or BIC values are deemed more desirable.
+
+Upon analysis of the gamma and exponential distribution outputs, it is observed that the gamma distribution achieves a superior log-likelihood and more favorable (lower) AIC and BIC scores. These findings indicate that the gamma distribution provides a closer fit to our data compared to the exponential and weibull distributions, and it does so without introducing undue complexity. In essence, this distribution efficiently encapsulates the core characteristics of our data.
+
 
 ```{r}
 walking_2015_gamma <- gamma_w_2015_
@@ -209,15 +121,14 @@ summary(walking_2015$f)
 ```
 
 
-
-### Calculating impedance function for walking in 2015 based on different purposes
+##Calculating Impedance function based on different purposes- walking 2015
 
 ###Destination : Walking - Home (300),2015
 
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to home destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015- Home 300}
-# creating a skew vs. kurtois graph for walking 2015
+# creating a skew vs. kurtois graph for walking 2015-  Home
 
 # Filter the data based on the "destination" column
  w_300_2015 <- walking_2015 %>%
@@ -225,7 +136,7 @@ using a skew vs. kurtois graph to descriptive statistics of data
 descdist(w_300_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, weibull and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, weibull and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -253,22 +164,19 @@ exp_w300_2015_ <- fitdistrplus::fitdist(data=w_300_2015$DURATION%>% unlist() %>%
 
 summary(exp_w300_2015_)
 
-# Get the estimated rate parameter from the fitted distribution
 rate_estimate <- exp_w300_2015_$estimate[1]
 
-# Create a data frame for the fitted exponential distribution
 fit_dexp_w30015 <- data.frame(f = dexp(w_300_2015$DURATION, rate = rate_estimate), 
                        x = w_300_2015$DURATION, type = "exp")
 
-# Plot the fitted exponential distribution
 plot(x = fit_dexp_w30015$x, y = fit_dexp_w30015$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_300_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(w_300_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(w_300_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
@@ -284,18 +192,17 @@ summary(w_300_2015$f_300)
 ```
 
 ###Destination : Walking - work or school (301), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to work or school destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015 - work or school 301}
-# creating a skew vs. kurtois graph for walking 2015
+# creating a skew vs. kurtois graph for walking 2015- work or school
 
 # Filter the data based on the "destination" column
  w_301_2015 <- walking_2015 %>%
   filter(destination == "301")   
 descdist(w_301_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
-
-As shown in the Cullen and Frey graph, we see that gamma, weibull, lognormal and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, weibull and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -323,24 +230,20 @@ plot(x= fit_dweibull_30115$x, y=fit_dweibull_30115$f)
 exp_w301_2015_ <- fitdistrplus::fitdist(data=w_301_2015$DURATION%>% unlist() %>% as.numeric(), "exp", method="mle", optim.method="Nelder-Mead", weights = round(w_301_2015$WGHT_EPI))
 
 summary(exp_w301_2015_)
-
-# Get the estimated rate parameter from the fitted distribution
 rate_estimate <- exp_w301_2015_$estimate[1]
 
-# Create a data frame for the fitted exponential distribution
 fit_dexp_30115 <- data.frame(f = dexp(w_301_2015$DURATION, rate = rate_estimate), 
                        x = w_301_2015$DURATION, type = "exp")
 
-# Plot the fitted exponential distribution
 plot(x = fit_dexp_30115$x, y = fit_dexp_30115$f)
 
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_301_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(w_301_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(w_301_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
@@ -357,7 +260,7 @@ summary(w_301_2015$f_301)
 
 
 ###Destination : Business (302)
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to Business destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015_ Business destination}
 # creating a skew vs. kurtois graph for walking 2015 _ Business destination
@@ -369,8 +272,7 @@ summary(w_302_2015)
 
 descdist(w_302_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=100)
 ```
-
-As shown in the Cullen and Frey graph, we see that gamma, poisson and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, poisson and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -410,10 +312,10 @@ plot(x = fit_dexp_30215$x, y = fit_dexp_30215$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_302_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
 broom::glance(MASS::fitdistr(w_302_2015$DURATION%>% unlist() %>% as.numeric(),"poisson"))
 broom::glance(MASS::fitdistr(w_302_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
@@ -429,7 +331,7 @@ summary(w_302_2015$f_302)
 ```
 
 ###Destination : At someone else's home or property (303)
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to other's home destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015 - other home or property (303) }
 # creating a skew vs. kurtois graph for walking 2015
@@ -440,7 +342,7 @@ using a skew vs. kurtois graph to descriptive statistics of data
 descdist(w_303_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, weibull and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, weibull and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -476,10 +378,10 @@ plot(x = fit_dexp_30315$x, y = fit_dexp_30315$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_303_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(w_303_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(w_303_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
@@ -497,7 +399,7 @@ summary(w_303_2015$f_303)
 
 
 ###Destination : Outdoors (305)
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to Outdoors destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015 - Outdoors (305)}
 # creating a skew vs. kurtois graph for walking 2015
@@ -505,10 +407,10 @@ using a skew vs. kurtois graph to descriptive statistics of data
 # Filter the data based on the "destination" column
  w_305_2015 <- walking_2015 %>%
   filter(destination == "305")   
-descdist(w_305_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+descdist(w_305_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=1000)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, poisson, weibull and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, log-normal, weibull and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -534,14 +436,15 @@ fit_dexp_30515 <- data.frame(f = dexp(w_305_2015$DURATION, rate = exp_w305_2015_
 
 plot(x = fit_dexp_30515$x, y = fit_dexp_30515$f)
 
-#Calculating pois distribution 
-pois_w305_2015_ <- fitdistrplus::fitdist(data=w_305_2015$DURATION%>% unlist() %>% as.numeric(), "pois", method="mle", optim.method="Nelder-Mead", weights = round(w_305_2015$WGHT_EPI))
+#Calculating lognormal distribution 
+lnorm_w305_2015_ <- fitdistrplus::fitdist(data=w_305_2015$DURATION%>% unlist() %>% as.numeric(), "lnorm", method="mle", optim.method="Nelder-Mead", weights = round(w_305_2015$WGHT_EPI))
 
-fit_dpois_30515 <- data.frame(f = dpois(w_305_2015$DURATION, lambda = pois_w305_2015_$estimate[1]), x = w_305_2015$DURATION, type = "pois")
+fit_dlnorm_w30515 <- data.frame(f = dlnorm(w_305_2015$DURATION, meanlog = lnorm_w305_2015_$estimate[1], sdlog = lnorm_w305_2015_$estimate[2]), x = w_305_2015$DURATION, type = "lnorm")
 
-summary(pois_w305_2015_)
+summary(lnorm_w305_2015_)
 
-plot(x= fit_dpois_30515$x, y=fit_dpois_30515$f)
+plot(x= fit_dlnorm_w30515$x, y=fit_dlnorm_w30515$f)
+
 
 #Calculating weibull distribution 
 weibull_w305_2015_ <- fitdistrplus::fitdist(data=w_305_2015$DURATION%>% unlist() %>% as.numeric(), "weibull", method="mle", optim.method="Nelder-Mead", weights = round(w_305_2015$WGHT_EPI))
@@ -554,12 +457,12 @@ plot(x= fit_dweibull_30515$x, y=fit_dweibull_30515$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_305_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
-broom::glance(MASS::fitdistr(w_305_2015$DURATION%>% unlist() %>% as.numeric(),"poisson"))
+broom::glance(MASS::fitdistr(w_305_2015$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
 broom::glance(MASS::fitdistr(w_305_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(w_305_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
 ```
@@ -576,7 +479,7 @@ summary(w_305_2015$f_305)
 
 
 ###Destination : Grocery store, other stores or mall (306)
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to grocery store, other stores or mall destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015- Grocery store, other stores or mall (306)}
 # creating a skew vs. kurtois graph for walking 2015
@@ -587,7 +490,7 @@ using a skew vs. kurtois graph to descriptive statistics of data
 descdist(w_306_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, weibull and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, weibull and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -625,10 +528,10 @@ plot(x= fit_dweibull_30615$x, y=fit_dweibull_30615$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_306_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(w_306_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(w_306_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
@@ -647,7 +550,7 @@ summary(w_306_2015$f_306)
 
 ###Destination : Library, museum or theatre (307)
 
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to library, museum or theatre destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015 - Library, museum or theatre (307)}
 # creating a skew vs. kurtois graph for walking 2015
@@ -655,10 +558,10 @@ using a skew vs. kurtois graph to descriptive statistics of data
 # Filter the data based on the "destination" column
  w_307_2015 <- walking_2015 %>%
   filter(destination == "307")   
-descdist(w_307_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+descdist(w_307_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=1000)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, weibull, lognormal and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, weibull, lognormal and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -708,10 +611,10 @@ plot(x = fit_dexp_30715$x, y = fit_dexp_30715$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_307_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(w_307_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(w_307_2015$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
@@ -729,7 +632,7 @@ summary(w_307_2015$f_307)
 
 
 ###Destination : Restaurant, bar or club (309)
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to restaurant, bar or club destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015- Restaurant, bar or club (309)}
 # creating a skew vs. kurtois graph for walking 2015
@@ -738,10 +641,10 @@ using a skew vs. kurtois graph to descriptive statistics of data
  w_309_2015 <- walking_2015 %>%
   filter(destination == "309")   
 
-descdist(w_309_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+descdist(w_309_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=1000)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -769,10 +672,10 @@ plot(x = fit_dexp_30915$x, y = fit_dexp_30915$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_309_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(w_309_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
 ```
@@ -787,7 +690,7 @@ summary(w_309_2015$f_309)
 ```
 
 ###Destination : Place of worship (310)
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for walking trips to place of worship destinations:
 
 ```{r creating Cullen and Frey graph for walkig 2015 - Place of worship (310)}
 # creating a skew vs. kurtois graph for walking 2015
@@ -796,10 +699,10 @@ using a skew vs. kurtois graph to descriptive statistics of data
  w_310_2015 <- walking_2015 %>%
   filter(destination == "310")   
 
-descdist(w_310_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+descdist(w_310_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=1000)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, normal, weibull, lognormal and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, normal, weibull, lognormal and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -854,10 +757,10 @@ fit_dweibull_31015 <- data.frame(f = dweibull(w_310_2015$DURATION, shape = weibu
 plot(x= fit_dweibull_31015$x, y=fit_dweibull_31015$f)
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the walking data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the walking data best:
 broom::glance(MASS::fitdistr(w_310_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(w_310_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
 broom::glance(MASS::fitdistr(w_310_2015$DURATION%>% unlist() %>% as.numeric(),"normal"))
@@ -874,32 +777,56 @@ w_310_2015 <- w_310_2015 %>%
 summary(w_310_2015$f_310)
 ```
 
+# Calculating cycling trips impedance function- 2015
 
-## Calculating impedance function for cycling in 2015
+Here, the "cycling_2015" dataset, which was constructed using the General Social Survey (GSS) dataset for cycling trips in 2015, has been loaded.
 
 ```{r}
+# Load the dataset
+load(file = paste0(here(), "/data/cycling_2015.Rda"))
+```
 
-count <- sum(cycling_2015$DURATION > 100)
-print (count)
+Initially, we analyzed the travel time variable (DURATION) for 2015. The minimum recorded duration for cycling trips is 5 minutes, while the maximum extends to 120 minutes. Furthermore, the average and median duration for cycling trips are calculated to be 23.71 minutes and 15 minutes, respectively.
 
-cycling_2015 <- cycling_2015 %>% filter(DURATION < 100)
+```{r}
 summary(cycling_2015$DURATION)
 ```
 
+Subsequently, a weighted histogram was constructed. A histogram serves as a graphical representation that illustrates the frequency distribution of a dataset corresponding to a single variable. Typically, histograms organize data into `bins` or `range groups`, tallying the quantity of data points within each bin. This method effectively visualizes the distribution and variability of the dataset, providing insights into its underlying structure and patterns.
 
-using a skew vs. kurtois graph to descriptive statistics of data:
+```{r}
+ggplot(cycling_2015, aes(x = DURATION )) + 
+  geom_histogram(binwidth = 30) + 
+  geom_vline(aes(xintercept=mean(DURATION)), color="blue", linetype="dashed", linewidth=1)
+```
+
+Here, we aim to analyze individuals who engaged in cycling for more than 120 minutes, focusing on their origins and destinations. Additionally, we seek to ascertain the number of trips with a DURATION exceeding 120 minutes.
+
+```{r}
+
+count <- sum(cycling_2015$DURATION > 120)
+print (count)
+```
+As observed, out of 245 trips, 0 exceed 120 minutes in duration. 
+
+
+In our analysis to calculate the impedance function, we turned to the `Fitdistrplus` package in R, an essential tool for fitting distributions to data. In the first step, the skewness-kurtosis plot was created. This plot is crucial for pinpointing the Pearson distribution that best matches our data. The process starts with the `descdist` function, which calculates key descriptive statistics like the minimum, maximum, median, mean, standard deviation, skewness, and kurtosis.
+
+Building on the groundwork laid by Cullen and Frey in 1999, our skewness-kurtosis plot helps us scrutinize the empirical distribution of our dataset. This plot clearly demarcates specific values or regions associated with common statistical distributions, aiding us in visually identifying the optimal model for our analysis. Distributions that exhibit fixed skewness and kurtosis values—such as normal, uniform, logistic, and exponential—appear as distinct points on the plot. This feature is particularly handy, as it indicates that data conforming to these distributions will align with those precise points, simplifying the identification process.
+
+However, the plot also caters to distributions like gamma and lognormal, represented as lines, suggesting a variety of potential skewness and kurtosis values they can embody. This aspect is vital for understanding the flexibility these distributions offer when fitting data that may not align perfectly with a single model. Similarly, the beta distribution's broader areas on the plot signify its adaptability in form, accommodating a wider array of data shapes.
+
+This visual tool, enriched by the comparative ease it brings to distribution selection, underscores the value of nuanced data analysis. By integrating these insights, we are better equipped to select the distribution that most accurately reflects the underlying characteristics of our data, enhancing the reliability and precision of our findings.
+
 
 ```{r creating Cullen and Frey graph for cycling 2015}
 # creating a skew vs. kurtois graph for cycling 2015
 
-descdist(cycling_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
+descdist(cycling_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=1000)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, weibull and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, weibull and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
-```{r}
-summary(cycling_2015$DURATION)
-```
 
 ```{r}
 
@@ -941,17 +868,19 @@ plot(x= fit_dexp$x, y=fit_dexp$f)
 
 ```
 
-Now let's compare these models based on AIC and BIC to see which fits the walk data best:
+Now let's compare these models based on AIC and BIC to see which fits the cycling data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the cycling data best:
 broom::glance(MASS::fitdistr(cycling_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(cycling_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(cycling_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
 
 ```
 
-So, gamma has largest logLik and the smallest AIC and BIC. we will pick gamma function for cycling trips in 2015!
+In the evaluation of different statistical models, we often rely on metrics such as the log-likelihood, Akaike Information Criterion (AIC), and Bayesian Information Criterion (BIC). The log-likelihood provides an estimate of the probability of observing our data under each model, with higher values being preferable. Both the AIC and BIC extend beyond mere goodness of fit, incorporating a penalty for excessive complexity to strike a balance between model accuracy and simplicity. The objective is to identify a model that not only fits the data well but also adheres to the principle of parsimony. Typically, models with lower AIC or BIC values are deemed more desirable.
+
+Upon analysis of the gamma, weibull and exponential distribution outputs, it is observed that the gamma distribution achieves a superior log-likelihood and more favorable (lower) AIC and BIC scores. These findings indicate that the gamma distribution provides a closer fit to our data compared to the weibull and exponential distributions, and it does so without introducing undue complexity. In essence, this distribution efficiently encapsulates the core characteristics of our data.
 
 ```{r}
 cycling_2015_gamma <- gamma_c_2015_
@@ -964,7 +893,7 @@ summary(cycling_2015$f)
 
 ###Destination : Cycling- Home (300), 2015
 
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to home destinations:
 
 ```{r creating Cullen and Frey graph for cycling 2015 - Home (300)}
 # creating a skew vs. kurtois graph for cycling 2015
@@ -974,8 +903,7 @@ using a skew vs. kurtois graph to descriptive statistics of data
   filter(destination == "300")   
 descdist(c_300_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
-
-As shown in the Cullen and Frey graph, we see that gamma, weibull and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, weibull and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -1010,10 +938,10 @@ plot(x = fit_dexp_c30015$x, y = fit_dexp_c30015$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the cycling data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the cycling data best:
 broom::glance(MASS::fitdistr(c_300_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(c_300_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(c_300_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
@@ -1031,7 +959,7 @@ summary(c_300_2015$f_300)
 
 
 ###Destination : Cycling - work or school (301), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to work or school destinations:
 
 ```{r creating Cullen and Frey graph for cycling 2015 - work or school (301)}
 # creating a skew vs. kurtois graph for cycling 2015
@@ -1041,8 +969,7 @@ using a skew vs. kurtois graph to descriptive statistics of data
   filter(destination == "301")   
 descdist(c_301_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
-
-As shown in the Cullen and Frey graph, we see that gamma, weibull, normal, lognormal and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the ggamma, weibull, normal, lognormal and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -1093,14 +1020,12 @@ summary(lnorm_c301_2015_)
 fit_dlnorm_30115 <- data.frame(f = dlnorm(c_301_2015$DURATION, meanlog = lnorm_c301_2015_$estimate[1], sdlog = lnorm_c301_2015_$estimate[2]), x = c_301_2015$DURATION, type = "lnorm")
 
 plot(x= fit_dlnorm_30115$x, y=fit_dlnorm_30115$f)
-
-
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the cycling data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the cycling data best:
 broom::glance(MASS::fitdistr(c_301_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(c_301_2015$DURATION%>% unlist() %>% as.numeric(),"weibull"))
 broom::glance(MASS::fitdistr(c_301_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
@@ -1119,8 +1044,8 @@ summary(c_301_2015$f_301)
 
 
 ###Destination : Cycling- Business (302), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
 
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to Business destinations:
 
 ```{r creating Cullen and Frey graph for cycling 2015_ Business (302)}
 # creating a skew vs. kurtois graph for cycling 2015 _ Business destination
@@ -1136,18 +1061,9 @@ print(count)
 There is no available data pertaining to cycling directed towards business destinations.
 
 ###Destination : Cycling- At someone else's home or property (303), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
 
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to other's home destinations:
 
-```{r}
-# Assuming you have a data frame named 'cycling_2015' with a column 'dest'
-
-# Calculate the number of occurrences of '303' in the 'dest' column
-count_303 <- sum(cycling_2015$destination == 303)
-
-cat("The number of occurrences of '303' in the 'dest' column is:", count_303, "\n")
-
-```
 
 ```{r creating Cullen and Frey graph for cycling 2015 - At someone else home or property (303)}
 # creating a skew vs. kurtois graph for cycling 2015
@@ -1159,7 +1075,7 @@ cat("The number of occurrences of '303' in the 'dest' column is:", count_303, "\
 descdist(c_303_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, poisson, normal and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, poisson, normal and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -1205,10 +1121,10 @@ plot(x= fit_dnorm_30315$x, y=fit_dnorm_30315$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the cycling data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the cycling data best:
 broom::glance(MASS::fitdistr(c_303_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(c_303_2015$DURATION%>% unlist() %>% as.numeric(),"poisson"))
 broom::glance(MASS::fitdistr(c_303_2015$DURATION%>% unlist() %>% as.numeric(),"exponential"))
@@ -1227,7 +1143,7 @@ summary(c_303_2015$f_303)
 
 
 ###Destination : Cycling - Outdoors (305), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to Outdoors destinations:
 
 ```{r creating Cullen and Frey graph for cycling 2015 - Outdoors (305)}
 # creating a skew vs. kurtois graph for cycling 2015
@@ -1241,10 +1157,11 @@ print(count)
 
 #descdist(c_305_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
+There is no available data pertaining to cycling directed towards Outdoors destinations.
 
 
 ###Destination : Cycling - Grocery store, other stores or mall (306), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to grocery store, other stores or mall destinations:
 
 ```{r creating Cullen and Frey graph for cycling 2015- Grocery store, other stores or mall (306)}
 # creating a skew vs. kurtois graph for cycling 2015
@@ -1255,7 +1172,7 @@ using a skew vs. kurtois graph to descriptive statistics of data
 descdist(c_306_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
-As shown in the Cullen and Frey graph, we see that normal, gamma, lognormal and logistic will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the normal, gamma, lognormal and logistic distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -1302,10 +1219,10 @@ plot(x= fit_dlogis_30615$x, y=fit_dlogis_30615$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the cycling data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the cycling data best:
 broom::glance(MASS::fitdistr(w_306_2015$DURATION%>% unlist() %>% as.numeric(),"logistic"))
 broom::glance(MASS::fitdistr(w_306_2015$DURATION%>% unlist() %>% as.numeric(),"lognormal"))
 broom::glance(MASS::fitdistr(w_306_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
@@ -1324,7 +1241,8 @@ summary(c_306_2015$f_306)
 
 
 ###Destination : Cycling - Library, museum or theatre (307), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
+
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to library, museum or theatre destinations:
 
 ```{r creating Cullen and Frey graph for cycling 2015 - Library, museum or theatre (307)}
 # creating a skew vs. kurtois graph for cycling 2015
@@ -1338,9 +1256,10 @@ print(count)
 #descdist(c_307_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
+There is no available data pertaining to cycling directed towards library, museum or theatre destinations.
 
 ###Destination : Cycling - Restaurant, bar or club (309), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to restaurant, bar or club destinations:
 
 ```{r creating Cullen and Frey graph for cycling 2015 - Restaurant, bar or club (309)}
 # creating a skew vs. kurtois graph for cycling 2015
@@ -1352,7 +1271,7 @@ using a skew vs. kurtois graph to descriptive statistics of data
 descdist(c_309_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
-As shown in the Cullen and Frey graph, we see that gamma, normal, poisson and exponential will likely be the best fit according to the graph above. Then we compare these models to find the best model.
+As illustrated in the Cullen and Frey graph, the gamma, normal, poisson and exponential distributions appear to be the most suitable fits according to the aforementioned graph. Subsequently, we will conduct a comparative analysis of these models to ascertain the optimal model.
 
 ```{r}
 # Based on the skew vs. kurtois graph the best distribution
@@ -1399,10 +1318,10 @@ plot(x = fit_dexp_30915$x, y = fit_dexp_30915$f)
 
 ```
 
-Now let's compare these models AIC and BIC to see which fits the walk data best:
+Now let's compare these models AIC and BIC to see which fits the cycling data best:
 
 ```{r}
-#comparing these models AIC and BIC to see which fits the walk data best:
+#comparing these models AIC and BIC to see which fits the cycling data best:
 broom::glance(MASS::fitdistr(w_309_2015$DURATION%>% unlist() %>% as.numeric(),"gamma"))
 broom::glance(MASS::fitdistr(w_309_2015$DURATION%>% unlist() %>% as.numeric(),"normal"))
 broom::glance(MASS::fitdistr(w_309_2015$DURATION%>% unlist() %>% as.numeric(),"poisson"))
@@ -1419,7 +1338,7 @@ summary(c_309_2015$f_309)
 ```
 
 ###Destination : Cycling - Place of worship (310), 2015
-using a skew vs. kurtois graph to descriptive statistics of data
+The skewness vs. kurtosis graph provides descriptive statistics for cycling trips to home destinations:
 
 ```{r creating Cullen and Frey graph for cycling 2015 - Place of worship (310)}
 # creating a skew vs. kurtois graph for cycling 2015
@@ -1434,23 +1353,44 @@ print(count)
 #descdist(c_310_2015$DURATION %>% unlist() %>% as.numeric(), discrete=FALSE, boot=500)
 ```
 
+There is no available data pertaining to cycling directed towards place of worship destinations.
 
 
 
 
-creating a new walking data frame that have all the f values for walking 2015
 
+
+# Final step
+
+In the final step, we constructed a new walking and cycling data frame, "walking_2015_f" and "cycling_2015_f", that contains all the 'f' values for walking and cycling trips in 2015.
+
+Walking trips data frame:
 ```{r}
 walking_2015_f <- bind_rows(w_300_2015, w_301_2015, w_302_2015, w_303_2015, w_305_2015, w_306_2015, w_307_2015, w_309_2015, w_310_2015)
 
 ```
 
 
-creating a new cycling data frame that have all the f values for cycling 2015
-
+Cycling trips data frame :
 ```{r}
-cycling_2015_f <- bind_rows(c_300_2015, c_301_2015, c_302_2015, c_303_2015, c_305_2015, c_306_2015, c_307_2015, c_309_2015, c_310_2015)
+cycling_2015_f <- bind_rows(c_300_2015, c_301_2015, c_302_2015, c_303_2015, c_305_2015, c_306_2015,  c_309_2015)
 
+```
+
+
+Save these data frames:
+```{r}
+save(walking_2015_f,
+     file = paste0(here(), "/data/walking_2015_f.rda"),
+     compress = "bzip2",
+     version = 2,
+     ascii = FALSE)
+
+save(cycling_2015_f,
+     file = paste0(here(), "/data/cycling_2015_f.rda"),
+     compress = "bzip2",
+     version = 2,
+     ascii = FALSE)
 ```
 
 
