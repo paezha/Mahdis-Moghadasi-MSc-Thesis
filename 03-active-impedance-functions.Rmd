@@ -261,31 +261,50 @@ library(flextable) # Functions for Tabular Reporting
 library(tidyr) # Tidy Messy Data
 library(xtable) # Export Tables to LaTeX or HTML
 library(extrafont) # Tools for Using Fonts
+library(kableExtra)
+library(reshape2)
+library(RColorBrewer)
 ```
 
-<!--
+
+
+```{r Load the dataset, echo=FALSE, include=FALSE}
+# Load the dataset
+load(paste0(here(), "/data/walking_1986.Rda"))
+load(paste0(here(), "/data/walking_1992.Rda"))
+load(paste0(here(), "/data/walking_1998.Rda"))
+load(paste0(here(), "/data/walking_2005.Rda"))
+load(paste0(here(), "/data/walking_2010.Rda"))
+load(paste0(here(), "/data/walking_2015.Rda"))
+load(paste0(here(), "/data/cycling_1992.Rda"))
+load(paste0(here(), "/data/cycling_1998.Rda"))
+load(paste0(here(), "/data/cycling_2005.Rda"))
+load(paste0(here(), "/data/cycling_2010.Rda"))
+load(paste0(here(), "/data/cycling_2015.Rda"))
+```
+
+
 
 ```{r creating an integrated data, include=FALSE,  cache=FALSE}
 # creating an integrated data frame from 1992 to 2015
-trip <- rbind(walk_2015, cycle_2015, walk_2010,cycle_2010, walk_2005, cycle_2005, cycle_1998, walk_1998, walk_1992, cycle_1992, walk_1986)
+trip <- rbind(walking_2015, cycling_2015, walking_2010, cycling_2010, walking_2005, cycling_2005, cycling_1998, walking_1998, walking_1992, cycling_1992, walking_1986)
 
-#change cyclingtrip in cycling_2010 to cycling 
+# Change cyclingtrip in cycling_2010 to cycling 
 unique_modes <- unique(trip$MODE)
 print(unique_modes)
 trip$MODE[trip$MODE == "cyclingtrip"] <- "cycling"
 
-
-#change of the name of some values in the dest column in the dataset 
-
+# Change the name of some values in the dest column in the dataset 
+# Ensure that 'dest_label' is the correct column name
 trip <- trip %>%
-  mutate(dest = case_when(
-    dest == "Restaurant/bar" ~ "Restaurant, bar or club",
-    dest == "Outdoors away from home" ~ "outdoors",
-    dest == "Library" ~ "Library, museum or theatre",
-    TRUE ~ dest  # This line ensures other values remain unchanged
+  mutate(dest_label = case_when(
+    dest_label == "Restaurant/bar" ~ "Restaurant, bar or club",
+    dest_label == "Outdoors away from home" ~ "outdoors",
+    dest_label == "Library" ~ "Library, museum or theatre",
+    TRUE ~ dest_label  # This line ensures other values remain unchanged
   ))
-
 ```
+
 
 ```{r, echo=FALSE, cache=FALSE}
 
@@ -354,7 +373,6 @@ styled_table_13
 
 ```
 
--->
 
 Our primary method was rooted in descriptive analysis. We parsed vast quantities of data to discern overarching patterns and trends. A salient feature emerging from this analysis was the duration of trips undertaken.Table 2.1 contains a detailed compilation of descriptive statistics showing the fluctuating patterns of walking and cycling trips between 1986 and 2015. The data is categorized under two principal modes of transit: walking and cycling, with each category further explored through four statistical metrics: count, maximum (max), mean, and minimum (min), each quantified in minutes. In the walking trips section, the 'count' metric represents the number of recorded trips for each year. The journey began in 1986 with 384 recorded walking trips, escalating to 1,473 by 1992, indicating a burgeoning preference for walking during this period. The peak was reached in 1998 with 1,657 trips, which increased to an unprecedented 5,517 trips by 2005, possibly reflecting societal shifts toward healthier lifestyles or environmental concerns. However, post-2005, a downward trend emerged, with counts reducing to 4,360 trips in 2010 and further to 2,796 in 2015, possibly due to changing urban landscapes or the advent of alternative transportation modes. 
 
@@ -370,7 +388,7 @@ As highlighted in Table \ref{tab:table_13}, throughout the 30 years under study,
 # Filter for walking and cycling trips, selected years, and duration <= 90
 trip_stats_data <- trip %>%
   filter(MODE %in% c("walking", "cycling"), YEAR %in% c(1986, 1992, 1998), DURATION <= 90) %>%
-  group_by(YEAR, dest, MODE) %>%
+  group_by(YEAR, dest_label, MODE) %>%
   summarise(
     Count = n(),
     min = min(DURATION),
@@ -386,7 +404,7 @@ trip_stats_data$Percentage <- round((trip_stats_data$Count / trip_stats_data$tot
 
 # Group by YEAR, MODE, and dest, then summarize
 trip_stats_data <- trip_stats_data %>%
-  group_by(YEAR, MODE, dest) %>%
+  group_by(YEAR, MODE, dest_label) %>%
   summarise(
     Count = sum(Count),
     min = min(min),  # Minimum of minimum durations per group
@@ -400,7 +418,7 @@ trip_stats_data <- trip_stats_data %>%
 # Pivot data for the table layout
 wide_data <- trip_stats_data %>%
   pivot_wider(
-    id_cols = c(dest, MODE),
+    id_cols = c(dest_label, MODE),
     names_from = YEAR,
     values_from = c(min, median, max, Percentage)
   )
@@ -408,7 +426,7 @@ wide_data <- trip_stats_data %>%
 # Adjust column names for clarity and consistency
 wide_data <- wide_data %>%
  dplyr::select(
-    dest, MODE,
+    dest_lable, MODE,
     min_1986, median_1986, max_1986, Percentage_1986,
     min_1992, median_1992, max_1992, Percentage_1992,
     min_1998, median_1998, max_1998, Percentage_1998
@@ -470,7 +488,7 @@ styled_table_14
 # Filter for walking and cycling trips, selected years, and duration <= 90
 trip_stats_data <- trip %>%
   filter(MODE %in% c("walking", "cycling"), YEAR %in% c(2005, 2010, 2015), DURATION <= 90) %>%
-  group_by(YEAR, dest, MODE) %>%
+  group_by(YEAR, dest_label, MODE) %>%
   summarise(
     Count = n(),
     min = min(DURATION),
@@ -486,7 +504,7 @@ trip_stats_data$Percentage <- round((trip_stats_data$Count / trip_stats_data$tot
 
 # Group by YEAR, MODE, and dest, then summarize
 trip_stats_data <- trip_stats_data %>%
-  group_by(YEAR, MODE, dest) %>%
+  group_by(YEAR, MODE, dest_label) %>%
   summarise(
     Count = sum(Count),
     min = min(min),  # Minimum of minimum durations per group
@@ -500,7 +518,7 @@ trip_stats_data <- trip_stats_data %>%
 # Pivot data for the table layout
 wide_data <- trip_stats_data %>%
   pivot_wider(
-    id_cols = c(dest, MODE),
+    id_cols = c(dest_label, MODE),
     names_from = YEAR,
     values_from = c(min, median, max, Percentage)
   )
@@ -509,7 +527,7 @@ wide_data <- trip_stats_data %>%
 # Adjust column names for clarity and consistency
 wide_data <- wide_data %>%
  dplyr::select(
-    dest, MODE,
+    dest_label, MODE,
     min_2005, median_2005, max_2005, Percentage_2005,
     min_2010, median_2010, max_2010, Percentage_2010,
     min_2015, median_2015, max_2015, Percentage_2015
@@ -588,445 +606,595 @@ When comparing walking and cycling, it is evident that cycling has been embraced
 The evolution from 2005 to 2015 suggests an increasing preference for shorter, more efficient trips, potentially indicative of changing urban designs and lifestyles that favor convenience and time-saving. The data points to a population increasingly incorporating cycling into their routine for various trip purposes, reflecting broader trends towards sustainable transportation and active lifestyles. Overall, these statistics offer valuable insights into the dynamics of urban transportation, highlighting the gradual but distinct shifts in how people choose to travel within their cities. These shifts are influenced by a confluence of factors, including urban development, cultural trends, environmental considerations, and transportation policies aimed at promoting active transport modes.
 
 
+```{r Heatmap_walking_2015, echo=FALSE, cache=FALSE, include=FALSE}
+#Creating walking heatmap in 2015
 
-```{r walking_2015, include=FALSE, cache=FALSE}
+# Ensure WGHT_EPI is numeric
+walking_2015$WGHT_EPI <- as.numeric(as.character(walking_2015$WGHT_EPI))
 
-# **walking 2015**
-# Creating data of origins and destinations of walking trip 2015
-inds = which(gss_e_2015$LOCATION == 315)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-walking_2015 <- gss_e_2015 [unlist(rows),] %>% 
-  dplyr::select(PUMFID:LOCATION) %>% 
-  mutate(origin = lag(LOCATION, order_by = PUMFID)) %>% 
-  mutate(destination = lead(LOCATION, order_by = PUMFID)) %>% 
-  group_by(PUMFID) %>% 
-  filter(LOCATION == 315) %>% 
-  ungroup()
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- walking_2015 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
 
-# change destination and origins to text column
-walking_2015 <- walking_2015 %>%  filter(destination == 300 | destination == 301 | destination == 303 | destination == 302 | destination == 305 |destination == 306 | destination == 307 |destination == 309 | destination == 310 ) %>% filter(origin == 300 | origin == 301 | origin == 303 | origin == 302 | origin == 305 | origin == 306 | origin == 307  | origin == 309 | origin == 310 ) %>% 
-  mutate(dest =
-                     case_when(destination == 300 ~ "home", 
-                               destination == 301 ~ "work or school",
-                               destination == 303 ~ "other's home",
-                               destination == 302 ~ "business",
-                               destination == 305 ~ "outdoors",
-                               destination == 306 ~ "Grocery store, other stores or mall",
-                               destination == 307 ~ "Library, museum or theatre",
-                               destination == 309 ~ "Restaurant, bar or club",
-                               destination == 310 ~ "Place of worship")) %>% 
-  mutate(orig =
-                     case_when(origin == 300 ~ "home", 
-                               origin == 301 ~ "work or school",
-                               origin == 303 ~ "other's home",
-                               origin == 302 ~ "business",
-                               origin == 305 ~ "outdoors",
-                               origin == 306 ~ "Grocery store, other stores or mall",
-                               origin == 307 ~ "Library, museum or theatre",
-                               origin == 309 ~ "Restaurant, bar or club",
-                               origin == 310 ~ "Place of worship"))
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
 
-walking_2015 <- walking_2015 %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-walking_2015$YEAR <-  2015
-walking_2015$MODE <-  "walking"
-```
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
 
-```{r cycling_2015, include=FALSE, cache=FALSE}
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
 
-# cycling _2015
-# Creating data of origins and destinations of cycling trip 2015
-inds = which(gss_e_2015$LOCATION == 318)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-cycling_2015 <- gss_e_2015[unlist(rows),] %>% 
-  dplyr::select(PUMFID:LOCATION) %>% 
-  mutate(origin = lag(LOCATION, order_by = PUMFID)) %>% 
-  mutate(destination = lead(LOCATION, order_by = PUMFID)) %>% 
-  group_by(PUMFID) %>% 
-  filter(LOCATION == 318)
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
 
-# change destination and origins to text column
-cycling_2015 <- cycling_2015 %>%  filter(destination == 300 | destination == 301 | destination == 303 | destination == 302 | destination == 305 |destination == 306 | destination == 307 | destination == 309 | destination == 310 ) %>% filter(origin == 300 | origin == 301 | origin == 303 | origin == 302 | origin == 305 | origin == 306 | origin == 307 | origin == 309 | origin == 310) %>% 
-  mutate(dest =
-                     case_when(destination == 300 ~ "home", 
-                               destination == 301 ~ "work or school",
-                               destination == 303 ~ "other's home",
-                               destination == 302 ~ "business",
-                               destination == 305 ~ "outdoors",
-                               destination == 306 ~ "Grocery store, other stores or mall",
-                               destination == 307 ~ "Library, museum or theatre",
-                               destination == 309 ~ "Restaurant, bar or club",
-                               destination == 310 ~ "Place of worship")) %>% 
-  mutate(orig =
-                     case_when(origin == 300 ~ "home", 
-                               origin == 301 ~ "work or school",
-                               origin == 303 ~ "other's home",
-                               origin == 302 ~ "business",
-                               origin == 305 ~ "outdoors",
-                               origin == 306 ~ "Grocery store, other stores or mall",
-                               origin == 307 ~ "Library, museum or theatre",
-                               origin == 309 ~ "Restaurant, bar or club",
-                               origin == 310 ~ "Place of worship"))
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
 
-cycling_2015 <- cycling_2015 %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-cycling_2015$YEAR <-  2015
-cycling_2015$MODE <-  "cycling"
-```
+# Melt the matrix for use with ggplot
+heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
 
-```{r walking_2010, include=FALSE, cache=FALSE}
+# Create the ggplot object and assign it to a variable
+heatmap_plot_2015 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
 
-# **walking 2010**
-# Creating data of origins and destinations of walking trip 2010
-inds = which(gss_e_2010$PLACE == 14)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-walking_2010 <- gss_e_2010 [unlist(rows),] %>% 
-  dplyr::select(RECID:PLACE) %>% 
-  mutate(origin = lag(PLACE, order_by = RECID)) %>% 
-  mutate(destination = lead(PLACE, order_by = RECID)) %>% 
-  group_by(RECID) %>% 
-  filter(PLACE == 14) %>% 
-  ungroup()
+# Display the heatmap
+print(heatmap_plot_2015)
 
-# change destination and origins to text column
-walking_2010 <- walking_2010 %>%  filter(destination == 1 | destination == 2 | destination == 3 | destination == 4 | destination == 5 |destination == 6 | destination == 7 | destination == 8 | destination == 9 | destination == 10 ) %>% filter(origin == 1 | origin == 2 | origin == 3 | origin == 4 | origin == 5 | origin == 6 | origin == 7 | origin == 8 | origin == 9 | origin == 10) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home",
-                               destination == 4 ~ "Restaurant/bar",
-                               destination == 5 ~ "Place of worship",
-                               destination == 6 ~ "Grocery store, other stores or mall",
-                               destination == 7 ~ "Grocery store, other stores or mall",
-                               destination == 8 ~ "work or school",
-                               destination == 9 ~ "Outdoors away from home",
-                               destination == 10 ~ "Library" )) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home",
-                               origin == 4 ~ "Restaurant/bar",
-                               origin == 5 ~ "Place of worship",
-                               origin == 6 ~ "Grocery store, other stores or mall",
-                               origin == 7 ~ "Grocery store, other stores or mall",
-                               origin == 8 ~ "work or school",
-                               origin == 9 ~ "Outdoors away from home",
-                               origin == 10 ~ "Library"))
-
-walking_2010 <- walking_2010 %>%
-  rename(PUMFID = RECID,
-         LOCATION = PLACE)
-
-walking_2010 <- walking_2010 %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-walking_2010$YEAR <-  2010
-walking_2010$MODE <-  "walking"
-```
-
-```{r cycling_2010, include=FALSE, cache=FALSE}
-
-# cycling _2010
-# Creating data of origins and destinations of cycling trip 2010
-inds = which(gss_e_2010$PLACE == 17)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-cycling_2010 <- gss_e_2010[unlist(rows),] %>% 
-  dplyr::select(RECID:PLACE) %>% 
-  mutate(origin = lag(PLACE, order_by = RECID)) %>% 
-  mutate(destination = lead(PLACE, order_by = RECID)) %>% 
-  group_by(RECID) %>% 
-  filter(PLACE == 17)
-
-# change destination and origins to text column
-cycling_2010 <- cycling_2010 %>%  filter(destination == 1 | destination == 2 | destination == 3 | destination == 6 | destination == 7 | destination == 8 | destination == 9 ) %>% filter(origin == 1 | origin == 2 | origin == 3 | origin == 6 | origin == 7 | origin == 8 | origin == 9 ) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home",
-                               destination == 6 ~ "Grocery store, other stores or mall",
-                               destination == 7 ~ "Grocery store, other stores or mall",
-                               destination == 8 ~ "work or school",
-                               destination == 9 ~ "Outdoors away from home")) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home",
-                               origin == 6 ~ "Grocery store, other stores or mall",
-                               origin == 7 ~ "Grocery store, other stores or mall",
-                               origin == 8 ~ "work or school",
-                               origin == 9 ~ "Outdoors away from home"))
-
-cycling_2010 <- cycling_2010 %>%
-  rename(PUMFID = RECID,
-         LOCATION = PLACE)
-
-cycling_2010 <- cycling_2010 %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-cycling_2010$YEAR <-  2010
-cycling_2010$MODE <-  "cyclingtrip"
-```
-
-```{r walking_2005, include=FALSE, cache=FALSE}
-
-# **walking 2005**
-# Creating data of origins and destinations of walking trip 2005
-inds = which(gss_e_2005$PLACE == 14)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-walking_2005 <- gss_e_2005 [unlist(rows),] %>% 
-  dplyr::select(RECID:PLACE) %>% 
-  mutate(origin = lag(PLACE, order_by = RECID)) %>% 
-  mutate(destination = lead(PLACE, order_by = RECID)) %>% 
-  group_by(RECID) %>% 
-  filter(PLACE == 14) %>% 
-  ungroup()
-
-# change destination and origins to text column
-walking_2005 <- walking_2005 %>%  filter(destination == 1 | destination == 2 | destination == 3 | destination == 8 | destination == 4 | destination == 5 | destination == 6 | destination == 7 | destination == 9 | destination == 10 ) %>% filter(origin == 1 | origin == 2 | origin == 3 | origin == 8 | origin == 4 | origin == 5 | origin == 6 | origin == 7 | origin == 9 | origin == 10) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home",
-                               destination == 8 ~ "work or school",
-                               destination == 4 ~ "Restaurant, bar or club",
-                               destination == 5 ~ "Place of worship",
-                               destination == 6 ~ "Grocery store, other stores or mall",
-                               destination == 7 ~ "Grocery store, other stores or mall",
-                               destination == 9 ~ "outdoors",
-                               destination == 10 ~ "Library, museum or theatre")) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home",
-                               origin == 8 ~ "work or school",
-                               origin == 4 ~ "Restaurant, bar or club",
-                               origin == 5 ~ "Place of worship",
-                               origin == 6 ~ "Grocery store, other stores or mall",
-                               origin == 7 ~ "Grocery store, other stores or mall",
-                               origin == 9 ~ "outdoors",
-                               origin == 10 ~ "Library, museum or theatre"))
-
-walking_2005 <- walking_2005 %>% dplyr::rename(
-    PUMFID = RECID,
-    STARTMIN = STARMIN,
-    LOCATION = PLACE)
-
-walking_2005 <- walking_2005 %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-walking_2005$YEAR <-  2005
-walking_2005$MODE <-  "walking"
-```
-
-```{r cycling_2005, include=FALSE, cache=FALSE}
-
-# **CYCLING 2005**
-# Creating data of origins and destinations of cycling trip 2005
-inds = which(gss_e_2005$PLACE == 17)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-cycling_2005 <- gss_e_2005 [unlist(rows),] %>% 
-  dplyr::select(RECID:PLACE) %>% 
-  mutate(origin = lag(PLACE, order_by = RECID)) %>% 
-  mutate(destination = lead(PLACE, order_by = RECID)) %>% 
-  group_by(RECID) %>% 
-  filter(PLACE == 17) %>% 
-  ungroup()
-
-# change destination and origins to text column
-cycling_2005 <- cycling_2005 %>%  filter(destination == 1 | destination == 2 | destination == 3 | destination == 8 | destination == 4 |  destination == 6 | destination == 7 | destination == 9 ) %>% filter(origin == 1 | origin == 2 | origin == 3 | origin == 8 | origin == 4 | origin == 6 | origin == 7 | origin == 9 ) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home",
-                               destination == 8 ~ "work or school",
-                               destination == 4 ~ "Restaurant, bar or club",
-                               destination == 6 ~ "Grocery store, other stores or mall",
-                               destination == 7 ~ "Grocery store, other stores or mall",
-                               destination == 9 ~ "outdoors")) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home",
-                               origin == 8 ~ "work or school",
-                               origin == 4 ~ "Restaurant, bar or club",
-                               origin == 6 ~ "Grocery store, other stores or mall",
-                               origin == 7 ~ "Grocery store, other stores or mall",
-                               origin == 9 ~ "outdoors"))
-
-cycling_2005 <- cycling_2005 %>% dplyr::rename(
-    PUMFID = RECID,
-    STARTMIN = STARMIN,
-    LOCATION = PLACE) %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-cycling_2005$YEAR <-  2005
-cycling_2005$MODE <-  "cycling"
-```
-
-```{r  walking_1998, include=FALSE, cache=FALSE}
-
-# **walking 1998**
-# Creating data of origins and destinations of walking trip 1998
-inds = which(gss_e_1998$PLACE == 7)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-walking_1998 <- gss_e_1998 [unlist(rows),] %>% 
-  dplyr::select(RECID:PLACE) %>% 
-  mutate(origin = lag(PLACE, order_by = RECID)) %>% 
-  mutate(destination = lead(PLACE, order_by = RECID)) %>% 
-  group_by(RECID) %>% 
-  filter(PLACE == 7) %>% 
-  ungroup()
-
-# change destination and origins to text column
-walking_1998 <- walking_1998 %>%  filter(destination == 1 | destination == 2 | destination == 3) %>% filter(origin == 1 | origin == 2 | origin == 3) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home")) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home"))
-
-walking_1998 <- walking_1998 %>% dplyr::rename(
-    PUMFID = RECID,
-    STARTMIN = STARMIN,
-    WGHT_EPI = WGHTEPI,
-    LOCATION = PLACE) %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-walking_1998$YEAR <-  1998
-walking_1998$MODE <-  "walking"
-```
-
-```{r  cycling_1998, include=FALSE, cache=FALSE}
-
-# **Cycling 1998**
-# Creating data of origins and destinations of cycling trip 1998
-inds = which(gss_e_1998$PLACE == 9)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-cycling_1998 <- gss_e_1998 [unlist(rows),] %>% 
-  dplyr::select(RECID:PLACE) %>% 
-  mutate(origin = lag(PLACE, order_by = RECID)) %>% 
-  mutate(destination = lead(PLACE, order_by = RECID)) %>% 
-  group_by(RECID) %>% 
-  filter(PLACE == 9) %>% 
-  ungroup()
-
-# change destination and origins to text column
-cycling_1998 <- cycling_1998 %>%  filter(destination == 1 | destination == 2 | destination == 3) %>% filter(origin == 1 | origin == 2 | origin == 3) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home")) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home"))
-
-cycling_1998 <- cycling_1998 %>% dplyr::rename(
-    PUMFID = RECID,
-    STARTMIN = STARMIN,
-    WGHT_EPI = WGHTEPI,
-    LOCATION = PLACE) %>%  dplyr::select(PUMFID, WGHT_EPI, DDAY, STARTIME:orig) 
-cycling_1998$YEAR <-  1998
-cycling_1998$MODE <-  "cycling"
-```
-
-```{r  walking_1992, include=FALSE, cache=FALSE}
-# **walking 1992**
-# Creating data of origins and destinations of walking trip 1992
-inds = which(gss_e_1992$PLACE == 7)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-walking_1992 <- gss_e_1992 [unlist(rows),] %>% 
-  dplyr::select(SEQNUM, DDAY, NOEPISO, ACTCODE, STARTIME, ENDTIME, DURATION, PLACE, TIMEWGT) %>% 
-  mutate(origin = lag(PLACE, order_by = SEQNUM)) %>% 
-  mutate(destination = lead(PLACE, order_by = SEQNUM)) %>% 
-  group_by(SEQNUM) %>% 
-  filter(PLACE == 7) %>% 
-  ungroup()
-
-# change NA's Weight to 1 
-
-
-# change destination and origins to text column
-walking_1992 <- walking_1992 %>%  filter(destination == 1 | destination == 2 | destination == 3) %>% filter(origin == 1 | origin == 2 | origin == 3) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home")) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home"))
-
-walking_1992 <- walking_1992 %>% dplyr::rename(
-    PUMFID = SEQNUM,
-    LOCATION = PLACE, WGHT_EPI = TIMEWGT) %>%  dplyr::select(PUMFID, DDAY, STARTIME:orig) 
-walking_1992$YEAR <-  1992
-walking_1992$MODE <-  "walking"
-walking_1992$STARTMIN <-  1
-walking_1992$ENDMIN <-  1
-```
-
-```{r  cycling_1992, include=FALSE, cache=FALSE}
-
-# **Cycling 1992**
-# Creating data of origins and destinations of cycling trip 1992
-inds = which(gss_e_1992$PLACE == 9)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-cycling_1992 <- gss_e_1992 [unlist(rows),] %>% 
-  dplyr::select(SEQNUM, DDAY, NOEPISO, ACTCODE, STARTIME, ENDTIME, DURATION, PLACE, TIMEWGT) %>% 
-  mutate(origin = lag(PLACE, order_by = SEQNUM)) %>% 
-  mutate(destination = lead(PLACE, order_by = SEQNUM)) %>% 
-  group_by(SEQNUM) %>% 
-  filter(PLACE == 9) %>% 
-  ungroup()
-
-# change destination and origins to text column
-cycling_1992 <- cycling_1992 %>%  filter(destination == 1 | destination == 2 | destination == 3) %>% filter(origin == 1 | origin == 2 | origin == 3) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home")) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home"))
-
-cycling_1992 <- cycling_1992 %>% dplyr::rename(
-    PUMFID = SEQNUM,
-    LOCATION = PLACE,WGHT_EPI = TIMEWGT) %>%  dplyr::select(PUMFID, DDAY, STARTIME:orig) 
-cycling_1992$YEAR <-  1992
-cycling_1992$MODE <-  "cycling"
-cycling_1992$STARTMIN <-  1
-cycling_1992$ENDMIN <-  1
+# Save the ggplot object as a jpg file
+ggsave("heatmap_w_2015.svg", plot = heatmap_plot_2015, width = 6, height = 6, dpi = 600)
 
 ```
 
-```{r  walking_1986, include=FALSE, cache=FALSE}
 
-# **walking 1986**
-# Creating data of origins and destinations of walking trip 1986
-inds = which(gss_e_1986$PLACE == 7)
-rows <- lapply(inds, function(x) (x-1):(x+1))
-walking_1986 <- gss_e_1986 [unlist(rows),] %>% 
-  dplyr::select(SEQNUM, DDAY, NO_EPISO, ACT_CODE, STRTTIME, ENDTIME, DURATION, PLACE, FWGT_MS) %>% 
-  mutate(origin = lag(PLACE, order_by = SEQNUM)) %>% 
-  mutate(destination = lead(PLACE, order_by = SEQNUM)) %>% 
-  group_by(SEQNUM) %>% 
-  filter(PLACE == 7) %>% 
-  ungroup()
-summary(walking_1986$PLACE)
 
-# change destination and origins to text column
-walking_1986 <- walking_1986 %>%  filter(destination == 1 | destination == 2 | destination == 3) %>% filter(origin == 1 | origin == 2 | origin == 3) %>% 
-  mutate(dest =
-                     case_when(destination == 1 ~ "home", 
-                               destination == 2 ~ "work or school",
-                               destination == 3 ~ "other's home")) %>% 
-  mutate(orig =
-                     case_when(origin == 1 ~ "home", 
-                               origin == 2 ~ "work or school",
-                               origin == 3 ~ "other's home"))
+```{r Heatmap_walking_2010, echo=FALSE, cache=FALSE, include=FALSE}
+# Creating walking heatmap in 2010
 
-walking_1986 <- walking_1986 %>% dplyr::rename(
-    PUMFID = SEQNUM,
-    LOCATION = PLACE, WGHT_EPI = FWGT_MS, STARTIME = STRTTIME) %>%  dplyr::select(PUMFID, DDAY, STARTIME:orig) 
-walking_1986$YEAR <-  1986
-walking_1986$MODE <-  "walking"
-walking_1986$STARTMIN <-  1
-walking_1986$ENDMIN <-  1
+# Ensure WGHT_EPI is numeric
+walking_2010$WGHT_EPI <- as.numeric(as.character(walking_2010$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- walking_2010 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_2010 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_2010)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_w_2010.jpg", plot = heatmap_plot_2010, width = 6, height = 6, dpi = 600)
+
 ```
 
+
+```{r Heatmap_walking_2005, echo=FALSE, cache=FALSE, include=FALSE}
+
+# Creating walking heatmap in 2005
+# Ensure WGHT_EPI is numeric
+walking_2005$WGHT_EPI <- as.numeric(as.character(walking_2005$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- walking_2005 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_2005 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_2005)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_w_2005.jpg", plot = heatmap_plot_2005, width = 6, height = 6, dpi = 600)
+
+```
+
+
+```{r Heatmap_walking_1998, echo=FALSE, cache=FALSE, include=FALSE} 
+
+# Creating walking heatmap in 1998
+# Ensure WGHT_EPI is numeric
+walking_1998$WGHT_EPI <- as.numeric(as.character(walking_1998$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- walking_1998 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_1998 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_1998)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_w_1998.jpg", plot = heatmap_plot_1998, width = 6, height = 6, dpi = 600)
+
+```
+
+
+```{r Heatmap_walking_1992, echo=FALSE, cache=FALSE, include=FALSE}
+
+# Creating walking heatmap in 1992
+# Ensure WGHT_EPI is numeric
+walking_1992$WGHT_EPI <- as.numeric(as.character(walking_1992$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- walking_1992 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage<- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_1992 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_1992)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_w_1992.jpg", plot = heatmap_plot_1992, width = 6, height = 6, dpi = 600)
+
+```
+
+```{r Heatmap_walking_1986, echo=FALSE, cache=FALSE, include=FALSE}
+
+# Creating walking heatmap in 1986
+# Ensure WGHT_EPI is numeric
+walking_1986$WGHT_EPI <- as.numeric(as.character(walking_1986$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- walking_1986 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted_1986 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_1986 <- ggplot(heatmap_melted_1986, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted_1986$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted_1986$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted_1986$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_1986) 
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_w_1986.jpg", plot = heatmap_plot_1986, width = 6, height = 6, dpi = 600)
+```
+
+
+# heatmap-cycling
+
+```{r Heatmap_cycling_2015,echo=FALSE, cache=FALSE, include=FALSE }
+
+# Creating cycling heatmap in 2015
+# Ensure WGHT_EPI is numeric
+cycling_2015$WGHT_EPI <- as.numeric(as.character(cycling_2015$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- cycling_2015 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_c_2015 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_c_2015)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_c_2015.jpg", plot = heatmap_plot_c_2015, width = 6, height = 6, dpi = 600)
+
+```
+
+```{r Heatmap_cycling_2010,echo=FALSE, cache=FALSE, include=FALSE }
+# Creating cycling heatmap in 2010
+# Ensure WGHT_EPI is numeric
+cycling_2010$WGHT_EPI <- as.numeric(as.character(cycling_2010$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- cycling_2010 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_c_2010 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_c_2010)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_c_2010.jpg", plot = heatmap_plot_c_2010, width = 6, height = 6, dpi = 600)
+
+```
+
+
+```{r Heatmap_cycling_2005,echo=FALSE, cache=FALSE, include=FALSE }
+
+# Creating cycling heatmap in 2005
+# Ensure WGHT_EPI is numeric
+cycling_2005$WGHT_EPI <- as.numeric(as.character(cycling_2005$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- cycling_2005 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label, dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted_2005 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_c_2005 <- ggplot(heatmap_melted_2005, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted_2005$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted_2005$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted_2005$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_c_2005)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_c_2005.jpg", plot = heatmap_plot_c_2005, width = 6, height = 6, dpi = 600)
+
+```
+
+
+
+
+```{r Heatmap_cycling_1998,echo=FALSE, cache=FALSE, include=FALSE }
+
+# Creating cycling heatmap in 1998
+# Ensure WGHT_EPI is numeric
+cycling_1998$WGHT_EPI <- as.numeric(as.character(cycling_1998$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- cycling_1998 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Get the maximum percentage value for the legend
+max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted_1998 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object and assign it to a variable
+heatmap_plot_c_1998 <- ggplot(heatmap_melted_1998, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted_1998$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted_1998$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted_1998$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_c_1998)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_c_1998.jpg", plot = heatmap_plot_c_1998, width = 6, height = 6, dpi = 600)
+
+```
+
+```{r Heatmap_cycling_1992,echo=FALSE, cache=FALSE, include=FALSE }
+
+# Creating cycling heatmap in 1992
+# Ensure WGHT_EPI is numeric
+cycling_1992$WGHT_EPI <- as.numeric(as.character(cycling_1992$WGHT_EPI))
+
+# Calculate the count of each pair of the orig-dest trip and their weighted counts
+trip_counts <- cycling_1992 %>%
+  group_by(orig_label, dest_label) %>%
+  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
+            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
+
+# Calculate the total weighted count for normalization
+total_weighted_count <- sum(trip_counts$weighted_count)
+
+# Calculate percentages and round to 2 decimal places
+trip_counts <- trip_counts %>%
+  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
+
+# Reshape data for heatmap
+heatmap_data <- dcast(trip_counts, orig_label ~ dest_label, value.var = "percentage")
+
+# Convert the data frame to a matrix for the heatmap
+heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
+rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
+
+# Melt the matrix for use with ggplot
+heatmap_melted_1992 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
+
+# Create the ggplot object for the heatmap
+heatmap_plot_c_1992 <- ggplot(heatmap_melted_1992, aes(x = Destination, y = Origin, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
+                       na.value = "gray95", 
+                       limits = c(0, max(heatmap_melted_1992$value, na.rm = TRUE)), 
+                       breaks = c(0, max(heatmap_melted_1992$value, na.rm = TRUE)), 
+                       labels = c("0%", paste0(max(heatmap_melted_1992$value, na.rm = TRUE), "%"))) +
+  labs(x = "Destination", y = "Origin", fill = "Percentage") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(angle = 0, vjust = 0.5))
+
+# Display the heatmap
+print(heatmap_plot_c_1992)
+
+# Save the ggplot object as a jpg file
+ggsave("heatmap_c_1992.jpg", plot = heatmap_plot_c_1992, width = 6, height = 6, dpi = 600)
+
+```
 
 Figure 1 and Figure 2, as depicted, serve as a comprehensive visual compilation of walking and cycling trip data spanning nearly three decades, from 1986 to 2015. These heat maps employ a nuanced color gradient to translate complex data into an easily interpretable format. The spectrum of colors, from deep, rich tones to pale hues, corresponds directly to the percentage of trips along various origins and destinations, with the darkest shades representing the highest percentage between origins and destinations. Lighter shades denote pathways less traveled, offering a clear visual distinction between the frequented and less frequented corridors of pedestrian/cyclist movement.
 
@@ -1093,10 +1261,12 @@ To objectively assess the fit of each distribution, model selection criteria suc
 Following the detailed statistical analysis, we present four comprehensive tables that encapsulate AIC, BIC, and log-likelihood values of each destination by mode and year (Tables \ref{tab:table_16},\ref{tab:table_17}, \ref{tab:table_18}, and \ref{tab:table_19}). These tables summarize the fitting process for each distribution evaluated, illuminating the decision-making process for selecting the most suitable distribution for each destination category. The tables illustrate our model selection process, highlighting the distribution that emerged as the best fit for each specific context based on the lowest AIC and BIC values and the highest log-likelihood scores. The first table delineates the statistical metrics for walking trips, while the second table deals with trips made by bicycle. Each table is organized to showcase the comparison across different years, thus offering insights into the temporal dynamics of travel behavior and the evolution of distance decay characteristics. By presenting the diagnostics in this tabular format, we aim to provide a clear and accessible reference demonstrating the distributional trends and patterns discerned from the GSS dataset.
 
 
-```{r table-imw1, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
+```{r loading dataset}
+walking_data <- read.csv(paste0(here(), "/data-inputs/source-files/Validation_Impedance function/walking-AIC.csv"))
+cycling_data <- read.csv(paste0(here(), "/data-inputs/source-files/Validation_Impedance function/cycling-AIC.csv"))
+```
 
-# Load your data into an R dataframe. Make sure the path to your Excel file is correct.
-walking_data <- read_excel("walking-AIC-2.xlsx")
+```{r table-imw1, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
 
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Home", "work or school", "Other's home")
@@ -1152,9 +1322,6 @@ landscape(kable_styling)
 
 ```{r table-imw2, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
 
-# Load your data into an R dataframe
-walking_data <- read_excel("walking-AIC-2.xlsx")
-
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Home", "work or school", "Other's home", "Outdoors")
 walking_data_filtered <- walking_data[walking_data$Destinations %in% desired_destinations,]
@@ -1208,9 +1375,6 @@ landscape(kable_styling)
 
 
 ```{r table-imw3, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
-
-# Load your data into an R dataframe
-walking_data <- read_excel("walking-AIC-2.xlsx")
 
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Grocery store", "Restaurant", "Library", "Place of worship")
@@ -1266,9 +1430,6 @@ landscape(kable_styling)
 
 ```{r table-imc1,echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
 
-# Load your data into an R dataframe. Make sure the path to your Excel file is correct.
-cycling_data <- read_excel("cycling-AIC.xlsx")
-
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Home", "work or school", "other's home")
 cycling_data_filtered <- cycling_data[cycling_data$destinations %in% desired_destinations,]
@@ -1307,9 +1468,6 @@ landscape(kable_styling)
 
 
 ```{r table-imc2,echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
-
-# Load your data into an R dataframe
-cycling_data <- read_excel("cycling-AIC.xlsx")
 
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Home", "work or school", "other's home", "Outdoors")
@@ -1365,9 +1523,6 @@ landscape(kable_styling)
 
 ```{r table-imc3, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
 
-# Load your data into an R dataframe
-cycling_data <- read_excel("cycling-AIC.xlsx")
-
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Grocery store", "Restaurant")
 cycling_data_filtered <- cycling_data[cycling_data$destinations %in% desired_destinations,]
@@ -1411,8 +1566,6 @@ kable_styling <- kable(cycling_data_filtered[c("destinations", "Impedance Functi
 
 # Print the table in landscape orientation
 landscape(kable_styling)
-
-
 ```
 
 

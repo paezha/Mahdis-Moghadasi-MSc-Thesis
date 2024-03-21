@@ -113,12 +113,12 @@ In this notebook I experiment with reading the files and then saving them to an 
 
 Read main files of GSS survey (Episode Files) from 1986 to 2015:
 ```{r}
-gss_e_2015 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_2015/gss-e.csv"))
-gss_e_2010 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_2010/gss-12M0018-E-2010-c-24-tus-ef_F1.csv"))
-gss_e_2005 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_2005/gss-12M0019-E-2005-c-19-e_F1.csv"))
-gss_e_1998 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_1998/gss-12M0012-E-1998-c-12e_F1.csv"))
-gss_e_1992 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_1992/gss-12M0007-E-1992-c-7-ep_F1.csv"))
-gss_e_1986 <- read.csv(paste0(here(), "/data-inputs/source-files/Time use_1986/gss-12M0002-E-1986-c-2-ep_F1.csv"))
+gss_e_2015 <- read.csv(paste0(here(), "/data-inputs/source-files/2015_Time use (GSS)/gss-e.csv"))
+gss_e_2010 <- read.csv(paste0(here(), "/data-inputs/source-files/2010_Time use (GSS)/gss-12M0018-E-2010-c-24-tus-ef_F1.csv"))
+gss_e_2005 <- read.csv(paste0(here(), "/data-inputs/source-files/2005_Time use (GSS)/gss-12M0019-E-2005-c-19-e_F1.csv"))
+gss_e_1998 <- read.csv(paste0(here(), "/data-inputs/source-files/1998_Time use (GSS)/gss-12M0012-E-1998-c-12e_F1.csv"))
+gss_e_1992 <- read.csv(paste0(here(), "/data-inputs/source-files/1992_Time use (GSS)/gss-12M0007-E-1992-c-7-ep_F1.csv"))
+gss_e_1986 <- read.csv(paste0(here(), "/data-inputs/source-files/1986_Time use (GSS)/gss-12M0002-E-1986-c-2-ep_F1.csv"))
 ```
 
 
@@ -139,7 +139,7 @@ Second, this analysis phase is dedicated to establishing a focused data set abou
 ```{r}
 walking_2015 <- gss_e_2015 |>
   dplyr::slice(unlist(rows)) |>
-  dplyr::select(PUMFID, WGHT_EPI,DDAY,TUI_01:LOCATION) |> 
+  dplyr::select(PUMFID, WGHT_EPI,TUI_01:LOCATION) |> 
   #dplyr::slice_head(n = 15) |>
   group_by(PUMFID) |>
   mutate(origin = lag(LOCATION),
@@ -1546,181 +1546,6 @@ No data are available regarding cycling trips in 1986.
 
 
 
-
-
-
-
-
-# creating an integrated data frame from 1992 to 2015
-
-
-```{r}
-trip_w_f <- rbind(walking_2015,walking_2010, walking_2005, walking_1998 ,walking_1992,  walking_1986) 
-trip_c_f <- rbind(cycling_2015,cycling_2010, cycling_2005, cycling_1998 ,cycling_1992)
-trip_f <-  rbind(walking_2015,walking_2010, walking_2005, walking_1998 ,walking_1992,  walking_1986, cycling_2015,cycling_2010, cycling_2005, cycling_1998 ,cycling_1992)
-```
-
-
-Here, creating a figure of impedance function for walking trips during 1986- 2015.
-```{r}
-ggplot(data = trip_w_f, aes(x = DURATION, y = f)) + 
-geom_line(linetype = "solid", color = "blue", size =1.25) +
-  facet_grid(. ~ YEAR) +
-  scale_x_continuous("Time in minutes") +
-  scale_y_continuous("Cumulative Percentage of Trips") +
-  labs(title = "Impedance function for walking trip from 1986 - 2015")
-#ggsave("IP_W.png", dpi = 600)
-```
-
-```{r}
-summary(trip_c_f)
-print(summary)
-```
-Here, creating a figure of impedance function for cycling trips during 1986- 2015
-
-```{r}
-ggplot(data = trip_c_f, aes(x = DURATION, y = f)) + 
-geom_line(linetype = "solid", na.rm=TRUE, color = "red", size =1.25) +
-  facet_grid(. ~ YEAR) +
-  scale_x_continuous("Time in minutes") +
-  scale_y_continuous("Cumulative Percentage of Trips") +
-  labs(title = "Impedance function for cycling trip from 1986 - 2015")
-#ggsave("IP_C.png", dpi = 600)
-```
-
-creating a figure of impedance function of walking and cycling to different destinations in 2015 
-
-```{r}
-trip__f_2015 <- rbind(walking_2015,cycling_2015)
-```
-
-```{r}
-ggplot(data = trip__f_2015, aes(x = DURATION, y = f, color = MODE)) + 
-geom_line() +
-  facet_wrap(facets = vars(dest_label)) +
-  scale_x_continuous("Time in minutes") +
-  scale_y_continuous("Cumulative Percentage of Trips") +
-  labs(title = "Impedance function to different destinations in 2015")
-#ggsave("IP_2015.png", dpi = 600)
-```
-
-creating a figure of impedance function of walking and cycling to different destinations in 2010
-```{r}
-trip__f_2010 <- rbind(walking_2010,cycling_2010)
-```
-
-```{r}
-ggplot(data = trip__f_2010, aes(x = DURATION, y = f, color = MODE)) + 
-geom_line() +
-  facet_wrap(facets = vars(dest_label)) +
-  scale_x_continuous("Time in minutes") +
-  scale_y_continuous("Cumulative Percentage of Trips") +
-  labs(title = "Impedance function to different destinations in 2010")
-#ggsave("IP_2010.png", dpi = 600)
-```
-
-creating a figure of impedance function of walking and cycling to different destinations in 2005
-
-```{r}
-trip__f_2005 <- rbind(walking_2005,cycling_2005)
-```
-
-```{r}
-ggplot(data = trip__f_2005, aes(x = DURATION, y = f, color = MODE)) + 
-geom_line() +
-  facet_wrap(facets = vars(dest_label)) +
-  scale_x_continuous("Time in minutes") +
-  scale_y_continuous("Cumulative Percentage of Trips") +
-  labs(title = "Impedance function to different destinations in 2005")
-#ggsave("IP_2005.png", dpi = 600)
-```
-
-creating a figure of impedance function of walking and cycling to different destinations in 1998
-
-```{r}
-trip__f_1998 <- rbind(walking_1998,cycling_1998)
-```
-
-```{r}
-ggplot(data = trip__f_1998, aes(x = DURATION, y = f, color = MODE)) + 
-geom_line() +
-  facet_wrap(facets = vars(dest_label)) +
-  scale_x_continuous("Time in minutes") +
-  scale_y_continuous("Cumulative Percentage of Trips") +
-  labs(title = "Impedance function to different destinations in 1998")
-#ggsave("IP_1998.png", dpi = 600)
-```
-
-creating a figure of impedance function of walking and cycling to different destinations in 1992
-```{r}
-trip__f_1992 <- rbind(walking_1992,cycling_1992)
-```
-
-```{r}
-ggplot(data = trip__f_1992, aes(x = DURATION, y = f, color = MODE)) + 
-geom_line() +
-  facet_wrap(facets = vars(dest_label)) +
-  scale_x_continuous("Time in minutes") +
-  scale_y_continuous("Cumulative Percentage of Trips") +
-  labs(title = "Impedance function to different destinations in 1992")
-#ggsave("IP_1992.png", dpi = 600)
-```
-
-
-creating a figure of impedance function of walking and cycling to different destinations in 1986
-```{r}
-ggplot(data = walking_1986, aes(x = DURATION, y = f, color = MODE)) + 
-geom_line() +
-  facet_wrap(facets = vars(dest_label)) +
-  scale_x_continuous("Time in minutes") +
-  scale_y_continuous("Cumulative Percentage of Trips") +
-  labs(title = "Impedance function to different destinations in 1986")
-#ggsave("IP_1986.png", dpi = 600)
-```
-
-
-
-4.1 Walking and cycling duration 
-
-Table 1. shows home is the most destination for walking trips.
-
-```{r}
-Table_1 <- trip_f %>% filter(MODE == "walking") %>% 
-  group_by(dest_label, YEAR) %>%
- summarise(across(.cols = c(DURATION),  # columns
-                   .fns =  list("mean" = mean, "Maximum" = max, "Median" = median),                               # 
-                   na.rm=T))  
-  walking_2015 %>%  count(dest_label) %>%
-  mutate(percent = scales::percent(n / sum(n)))
-  
-   walking_2005 %>%  count(dest_label) %>%
-  mutate(percent = scales::percent(n / sum(n)))
-   
-    walking_1998 %>%  count(dest_label) %>%
-  mutate(percent = scales::percent(n / sum(n)))
-     
-    walking_1992 %>%  count(dest_label) %>%
-  mutate(percent = scales::percent(n / sum(n)))
-  
-
-```
-
-
-
-
-```{r}
-Table_1 <- trip_f %>% filter(MODE == "walking") %>% 
-  group_by(dest_label, YEAR) %>%
- summarise(across(.cols = c(DURATION),  # columns
-                   .fns =  list("mean" = mean, "Maximum" = max, "Median" = median),                               # 
-                   na.rm=T))  
- walking_2015 %>%  count(dest_label) %>%
-  mutate(percent = scales::percent(n / sum(n)))
-  kable(Table_1) %>%
-  kable_styling(latex_options = c("scale_down")) 
-kbl(caption = "Summary statistics on walking trips in 2015") %>% kable_classic(full_width = F, html_font = "Cambria") %>%  add_header_above(c(" " = 1, "Duration" = 3))
-  
-```
 
 
 

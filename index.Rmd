@@ -85,7 +85,7 @@ If you'd like to include a comment that won't be produced in your resulting file
 If you receive a duplicate label error after knitting, make sure to delete the index.Rmd file and then knit again.
 -->
 
-```{r include_packages, include = FALSE}
+```{r include_packages, echo=FALSE, include = FALSE}
 # This chunk ensures that the macdown package is
 # installed and loaded. This macdown package includes
 # the template files for the thesis.
@@ -94,7 +94,17 @@ if(!require(remotes))
 if(!require(macdown))
   remotes::install_github("paezha/macdown")
 library(macdown)
+if (!require("renv")) install.packages("renv")
+renv::restore()
+
+if (!require("remotes")) 
+  install.packages("remotes", repos = "https://cran.rstudio.org")
+remotes::install_github("rstudio/bookdown")
+remotes::install_github("ismayc/thesisdown")
 ```
+
+
+
 
 <!--
 The acknowledgements, preface, dedication, and abstract are added into the PDF
