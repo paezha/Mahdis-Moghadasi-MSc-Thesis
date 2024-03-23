@@ -7,22 +7,18 @@ faculty: 'Faculty of Science'
 department: 'School of Earth, Environment and Society'
 subject: 'Geography'
 supervisor: 'Antonio Paez'
-bdegree: 'B.Sc.' # Bachellor's Degree
-mdegree: ''   # Master's Degree (if any)
+#bdegree: 'B.Sc.' # Bachellor's Degree
+#mdegree: ''   # Master's Degree (if any)
 # This is the degree you are aiming for with this thesis
 degree: 'Master of Science'
 
 knit: bookdown::render_book
 site: bookdown::bookdown_site
-
-# Remove the hashtag to specify which version of output you would like.
 # Can only choose one at a time.
 output:
   thesisdown::thesis_pdf: default 
   keep_tex: true
-#  thesisdown::thesis_gitbook: default         
-#  thesisdown::thesis_word: default
-#  thesisdown::thesis_epub: default
+
 
 # If you are creating a PDF you'll need to write your preliminary content 
 # (e.g., abstract, acknowledgements) below or use code similar to line 25-26 
@@ -93,9 +89,7 @@ if(!require(remotes))
   install.packages("remotes", repos = "http://cran.rstudio.com")
 if(!require(macdown))
   remotes::install_github("paezha/macdown")
-library(macdown)
-if (!require("renv")) install.packages("renv")
-renv::restore()
+
 
 if (!require("remotes")) 
   install.packages("remotes", repos = "https://cran.rstudio.org")
@@ -122,16 +116,21 @@ version automatically by inputting them in the YAML at the top of this file.
 BEGINNING HERE ADD THE DOCUMENTS THAT CONFORM THE MAIN BODY OF THE THESIS
 
 Instead the files and their order are defined in `_bookdown.yml`. This prevents the README.Rmd file from being picked up when rendering.
+-->
 
-```{r eval=!knitr::is_latex_output(), child=here::here("01-chap1.Rmd")}
-
-```
-
-```{r eval=!knitr::is_latex_output(), child=here::here("02-chap2.Rmd")}
+```{r eval=!knitr::is_latex_output(), child=here::here("01-introduction.Rmd")}
 
 ```
 
-```{r eval=!knitr::is_latex_output(), child=here::here("03-conclusion.Rmd")}
+```{r eval=!knitr::is_latex_output(), child=here::here("02-data-sources-needs.Rmd")}
+
+```
+
+```{r eval=!knitr::is_latex_output(), child=here::here("03-active-impedance-functions.Rmd")}
+
+```
+
+```{r eval=!knitr::is_latex_output(), child=here::here("04-conclusion.Rmd")}
 
 ```
 
@@ -139,7 +138,7 @@ Instead the files and their order are defined in `_bookdown.yml`. This prevents 
 
 ```
 
--->
+
 
 <!--chapter:end:index.Rmd-->
 
@@ -1702,9 +1701,7 @@ library(RColorBrewer)
 ```
 
 
-
-```{r Load the dataset, echo=FALSE, include=FALSE}
-# Load the dataset
+```{r}
 load(paste0(here(), "/data/walking_1986.Rda"))
 load(paste0(here(), "/data/walking_1992.Rda"))
 load(paste0(here(), "/data/walking_1998.Rda"))
@@ -1716,12 +1713,13 @@ load(paste0(here(), "/data/cycling_1998.Rda"))
 load(paste0(here(), "/data/cycling_2005.Rda"))
 load(paste0(here(), "/data/cycling_2010.Rda"))
 load(paste0(here(), "/data/cycling_2015.Rda"))
+load(paste0(here(), "/data/cycling_data.Rda"))
+load(paste0(here(), "/data/walking_data.Rda"))
 ```
 
 
-
 ```{r creating an integrated data, include=FALSE,  cache=FALSE}
-# creating an integrated data frame from 1992 to 2015
+# creating an integrated data frame from 1986 to 2015
 trip <- rbind(walking_2015, cycling_2015, walking_2010, cycling_2010, walking_2005, cycling_2005, cycling_1998, walking_1998, walking_1992, cycling_1992, walking_1986)
 
 # Change cyclingtrip in cycling_2010 to cycling 
@@ -1817,12 +1815,13 @@ For cycling trips, data is absent for 1986. Starting in 1992, 126 trips are note
 
 As highlighted in Table \ref{tab:table_13}, throughout the 30 years under study, the duration of walking trips was consistently lower than that of cycling trips. To quantify this discrepancy, the mean duration for walking trips was approximately 33% of the corresponding duration for cycling trips, underscoring the inherent differences in these modes of transportation. An intriguing trend was observed between the years 1986 to 2005. The average duration of walking and cycling trips decreased significantly over the last two decades. Various factors might have precipitated this trend, such as urban sprawl, increased reliance on motorized transport, or societal preferences for faster modes of transportation. However, the subsequent decade (2005-2015) witnessed a marked reversal in this trend. The average duration for walking and cycling trips stabilized and began showing signs of resurgence. It could indicate many factors: growing urbanization leading to more accessible destinations, increased awareness and initiatives promoting health and sustainability, changes in urban planning that prioritize active modes of travel and improving required infrastructure, or a combination of these elements. This resurgence suggests a renewed and possibly growing affinity towards walking and cycling as viable modes of transportation.
 
-```{r Trip, echo=FALSE, cache=FALSE, warning=FALSE, results="asis"}
 
+
+```{r Trip, echo=FALSE, cache=FALSE, warning=FALSE, results="asis"}
 
 # Filter for walking and cycling trips, selected years, and duration <= 90
 trip_stats_data <- trip %>%
-  filter(MODE %in% c("walking", "cycling"), YEAR %in% c(1986, 1992, 1998), DURATION <= 90) %>%
+  filter(MODE %in% c("Walking", "cycling"), YEAR %in% c(1986, 1992, 1998), DURATION <= 90) %>%
   group_by(YEAR, dest_label, MODE) %>%
   summarise(
     Count = n(),
@@ -1861,7 +1860,7 @@ wide_data <- trip_stats_data %>%
 # Adjust column names for clarity and consistency
 wide_data <- wide_data %>%
  dplyr::select(
-    dest_lable, MODE,
+    dest_label, MODE,
     min_1986, median_1986, max_1986, Percentage_1986,
     min_1992, median_1992, max_1992, Percentage_1992,
     min_1998, median_1998, max_1998, Percentage_1998
@@ -1914,7 +1913,6 @@ styled_table_14 <- wide_data %>%
 
 styled_table_14
 
-
 ```
 
 ```{r echo=FALSE, cache=FALSE, warning=FALSE}
@@ -1922,7 +1920,7 @@ styled_table_14
 
 # Filter for walking and cycling trips, selected years, and duration <= 90
 trip_stats_data <- trip %>%
-  filter(MODE %in% c("walking", "cycling"), YEAR %in% c(2005, 2010, 2015), DURATION <= 90) %>%
+  filter(MODE %in% c("Walking", "cycling"), YEAR %in% c(2005, 2010, 2015), DURATION <= 90) %>%
   group_by(YEAR, dest_label, MODE) %>%
   summarise(
     Count = n(),
@@ -2364,8 +2362,6 @@ ggsave("heatmap_w_1986.jpg", plot = heatmap_plot_1986, width = 6, height = 6, dp
 ```
 
 
-# heatmap-cycling
-
 ```{r Heatmap_cycling_2015,echo=FALSE, cache=FALSE, include=FALSE }
 
 # Creating cycling heatmap in 2015
@@ -2495,7 +2491,7 @@ trip_counts <- trip_counts %>%
 max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
 
 # Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig_label, dest_label, value.var = "percentage")
+heatmap_data <- dcast(trip_counts, orig_label~ dest_label, value.var = "percentage")
 
 # Convert the data frame to a matrix for the heatmap
 heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
@@ -2651,7 +2647,7 @@ These changing patterns indicate how the role of walking in urban environments h
 \begin{landscape}
 
 ```{r heat-w, echo=FALSE, out.width='100%', fig.cap="Percentage of walking Trips Categorized by Origin and Destination", fig.align="center"}
-knitr::include_graphics("heat-w.jpg")
+knitr::include_graphics("figure/ch03-Fig01.jpg")
 ```
 \end{landscape}
 \clearpage
@@ -2677,7 +2673,7 @@ Overall, these trends across different years illustrate a consistent reliance on
 \begin{landscape}
 
 ```{r heat-c, echo=FALSE, out.width='100%', fig.cap="Percentage of cycling Trips Categorized by Origin and Destination", fig.align="center"}
-knitr::include_graphics("heat-c.jpg")
+knitr::include_graphics("figure/ch03-Fig02.jpg")
 ```
 \end{landscape}
 \clearpage
@@ -2696,10 +2692,6 @@ To objectively assess the fit of each distribution, model selection criteria suc
 Following the detailed statistical analysis, we present four comprehensive tables that encapsulate AIC, BIC, and log-likelihood values of each destination by mode and year (Tables \ref{tab:table_16},\ref{tab:table_17}, \ref{tab:table_18}, and \ref{tab:table_19}). These tables summarize the fitting process for each distribution evaluated, illuminating the decision-making process for selecting the most suitable distribution for each destination category. The tables illustrate our model selection process, highlighting the distribution that emerged as the best fit for each specific context based on the lowest AIC and BIC values and the highest log-likelihood scores. The first table delineates the statistical metrics for walking trips, while the second table deals with trips made by bicycle. Each table is organized to showcase the comparison across different years, thus offering insights into the temporal dynamics of travel behavior and the evolution of distance decay characteristics. By presenting the diagnostics in this tabular format, we aim to provide a clear and accessible reference demonstrating the distributional trends and patterns discerned from the GSS dataset.
 
 
-```{r loading dataset}
-walking_data <- read.csv(paste0(here(), "/data-inputs/source-files/Validation_Impedance function/walking-AIC.csv"))
-cycling_data <- read.csv(paste0(here(), "/data-inputs/source-files/Validation_Impedance function/cycling-AIC.csv"))
-```
 
 ```{r table-imw1, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
 
@@ -2749,10 +2741,6 @@ kable_styling <- kable(walking_data_filtered[c("Destinations", "Impedance_Functi
 landscape(kable_styling)
 
 ```
-
-
-
-
 
 
 ```{r table-imw2, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
@@ -2860,14 +2848,11 @@ landscape(kable_styling)
 
 
 
-
-
-
 ```{r table-imc1,echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
 
 # Filter the dataframe to only include specific destinations
-desired_destinations <- c("Home", "work or school", "other's home")
-cycling_data_filtered <- cycling_data[cycling_data$destinations %in% desired_destinations,]
+desired_destinations <- c("Home", "work or school", "Other's home")
+cycling_data_filtered <- cycling_data[cycling_data$Destinations %in% desired_destinations,]
 
 # Round the numeric columns to two decimal places
 numeric_columns <- c("logLik_1992", "AIC_1992", "BIC_1992", 
@@ -2880,17 +2865,18 @@ col_names <- c("Destinations", "Impedance\nFunction",
                "logLik\n1998", "AIC\n1998", "BIC\n1998", "Selected\nFunction\n1998")
 
 # Create the table with wrapped column titles
-kable_styling <- kable(cycling_data_filtered[c("destinations", "Impedance Function",
+
+kable_styling <- kable(cycling_data_filtered[c("Destinations", "Impedance_Function",
                                                "logLik_1992", "AIC_1992", "BIC_1992", "Selected_Function_1992",
                                                "logLik_1998", "AIC_1998", "BIC_1998", "Selected_Function_1998")],
                        caption = "\\label{tab:table_18}Impedance functions and selection criteria across different destinations for cycling trips (1992 and 1998)",
-    col.names = c("Destinations", "Distribution Functions","logLik","AIC","BIC", "Selected Function", "logLik","AIC","BIC", "Selected Function"),
+                       col.names = col_names, # Assuming col_names variable is defined as shown before
                        format = "latex", booktabs = TRUE, linesep = "", escape = FALSE) %>%
   collapse_rows(columns = 1, valign = "top") %>%
   kable_styling(full_width = F, font_size = 7, latex_options = c("striped", "hold_position")) %>%
   column_spec(1, bold = T, border_right = TRUE) %>%
   column_spec(2, italic = T) %>%
-  add_header_above(c(" " = 2, "1992" = 4, "1998" = 4)) 
+  add_header_above(c(" " = 2, "1992" = 4, "1998" = 4))
 
 # Print the table in landscape orientation
 landscape(kable_styling)
@@ -2905,8 +2891,8 @@ landscape(kable_styling)
 ```{r table-imc2,echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
 
 # Filter the dataframe to only include specific destinations
-desired_destinations <- c("Home", "work or school", "other's home", "Outdoors")
-cycling_data_filtered <- cycling_data[cycling_data$destinations %in% desired_destinations,]
+desired_destinations <- c("Home", "work or school", "Other's home", "Outdoors")
+cycling_data_filtered <- cycling_data[cycling_data$Destinations %in% desired_destinations,]
 
 # Round the numeric columns to two decimal places for the years 2005, 2010, and 2015
 numeric_columns <- c("logLik_2005", "AIC_2005", "BIC_2005",
@@ -2920,13 +2906,13 @@ col_names <- c("Destinations", "Impedance\nFunction",
                "logLik\n2010", "AIC\n2010", "BIC\n2010", "Selected\nFunction\n2010",
                "logLik\n2015", "AIC\n2015", "BIC\n2015", "Selected\nFunction\n2015")
 
-# Create the table with wrapped column titles for the new years
-kable_styling <- kable(cycling_data_filtered[c("destinations", "Impedance Function",
-                                      "logLik_2005", "AIC_2005", "BIC_2005", "Selected_Function_2005",
-                                      "logLik_2010", "AIC_2010", "BIC_2010", "Selected_Function_2010",
-                                      "logLik_2015", "AIC_2015", "BIC_2015", "Selected_Function_2015")],
+# Corrected column names for "destinations" to "Destinations" and "Impedance Function" to "Impedance_Function"
+kable_styling <- kable(cycling_data_filtered[c("Destinations", "Impedance_Function",
+                                               "logLik_2005", "AIC_2005", "BIC_2005", "Selected_Function_2005",
+                                               "logLik_2010", "AIC_2010", "BIC_2010", "Selected_Function_2010",
+                                               "logLik_2015", "AIC_2015", "BIC_2015", "Selected_Function_2015")],
                        caption = "\\label{tab:table_19}Impedance functions and selection criteria across different destinations for cycling trips (2005, 2010, and 2015).",
-    col.names = c("Destinations", "Distribution Functions","logLik","AIC","BIC", "Selected Function", "logLik","AIC","BIC", "Selected Function", "logLik","AIC","BIC", "Selected Function"),
+    col.names = col_names, # Use the corrected col_names for wrapped column titles
                        format = "latex", booktabs = TRUE, linesep = "", escape = FALSE) %>%
   collapse_rows(columns = 1, valign = "top") %>%
   kable_styling(full_width = F, font_size = 7, latex_options = c("striped", "hold_position")) %>%
@@ -2960,7 +2946,7 @@ landscape(kable_styling)
 
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Grocery store", "Restaurant")
-cycling_data_filtered <- cycling_data[cycling_data$destinations %in% desired_destinations,]
+cycling_data_filtered <- cycling_data[cycling_data$Destinations %in% desired_destinations,]
 
 # Round the numeric columns to two decimal places for the years 2005, 2010, and 2015
 numeric_columns <- c("logLik_2005", "AIC_2005", "BIC_2005",
@@ -2974,12 +2960,12 @@ col_names <- c("Destinations", "Impedance\nFunction",
                "logLik\n2010", "AIC\n2010", "BIC\n2010", "Selected\nFunction\n2010",
                "logLik\n2015", "AIC\n2015", "BIC\n2015", "Selected\nFunction\n2015")
 
-# Create the table with wrapped column titles for the new years
-kable_styling <- kable(cycling_data_filtered[c("destinations", "Impedance Function",
+# Corrected column names in the kable() call
+kable_styling <- kable(cycling_data_filtered[c("Destinations", "Impedance_Function",
                                       "logLik_2005", "AIC_2005", "BIC_2005", "Selected_Function_2005",
                                       "logLik_2010", "AIC_2010", "BIC_2010", "Selected_Function_2010",
                                       "logLik_2015", "AIC_2015", "BIC_2015", "Selected_Function_2015")],
-    col.names = c("Destinations", "Distribution Functions","logLik","AIC","BIC", "Selected Function", "logLik","AIC","BIC", "Selected Function", "logLik","AIC","BIC", "Selected Function"),
+                       col.names = col_names,
                        format = "latex", booktabs = TRUE, linesep = "", escape = FALSE) %>%
   collapse_rows(columns = 1, valign = "top") %>%
   kable_styling(full_width = F, font_size = 7, latex_options = c("striped", "hold_position")) %>%
@@ -2997,7 +2983,7 @@ kable_styling <- kable(cycling_data_filtered[c("destinations", "Impedance Functi
   column_spec(12, width = "0.75cm") %>%
   column_spec(13, width = "0.75cm") %>%
   column_spec(14, width = "1.0cm") %>%
-  add_header_above(c(" " = 2, "2005" = 4, "2010" = 4, "2015" = 4)) 
+  add_header_above(c(" " = 2, "2005" = 4, "2010" = 4, "2015" = 4))
 
 # Print the table in landscape orientation
 landscape(kable_styling)
@@ -3014,7 +3000,7 @@ These figures encapsulate a wealth of information about travel behavior and serv
 \centering
 
 ```{r home-wi, echo=FALSE, out.width='110%', fig.cap="Modeling distance decay curves of walking to home destination"}
-knitr::include_graphics("home-wi.jpg")
+knitr::include_graphics("figure/ch03-Fig03.jpg")
 ```
 \end{landscape}
 \clearpage
@@ -3023,7 +3009,7 @@ knitr::include_graphics("home-wi.jpg")
 \begin{landscape}
 \centering
 ```{r home-ci, echo=FALSE, out.width='110%', fig.cap="Modeling distance decay curves of cycling to home destination"}
-knitr::include_graphics("home-ci.jpg")
+knitr::include_graphics("figure/ch03-Fig04.jpg")
 ```
 \end{landscape}
 \clearpage
@@ -3037,12 +3023,12 @@ Conversely, Figure \@ref(fig:home-ci) captures the progression of cycling trip b
 \begin{landscape}
 
 ```{r work-wi, echo=FALSE, fig.cap="Modeling distance decay curves of walking to work or school destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "work-wi.jpg")
+include_graphics(path = "figure/ch03-Fig05.jpg")
 ```
 
 
 ```{r work-ci, echo=FALSE, fig.cap="Modeling distance decay curves of cycling to work or school destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "work-ci.jpg")
+include_graphics(path = "figure/ch03-Fig06.jpg")
 ```
 \end{landscape}
 
@@ -3055,12 +3041,12 @@ Figure \@ref(fig:work-ci) presents the trends for cycling trips to work or schoo
 
 \begin{landscape}
 ```{r other-wi, echo=FALSE, fig.cap="Modeling distance decay curves of walking to other's home destination", out.width="90%", fig.align="center"}
-include_graphics(path = "other-wi.jpg")
+include_graphics(path = "figure/ch03-Fig07.jpg")
 ```
 
 
 ```{r other-ci, echo=FALSE, fig.cap="Modeling distance decay curves of cycling to other's home destination", out.width="90%", fig.align="center"}
-include_graphics(path = "other-ci.jpg")
+include_graphics(path = "figure/ch03-Fig08.jpg")
 ```
 \end{landscape}
 
@@ -3072,11 +3058,11 @@ There are noticeable fluctuations in the peak travel times from 1986 to 2015. Fo
 \begin{landscape}
 
 ```{r grocery-wi, echo=FALSE, fig.cap="Modeling distance decay curves of walking to grocery store, other stores or mall destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "grocery-wi.jpg")
+include_graphics(path = "figure/ch03-Fig09.jpg")
 ```
 
 ```{r grocery-ci, echo=FALSE, fig.cap="Modeling distance decay curves of cycling to grocery store, other stores or mall destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "grocery-ci.jpg")
+include_graphics(path = "figure/ch03-Fig10.jpg")
 ```
 \end{landscape}
 
@@ -3091,11 +3077,11 @@ In summary, the data from the provided graphs point to a change in the travel pa
 \begin{landscape}
 
 ```{r outdoors-wi, echo=FALSE, fig.cap="Modeling distance decay curves of walking to outdoors destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "outdoors-wi.jpg")
+include_graphics(path = "figure/ch03-Fig11.jpg")
 ```
 
 ```{r outdoors-ci, echo=FALSE, fig.cap="Modeling distance decay curves of cycling to outdoors destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "outdoors-ci.jpg")
+include_graphics(path = "figure/ch03-Fig12.jpg")
 ```
 \end{landscape}
 \clearpage
@@ -3108,11 +3094,11 @@ In Figure \@ref(fig:outdoors-wi), for walking trips to outdoor destinations, the
 \begin{landscape}
 
 ```{r restaurant-wi, echo=FALSE, fig.cap="Modeling distance decay curves of walking to restaurant, bar or club destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "restaurant-wi.jpg")
+include_graphics(path = "figure/ch03-Fig13.jpg")
 ```
 
 ```{r restaurant-ci, echo=FALSE, fig.cap="Modeling distance decay curves of cycling to restaurant, bar or club destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "restaurant-ci.jpg")
+include_graphics(path = "figure/ch03-Fig14.jpg")
 ```
 \end{landscape}
 \clearpage
@@ -3125,7 +3111,7 @@ In the yellow line graph for 2005 (Figure \@ref(fig:restaurant-wi)), there is a 
 \begin{landscape}
 
 ```{r place-wi, echo=FALSE, fig.cap="Modeling distance decay curves of walking to place of worship destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "place-wi.jpg")
+include_graphics(path = "figure/ch03-Fig15.jpg")
 ```
 
 \end{landscape}
@@ -3138,7 +3124,7 @@ Figure \@ref(fig:place-wi) presents the frequency of walking trips to places of 
 \begin{landscape}
 
 ```{r library-wi, echo=FALSE, fig.cap="Modeling distance decay curves of walking to library, museum or theatre destinations", out.width="90%", fig.align="center"}
-include_graphics(path = "library-wi.jpg")
+include_graphics(path = "figure/ch03-Fig16.jpg")
 ```
 
 \end{landscape}
@@ -3154,11 +3140,11 @@ The distance decay curves for walking (Figure \@ref(fig:imp-w1) and Figure \@ref
 \begin{landscape}
 
 ```{r imp-w1, echo=FALSE, fig.cap="Modeling distance decay curves of walking to different destinations(1986, 1992 and 1998)", out.width="100%", fig.align="center"}
-include_graphics(path = "imp_walking_1.jpg")
+include_graphics(path = "figure/ch03-Fig17.jpg")
 ```
 
 ```{r imp-w2, echo=FALSE, fig.cap="Modeling distance decay curves of walking to different destinations(2005, 2010, and 2015)", out.width="90%", fig.align="center"}
-include_graphics(path = "imped_walking_2.jpg")
+include_graphics(path = "figure/ch03-Fig18.jpg")
 ```
 
 \end{landscape}
@@ -3172,11 +3158,11 @@ in walking trips to reach destinations such as their own homes, others’ homes,
 \thispagestyle{empty}
 \begin{landscape}
 ```{r imp-c1, echo=FALSE, fig.align="center", fig.cap="Modeling distance decay curves of cycling to different destinations(1992 and 1998)", out.width="90%"}
-include_graphics(path = "imped_cycling.jpg")
+include_graphics(path = "figure/ch03-Fig19.jpg")
 ```
 
 ```{r imp-c2, echo=FALSE, fig.align="center", fig.cap="Modeling distance decay curves of cycling to different destinations(2005, 2010, and 2015)", out.width="90%"}
-include_graphics(path = "imped_cycling_2.jpg")
+include_graphics(path = "figure/ch03-Fig20.jpg")
 ```
 
 \end{landscape}

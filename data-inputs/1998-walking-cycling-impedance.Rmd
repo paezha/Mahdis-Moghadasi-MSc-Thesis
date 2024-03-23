@@ -689,13 +689,13 @@ cycling_1998_f <- bind_rows(c_1_1998, c_2_1998, c_3_1998)
 Save these data frames:
 ```{r}
 save(walking_1998_f,
-     file = paste0(here(), "/data/walking_1998_f.rda"),
+     file = paste0(here(), "/data/walking_1998_f.Rda"),
      compress = "bzip2",
      version = 2,
      ascii = FALSE)
 
 save(cycling_1998_f,
-     file = paste0(here(), "/data/cycling_1998_f.rda"),
+     file = paste0(here(), "/data/cycling_1998_f.Rda"),
      compress = "bzip2",
      version = 2,
      ascii = FALSE)

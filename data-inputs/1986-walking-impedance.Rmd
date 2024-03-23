@@ -307,7 +307,7 @@ walking_1986_f <- bind_rows(w_1_1986, w_2_1986, w_3_1986)
 Save:
 ```{r}
 save(walking_1986_f,
-     file = paste0(here(), "/data/walking_1986_f.rda"),
+     file = paste0(here(), "/data/walking_1986_f.Rda"),
      compress = "bzip2",
      version = 2,
      ascii = FALSE)

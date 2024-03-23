@@ -7,22 +7,18 @@ faculty: 'Faculty of Science'
 department: 'School of Earth, Environment and Society'
 subject: 'Geography'
 supervisor: 'Antonio Paez'
-bdegree: 'B.Sc.' # Bachellor's Degree
-mdegree: ''   # Master's Degree (if any)
+#bdegree: 'B.Sc.' # Bachellor's Degree
+#mdegree: ''   # Master's Degree (if any)
 # This is the degree you are aiming for with this thesis
 degree: 'Master of Science'
 
 knit: bookdown::render_book
 site: bookdown::bookdown_site
-
-# Remove the hashtag to specify which version of output you would like.
 # Can only choose one at a time.
 output:
   thesisdown::thesis_pdf: default 
   keep_tex: true
-#  thesisdown::thesis_gitbook: default         
-#  thesisdown::thesis_word: default
-#  thesisdown::thesis_epub: default
+
 
 # If you are creating a PDF you'll need to write your preliminary content 
 # (e.g., abstract, acknowledgements) below or use code similar to line 25-26 
@@ -93,9 +89,7 @@ if(!require(remotes))
   install.packages("remotes", repos = "http://cran.rstudio.com")
 if(!require(macdown))
   remotes::install_github("paezha/macdown")
-library(macdown)
-if (!require("renv")) install.packages("renv")
-renv::restore()
+
 
 if (!require("remotes")) 
   install.packages("remotes", repos = "https://cran.rstudio.org")
@@ -122,16 +116,21 @@ version automatically by inputting them in the YAML at the top of this file.
 BEGINNING HERE ADD THE DOCUMENTS THAT CONFORM THE MAIN BODY OF THE THESIS
 
 Instead the files and their order are defined in `_bookdown.yml`. This prevents the README.Rmd file from being picked up when rendering.
+-->
 
-```{r eval=!knitr::is_latex_output(), child=here::here("01-chap1.Rmd")}
-
-```
-
-```{r eval=!knitr::is_latex_output(), child=here::here("02-chap2.Rmd")}
+```{r eval=!knitr::is_latex_output(), child=here::here("01-introduction.Rmd")}
 
 ```
 
-```{r eval=!knitr::is_latex_output(), child=here::here("03-conclusion.Rmd")}
+```{r eval=!knitr::is_latex_output(), child=here::here("02-data-sources-needs.Rmd")}
+
+```
+
+```{r eval=!knitr::is_latex_output(), child=here::here("03-active-impedance-functions.Rmd")}
+
+```
+
+```{r eval=!knitr::is_latex_output(), child=here::here("04-conclusion.Rmd")}
 
 ```
 
@@ -139,4 +138,4 @@ Instead the files and their order are defined in `_bookdown.yml`. This prevents 
 
 ```
 
--->
+

@@ -419,6 +419,7 @@ Save data for later use:
 ```{r}
 save(cycling_2015,
     file = paste0(here(), "/data/cycling_2015.Rda"))
+
 ```
 
 
@@ -553,6 +554,7 @@ Save data for later use:
 ```{r}
 save(walking_2010,
     file = paste0(here(), "/data/walking_2010.Rda"))
+
 ```
 
 
@@ -698,6 +700,7 @@ Save data for later use:
 ```{r}
 save(cycling_2010,
     file = paste0(here(), "/data/cycling_2010.Rda"))
+
 ```
 
 
@@ -835,6 +838,7 @@ Save data for later use:
 ```{r}
 save(walking_2005,
      file = paste0(here(), "/data/walking_2005.Rda"))
+
 ```
 
 
@@ -1084,6 +1088,7 @@ Save data for later use:
 ```{r}
 save(walking_1998,
      file = paste0(here(), "/data/walking_1998.Rda"))
+
 ```
 
 
@@ -1306,6 +1311,7 @@ Save data for later use:
 ```{r}
 save(walking_1992,
      file = paste0(here(), "/data/walking_1992.Rda"))
+
 ```
 
 
@@ -1429,6 +1435,7 @@ Save data for later use:
 ```{r}
 save(cycling_1992,
      file = paste0(here(), "/data/cycling_1992.Rda"))
+
 ```
 
 
@@ -1544,7 +1551,22 @@ No data are available regarding cycling trips in 1986.
 
 
 
+# Creating dataset of VALIDATION OF Impedance function
 
+```{r loading dataset}
+walking_data <- read.csv(paste0(here(), "/data-inputs/source-files/Validation_Impedance function/walking-AIC.csv"))
+cycling_data <- read.csv(paste0(here(), "/data-inputs/source-files/Validation_Impedance function/cycling-AIC.csv"))
+save(walking_data,
+     file = paste0(here(), "/data/walking_data.Rda"),
+     compress = "bzip2",
+     version = 2,
+     ascii = FALSE)
+save(cycling_data,
+     file = paste0(here(), "/data/cycling_data.Rda"),
+     compress = "bzip2",
+     version = 2,
+     ascii = FALSE)
+```
 
 
 

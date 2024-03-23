@@ -1381,13 +1381,13 @@ cycling_2015_f <- bind_rows(c_300_2015, c_301_2015, c_302_2015, c_303_2015, c_30
 Save these data frames:
 ```{r}
 save(walking_2015_f,
-     file = paste0(here(), "/data/walking_2015_f.rda"),
+     file = paste0(here(), "/data/walking_2015_f.Rda"),
      compress = "bzip2",
      version = 2,
      ascii = FALSE)
 
 save(cycling_2015_f,
-     file = paste0(here(), "/data/cycling_2015_f.rda"),
+     file = paste0(here(), "/data/cycling_2015_f.Rda"),
      compress = "bzip2",
      version = 2,
      ascii = FALSE)
