@@ -291,7 +291,7 @@ load(paste0(here(), "/data/cycling_1992_f.Rda"))
 load(paste0(here(), "/data/cycling_1998_f.Rda"))
 load(paste0(here(), "/data/cycling_2005_f.Rda"))
 load(paste0(here(), "/data/cycling_2010_f.Rda"))
-load(paste0(here(), "/data/cycling_2015_f .Rda"))
+load(paste0(here(), "/data/cycling_2015_f.Rda"))
 
 ```
 
@@ -1216,284 +1216,7 @@ The 1998 heatmap reveals a predominance of trips from home to other's homes, at 
 Over nearly three decades, the trends in walking trips reveal significant shifts in the patterns and preferences of pedestrians. In the earlier years, such as 1986 and 1992, walking trips were predominantly characterized by social visitations, as evidenced by the high percentage of trips between 'home' and 'other's home. In 1986, these social trips constituted the majority of walking activities, with 29.21% from 'other's home' to 'home' and 21.83% in the reverse direction. By 1992, there was a notable increase in intracategory 'home' trips (27.85%), suggesting a rise in walking for leisure or short errands within the neighborhood. This shift highlights transitioning from walking predominantly for social purposes to incorporating more leisure and short-distance errands.
 
 In contrast, in the later years, especially in 2005 and 2015, there has been a clear trend towards walking being more frequently used for commuting purposes. In 2005, the commute from 'home' to 'work or school' was the most prevalent walking trip, accounting for 13.22% of all walking trips. Similarly, in 2015, walking trips from home to work or school represented the highest percentage (13.2%), indicating an increased reliance on walking as a primary mode of transportation for commuting. This transition from social to commuting purposes reflects broader changes in urban lifestyles and possibly improvements in pedestrian infrastructure, making walking a more viable option for daily commutes. The data also shows a consistent pattern of return trips from work or school to home, further underscoring the bidirectional nature of commuting trips.
-These changing patterns indicate how the role of walking in urban environments has evolved. Initially, it served primarily as a means of social connectivity and short leisurely activities. Over time, however, it has increasingly become a key component of the daily commute, reflecting changes in urban planning, societal habits, and possibly environmental consciousness. The heat maps' changing color gradients over the years visually encapsulate this evolution, marking a shift in the urban pedestrian landscape.
-
-```{r heat-map_walking 1986, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-# Ensure WGHT_EPI is numeric
-walking_1986$WGHT_EPI <- as.numeric(as.character(walking_1986$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- walking_1986 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted_1986 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_1986 <- ggplot(heatmap_melted_1986, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted_1986$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted_1986$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted_1986$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
- 
-```{r heat-map_walking 1992, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-# Ensure WGHT_EPI is numeric
-walking_1992$WGHT_EPI <- as.numeric(as.character(walking_1992$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- walking_1992 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage<- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_1992 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
- 
-```{r heat-map_walking 1998, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-# Ensure WGHT_EPI is numeric
-walking_1998$WGHT_EPI <- as.numeric(as.character(walking_1998$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- walking_1998 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_1998 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-```
-
-```{r heat-map_walking 2005, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-
-# Ensure WGHT_EPI is numeric
-walking_2005$WGHT_EPI <- as.numeric(as.character(walking_2005$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- walking_2005 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_2005 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
-
-```{r heat-map_walking 2010, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-
-# Ensure WGHT_EPI is numeric
-walking_2010$WGHT_EPI <- as.numeric(as.character(walking_2010$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- walking_2010 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_2010 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
-
-```{r heat-map_walking 2015, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-# Ensure WGHT_EPI is numeric
-walking_2015$WGHT_EPI <- as.numeric(as.character(walking_2015$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- walking_2015 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI)) # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_2015 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
+These changing patterns indicate how the role of walking in urban environments has evolved. Initially, it served primarily as a means of social connectivity and short leisurely activities. Over time, however, it has increasingly become a key component of the daily commute, reflecting changes in urban planning, societal habits, and possibly environmental consciousness. The heat maps' changing color gradients over the years visually encapsulate this evolution, marking a shift in the urban pedestrian landscape
 
 
  
@@ -1523,233 +1246,7 @@ In earlier years, such as 2005 and 1998, the emphasis on commuting was still app
 
 Overall, these trends across different years illustrate a consistent reliance on bicycles for commuting in Canada, coupled with a growing appreciation of their role in social and recreational activities. The shifting percentages and patterns of use reflect changing urban lifestyles, advancements in cycling infrastructure, and an increasing recognition of the bicycle as a versatile, environmentally friendly, and health-conscious mode of transportation in Canadian cities
 
-```{r heat-map_walking 1992, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
 
-# Ensure WGHT_EPI is numeric
-cycling_1992$WGHT_EPI <- as.numeric(as.character(cycling_1992$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- cycling_1992 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted_1992 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object for the heatmap
-heatmap_plot_c_1992 <- ggplot(heatmap_melted_1992, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted_1992$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted_1992$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted_1992$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
-
-```{r heat-map_cycling 1998, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-# Ensure WGHT_EPI is numeric
-cycling_1998$WGHT_EPI <- as.numeric(as.character(cycling_1998$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- cycling_1998 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted_1998 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_c_1998 <- ggplot(heatmap_melted_1998, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted_1998$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted_1998$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted_1998$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
-
-```{r heat-map_cycling 2005, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-# Ensure WGHT_EPI is numeric
-cycling_2005$WGHT_EPI <- as.numeric(as.character(cycling_2005$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- cycling_2005 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted_2005 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_c_2005 <- ggplot(heatmap_melted_2005, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted_2005$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted_2005$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted_2005$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
-
-```{r heat-map_cycling 2010, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-# Ensure WGHT_EPI is numeric
-cycling_2010$WGHT_EPI <- as.numeric(as.character(cycling_2010$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- cycling_2010 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_c_2010 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
-
-
-```{r heat-map_cycling 2015, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
-
-# Ensure WGHT_EPI is numeric
-cycling_2015$WGHT_EPI <- as.numeric(as.character(cycling_2015$WGHT_EPI))
-
-# Calculate the count of each pair of the orig-dest trip and their weighted counts
-trip_counts <- cycling_2015 %>%
-  group_by(orig, dest) %>%
-  summarize(count_each_trip = n(), # Count the number of trips for each unique origin-destination pair
-            weighted_count = sum(WGHT_EPI), .groups = 'drop') # Calculate weighted count for each origin-destination pair
-
-# Calculate the total weighted count for normalization
-total_weighted_count <- sum(trip_counts$weighted_count)
-
-# Calculate percentages and round to 2 decimal places
-trip_counts <- trip_counts %>%
-  mutate(percentage = round((weighted_count / total_weighted_count) * 100, 2))
-
-# Get the maximum percentage value for the legend
-max_percentage <- max(trip_counts$percentage, na.rm = TRUE)
-
-# Reshape data for heatmap
-heatmap_data <- dcast(trip_counts, orig ~ dest, value.var = "percentage")
-
-# Convert the data frame to a matrix for the heatmap
-heatmap_matrix <- as.matrix(heatmap_data[,-1]) # Remove the first column (orig)
-rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig' column
-
-# Melt the matrix for use with ggplot
-heatmap_melted <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
-
-# Create the ggplot object and assign it to a variable
-heatmap_plot_c_2015 <- ggplot(heatmap_melted, aes(x = Destination, y = Origin, fill = value)) +
-  geom_tile(color = "white") +
-  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "YlOrRd"), 
-                       na.value = "gray95", 
-                       limits = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       breaks = c(0, max(heatmap_melted$value, na.rm = TRUE)), 
-                       labels = c("0%", paste0(max(heatmap_melted$value, na.rm = TRUE), "%"))) +
-  labs(x = "Destination", y = "Origin", fill = "Percentage") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(angle = 0, vjust = 0.5))
-
-```
 
 
 
@@ -2883,6 +2380,335 @@ Figure \@ref(fig:library-wi) illustrates the walking trip frequency to libraries
 
 The distance decay curves for walking (Figure \@ref(fig:imp-w1) and Figure \@ref(fig:imp-w2)) and cycling (Figure \@ref(fig:imp-c1) and Figure \@ref(fig:imp-c2)) to different destinations and for different years from 1986 to 2015 were analyzed. The analysis revealed that the shape of the distance decay curves varied depending on the destination and the mode. The destinations for which these functions were estimated vary across different years, modes of transportation (walking and cycling), and the available data. For instance, in 2005, 2010, and 2015, the walking destinations encompassed a wide range, including home, work or school, other people’s homes, grocery stores, other retail stores or malls, outdoor spaces, restaurants, bars or clubs, libraries, museums, theaters, and places of worship. In contrast, the destinations for 1986, 1992, and 1998 were limited to just three categories: home, other people’s homes, and work or school. 
 
+```{r impedance function-walking-2015, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the walking_data for the year 2015 only
+walking_data_2015 <- walking_data_f %>%
+  filter(YEAR == 2015)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab4",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- walking_data_2015 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 2015 with dashed lines and size 0.8
+walking_plot_2015 <- ggplot(walking_data_2015, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line( size = 0.8) +  # Set lines to dashed and size to 0.8
+  scale_color_manual(values = dest_colors) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of walking for 2015",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line to 
+  ) +
+  scale_x_continuous(breaks = seq(0, max(walking_data_2015$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+
+```
+
+```{r impedance function-walking-2010, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the walking_data for the year 2010 only
+walking_data_2010 <- walking_data_f %>%
+  filter(YEAR == 2010)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "Outdoors away from home" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- walking_data_2010 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 2010
+walking_plot_2010 <- ggplot(walking_data_2010, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of walking for 2010",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line to   
+  ) +
+  scale_x_continuous(breaks = seq(0, max(walking_data_2010$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+
+```
+
+
+
+```{r impedance function-walking-2005, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the walking_data for the year 2005 only
+walking_data_2005 <- walking_data_f %>%
+  filter(YEAR == 2005)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- walking_data_2005 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 2015
+walking_plot_2005 <- ggplot(walking_data_2005, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+   geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of walking for 2005",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line to 
+  )  +
+  scale_x_continuous(breaks = seq(0, max(walking_data_2005$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+```
+
+
+```{r impedance function-walking-1998, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the walking_data for the year 1998 only
+walking_data_1998 <- walking_data_f %>%
+  filter(YEAR == 1998)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- walking_data_1998 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 2015
+walking_plot_1998 <- ggplot(walking_data_1998, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+   geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of walking for 1998",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line to 
+  ) +
+  scale_x_continuous(breaks = seq(0, max(walking_data_1998$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+
+```
+
+```{r impedance function-walking-1992, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the walking_data for the year 1998 only
+walking_data_1992 <- walking_data_f %>%
+  filter(YEAR == 1992)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- walking_data_1992 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 1992
+walking_plot_1992 <- ggplot(walking_data_1992, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of walking for 1992",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line to   
+  ) +
+  scale_x_continuous(breaks = seq(0, max(walking_data_1992$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+```
+
+
+```{r impedance function-walking-1986, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the walking_data for the year 1986 only
+walking_data_1986 <- walking_data_f %>%
+  filter(YEAR == 1986)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Calculate the peaks for each group
+peaks <- walking_data_1986 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 1986
+walking_plot_1986 <- ggplot(walking_data_1986, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of walking for 1986",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "gray10", family = "sans"),
+    axis.title = element_text(color = "grey10", family = "sans"),
+    axis.text = element_text(color = "grey10", family = "sans"),
+    legend.text = element_text(size = 10, color = "grey10", family = "sans"),  
+    legend.title = element_text(size = 10, color = "grey10", family = "sans"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line to ensure x and y axis lines are visible
+  ) +
+  scale_x_continuous(breaks = seq(0, max(walking_data_1986$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+```
+
+
 \newpage
 \thispagestyle{empty}
 \begin{landscape}
@@ -2898,9 +2724,296 @@ include_graphics(path = "figure/ch03-Fig18.jpg")
 \end{landscape}
 \clearpage
 
+
 Between 1986 and 1998, the highest frequency of walking trips occurred within the 5-10 minute range. Subsequently, from 1998 to 2010, the peak shifted to the 0-5 minute range, only to return to the 5-10 minute range during the period from 2010 to 2015. Based on the findings presented in Figures \@ref(fig:imp-w1) and \@ref(fig:imp-w2), it is evident that in 2015, the majority of walking trips had a duration of less than 50 minutes. The graphical representations of walking trip patterns exhibit similar trends for destinations such as home, work or school, other people’s homes, and grocery stores. However, when it comes to recreational destinations like outdoor locations, restaurants, bars or clubs, places of worship, and libraries, individuals tend to walk for a shorter duration, typically around
 40 minutes. This observation underscores the discretionary nature of entertainment-related trips, which often do not adhere to strict time constraints within an individual’s daily activity schedule. In 2010, individuals exhibited a willingness to engage in walking trips of less than 40 minutes duration, regardless of their intended purposes. However, this trend experienced a decline in 2005, with the average walking trip duration decreasing to approximately less than 30 minutes for all purposes. Furthermore, between 1986 and 1998, there was a notable decrease in people’s willingness to engage
 in walking trips to reach destinations such as their own homes, others’ homes, work, and school. Specifically, the average walking duration decreased from 70 minutes in 1986 to 40 minutes in 1998.
+
+
+
+
+```{r impedance function-cycling-2015, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the walking_data for the year 2015 only
+cycling_data_2015 <- cycling_data_f %>%
+  filter(YEAR == 2015)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- cycling_data_2015 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 2015
+cycling_plot_2015 <- ggplot(cycling_data_2015, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of cycling for 2015",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line to
+  )  +
+  scale_x_continuous(breaks = seq(0, max(cycling_data_2015$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+
+
+```
+
+```{r impedance function-cycling-2010, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the walking_data for the year 2010 only
+cycling_data_2010 <- cycling_data_f %>%
+  filter(YEAR == 2010)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "Outdoors away from home" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- cycling_data_2010 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 2015
+cycling_plot_2010 <- ggplot(cycling_data_2010, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of cycling for 2010",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line to
+  ) +
+  scale_x_continuous(breaks = seq(0, max(cycling_data_2010$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+```
+
+
+
+
+```{r impedance function-cycling-2005, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the cycling_data for the year 2005 only
+cycling_data_2005 <- cycling_data_f %>%
+  filter(YEAR == 2005)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family
+loadfonts(device = "win")  # Adjust according to your system
+
+# Calculate the peaks for each group
+peaks <- cycling_data_2005 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+# Plotting code with modified x-axis breaks and added vertical lines
+cycling_plot_2005 <- ggplot(cycling_data_2005, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+  scale_x_continuous(breaks = seq(0, 90, by = 10)) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of cycling for 2005",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line t
+  )
+
+```
+
+
+
+
+
+
+
+```{r impedance function-cycling-1998, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+# Filter the cycling_data for the year 1998 only
+cycling_data_1998 <- cycling_data_f %>%
+  filter(YEAR == 1998)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- cycling_data_1998 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 2015
+cycling_plot_1998 <- ggplot(cycling_data_1998, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+  scale_x_continuous(breaks = seq(0, 90, by = 10)) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of cycling for 1998",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.line = element_line(color = "grey10")  # Add this line t
+  )
+
+```
+
+```{r impedance function-cycling-1992, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+
+# Filter the cycling_data for the year 1992 only
+cycling_data_1992 <- cycling_data_f %>%
+  filter(YEAR == 1992)
+
+# Define the colors for each destination
+dest_colors <- c(
+  "Place of worship" = "darkorange1",
+  "outdoors" = "royalblue2",
+  "Library, museum or theatre" = "olivedrab3",
+  "Grocery store, other stores or mall" = "red3",
+  "Restaurant, bar or club" = "yellow2",
+  "other's home" = "darkorchid3",
+  "work or school" = "deeppink2",
+  "home" = "cyan3"
+)
+
+# Load the desired font family (make sure it is installed on your system)
+loadfonts(device = "win")  # For Windows, or 'quartz' for Mac, or comment it out for Linux
+
+# Calculate the peaks for each group
+peaks <- cycling_data_1992 %>%
+  group_by(dest_label) %>%
+  summarise(peak_duration = DURATION[which.max(f_t)], peak_f_t = max(f_t))
+
+
+# Plot the data for the year 1992
+cycling_plot_1992 <- ggplot(cycling_data_1992, aes(x = DURATION, y = f_t, group = dest_label, color = dest_label)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = dest_colors) +
+  geom_segment(data = peaks, aes(x = peak_duration, y = 0, xend = peak_duration, yend = peak_f_t, color = dest_label),
+               linetype = "dashed", size = 0.5) +
+  labs(
+    title = "Modeling distance decay curves of cycling for 1992",
+    x = "Duration (minutes)",
+    y = "Frequency",
+    color = "Destination"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, color = "grey10", family = "Times New Roman"),
+    axis.title = element_text(color = "grey10", family = "Times New Roman"),
+    axis.text = element_text(color = "grey10", family = "Times New Roman"),
+    legend.text = element_text(size = 10, color = "grey10", family = "Times New Roman"),  # Set legend text properties
+    legend.title = element_text(size = 10, color = "grey10", family = "Times New Roman"), # Set legend title properties
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", colour = NA) ,
+    axis.line = element_line(color = "grey10")  # Add this line t
+  ) +
+  scale_x_continuous(breaks = seq(0, max(cycling_data_1992$DURATION, na.rm = TRUE), by = 10))  # Add this line to adjust x-axis breaks
+
+```
+
 
 \newpage
 \thispagestyle{empty}
