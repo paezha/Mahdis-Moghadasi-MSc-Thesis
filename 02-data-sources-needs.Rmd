@@ -1180,7 +1180,7 @@ t = \frac{d_i}{100 e^{-3.5 |m + 0.5|}} = \frac{1}{100} d_i e^{3.5 |m + 0.5|}
 Where $d_i$ can be the distance on the surface as discussed above or can be approximated by the horizontal distance $\Delta h$, as seen in Figure \@ref(fig:surface-distance), travel time tends to increase as the slope increases. Figure \@ref(fig:surface-distance) by [@paez2020] illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.  
 
 
-```{r surface-distance,echo = FALSE, fig.cap="Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). "Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility." Findings, September, out.width="0.9\\linewidth", fig.align="center"}
+```{r surface-distance, echo = FALSE, fig.cap="Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). 'Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility.' Findings, September.", out.width="0.9\\linewidth", fig.align="center"}
 include_graphics(path = "figure/ch02-Fig-03.jpg")
 ```
 

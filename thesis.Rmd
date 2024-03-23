@@ -1177,9 +1177,13 @@ styled_table_8
 
 ### Travel time/distance thresholds
 
-Selecting an appropriate cut-off distance for travel has been acknowledged as an essential step that has the potential to impact results significantly. Different distance thresholds should apply to both cycling and walking. However, considerable variation remains among the threshold values applied within each mode.
+Travel time and distance thresholds are essential for assessing accessibility for active transportation modes, such as walking and cycling. These metrics are pivotal as they delineate what is deemed accessible, significantly influencing the outcomes of accessibility studies. However, the challenge lies in determining these thresholds, which necessitates a delicate equilibrium between empirical evidence and normative presumptions.
 
-Some analyses vary thresholds according to the destination type or population group. For example, Saghapour (2017) uses a 10-minute travel time for retail and recreation centers and a 20-minute time for cycling to community services[@saghapour2017measuring]. Applying the same threshold to all age groups also disregards the fact that certain groups (seniors and children) may travel slower or require more effort to travel the same distance. Although applicable to cycling and walking, this distinction by age group has only been applied among walking measures. In the following, Table \ref{tab:table_9}  shows the thresholds of bicycle and walking travel time and distance in different studies.
+A notable issue with conventional normative methods, as identified by Páez, Scott, and Morency (2012), is their underlying assumption that individuals invariably opt for the nearest available opportunity. This is compounded by their reliance on intuitively set distance thresholds, which may oversimplify the multifaceted nature of human mobility and the variance in individual preferences. This could potentially result in a skewed depiction of accessibility. In contrast, models of positive accessibility present a more nuanced approach by recognizing deprivation areas based on actual use patterns rather than normative benchmarks, thus eschewing the need for arbitrary thresholds. Nevertheless, this approach is contingent upon the availability of detailed data regarding trip distributions and distances, a requirement that might pose a significant constraint [@paez2012measuring;@dai2011racial; @luo2003measures].
+
+The task of selecting appropriate travel time or distance thresholds is critically acknowledged for its substantial impact on research outcomes in accessibility studies. This selection process demands a refined strategy that accommodates different thresholds for varied modes of transportation to accurately reflect their distinct attributes and the diverse abilities of different demographic groups. Despite this necessity, a notable inconsistency persists in applying these thresholds, even within the same mode, highlighting an imperative for a more unified methodological approach.
+
+Research, such as the study conducted by Xing et al. (2018), has delved into the sensitivity of accessibility outcomes to different time thresholds, exploring ranges between 15 to 35 minutes. These investigations generally reveal minimal variance within such intervals, suggesting that adopting a multimodal approach could mitigate overestimations and preserve uniformity across varied time thresholds. Yet, the definitive influence of threshold selection on accessibility metrics warrants further investigation. Furthermore, applying universal thresholds across all destination types and demographic groups fails to account for the heterogeneity in mobility needs and capacities. For instance, Saghapour (2017) underlines the necessity of differentiating thresholds based on destination types, advocating for distinct travel times for accessing retail and recreational centers versus community services. Similarly, imposing identical thresholds on all age groups neglects the unique mobility challenges seniors and children encounter, who may navigate slower or require more effort to traverse identical distances. While such distinctions have been recognized in the context of walking, their application to cycling remains inadequately addressed, suggesting a potential avenue for methodological refinement in accessibility studies [@xing2018measuring;@saghapour2017measuring ]. In the following, Table \ref{tab:table_9}  shows the thresholds of bicycle and walking travel time and distance in different studies.
 
 ```{r Table9, echo=FALSE, cache=FALSE, warning=FALSE}
 # Sample data
@@ -1248,7 +1252,7 @@ Some researchers have argued that -- like maximum travel thresholds -- distance-
 
 Regarding the types of impedance functions considered, a negative exponential curve is familiar [@saghapour2017measuring; @wu2019measuring] -- example shown in Figure \@ref(fig:initiative). However, some studies have also calculated study-specific distance-decay curves based on trip data rather than assuming a standard function. Wu, Lu et al. (2019) calculated a distance-decay function using data from Shenzhen's dockless bicycle-sharing system. Their findings show that a lognormal distance decay best fits the distribution of bike-sharing trips, with the willingness to cycle increasing up to 500m and decreasing after that. García-Palomares, Gutiérrez et al. (2013) took a similar approach to measure walking accessibility to metro stations and found a linear distance-decay trend that varied significantly by age [@garcia2013walking; @wu2019measuring].
 
-```{r initiative,echo = FALSE, fig.cap="Example travel time decay functions by mode for work vs non work trips", out.width="0.9\\linewidth", fig.align="center"}
+```{r initiative,echo = FALSE, fig.cap="Example travel time decay functions by mode for work vs non work trips (Source: State Smart Transportation Initiative - based on data from 2017 National Household Travel Survey)", out.width="0.9\\linewidth", fig.align="center"}
 include_graphics(path = "figure/ch02-Fig-02.jpg")
 ```
 
@@ -1345,11 +1349,10 @@ t = \frac{d_i}{100 e^{-3.5 |m + 0.5|}} = \frac{1}{100} d_i e^{3.5 |m + 0.5|}
 \end{equation}
 
 
-Where $d_i$ can be the distance on the surface as discussed above or can be approximated by the horizontal distance $\Delta h$, as seen in Figure \@ref(fig:surface-distance), travel time tends to increase as the slope increases.
+Where $d_i$ can be the distance on the surface as discussed above or can be approximated by the horizontal distance $\Delta h$, as seen in Figure \@ref(fig:surface-distance), travel time tends to increase as the slope increases. Figure \@ref(fig:surface-distance) by [@paez2020] illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.  
 
-<!-- THIS IS A SCREENCAPTURE!-->
 
-```{r surface-distance,echo = FALSE, fig.cap="Relationship between surface distance/travel time and slope", out.width="0.9\\linewidth", fig.align="center"}
+```{r surface-distance, echo = FALSE, fig.cap="Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). 'Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility.' Findings, September.", out.width="0.9\\linewidth", fig.align="center"}
 include_graphics(path = "figure/ch02-Fig-03.jpg")
 ```
 

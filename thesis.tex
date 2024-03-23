@@ -1624,9 +1624,13 @@ Vancouver open data & - & - & - & Y & - & -\\
 \hypertarget{travel-timedistance-thresholds}{%
 \subsection{Travel time/distance thresholds}\label{travel-timedistance-thresholds}}
 
-Selecting an appropriate cut-off distance for travel has been acknowledged as an essential step that has the potential to impact results significantly. Different distance thresholds should apply to both cycling and walking. However, considerable variation remains among the threshold values applied within each mode.
+Travel time and distance thresholds are essential for assessing accessibility for active transportation modes, such as walking and cycling. These metrics are pivotal as they delineate what is deemed accessible, significantly influencing the outcomes of accessibility studies. However, the challenge lies in determining these thresholds, which necessitates a delicate equilibrium between empirical evidence and normative presumptions.
 
-Some analyses vary thresholds according to the destination type or population group. For example, Saghapour (2017) uses a 10-minute travel time for retail and recreation centers and a 20-minute time for cycling to community services(Saghapour et al., 2017). Applying the same threshold to all age groups also disregards the fact that certain groups (seniors and children) may travel slower or require more effort to travel the same distance. Although applicable to cycling and walking, this distinction by age group has only been applied among walking measures. In the following, Table \ref{tab:table_9} shows the thresholds of bicycle and walking travel time and distance in different studies.
+A notable issue with conventional normative methods, as identified by Páez, Scott, and Morency (2012), is their underlying assumption that individuals invariably opt for the nearest available opportunity. This is compounded by their reliance on intuitively set distance thresholds, which may oversimplify the multifaceted nature of human mobility and the variance in individual preferences. This could potentially result in a skewed depiction of accessibility. In contrast, models of positive accessibility present a more nuanced approach by recognizing deprivation areas based on actual use patterns rather than normative benchmarks, thus eschewing the need for arbitrary thresholds. Nevertheless, this approach is contingent upon the availability of detailed data regarding trip distributions and distances, a requirement that might pose a significant constraint (Dai, 2011; Luo \& Wang, 2003; Paez et al., 2012a).
+
+The task of selecting appropriate travel time or distance thresholds is critically acknowledged for its substantial impact on research outcomes in accessibility studies. This selection process demands a refined strategy that accommodates different thresholds for varied modes of transportation to accurately reflect their distinct attributes and the diverse abilities of different demographic groups. Despite this necessity, a notable inconsistency persists in applying these thresholds, even within the same mode, highlighting an imperative for a more unified methodological approach.
+
+Research, such as the study conducted by Xing et al.~(2018), has delved into the sensitivity of accessibility outcomes to different time thresholds, exploring ranges between 15 to 35 minutes. These investigations generally reveal minimal variance within such intervals, suggesting that adopting a multimodal approach could mitigate overestimations and preserve uniformity across varied time thresholds. Yet, the definitive influence of threshold selection on accessibility metrics warrants further investigation. Furthermore, applying universal thresholds across all destination types and demographic groups fails to account for the heterogeneity in mobility needs and capacities. For instance, Saghapour (2017) underlines the necessity of differentiating thresholds based on destination types, advocating for distinct travel times for accessing retail and recreational centers versus community services. Similarly, imposing identical thresholds on all age groups neglects the unique mobility challenges seniors and children encounter, who may navigate slower or require more effort to traverse identical distances. While such distinctions have been recognized in the context of walking, their application to cycling remains inadequately addressed, suggesting a potential avenue for methodological refinement in accessibility studies (Saghapour et al., 2017 ; Xing, Liu, \& Liu, 2018). In the following, Table \ref{tab:table_9} shows the thresholds of bicycle and walking travel time and distance in different studies.
 
 \begin{landscape}\begingroup\fontsize{12}{14}\selectfont
 
@@ -1675,7 +1679,7 @@ Regarding the types of impedance functions considered, a negative exponential cu
 
 }
 
-\caption{Example travel time decay functions by mode for work vs non work trips}\label{fig:initiative}
+\caption{Example travel time decay functions by mode for work vs non work trips (Source: State Smart Transportation Initiative - based on data from 2017 National Household Travel Survey)}\label{fig:initiative}
 \end{figure}
 
 \hypertarget{slope}{%
@@ -1768,7 +1772,7 @@ t = \frac{d_i}{100 e^{-3.5 |m + 0.5|}} = \frac{1}{100} d_i e^{3.5 |m + 0.5|}
 \label{eq:amount-of-speed}
 \end{equation}
 
-Where \(d_i\) can be the distance on the surface as discussed above or can be approximated by the horizontal distance \(\Delta h\), as seen in Figure \ref{fig:surface-distance}, travel time tends to increase as the slope increases.
+Where \(d_i\) can be the distance on the surface as discussed above or can be approximated by the horizontal distance \(\Delta h\), as seen in Figure \ref{fig:surface-distance}, travel time tends to increase as the slope increases. Figure \ref{fig:surface-distance} by (Paez et al., 2020) illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.
 
 \begin{figure}
 
@@ -1776,7 +1780,7 @@ Where \(d_i\) can be the distance on the surface as discussed above or can be ap
 
 }
 
-\caption{Relationship between surface distance/travel time and slope}\label{fig:surface-distance}
+\caption{Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). 'Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility.' Findings, September.}\label{fig:surface-distance}
 \end{figure}
 
 \newpage
@@ -3023,6 +3027,9 @@ Colliat, G. (1996). OLAP, relational, and multidimensional database systems. \em
 \leavevmode\vadjust pre{\hypertarget{ref-currie2010quantifying}{}}%
 Currie, G. (2010). Quantifying spatial gaps in public transport supply based on social needs. \emph{Journal of Transport Geography}, \emph{18}(1), 31--41.
 
+\leavevmode\vadjust pre{\hypertarget{ref-dai2011racial}{}}%
+Dai, D. (2011). Racial/ethnic and socioeconomic disparities in urban green space accessibility: Where to intervene? \emph{Landscape and Urban Planning}, \emph{102}(4), 234--244.
+
 \leavevmode\vadjust pre{\hypertarget{ref-de2009exponential}{}}%
 De Vries, J. J., Nijkamp, P., \& Rietveld, P. (2009). Exponential or power distance-decay for commuting? An alternative specification. \emph{Environment and Planning A}, \emph{41}(2), 461--480.
 
@@ -3353,6 +3360,9 @@ Lucas, K. (2019). A new evolution for transport-related social exclusion researc
 \leavevmode\vadjust pre{\hypertarget{ref-lundberg2012accessibility}{}}%
 Lundberg, B. (2012). \emph{Accessibility and university populations: Local effects on non-motorized transportation in the tuscaloosa-northport area} (PhD thesis). University of Alabama Libraries.
 
+\leavevmode\vadjust pre{\hypertarget{ref-luo2003measures}{}}%
+Luo, W., \& Wang, F. (2003). Measures of spatial accessibility to health care in a GIS environment: Synthesis and a case study in the chicago region. \emph{Environment and Planning B: Planning and Design}, \emph{30}(6), 865--884.
+
 \leavevmode\vadjust pre{\hypertarget{ref-luoma1993threshold}{}}%
 Luoma, M., Mikkonen, K., \& Palomaki, M. (1993). The threshold gravity model and transport geography: How transport development influences the distance-decay parameter of the gravity model. \emph{Journal of Transport Geography}, \emph{1}(4), 240--247.
 
@@ -3679,6 +3689,9 @@ Wu, X., Lu, Y., Lin, Y., \& Yang, Y. (2019). Measuring the destination accessibi
 
 \leavevmode\vadjust pre{\hypertarget{ref-wu2001computational}{}}%
 Wu, Y.-H., \& Miller, H. J. (2001). Computational tools for measuring space-time accessibility within dynamic flow transportation networks. \emph{Journal of Transportation and Statistics}, \emph{4}(2/3), 1--14.
+
+\leavevmode\vadjust pre{\hypertarget{ref-xing2018measuring}{}}%
+Xing, L., Liu, Y., \& Liu, X. (2018). Measuring spatial disparity in accessibility with a multi-mode method based on park green spaces classification in wuhan, china. \emph{Applied Geography}, \emph{94}, 251--261.
 
 \leavevmode\vadjust pre{\hypertarget{ref-yang2012walking}{}}%
 Yang, Y., \& Diez-Roux, A. V. (2012). Walking distance by trip purpose and population subgroups. \emph{American Journal of Preventive Medicine}, \emph{43}(1), 11--19.
