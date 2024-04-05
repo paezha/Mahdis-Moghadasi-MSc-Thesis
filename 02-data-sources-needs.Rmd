@@ -1,5 +1,11 @@
 # Data Sources and Needs for Active Travel-Based Accessibility Analysis: A Canadian Perspective {#rmd-basics}
 
+```{r ch02-load-pkgs, include=FALSE}
+library(knitr) # A General-Purpose Package for Dynamic Report Generation in R
+library(kableExtra) # Construct Complex Table with 'kable' and Pipe Syntax
+```
+
+
 ## Abstract
 
 
@@ -203,9 +209,6 @@ In our analysis, Tables \ref{tab:table_1} and Tables \ref{tab:table_2} methodica
 
 
 ```{r echo=FALSE, cache=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-
 # Ensure the output is in LaTeX for a PDF document
 options(knitr.table.format = "latex")
 
@@ -1259,4 +1262,5 @@ If 'No':
 The flowchart shifts focus to understanding current methods used by the organization for analyzing transportation and land use policy, awareness and perception of accessibility as an analysis method, and the respondent's own description of accessibility.
 It explores the organization's potential interest in using accessibility analysis and the expected data needs for such analysis, particularly concerning active travel.
 The flowchart ends by emphasizing the need for interviewers to understand any other relevant data sources the organization is aware of but not currently using, whether these are publicly available, and what their ideal data would be to support accessibility by active travel.
+
 

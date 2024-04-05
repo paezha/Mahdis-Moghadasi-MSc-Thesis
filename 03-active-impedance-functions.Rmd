@@ -1,5 +1,60 @@
 # A Historical Analysis of the Evolution of Active Travel Behaviour in Canada {#math-sci}
 
+```{r ch03-load-pkgs, include = FALSE}
+# List of packages required for this analysis
+#pkg <- c("dplyr", "ggplot2", "knitr", "bookdown", "fitdistrplus", "tidyverse", "readxl", "splitstackshape","tibble", "readr", "tabulate", "janitor", "flextable", "tidyr", "gt", "xtable", "kableExtra")
+
+# Load packages
+library(dplyr) # A Grammar of Data Manipulation
+library(here) # A Simpler Way to Find Your Files
+library(ggplot2) # Create Elegant Data Visualisations Using the Grammar of Graphics
+library(knitr) # A General-Purpose Package for Dynamic Report Generation in R
+library(fitdistrplus) # Help to Fit of a Parametric Distribution to Non-Censored or Censored Data
+library(tidyverse) # Easily Install and Load the 'Tidyverse'
+library(readxl) # Read Excel Files 
+library(splitstackshape) # Stack and Reshape Datasets After Splitting Concatenated Values
+library(tibble) # Simple Data Frames
+library(readr) # Read Rectangular Text Data
+library(tabulate) # Pretty Console Output for Tables
+library(janitor) # Simple Tools for Examining and Cleaning Dirty Data
+library(flextable) # Functions for Tabular Reporting
+library(tidyr) # Tidy Messy Data
+library(xtable) # Export Tables to LaTeX or HTML
+library(extrafont) # Tools for Using Fonts
+library(kableExtra) # Construct Complex Table with 'kable' and Pipe Syntax
+library(reshape2) # Flexibly Reshape Data: A Reboot of the Reshape Package
+library(RColorBrewer) # ColorBrewer Palettes
+```
+
+
+```{r}
+load(paste0(here(), "/data/walking_1986.Rda"))
+load(paste0(here(), "/data/walking_1992.Rda"))
+load(paste0(here(), "/data/walking_1998.Rda"))
+load(paste0(here(), "/data/walking_2005.Rda"))
+load(paste0(here(), "/data/walking_2010.Rda"))
+load(paste0(here(), "/data/walking_2015.Rda"))
+load(paste0(here(), "/data/cycling_1992.Rda"))
+load(paste0(here(), "/data/cycling_1998.Rda"))
+load(paste0(here(), "/data/cycling_2005.Rda"))
+load(paste0(here(), "/data/cycling_2010.Rda"))
+load(paste0(here(), "/data/cycling_2015.Rda"))
+load(paste0(here(), "/data/cycling_data.Rda"))
+load(paste0(here(), "/data/walking_data.Rda"))
+load(paste0(here(), "/data/walking_1986_f.Rda"))
+load(paste0(here(), "/data/walking_1992_f.Rda"))
+load(paste0(here(), "/data/walking_1998_f.Rda"))
+load(paste0(here(), "/data/walking_2005_f.Rda"))
+load(paste0(here(), "/data/walking_2010_f.Rda"))
+load(paste0(here(), "/data/walking_2015_f.Rda"))
+load(paste0(here(), "/data/cycling_1992_f.Rda"))
+load(paste0(here(), "/data/cycling_1998_f.Rda"))
+load(paste0(here(), "/data/cycling_2005_f.Rda"))
+load(paste0(here(), "/data/cycling_2010_f.Rda"))
+load(paste0(here(), "/data/cycling_2015_f.Rda"))
+
+```
+
 ## Abstract
 
 #ALL THIS SHOULD HAVE ALREADY BEEN DONE IN THE NOTEBOOKS IN FOLDER data-inputs; here you should be calling analysis-ready data
@@ -239,62 +294,6 @@ Following a thorough process of model selection and parameter estimation, we cal
 ### Descriptive analysis of walking and cycling trips from 1986 to 2015
 
 The General Social Survey (GSS) data emerged as an invaluable repository in our detailed examination of active travel behavior in Canada. It provided a comprehensive view of individual preferences and behaviors about active modes of transportation, specifically walking and cycling. By focusing on the years 1986 to 2015, we sought to capture the evolution of active travel against the backdrop of crucial urban development changes, societal shifts in attitudes towards health and the environment, and modifications in transportation infrastructure and policies.
-
-```{r load_pkgs, include = FALSE, message=FALSE}
-# List of packages required for this analysis
-#pkg <- c("dplyr", "ggplot2", "knitr", "bookdown", "fitdistrplus", "tidyverse", "readxl", "splitstackshape","tibble", "readr", "tabulate", "janitor", "flextable", "tidyr", "gt", "xtable", "kableExtra")
-
-# Load packages
-library(dplyr) # A Grammar of Data Manipulation
-library(here)
-library(ggplot2) # Create Elegant Data Visualisations Using the Grammar of Graphics
-library(knitr) # A General-Purpose Package for Dynamic Report Generation in R
-library(fitdistrplus) # Help to Fit of a Parametric Distribution to Non-Censored or Censored Data
-library(tidyverse) # Easily Install and Load the 'Tidyverse'
-library(readxl) # Read Excel Files 
-library(splitstackshape) # Stack and Reshape Datasets After Splitting Concatenated Values
-library(tibble) # Simple Data Frames
-library(readr) # Read Rectangular Text Data
-library(tabulate) # Pretty Console Output for Tables
-library(janitor) # Simple Tools for Examining and Cleaning Dirty Data
-library(flextable) # Functions for Tabular Reporting
-library(tidyr) # Tidy Messy Data
-library(xtable) # Export Tables to LaTeX or HTML
-library(extrafont) # Tools for Using Fonts
-library(kableExtra)
-library(reshape2)
-library(RColorBrewer)
-```
-
-
-```{r}
-load(paste0(here(), "/data/walking_1986.Rda"))
-load(paste0(here(), "/data/walking_1992.Rda"))
-load(paste0(here(), "/data/walking_1998.Rda"))
-load(paste0(here(), "/data/walking_2005.Rda"))
-load(paste0(here(), "/data/walking_2010.Rda"))
-load(paste0(here(), "/data/walking_2015.Rda"))
-load(paste0(here(), "/data/cycling_1992.Rda"))
-load(paste0(here(), "/data/cycling_1998.Rda"))
-load(paste0(here(), "/data/cycling_2005.Rda"))
-load(paste0(here(), "/data/cycling_2010.Rda"))
-load(paste0(here(), "/data/cycling_2015.Rda"))
-load(paste0(here(), "/data/cycling_data.Rda"))
-load(paste0(here(), "/data/walking_data.Rda"))
-load(paste0(here(), "/data/walking_1986_f.Rda"))
-load(paste0(here(), "/data/walking_1992_f.Rda"))
-load(paste0(here(), "/data/walking_1998_f.Rda"))
-load(paste0(here(), "/data/walking_2005_f.Rda"))
-load(paste0(here(), "/data/walking_2010_f.Rda"))
-load(paste0(here(), "/data/walking_2015_f.Rda"))
-load(paste0(here(), "/data/cycling_1992_f.Rda"))
-load(paste0(here(), "/data/cycling_1998_f.Rda"))
-load(paste0(here(), "/data/cycling_2005_f.Rda"))
-load(paste0(here(), "/data/cycling_2010_f.Rda"))
-load(paste0(here(), "/data/cycling_2015_f.Rda"))
-
-```
-
 
 ```{r creating an integrated data, include=FALSE,  cache=FALSE}
 # creating an integrated data frame from 1986 to 2015
@@ -3042,6 +3041,7 @@ Likewise, Yang et al. (2012) explored the distance decay effect whereby the freq
 
 Moreover, Millward et al. (2013) contributed to this nuanced understanding by demonstrating that the duration of walking trips is also contingent upon the nature of the destination. Their findings suggest that utilitarian destinations, such as workplaces or stores, are typically associated with shorter walking trips, reflecting a pragmatic approach to pedestrian movement.
 These studies underscore a multifaceted understanding of pedestrian mobility, highlighting the influence of physical, urban, and socio-economic factors on the duration and purpose of walking trips. This body of research not only provides a comprehensive overview of pedestrian travel behavior but also offers critical insights for urban planners and policymakers aiming to promote walking as a sustainable and healthy mode of transportation.[@iacono2008access; @iacono2010; @millward2013active; @wu2019measuring; @yang2012walking].
+
 
 
 

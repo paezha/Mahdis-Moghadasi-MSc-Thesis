@@ -653,19 +653,19 @@ A^{p}_i = \ln \left(\sum_{j \in L^{ip}} e^{\beta z_j} \right)
 In our analysis, Tables \ref{tab:table_1} and Tables \ref{tab:table_2} methodically categorize studies based on the various metrics employed to assess accessibility via active transportation modes, explicitly walking and cycling. This categorization highlights the varied methodological approaches adopted in the field. Our literature review indicates that a diverse array of measures has been applied in the context of cycling to analyze accessibility. These range from simple distance-based metrics to more complex models. Conversely, the majority of studies focusing on walking accessibility have predominantly utilized active-based measures. In addition, a limited number of studies have incorporated utility-based measures. These metrics generally evaluate the economic benefits and utilities derived from changes in the network, providing a different perspective on accessibility. However, a comparative analysis conducted by Vale et al.~(2016) illuminates a notable discrepancy in the research volume focused on cycling-specific accessibility relative to walking. Their comprehensive review, which encompasses 84 papers on walking and cycling accessibility published up to September 2013, reveals a significant skew towards walking-oriented studies. This imbalance underscores the need for more focused research on cycling accessibility to better understand and enhance this active transportation mode (D. S. Vale et al., 2016).
 
 \begin{landscape}\begin{table}
-
+\centering
 \caption{\label{tab:unnamed-chunk-6}\label{tab:table_1}Cycling-Specific Accessibility Measures in Various Studies}
 \centering
-\resizebox{\linewidth}{!}{
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{c>{\centering\arraybackslash}p{5cm}>{\centering\arraybackslash}p{5cm}>{\centering\arraybackslash}p{5cm}>{\centering\arraybackslash}p{5cm}>{\centering\arraybackslash}p{5cm}cc}
 \toprule
 \multicolumn{1}{c}{\textbf{Metric Type}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Study}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Measure}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Travel Time/Distance}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Origins/Destinations}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Geographic Scale}} & \multicolumn{1}{c}{\textbf{Travel Calculation}} & \multicolumn{1}{c}{\textbf{positive/normative implementations}}\\
 \midrule
-\cellcolor{gray!6}{Activity-based} & \cellcolor{gray!6}{Murphy and Owen (2019)} & \cellcolor{gray!6}{Gap in Cumulative Access to Job Opportunities: A Comparative Analysis of LTS 1-4 Based on Weighted Accessibility by Worker Count} & \cellcolor{gray!6}{20 mins (Tested 5 to 6 mins)} & \cellcolor{gray!6}{Census block centroids} & \cellcolor{gray!6}{Neighbourhoods -> city level} & \cellcolor{gray!6}{Network travel time 15 km/h} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{Activity-based} & \cellcolor{gray!10}{Murphy and Owen (2019)} & \cellcolor{gray!10}{Gap in Cumulative Access to Job Opportunities: A Comparative Analysis of LTS 1-4 Based on Weighted Accessibility by Worker Count} & \cellcolor{gray!10}{20 mins (Tested 5 to 6 mins)} & \cellcolor{gray!10}{Census block centroids} & \cellcolor{gray!10}{Neighbourhoods -> city level} & \cellcolor{gray!10}{Network travel time 15 km/h} & \cellcolor{gray!10}{Normative}\\
  & Faghih Imani, Miller et al. (2019) & Cumulative Access to Opportunities: Employment and Population Analysis Using Calculated Isochrones for LTS 1-4. & 30 mins & Dissemination area centroids & Dissemination areas & Network travel time & Normative\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{Wu, Lu et al. (2019)} & \cellcolor{gray!6}{Utilizing a Gravity-Based Approach: Evaluating Accessibility to Points of Interest at Metro Stations through a Lognormal Distance Decay Function (Validated by the Distribution of Bicycle-Metro Trip Data)} & \cellcolor{gray!6}{2.5 Km} & \cellcolor{gray!6}{Metro stations (origins) POIs (destinations)} & \cellcolor{gray!6}{2.5 km buffer} & \cellcolor{gray!6}{Euclidean distance} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{Wu, Lu et al. (2019)} & \cellcolor{gray!10}{Utilizing a Gravity-Based Approach: Evaluating Accessibility to Points of Interest at Metro Stations through a Lognormal Distance Decay Function (Validated by the Distribution of Bicycle-Metro Trip Data)} & \cellcolor{gray!10}{2.5 Km} & \cellcolor{gray!10}{Metro stations (origins) POIs (destinations)} & \cellcolor{gray!10}{2.5 km buffer} & \cellcolor{gray!10}{Euclidean distance} & \cellcolor{gray!10}{Normative}\\
 Distance-based & Houde, Apparicio et al. (2018) & Proximity to Cycling Infrastructure: 1. Network distance to the closest segment of the cycling network. 2. Network distance to exclusive bicycle pathways &  & Census tract centroids (origins) Bike paths (destinations) & Census tracts & Network distance & Positive\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{Pérez, Buck et al. (2017)} & \cellcolor{gray!6}{1. Dedicated Cycling Network Accessibility: The distance from the centroid of each census tract to the closest segment of the bicycle network was evaluated to ascertain the accessibility level of the respective tracts. 2. Traffic Stress Assessment: The Level of Traffic Stress (LTS) network was employed to gauge accessibility within the district.} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{census tract centroid to nearest bike network} & \cellcolor{gray!6}{The District of Columbia} & \cellcolor{gray!6}{Euclidean distance} & \cellcolor{gray!6}{Positive}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{Pérez, Buck et al. (2017)} & \cellcolor{gray!10}{1. Dedicated Cycling Network Accessibility: The distance from the centroid of each census tract to the closest segment of the bicycle network was evaluated to ascertain the accessibility level of the respective tracts. 2. Traffic Stress Assessment: The Level of Traffic Stress (LTS) network was employed to gauge accessibility within the district.} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{census tract centroid to nearest bike network} & \cellcolor{gray!10}{The District of Columbia} & \cellcolor{gray!10}{Euclidean distance} & \cellcolor{gray!10}{Positive}\\
 \addlinespace
 Topology-based & Mekuria (2012) & Network Connectivity Assessed by LTS 1-4: This measures the percentage of trips and nodes connected within the network &  & Home-to-work O-D pairs from regional trip  Land parcel 'attraction strength' (size and land-use attraction) (destinations) & Census blocks & Network & \\
 \bottomrule
@@ -674,22 +674,22 @@ Topology-based & Mekuria (2012) & Network Connectivity Assessed by LTS 1-4: This
 \end{landscape}
 
 \begin{landscape}\begin{table}
-
+\centering
 \caption{\label{tab:unnamed-chunk-7}\label{tab:table_2}Walking-Specific Accessibility Measures in Various Studies}
 \centering
-\resizebox{\linewidth}{!}{
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{l>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{5cm}ll}
 \toprule
 \multicolumn{1}{c}{\textbf{Metric Type}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Study}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Measure}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Travel Time/Distance}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Origins/Destinations}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Geographic Scale}} & \multicolumn{1}{c}{\textbf{Travel Calculation}} & \multicolumn{1}{c}{\textbf{positive/normative implementations}}\\
 \midrule
-\cellcolor{gray!6}{Activity-based} & \cellcolor{gray!6}{Cheng, Caset et al. (2019)} & \cellcolor{gray!6}{Cumulative Accessibility Opportunities: Evaluation of chess/card rooms and urban parks catered to both senior and younger adults. The park areas were assessed and given weight according to their dimensions} & \cellcolor{gray!6}{Variable Distance Thresholds: These were determined by considering both geographical location and socio-economic factors} & \cellcolor{gray!6}{Locations derived from the travel survey (as origins) include parks and chess/card rooms (as destinations)} & \cellcolor{gray!6}{Traffic analysis zones} & \cellcolor{gray!6}{Network distance} & \cellcolor{gray!6}{Positive}\\
+\cellcolor{gray!10}{Activity-based} & \cellcolor{gray!10}{Cheng, Caset et al. (2019)} & \cellcolor{gray!10}{Cumulative Accessibility Opportunities: Evaluation of chess/card rooms and urban parks catered to both senior and younger adults. The park areas were assessed and given weight according to their dimensions} & \cellcolor{gray!10}{Variable Distance Thresholds: These were determined by considering both geographical location and socio-economic factors} & \cellcolor{gray!10}{Locations derived from the travel survey (as origins) include parks and chess/card rooms (as destinations)} & \cellcolor{gray!10}{Traffic analysis zones} & \cellcolor{gray!10}{Network distance} & \cellcolor{gray!10}{Positive}\\
  & eyes, Páez et al. (2014) & Cumulative Access Opportunities to Urban Parks: An assessment was conducted focusing on park spaces designed for children, with each park's weight determined by its size. The accessibility was evaluated in two primary ways: 1. Based on individual attributes extracted from the travel survey. 2. According to various scenario profiles, such as gender, age, income, and other demographic factors & Derived from a statistical model evaluating travel patterns & Locations sourced from the household travel survey are juxtaposed with rasterized parks, having dimensions of 25x25 meters, which serve as the destinations & Dissemination areas (weighted average) & Euclidean distance & Normative\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{García-Palomares, Gutiérrez et al. (2013)} & \cellcolor{gray!6}{Quality of Access Indicators for Metro Stations: The evaluation assessed the extent of the population served by these stations. Furthermore, accessibility was analyzed by distinct age groups, employing a distance decay function tailored to each age category} & \cellcolor{gray!6}{Distance thresholds of 1500m have been computed for various age categories} & \cellcolor{gray!6}{Metro stations serve as the origins, while populations are assessed at the transport-zone level} & \cellcolor{gray!6}{1500m metro station catchment areas} & \cellcolor{gray!6}{Network distance} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{García-Palomares, Gutiérrez et al. (2013)} & \cellcolor{gray!10}{Quality of Access Indicators for Metro Stations: The evaluation assessed the extent of the population served by these stations. Furthermore, accessibility was analyzed by distinct age groups, employing a distance decay function tailored to each age category} & \cellcolor{gray!10}{Distance thresholds of 1500m have been computed for various age categories} & \cellcolor{gray!10}{Metro stations serve as the origins, while populations are assessed at the transport-zone level} & \cellcolor{gray!10}{1500m metro station catchment areas} & \cellcolor{gray!10}{Network distance} & \cellcolor{gray!10}{Normative}\\
  & Papa, Carpentieri et al. (2018) & Contour-Based Accessibility Evaluation: This study employed a method to determine bus service catchment areas. The analysis incorporated the number of residents served, categorized by age groups. Furthermore, catchment areas were computed both considering and disregarding the network slope & Subject to the regularity of bus services & Bus stops & Hexagonal cells 50m & Network distance Walking speeds dependent on age & Normative\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{ \vphantom{1}} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{ \vphantom{1}} & \cellcolor{gray!10}{}\\
 \addlinespace
  &  &  &  &  &  &  & \\
-\cellcolor{gray!6}{Utility-based} & \cellcolor{gray!6}{Blecic, Ivan, et al} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{Utility-based} & \cellcolor{gray!10}{Blecic, Ivan, et al} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
 2013 &  &  &  &  &  &  & \\
 \bottomrule
 \end{tabular}}
@@ -712,45 +712,45 @@ Most studies assessing walkability have utilized Frank's index and Walk Score (L
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Methods}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Author}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Variables}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Descriptions}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{positive/normative implementations}}\\
 \midrule
-\cellcolor{gray!6}{Frank's Walkability Index} & \cellcolor{gray!6}{Frank et al. (2005a,b), Frank et al., (2010)} & \cellcolor{gray!6}{Net residential/ Population density} & \cellcolor{gray!6}{Travel-related data have been gleaned from the Census Journey to Work, and this encompasses information pertinent to both specified regions.} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{Frank's Walkability Index} & \cellcolor{gray!10}{Frank et al. (2005a,b), Frank et al., (2010)} & \cellcolor{gray!10}{Net residential/ Population density} & \cellcolor{gray!10}{Travel-related data have been gleaned from the Census Journey to Work, and this encompasses information pertinent to both specified regions.} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Normative}\\
  &  & Retail floor area ratio & Household Travel Survey Data census-based demographic data &  & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Intersection density} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{ \vphantom{1}} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Intersection density} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{ \vphantom{1}} & \cellcolor{gray!10}{}\\
  &  & Land use mix &  &  & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{Manaugh and El-Geneidy (2011)} & \cellcolor{gray!6}{Net residential/ Population density} & \cellcolor{gray!6}{Information pertaining to retail entities, encompassing both shopping centers and educational institutions, was meticulously extracted from the comprehensive Dun and Bradstreet business database. Subsequently, this extracted information was synergistically amalgamated with a weighted intersection index to yield a more holistic and representative overview of the retail landscape in the studied regions} & \cellcolor{gray!6}{For each trip purpose, nine distinct models were developed, each employing a different walkability metric in every iteration (Walk Score, walk opportunities, the Walkability Index at four distinct scales, and three variations of sizes for the pedestrian shed connectivity measure)} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{Manaugh and El-Geneidy (2011)} & \cellcolor{gray!10}{Net residential/ Population density} & \cellcolor{gray!10}{Information pertaining to retail entities, encompassing both shopping centers and educational institutions, was meticulously extracted from the comprehensive Dun and Bradstreet business database. Subsequently, this extracted information was synergistically amalgamated with a weighted intersection index to yield a more holistic and representative overview of the retail landscape in the studied regions} & \cellcolor{gray!10}{For each trip purpose, nine distinct models were developed, each employing a different walkability metric in every iteration (Walk Score, walk opportunities, the Walkability Index at four distinct scales, and three variations of sizes for the pedestrian shed connectivity measure)} & \cellcolor{gray!10}{Normative}\\
 \addlinespace
  &  & Retail floor area ratio & A comprehensive database, consisting of more than 100,000 postal code points, was employed, as procured from Walk Score, to ensure the meticulous analysis and accuracy of the assessed variables within the study & he walkability index was developed at four distinct scales, employing 400, 800, and 1200m network buffers, in addition to the application at the census tract level & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Intersection density} & \cellcolor{gray!6}{Data at the household level, along with characteristics pertaining to travel behavior, have been acquired from the 2003 Montréal Origin–Destination survey to facilitate a detailed and nuanced analysis of prevailing travel patterns and preferences} & \cellcolor{gray!6}{A simplistic gravity-based measure was employed to assign greater weight to proximate locations in comparison to those more distanced} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Intersection density} & \cellcolor{gray!10}{Data at the household level, along with characteristics pertaining to travel behavior, have been acquired from the 2003 Montréal Origin–Destination survey to facilitate a detailed and nuanced analysis of prevailing travel patterns and preferences} & \cellcolor{gray!10}{A simplistic gravity-based measure was employed to assign greater weight to proximate locations in comparison to those more distanced} & \cellcolor{gray!10}{}\\
  &  & Land use mix & Census tract level demographic data derived from Statistics Canada &  & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{Adhikari et al.,(2021)} & \cellcolor{gray!6}{residential density} & \cellcolor{gray!6}{Demographic characteristics of participants} & \cellcolor{gray!6}{The walkability index employs 1 km pedestrian (walksheds) mapping pedestrian-accessible routes surrounding each postal code centroid} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{Adhikari et al.,(2021)} & \cellcolor{gray!10}{residential density} & \cellcolor{gray!10}{Demographic characteristics of participants} & \cellcolor{gray!10}{The walkability index employs 1 km pedestrian (walksheds) mapping pedestrian-accessible routes surrounding each postal code centroid} & \cellcolor{gray!10}{Normative}\\
  &  & The commercial floor-to-area ratio &  & Each walkshed is equivalent to roughly 10–15 minutes of walking duration, a time frame frequently employed to evaluate perceived closeness to amenities and services & \\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Land-use mix} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Land-use mix} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
  &  & Intersection density &  &  & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{Azmi et al., (2013)} & \cellcolor{gray!6}{Mixed-use planning} & \cellcolor{gray!6}{Data was gathered by using the questionnaire survey} & \cellcolor{gray!6}{The selection of community facilities or services was contingent upon the availability of services provided within a radius of 400 meters, equivalent to approximately 5 minutes of walking} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{Azmi et al., (2013)} & \cellcolor{gray!10}{Mixed-use planning} & \cellcolor{gray!10}{Data was gathered by using the questionnaire survey} & \cellcolor{gray!10}{The selection of community facilities or services was contingent upon the availability of services provided within a radius of 400 meters, equivalent to approximately 5 minutes of walking} & \cellcolor{gray!10}{Normative}\\
  &  & Density & The study inquires into the accessibility experienced by residents, specifically focusing on their ability to walk from their homes to community facilities or services located within walkable catchment areas, thereby assessing the proximity and availability of essential services and amenities in relation to residential locations & A total of thirteen community facilities and services were analyzed, encompassing a diverse range of essential and recreational amenities, including grocery stores or supermarkets, parks, and both indoor and outdoor recreational facilities & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Street connectivity} & \cellcolor{gray!6}{The respondents specified the estimated duration they presumed would be required to walk from their residences to the closest destination, thus providing insights into perceived proximity and accessibility to nearby locations or amenities} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Street connectivity} & \cellcolor{gray!10}{The respondents specified the estimated duration they presumed would be required to walk from their residences to the closest destination, thus providing insights into perceived proximity and accessibility to nearby locations or amenities} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
 \addlinespace
  & Liao et al., (2020) & The variables within this section are categorized into four distinct components: 1. Density, 2. Facilities, 3. Green Space, and 4. Land Use Mix & As a source of walking frequency data, the Dutch national travel survey & dThe density variables within this study are meticulously categorized into three distinctive types: population density, population density, intersection density, and business property density & Normative\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Data pertaining to the neighborhood was utilized as a source for acquiring socio-demographic and physical neighborhood variables, serving as control variables in the analysis. These encompassed factors such as gender, age, income status, employment status, household composition, and migratory background, each contributing to a multifaceted understanding of the demographic and social structure of the respective neighborhoods} & \cellcolor{gray!6}{The variables related to facilities are classified into two main categories: firstly, the distance to the closest facility, calculated as the average distance from the central point of the respective neighborhood; secondly, the number of accessible facilities within a 1 km radius originating from the neighborhood's center} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Data pertaining to the neighborhood was utilized as a source for acquiring socio-demographic and physical neighborhood variables, serving as control variables in the analysis. These encompassed factors such as gender, age, income status, employment status, household composition, and migratory background, each contributing to a multifaceted understanding of the demographic and social structure of the respective neighborhoods} & \cellcolor{gray!10}{The variables related to facilities are classified into two main categories: firstly, the distance to the closest facility, calculated as the average distance from the central point of the respective neighborhood; secondly, the number of accessible facilities within a 1 km radius originating from the neighborhood's center} & \cellcolor{gray!10}{}\\
  &  &  & All variables related to walkability were extracted from the Esri-open postcode plane, coupled with data sourced from the Central Bureau of Statistics (CBS) & Variables associated with green space consider both the cumulative area and the diversity of open green spaces and recreational areas. These variables account for the various forms of green and recreational spaces available, offering insights into the environmental and leisure components within the studied area & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Land Use Mix Variables: Distinct lower-level land-use variables were employed, each expressed as a percentage of the total land area attributed to that specific land-use} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Land Use Mix Variables: Distinct lower-level land-use variables were employed, each expressed as a percentage of the total land area attributed to that specific land-use} & \cellcolor{gray!10}{}\\
  & Arellana et al., (2021) & Intersection density & latest household Origin Destination survey & Calculated potential accessibility & Normative\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Land use entropy score} & \cellcolor{gray!6}{Land use data, the location of commercial zones, the population, and the characteristics of the walking trips from each zone (TAZ)} & \cellcolor{gray!6}{This metric assesses accessibility to a spectrum of opportunities including shopping, employment, education, and institutions} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Land use entropy score} & \cellcolor{gray!10}{Land use data, the location of commercial zones, the population, and the characteristics of the walking trips from each zone (TAZ)} & \cellcolor{gray!10}{This metric assesses accessibility to a spectrum of opportunities including shopping, employment, education, and institutions} & \cellcolor{gray!10}{}\\
  &  & Population density &  &  & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Commercial density} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Commercial density} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
  & Ruiz-Padillo et al., (2018) & Public Security & Census tracts were used that including size and number of households & Every census tract was categorized based on three distinct variables: the rate of motorization, the density of commercial and service establishments, and the average slope & Normative\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Traffic Safety} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Traffic Safety} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
 \addlinespace
  &  & Convenience and attractiveness: Street connectivity, Destination's proximity (number of shops and services), Mix of uses proximity (number of shops and services), attractiveness &  &  & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Characters of the roots:Pavement Quality, Pavement width, Slope} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Characters of the roots:Pavement Quality, Pavement width, Slope} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
 The Walk Score calculates a numerical value by evaluating the walking distance to amenities across nine distinct amenity categories & Duncan et al., (2011) & Walking distance to amenities & The Google AJAX Search Application Programming Interface (API) furnishes the requisite data utilized in determining the Walk Score &  & Normative\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Intersection density metrics} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Intersection density metrics} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
  &  & Average block length &  &  & \\
 \addlinespace
-\cellcolor{gray!6}{The Graz Walkability Index is devised, building upon the foundational structure of the American City and Frank's walkability indices} & \cellcolor{gray!6}{Grasser et al. (2017)} & \cellcolor{gray!6}{Net residential/ Population density/ household density} & \cellcolor{gray!6}{The data pertaining to outcomes were extracted from a survey that is cross-sectional and representative in nature} & \cellcolor{gray!6}{The current research documents the findings associated with both the 1000m circular buffer and the 1500m street network buffer} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{The Graz Walkability Index is devised, building upon the foundational structure of the American City and Frank's walkability indices} & \cellcolor{gray!10}{Grasser et al. (2017)} & \cellcolor{gray!10}{Net residential/ Population density/ household density} & \cellcolor{gray!10}{The data pertaining to outcomes were extracted from a survey that is cross-sectional and representative in nature} & \cellcolor{gray!10}{The current research documents the findings associated with both the 1000m circular buffer and the 1500m street network buffer} & \cellcolor{gray!10}{Normative}\\
  &  & Intersection density & Walking (for at least 10 min) and cycling (in the warm season) &  & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Land use mix (entropy index for land-use mix)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Land use mix (entropy index for land-use mix)} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
 \bottomrule
 \end{longtable}
 \endgroup{}
@@ -781,21 +781,21 @@ The assessment of bikeability in an environment involves considering the followi
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Author}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Study\_area}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Measure}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Descriptions}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{positive/normative implementations}}\\
 \midrule
-\cellcolor{gray!6}{Lowry, Callister et al. (2012)} & \cellcolor{gray!6}{Moscow, Idaho} & \cellcolor{gray!6}{A bikeability assessment devised based on the widely adopted accessibility equation known as Hansen's model} & \cellcolor{gray!6}{AThe term (bikeway) encompasses any road or pathway that permits bicycle travel, irrespective of whether it incorporates a dedicated bike lane} & \cellcolor{gray!6}{The evaluation of bikeability encompasses the examination of the comfort and safety aspects of the entire bikeway network, specifically in terms of accessing crucial destinations} & \cellcolor{gray!6}{Positive}\\
+\cellcolor{gray!10}{Lowry, Callister et al. (2012)} & \cellcolor{gray!10}{Moscow, Idaho} & \cellcolor{gray!10}{A bikeability assessment devised based on the widely adopted accessibility equation known as Hansen's model} & \cellcolor{gray!10}{AThe term (bikeway) encompasses any road or pathway that permits bicycle travel, irrespective of whether it incorporates a dedicated bike lane} & \cellcolor{gray!10}{The evaluation of bikeability encompasses the examination of the comfort and safety aspects of the entire bikeway network, specifically in terms of accessing crucial destinations} & \cellcolor{gray!10}{Positive}\\
  &  & The objective of this computation is to identify the optimal routes connecting zone i with each respective destination j & The case study community endeavors to establish an all-encompassing bikeway network that efficiently interconnects all segments while encompassing vital destinations within the region & Impedance functions were estimated by utilizing a negative exponential function as the underlying mathematical model & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{The primary bikeway network under scrutiny in this study is composed solely of arterial roads, collector roads, and shared-use paths, with no inclusion of other road categories for assessment} & \cellcolor{gray!6}{Bikeability was evaluated for each commercial destination within the study area} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{The primary bikeway network under scrutiny in this study is composed solely of arterial roads, collector roads, and shared-use paths, with no inclusion of other road categories for assessment} & \cellcolor{gray!10}{Bikeability was evaluated for each commercial destination within the study area} & \cellcolor{gray!10}{}\\
 Nielsen and Skov-Petersen (2018) & Denmark & This research provides a detailed micro-level analysis of factors influencing bikeability, encompassing aspects such as population density and accessibility, infrastructure provisions, as well as terrain characteristics & The cycling-related data employed in this study was sourced from the Danish National Travel Survey & The survey captures cycling data encompassing its use as the primary mode of transportation, as well as its role as a stage mode, such as connecting to public transport, and recreational cycling without a specific destination in mind & Positive\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{The assessment of accessibility in this study was computed based on the shortest network distance between the starting points of trips} & \cellcolor{gray!6}{This study provides a thorough road and path classification, dividing them into seven distinct categories: roads without dedicated bicycle infrastructure, roads featuring designated bicycle lanes, roads with dedicated bicycle paths protected by curbs and/or separating strips, fully segregated paths catering to both bicycles and pedestrians, fully segregated paths exclusively for pedestrians, roads inaccessible to pedestrians and bicycles, and roads with no public access} & \cellcolor{gray!6}{The average slope of the terrain within the specified distances (measured using Euclidean distance) was taken into account in this analysis} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{The assessment of accessibility in this study was computed based on the shortest network distance between the starting points of trips} & \cellcolor{gray!10}{This study provides a thorough road and path classification, dividing them into seven distinct categories: roads without dedicated bicycle infrastructure, roads featuring designated bicycle lanes, roads with dedicated bicycle paths protected by curbs and/or separating strips, fully segregated paths catering to both bicycles and pedestrians, fully segregated paths exclusively for pedestrians, roads inaccessible to pedestrians and bicycles, and roads with no public access} & \cellcolor{gray!10}{The average slope of the terrain within the specified distances (measured using Euclidean distance) was taken into account in this analysis} & \cellcolor{gray!10}{}\\
 \addlinespace
  &  &  & For each trip origin, we tallied the counts of residents, jobs, retail employment, schools, high schools, and higher education institutions located within radial distances of 1 km, 2 km, 3 km, 4 km, and 5 km. These counts were subsequently integrated into the travel survey dataset. &  & \\
-\cellcolor{gray!6}{McNeil (2011)} & \cellcolor{gray!6}{Portland, Oregon} & \cellcolor{gray!6}{The assessment of bike accessibility, commonly referred to as bikeability, within a neighborhood is carried out using a 20-minute neighborhood criterion specifically tailored for bicycles} & \cellcolor{gray!6}{The 2009 National Household Transportation Survey} & \cellcolor{gray!6}{This research primarily concentrated on utilitarian trips originating from homes, excluding any travel to and from workplace} & \cellcolor{gray!6}{Normative}\\
+\cellcolor{gray!10}{McNeil (2011)} & \cellcolor{gray!10}{Portland, Oregon} & \cellcolor{gray!10}{The assessment of bike accessibility, commonly referred to as bikeability, within a neighborhood is carried out using a 20-minute neighborhood criterion specifically tailored for bicycles} & \cellcolor{gray!10}{The 2009 National Household Transportation Survey} & \cellcolor{gray!10}{This research primarily concentrated on utilitarian trips originating from homes, excluding any travel to and from workplace} & \cellcolor{gray!10}{Normative}\\
  &  & Utilizing a scoring methodology to evaluate bikeability, this study introduces an innovative index for quantifying the degree of bike-friendliness within an area & Geocoded data concerning parks, educational institutions, libraries, and public transit infrastructure, including light rail stations and bus routes, were sourced from Metro's Regional Land Information System & Business addresses for various establishments including childcare providers, grocery stores, clothing stores, general goods stores, beauty services (such as salons and barbers), banks, mail services (such as post offices and private mail providers), laundries and cleaners, gyms, general entertainment venues (like bowling alleys and performance venues), drinking establishments, movie theaters, restaurants, coffee shops, snack shops, and religious organizations were collected and geocoded for analysis & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Information regarding business addresses related to various destination types was acquired from Reference USA, a data clearinghouse} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Information regarding business addresses related to various destination types was acquired from Reference USA, a data clearinghouse} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
 Saghapour (2017) & Melbourne, Australia & The Cycling Accessibility Index (CAI) was developed to quantify cycling accessibility within metropolitan areas. It takes into account travel distance as a factor affecting impedance and integrates cycling catchments within local areas & The database comprised urban centers, prominent buildings, landmarks, public spaces, community facilities, and indigenous sites. These sites were considered destinations and categorized into four distinct groups based on their associated activities & The speed of 16 km/h, as adopted from the Austroads network operation planning framework, is utilized in this study & Positive\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Using gravity-based measures of accessibility} & \cellcolor{gray!6}{A database consisting of Mesh Blocks from the 2011 Census was utilized, containing information on the total population and number of dwellings in each block} & \cellcolor{gray!6}{The median desirable travel time or distance was utilized in this study} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Using gravity-based measures of accessibility} & \cellcolor{gray!10}{A database consisting of Mesh Blocks from the 2011 Census was utilized, containing information on the total population and number of dwellings in each block} & \cellcolor{gray!10}{The median desirable travel time or distance was utilized in this study} & \cellcolor{gray!10}{}\\
  &  & Network models are employed to define suitable cycling catchments and construct an Origin-Destination (O-D) cost matrix for the evaluation of cycling accessibility & Point of Interests (POIs) were identified and considered in the analysis includes Education Centres,health and Care Facilities, retails and Recreation Centres, and Community Services & 4 km buffers were computed around education centers and health and care facilities & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Service area analysis and OD-cost matrix analysis were conducted separately for each set of destinations in this study} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Service area analysis and OD-cost matrix analysis were conducted separately for each set of destinations in this study} & \cellcolor{gray!10}{}\\
  &  &  &  & In this study, a median desirable travel time of 20 minutes was established for accessing community services & \\
 \bottomrule
 \end{longtable}
@@ -829,14 +829,14 @@ These three steps enable a systematic and efficient approach to designing the da
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{2.5cm}}{\textbf{Data/Methods}} & \multicolumn{1}{>{\centering\arraybackslash}p{2.5cm}}{\textbf{Travel data}} & \multicolumn{1}{>{\centering\arraybackslash}p{2.5cm}}{\textbf{Users Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{2.5cm}}{\textbf{Origin-destination Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{2.5cm}}{\textbf{Cycling and walking network}} & \multicolumn{1}{>{\centering\arraybackslash}p{2.5cm}}{\textbf{Spatial data}} & \multicolumn{1}{>{\centering\arraybackslash}p{2.5cm}}{\textbf{Additional data}}\\
 \midrule
-\cellcolor{gray!6}{Activity-based} & \cellcolor{gray!6}{Travel data is usually obtained from surveys and includes information about each trip such as duration, start point, end point, origin and destination.} & \cellcolor{gray!6}{Travel behavior characteristics such as age, gender, income, can be considered if the data are available} & \cellcolor{gray!6}{The origin and destinations spatial data or a database of POIs that is obtained from local map. Indeed, a database of POIs consists of the location of all of the facilities such as home, workplace, parks, schools, groceries, etc.} & \cellcolor{gray!6}{Walking and cycling network data are required for calculating time or distances (using network analysis or nearest distance) that can be obtained from both the OpenStreetMap and the local government data portals.} & \cellcolor{gray!6}{Spatial data of statistical areas such as blocks, mesh, zones, areas, etc. This data set includes some information such as population, number of dwellings, employment data, etc. This dataset is required for calculating accessibility in each area.} & \cellcolor{gray!6}{Impedance functions are required that are usually estimated based on a negative exponential function and it is mostly based on the travel time.}\\
+\cellcolor{gray!10}{Activity-based} & \cellcolor{gray!10}{Travel data is usually obtained from surveys and includes information about each trip such as duration, start point, end point, origin and destination.} & \cellcolor{gray!10}{Travel behavior characteristics such as age, gender, income, can be considered if the data are available} & \cellcolor{gray!10}{The origin and destinations spatial data or a database of POIs that is obtained from local map. Indeed, a database of POIs consists of the location of all of the facilities such as home, workplace, parks, schools, groceries, etc.} & \cellcolor{gray!10}{Walking and cycling network data are required for calculating time or distances (using network analysis or nearest distance) that can be obtained from both the OpenStreetMap and the local government data portals.} & \cellcolor{gray!10}{Spatial data of statistical areas such as blocks, mesh, zones, areas, etc. This data set includes some information such as population, number of dwellings, employment data, etc. This dataset is required for calculating accessibility in each area.} & \cellcolor{gray!10}{Impedance functions are required that are usually estimated based on a negative exponential function and it is mostly based on the travel time.}\\
  &  &  &  &  &  & Slope can be considered for calculating accessibility.\\
-\cellcolor{gray!6}{Distance-based} & \cellcolor{gray!6}{-----} & \cellcolor{gray!6}{-----} & \cellcolor{gray!6}{Required to calculating the shortest distance to nearest facilities.} & \cellcolor{gray!6}{Required to calculating nearest distance or time to facilities using network analysis.} & \cellcolor{gray!6}{Spatial data of census tracts.} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{Distance-based} & \cellcolor{gray!10}{-----} & \cellcolor{gray!10}{-----} & \cellcolor{gray!10}{Required to calculating the shortest distance to nearest facilities.} & \cellcolor{gray!10}{Required to calculating nearest distance or time to facilities using network analysis.} & \cellcolor{gray!10}{Spatial data of census tracts.} & \cellcolor{gray!10}{}\\
 Infrastructure-based & ----- & ----- & ----- & Walking and cycling network data are required & Spatial data of essential services or origins/destinations are required. For example, grocery stores, hospitals, schools, bikeshare systems, etc. & \\
-\cellcolor{gray!6}{Utility-based} & \cellcolor{gray!6}{Travel data is required} & \cellcolor{gray!6}{Travel behavior characteristics are required such as age, gender, etc.} & \cellcolor{gray!6}{-----} & \cellcolor{gray!6}{Walking and cycling network data are required} & \cellcolor{gray!6}{Spatial data of essential services} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{Utility-based} & \cellcolor{gray!10}{Travel data is required} & \cellcolor{gray!10}{Travel behavior characteristics are required such as age, gender, etc.} & \cellcolor{gray!10}{-----} & \cellcolor{gray!10}{Walking and cycling network data are required} & \cellcolor{gray!10}{Spatial data of essential services} & \cellcolor{gray!10}{}\\
 \addlinespace
 Walkability & Travel data is usually obtained from surveys and includes information about each trip such as duration, start point, end point, origin and destination & Travel behavior characteristics are required such as age, gender, income, car availability and etc. & The origin and destinations database is required & Walking and cycling network data are required & Spatial data of net residential/ Population density, Retail floor area, Intersection density, and Land use mix are required & \\
-\cellcolor{gray!6}{Bikeability} & \cellcolor{gray!6}{Travel data is required and includes information about each trip such as duration, start point, end point, origin and destination} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{The origin and destinations database is required} & \cellcolor{gray!6}{Walking and cycling network data are required for calculating time or distances (using network analysis or nearest distance)} & \cellcolor{gray!6}{Spatial data of statistical areas such as blocks, mesh, zones, areas, etc. is required for calculating accessibility in each area.} & \cellcolor{gray!6}{Impedance functions are required that are usually estimated based on a negative exponential function and it is mostly based on the travel time}\\
+\cellcolor{gray!10}{Bikeability} & \cellcolor{gray!10}{Travel data is required and includes information about each trip such as duration, start point, end point, origin and destination} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{The origin and destinations database is required} & \cellcolor{gray!10}{Walking and cycling network data are required for calculating time or distances (using network analysis or nearest distance)} & \cellcolor{gray!10}{Spatial data of statistical areas such as blocks, mesh, zones, areas, etc. is required for calculating accessibility in each area.} & \cellcolor{gray!10}{Impedance functions are required that are usually estimated based on a negative exponential function and it is mostly based on the travel time}\\
 \bottomrule
 \end{longtable}
 \endgroup{}
@@ -887,7 +887,7 @@ One of the existing data sources that can be utilized for data needs is the hous
 The following is an overview of the categories of data that are obtained through the household travel surveys:
 
 \begin{table}
-
+\centering
 \caption{\label{tab:unnamed-chunk-11}\label{tab:table_6}A Comprehensive Analysis of Variables in Household Travel Surveys}
 \centering
 \fontsize{10}{12}\selectfont
@@ -895,19 +895,19 @@ The following is an overview of the categories of data that are obtained through
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Household levels}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Person level}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Trip level}}\\
 \midrule
-\cellcolor{gray!6}{Home location} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{Origin location}\\
+\cellcolor{gray!10}{Home location} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{Origin location}\\
 Dwelling type & Age & Destination location\\
-\cellcolor{gray!6}{Household size (\# people)} & \cellcolor{gray!6}{Driver’s licence} & \cellcolor{gray!6}{Trip departure time (start and end time)}\\
+\cellcolor{gray!10}{Household size (\# people)} & \cellcolor{gray!10}{Driver’s licence} & \cellcolor{gray!10}{Trip departure time (start and end time)}\\
 Number of vehicles & Transit pass & Purpose of travel (destination activity)\\
-\cellcolor{gray!6}{Number of bicycles} & \cellcolor{gray!6}{Student status} & \cellcolor{gray!6}{Mode(s) of travel (up to 5)}\\
+\cellcolor{gray!10}{Number of bicycles} & \cellcolor{gray!10}{Student status} & \cellcolor{gray!10}{Mode(s) of travel (up to 5)}\\
 \addlinespace
 Household income & School level & Number of vehicle occupants (if driver or passenger)\\
-\cellcolor{gray!6}{Home parking (\#off-street spots)} & \cellcolor{gray!6}{School location} & \cellcolor{gray!6}{Employment status}\\
+\cellcolor{gray!10}{Home parking (\#off-street spots)} & \cellcolor{gray!10}{School location} & \cellcolor{gray!10}{Employment status}\\
  &  & Workplace location\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Parking at work and school(free or pay)}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Parking at work and school(free or pay)}\\
  &  & Other occupational status\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Location of residence}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Location of residence}\\
  &  & Frequency of cycling, walking, and other active mode use\\
 \bottomrule
 \end{tabular}
@@ -1079,119 +1079,119 @@ The following table is an overview of data sources from various household travel
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Survey}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Year\_of\_Survey}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Household\_Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Personal\_Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Trip\_Data}}\\
 \midrule
-\cellcolor{gray!6}{General social survey (GSS)} & \cellcolor{gray!6}{1986} & \cellcolor{gray!6}{Dwelling type} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{Mode(s) of travel}\\
+\cellcolor{gray!10}{General social survey (GSS)} & \cellcolor{gray!10}{1986} & \cellcolor{gray!10}{Dwelling type} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{Mode(s) of travel}\\
  & 1992 & Household size & Age & Purpose of travel\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{1998} & \cellcolor{gray!6}{Household income} & \cellcolor{gray!6}{Student status} & \cellcolor{gray!6}{Start Time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{1998} & \cellcolor{gray!10}{Household income} & \cellcolor{gray!10}{Student status} & \cellcolor{gray!10}{Start Time}\\
  & 2005 &  & School level & End Time\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2015} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Employment status} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2015} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Employment status} & \cellcolor{gray!10}{}\\
 \addlinespace
 Transportation Tomorrow Survey survey (TTS) & 1991 & Regional municipality of household & Person number within the household & Trip number for persons in household\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{1996} & \cellcolor{gray!6}{geocode of household} & \cellcolor{gray!6}{Age} & \cellcolor{gray!6}{Start Time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{1996} & \cellcolor{gray!10}{geocode of household} & \cellcolor{gray!10}{Age} & \cellcolor{gray!10}{Start Time}\\
  & 2001 & Type of dwelling unit & Gender & End Time\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2006} & \cellcolor{gray!6}{Number of persons in the household} & \cellcolor{gray!6}{Transit pass} & \cellcolor{gray!6}{Mode of the trip}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2006} & \cellcolor{gray!10}{Number of persons in the household} & \cellcolor{gray!10}{Transit pass} & \cellcolor{gray!10}{Mode of the trip}\\
  & 2011 & Number of vehicles & Employment status of the person & Purpose of the trip\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2016} & \cellcolor{gray!6}{driver’s licence in the household} & \cellcolor{gray!6}{Person’s occupation type} & \cellcolor{gray!6}{Geocode of origins and destinations}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2016} & \cellcolor{gray!10}{driver’s licence in the household} & \cellcolor{gray!10}{Person’s occupation type} & \cellcolor{gray!10}{Geocode of origins and destinations}\\
  &  & Household’s total income & Student status of person & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{School codes} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{School codes} & \cellcolor{gray!10}{}\\
 Autorité régionale de transport métropolitain survey (ARTM) & 1970 & Home location & Age & Origins location\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{1974} & \cellcolor{gray!6}{Size of household} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{Destination location}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{1974} & \cellcolor{gray!10}{Size of household} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{Destination location}\\
 \addlinespace
  & 1978 & Vehicle ownership & Income & Trip purpose\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{1982} & \cellcolor{gray!6}{number of cars in households} & \cellcolor{gray!6}{Education level} & \cellcolor{gray!6}{Mode of transportation}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{1982} & \cellcolor{gray!10}{number of cars in households} & \cellcolor{gray!10}{Education level} & \cellcolor{gray!10}{Mode of transportation}\\
  & 1987 &  & Driving license ownership & Start Time\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{1993} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Main occupation} & \cellcolor{gray!6}{End Time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{1993} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Main occupation} & \cellcolor{gray!10}{End Time}\\
  & 1998 &  & Public transit monthly pass ownership & \\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2003} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2003} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
  & 2008 &  &  & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2013} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2013} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{}\\
  & 2018 &  &  & \\
-\cellcolor{gray!6}{Vancouver panel survey (VTS)} & \cellcolor{gray!6}{2008} & \cellcolor{gray!6}{Home location} & \cellcolor{gray!6}{Age} & \cellcolor{gray!6}{Trip purpose}\\
+\cellcolor{gray!10}{Vancouver panel survey (VTS)} & \cellcolor{gray!10}{2008} & \cellcolor{gray!10}{Home location} & \cellcolor{gray!10}{Age} & \cellcolor{gray!10}{Trip purpose}\\
 \addlinespace
  & 2011 & Size of household & Gender & Mode of transportation\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2013} & \cellcolor{gray!6}{Vehicle ownership} & \cellcolor{gray!6}{Income} & \cellcolor{gray!6}{Travel distance}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2013} & \cellcolor{gray!10}{Vehicle ownership} & \cellcolor{gray!10}{Income} & \cellcolor{gray!10}{Travel distance}\\
  & 2019 &  & Education & Start Time\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Employment} & \cellcolor{gray!6}{End Time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Employment} & \cellcolor{gray!10}{End Time}\\
  &  &  &  & Geocoded origin and destination\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Trip frequency}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Trip frequency}\\
 Origin-Destination survey of National Capital Region & 1986 & Size of household & Age & Trip origion and destination\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{1995} & \cellcolor{gray!6}{household vehicle availability} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{purpose of trip}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{1995} & \cellcolor{gray!10}{household vehicle availability} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{purpose of trip}\\
  & 2005 & vehicle ownership & Income & Time of travel\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2011} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Education} & \cellcolor{gray!6}{Mode of transportation}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2011} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Education} & \cellcolor{gray!10}{Mode of transportation}\\
 \addlinespace
  &  &  & driver’s licence & \\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Employment status} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Employment status} & \cellcolor{gray!10}{}\\
 Origin-Destination survey of Capital Regional District (CRD) & 2001 & Households size & Age & Trip origins and destinations\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2006} & \cellcolor{gray!6}{Type of dwelling} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{travel modes}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2006} & \cellcolor{gray!10}{Type of dwelling} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{travel modes}\\
  & 2011 & vehicle available to each household & Employment & trip purposes\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2016} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Start Time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2016} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Start Time}\\
  &  &  &  & End \vphantom{1} Time\\
-\cellcolor{gray!6}{Origin-Destination survey of Nanaimo City} & \cellcolor{gray!6}{2011} & \cellcolor{gray!6}{Household size} & \cellcolor{gray!6}{Age} & \cellcolor{gray!6}{Purpose of the trip}\\
+\cellcolor{gray!10}{Origin-Destination survey of Nanaimo City} & \cellcolor{gray!10}{2011} & \cellcolor{gray!10}{Household size} & \cellcolor{gray!10}{Age} & \cellcolor{gray!10}{Purpose of the trip}\\
  &  & Type of Dwelling & Gender & Mode of transportation\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Number of vehicle} & \cellcolor{gray!6}{Employment status} & \cellcolor{gray!6}{Trip distance}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Number of vehicle} & \cellcolor{gray!10}{Employment status} & \cellcolor{gray!10}{Trip distance}\\
 \addlinespace
  &  &  & Income & Trip duration\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Education} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Education} & \cellcolor{gray!10}{}\\
 Edmonton and Region Household Travel Survey (ERHTS) & 1994 & Household income & Age & Number of trips\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2005} & \cellcolor{gray!6}{Number of household members} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{Trip duration}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2005} & \cellcolor{gray!10}{Number of household members} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{Trip duration}\\
  & 2015 & Type of dwelling & Employment status & Distance traveled\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Number of vehicle} & \cellcolor{gray!6}{Education} & \cellcolor{gray!6}{Mode of transportation}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Number of vehicle} & \cellcolor{gray!10}{Education} & \cellcolor{gray!10}{Mode of transportation}\\
  &  &  &  & Travel purpose\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Travel time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Travel time}\\
 Calgary and Region Travel and Activity Survey (CARTAS) & 2012 & number of people in the household & Age & Frequency of travel\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{number of vehicles} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{Length of trips}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{number of vehicles} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{Length of trips}\\
 \addlinespace
  &  & Household income & Income & Mode of transportation\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Number of vehicle} & \cellcolor{gray!6}{Education} & \cellcolor{gray!6}{Trip purpose}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Number of vehicle} & \cellcolor{gray!10}{Education} & \cellcolor{gray!10}{Trip purpose}\\
  &  &  & Employment & Start Time\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{End Time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{End Time}\\
 City of Saskatoon Household Travel Survey & 2013 & Household size & Age & Trip purpose\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Household income} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{Mode of transportation}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Household income} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{Mode of transportation}\\
  &  & Number of vehicle & Employment status & Origin and destination\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Time of travel}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Time of travel}\\
  &  &  &  & Travel distance\\
-\cellcolor{gray!6}{Okanagan Travel Survey (OTS)} & \cellcolor{gray!6}{2007} & \cellcolor{gray!6}{Location} & \cellcolor{gray!6}{Age} & \cellcolor{gray!6}{Geocode origin and destination coordinates}\\
+\cellcolor{gray!10}{Okanagan Travel Survey (OTS)} & \cellcolor{gray!10}{2007} & \cellcolor{gray!10}{Location} & \cellcolor{gray!10}{Age} & \cellcolor{gray!10}{Geocode origin and destination coordinates}\\
 \addlinespace
  & 2013 & Dwelling type & Gender & Trip departure time\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2018} & \cellcolor{gray!6}{Number of householdes} & \cellcolor{gray!6}{Driver’s licence} & \cellcolor{gray!6}{Trip arrival time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2018} & \cellcolor{gray!10}{Number of householdes} & \cellcolor{gray!10}{Driver’s licence} & \cellcolor{gray!10}{Trip arrival time}\\
  &  & Number of vehicle & Student status & Trip purpose\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Number of bicycle} & \cellcolor{gray!6}{School level} & \cellcolor{gray!6}{Mode of travel}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Number of bicycle} & \cellcolor{gray!10}{School level} & \cellcolor{gray!10}{Mode of travel}\\
  &  & Household Income & Employment level & \\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Workplace location} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Workplace location} & \cellcolor{gray!10}{}\\
  &  &  & Type of occupation & \\
-\cellcolor{gray!6}{Winnipeg Area Travel Survey (WATS)} & \cellcolor{gray!6}{2007} & \cellcolor{gray!6}{household size} & \cellcolor{gray!6}{Age} & \cellcolor{gray!6}{Origin and destinations}\\
+\cellcolor{gray!10}{Winnipeg Area Travel Survey (WATS)} & \cellcolor{gray!10}{2007} & \cellcolor{gray!10}{household size} & \cellcolor{gray!10}{Age} & \cellcolor{gray!10}{Origin and destinations}\\
  &  & Number of vehicles & Gender & Purpose of travel\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Type of dwelling} & \cellcolor{gray!6}{Driver’s licence} & \cellcolor{gray!6}{Mode(s) of travel}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Type of dwelling} & \cellcolor{gray!10}{Driver’s licence} & \cellcolor{gray!10}{Mode(s) of travel}\\
 \addlinespace
  &  & Household income & Occupation status & Departure time\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Usual place of work or school} & \cellcolor{gray!6}{Arrival time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Usual place of work or school} & \cellcolor{gray!10}{Arrival time}\\
  &  &  & Labor force status & \\
-\cellcolor{gray!6}{The London Household Travel Survey} & \cellcolor{gray!6}{1987} & \cellcolor{gray!6}{Location of residence} & \cellcolor{gray!6}{Age} & \cellcolor{gray!6}{Modes of transportation}\\
+\cellcolor{gray!10}{The London Household Travel Survey} & \cellcolor{gray!10}{1987} & \cellcolor{gray!10}{Location of residence} & \cellcolor{gray!10}{Age} & \cellcolor{gray!10}{Modes of transportation}\\
  & 2002 & Number of people living in the household & Gender & Travel purposes\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2009} & \cellcolor{gray!6}{Type of dwelling} & \cellcolor{gray!6}{Driver’s licence} & \cellcolor{gray!6}{Start Time}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2009} & \cellcolor{gray!10}{Type of dwelling} & \cellcolor{gray!10}{Driver’s licence} & \cellcolor{gray!10}{Start Time}\\
  & 2016 & Availability of cars & Employment status & End Time\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Availability of bicycle} & \cellcolor{gray!6}{Income} & \cellcolor{gray!6}{Location of origin and destination}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Availability of bicycle} & \cellcolor{gray!10}{Income} & \cellcolor{gray!10}{Location of origin and destination}\\
  &  &  &  & Distance traveled\\
-\cellcolor{gray!6}{Kingston Household Travel Survey} & \cellcolor{gray!6}{2002} & \cellcolor{gray!6}{Type of dwellings} & \cellcolor{gray!6}{Age} & \cellcolor{gray!6}{Frequency of trip}\\
+\cellcolor{gray!10}{Kingston Household Travel Survey} & \cellcolor{gray!10}{2002} & \cellcolor{gray!10}{Type of dwellings} & \cellcolor{gray!10}{Age} & \cellcolor{gray!10}{Frequency of trip}\\
 \addlinespace
  & 2008 & student number in a household & Gender & Purpose of trips\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{2019} & \cellcolor{gray!6}{Access to car} & \cellcolor{gray!6}{Employment status} & \cellcolor{gray!6}{Modes of transportation}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{2019} & \cellcolor{gray!10}{Access to car} & \cellcolor{gray!10}{Employment status} & \cellcolor{gray!10}{Modes of transportation}\\
  &  & Access to bicycle & Income & Trip distances\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Transit Passes} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Travel times}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Transit Passes} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Travel times}\\
 North Shore Transportation Survey (NSTS) & 2019 & Household employment & Age & Location of origin and destination\\
 \addlinespace
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{health status} & \cellcolor{gray!6}{Gender} & \cellcolor{gray!6}{Trip demand}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{health status} & \cellcolor{gray!10}{Gender} & \cellcolor{gray!10}{Trip demand}\\
  &  & bike access &  & Purpose of travel\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{vehicle access} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Mode of travel}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{vehicle access} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Mode of travel}\\
  &  &  &  & Origin and destination\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{Occupation}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{Occupation}\\
 \bottomrule
 \end{longtable}
 \endgroup{}
@@ -1595,25 +1595,25 @@ On the other hand, localized datasets such as the Vancouver open data and Montre
 This categorization and subsequent analysis highlight the richness and diversity of data available for transportation and urban planning in Canada. It demonstrates the potential for these datasets to inform policy-making and infrastructure development, particularly in enhancing active travel accessibility and understanding spatial dynamics within urban environments. The datasets that provide additional data, such as stress levels from the Canadian Business Counts (CBC) dataset, suggest opportunities for multidimensional analyses that can incorporate psychological factors into accessibility studies.
 
 \begin{table}
-
+\centering
 \caption{\label{tab:Table8} \label{tab:table-8} Availability of datasets}
 \centering
-\resizebox{\linewidth}{!}{
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \fontsize{8}{10}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}ll}
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Dataset}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Travel Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Users Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Origin-Destination Data}} & \multicolumn{1}{>{\centering\arraybackslash}p{3cm}}{\textbf{Cycling and Walking data}} & \multicolumn{1}{c}{\textbf{Spatial data}} & \multicolumn{1}{c}{\textbf{Additional data}}\\
 \midrule
-\cellcolor{gray!6}{General social survey (GSS)} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-}\\
+\cellcolor{gray!10}{General social survey (GSS)} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-}\\
 Transportation Tomorrow Survey (TTS) of Toronto & Y & Y & Y & Y & Y & Y\\
-\cellcolor{gray!6}{Autorité régionale de transport métropolitain (ARTM) survey of Montreal} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{Y}\\
+\cellcolor{gray!10}{Autorité régionale de transport métropolitain (ARTM) survey of Montreal} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{Y}\\
 The Linkable Open Data Environment (LODE) & - & - & Y & - & - & -\\
-\cellcolor{gray!6}{Can-BICS} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{Stress Level}\\
+\cellcolor{gray!10}{Can-BICS} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{Stress Level}\\
 \addlinespace
 open street map & - & - & - & Y & Y & -\\
-\cellcolor{gray!6}{Toronto open data} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-}\\
+\cellcolor{gray!10}{Toronto open data} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-}\\
 Vancouver open data & - & - & - & Y & - & -\\
-\cellcolor{gray!6}{Montreal open data} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{Y} & \cellcolor{gray!6}{-} & \cellcolor{gray!6}{-}\\
+\cellcolor{gray!10}{Montreal open data} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{Y} & \cellcolor{gray!10}{-} & \cellcolor{gray!10}{-}\\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -1639,26 +1639,26 @@ Research, such as the study conducted by Xing et al.~(2018), has delved into the
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{9cm}}{\textbf{Distance/Time thresholds}} & \multicolumn{1}{>{\centering\arraybackslash}p{9cm}}{\textbf{Description}}\\
 \midrule
-\cellcolor{gray!6}{Neilson and Fowler (1972), \textbackslash{} O'Neill, Ramsey et al. (1992), \textbackslash{} Hsiao, Lu et al. (1997), \textbackslash{} Murray and Wu (2003), \textbackslash{} Zhao, Chow et al. (2003), \textbackslash{} Kimpel, Dueker et al. (2007), \textbackslash{} Gutiérrez and García-Palomares (2008)} & \cellcolor{gray!6}{The most common standard measure \textbackslash{} of walking distance to transit \textbackslash{} stops and stations has been 400 m (0.25 miles).}\\
+\cellcolor{gray!10}{Neilson and Fowler (1972), \textbackslash{} O'Neill, Ramsey et al. (1992), \textbackslash{} Hsiao, Lu et al. (1997), \textbackslash{} Murray and Wu (2003), \textbackslash{} Zhao, Chow et al. (2003), \textbackslash{} Kimpel, Dueker et al. (2007), \textbackslash{} Gutiérrez and García-Palomares (2008)} & \cellcolor{gray!10}{The most common standard measure \textbackslash{} of walking distance to transit \textbackslash{} stops and stations has been 400 m (0.25 miles).}\\
 Lam and Morrall (1982) & In Calgary, Canada, observed a median \textbackslash{} walking distance to bus stops of 292 m, \textbackslash{} while the average was 327 m and the \textbackslash{} 75th percentile, 450 m.\\
-\cellcolor{gray!6}{O'Sullivan and Morrall (1996)} & \cellcolor{gray!6}{distinguished between walking to light-rail \textbackslash{} transit stations in the suburbs and in the \textbackslash{} central business district. They found an \textbackslash{} average distance of 649 m and a 75th \textbackslash{} percentile equal to 840 m in the former, \textbackslash{} while the average distance was 326 metres \textbackslash{} and the 75th percentile was 419 metres \textbackslash{} in the latter (Calgary, Canada)}\\
+\cellcolor{gray!10}{O'Sullivan and Morrall (1996)} & \cellcolor{gray!10}{distinguished between walking to light-rail \textbackslash{} transit stations in the suburbs and in the \textbackslash{} central business district. They found an \textbackslash{} average distance of 649 m and a 75th \textbackslash{} percentile equal to 840 m in the former, \textbackslash{} while the average distance was 326 metres \textbackslash{} and the 75th percentile was 419 metres \textbackslash{} in the latter (Calgary, Canada)}\\
 Arasan, Rengaraju et al. (1996) & an average critical trip time is \textbackslash{} 20 min for walking.\\
-\cellcolor{gray!6}{Nicholls (2001), Smoyer?Tomic, \textbackslash{} Hewko et al. (2004)} & \cellcolor{gray!6}{used a distance of 0.8 km as a reasonable \textbackslash{} threshold for walking trips (the threshold is \textbackslash{} not specific to a population group)}\\
+\cellcolor{gray!10}{Nicholls (2001), Smoyer?Tomic, \textbackslash{} Hewko et al. (2004)} & \cellcolor{gray!10}{used a distance of 0.8 km as a reasonable \textbackslash{} threshold for walking trips (the threshold is \textbackslash{} not specific to a population group)}\\
 \addlinespace
 Zhao, Chow et al. (2003) & in southeast Florida, the number of riders \textbackslash{} walking over half a mile (800m) was negligible.\\
-\cellcolor{gray!6}{Van Herzele and Wiedemann (2003)} & \cellcolor{gray!6}{Maximum distance from home to: \textbackslash{} 1) Residential green (150 m); \textbackslash{} Neighborhood green (400 m); \textbackslash{} Quarter green (800 m); \textbackslash{} District green (1600 m); \textbackslash{} City green (3200 m); \textbackslash{} Urban forest (5000 m)}\\
+\cellcolor{gray!10}{Van Herzele and Wiedemann (2003)} & \cellcolor{gray!10}{Maximum distance from home to: \textbackslash{} 1) Residential green (150 m); \textbackslash{} Neighborhood green (400 m); \textbackslash{} Quarter green (800 m); \textbackslash{} District green (1600 m); \textbackslash{} City green (3200 m); \textbackslash{} Urban forest (5000 m)}\\
 Tsou, Hung et al. (2005) & Defined varying distances that depended \textbackslash{} on the type of facility:\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{· the service range of municipal facilities \textbackslash{} such as town parks, universities, museums \textbackslash{} and dump sites cover the entire city.}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{· the service range of municipal facilities \textbackslash{} such as town parks, universities, museums \textbackslash{} and dump sites cover the entire city.}\\
  & · community facilities, including junior \textbackslash{} and senior high schools, transformer \textbackslash{} stations, etc., are typically in the 2 km range.\\
 \addlinespace
-\cellcolor{gray!6}{Schlossberg, Agrawal et al. (2007)} & \cellcolor{gray!6}{· The service range of neighborhood \textbackslash{} facilities like playgrounds and elementary \textbackslash{} schools is typically in the 1 km range.}\\
+\cellcolor{gray!10}{Schlossberg, Agrawal et al. (2007)} & \cellcolor{gray!10}{· The service range of neighborhood \textbackslash{} facilities like playgrounds and elementary \textbackslash{} schools is typically in the 1 km range.}\\
 Alshalalfah and Shalaby (2007) & walking distances to rail transit stations \textbackslash{} in Portland, WA, and San Francisco, were \textbackslash{} a median distance of 0.47 miles (756 m)\\
-\cellcolor{gray!6}{Larsen and Gilliland (2008)} & \cellcolor{gray!6}{showed that among transit users, 60 \% \textbackslash{} live within 300 m from their stop and \textbackslash{} 80 \% within 500 m in Canada.}\\
+\cellcolor{gray!10}{Larsen and Gilliland (2008)} & \cellcolor{gray!10}{showed that among transit users, 60 \% \textbackslash{} live within 300 m from their stop and \textbackslash{} 80 \% within 500 m in Canada.}\\
 Manaugh and El-Geneidy (2011) & Population within 500 m walk \textbackslash{} distance of supermarkets\\
-\cellcolor{gray!6}{Daniels and Mulley (2013)} & \cellcolor{gray!6}{used 400, 800 and 1200 m thresholds \textbackslash{} for calculating walkability score}\\
+\cellcolor{gray!10}{Daniels and Mulley (2013)} & \cellcolor{gray!10}{used 400, 800 and 1200 m thresholds \textbackslash{} for calculating walkability score}\\
 \addlinespace
  & the mean walking distance to bus service \textbackslash{} 461 m with 75th percentile at 566 m.\\
-\cellcolor{gray!6}{} & \cellcolor{gray!6}{In the same study they found mean walking \textbackslash{} to rail around 805 m and the 75th percentile \textbackslash{} at 1,018 m. Also, it is clear that these \textbackslash{} distances are significantly beyond the 400 m \textbackslash{} for buses and 800 for rail.}\\
+\cellcolor{gray!10}{} & \cellcolor{gray!10}{In the same study they found mean walking \textbackslash{} to rail around 805 m and the 75th percentile \textbackslash{} at 1,018 m. Also, it is clear that these \textbackslash{} distances are significantly beyond the 400 m \textbackslash{} for buses and 800 for rail.}\\
 \bottomrule
 \end{longtable}
 \endgroup{}
@@ -1707,16 +1707,16 @@ Slope values indicate uphill travel, while negative slope values indicate downhi
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Slope}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Speed(mph)}}\\
 \midrule
-\cellcolor{gray!6}{-10} & \cellcolor{gray!6}{18.8}\\
+\cellcolor{gray!10}{-10} & \cellcolor{gray!10}{18.8}\\
 -7 & 17.1\\
-\cellcolor{gray!6}{-5} & \cellcolor{gray!6}{16.1}\\
+\cellcolor{gray!10}{-5} & \cellcolor{gray!10}{16.1}\\
 -2 & 14.5\\
-\cellcolor{gray!6}{0} & \cellcolor{gray!6}{13.4}\\
+\cellcolor{gray!10}{0} & \cellcolor{gray!10}{13.4}\\
 \addlinespace
 2 & 11.7\\
-\cellcolor{gray!6}{5} & \cellcolor{gray!6}{8.9}\\
+\cellcolor{gray!10}{5} & \cellcolor{gray!10}{8.9}\\
 7 & 7.2\\
-\cellcolor{gray!6}{10} & \cellcolor{gray!6}{4.5}\\
+\cellcolor{gray!10}{10} & \cellcolor{gray!10}{4.5}\\
 \bottomrule
 \end{longtable}
 \endgroup{}
@@ -1737,16 +1737,16 @@ Where v is velocity, e is the base for natural logarithms, and s is the slope in
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Slope}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Speed(mph)}}\\
 \midrule
-\cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{1.6}\\
+\cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{1.6}\\
 7.5 & 2.1\\
-\cellcolor{gray!6}{5.0} & \cellcolor{gray!6}{2.4}\\
+\cellcolor{gray!10}{5.0} & \cellcolor{gray!10}{2.4}\\
 2.5 & 2.8\\
-\cellcolor{gray!6}{0.0} & \cellcolor{gray!6}{3.1}\\
+\cellcolor{gray!10}{0.0} & \cellcolor{gray!10}{3.1}\\
 \addlinespace
 -2.5 & 3.6\\
-\cellcolor{gray!6}{-5.0} & \cellcolor{gray!6}{3.1}\\
+\cellcolor{gray!10}{-5.0} & \cellcolor{gray!10}{3.1}\\
 -7.5 & 2.6\\
-\cellcolor{gray!6}{-10.0} & \cellcolor{gray!6}{2.3}\\
+\cellcolor{gray!10}{-10.0} & \cellcolor{gray!10}{2.3}\\
 \bottomrule
 \end{longtable}
 \endgroup{}
@@ -1810,11 +1810,11 @@ Trails and park walkways are LTS 1 but may be categorized as non-conforming Can-
 \toprule
 \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Facility Type}} & \multicolumn{1}{>{\centering\arraybackslash}p{5cm}}{\textbf{Can-BICS Class}} & \multicolumn{1}{c}{\textbf{LTS Category}}\\
 \midrule
-\cellcolor{gray!6}{Cycle tracks} & \cellcolor{gray!6}{High comfort} & \cellcolor{gray!6}{1}\\
+\cellcolor{gray!10}{Cycle tracks} & \cellcolor{gray!10}{High comfort} & \cellcolor{gray!10}{1}\\
 Local street bikeway & High comfort & 1 or 2\\
-\cellcolor{gray!6}{Bike paths} & \cellcolor{gray!6}{High comfort} & \cellcolor{gray!6}{1}\\
+\cellcolor{gray!10}{Bike paths} & \cellcolor{gray!10}{High comfort} & \cellcolor{gray!10}{1}\\
 Multi-use paths & Medium comfort & 1\\
-\cellcolor{gray!6}{Painted Bike lanes} & \cellcolor{gray!6}{Low comfort} & \cellcolor{gray!6}{1 to 4}\\
+\cellcolor{gray!10}{Painted Bike lanes} & \cellcolor{gray!10}{Low comfort} & \cellcolor{gray!10}{1 to 4}\\
 \addlinespace
 Park trails and walkways & Non-conforming & 1\\
 \bottomrule
@@ -1864,6 +1864,35 @@ The flowchart ends by emphasizing the need for interviewers to understand any ot
 
 \hypertarget{math-sci}{%
 \chapter{A Historical Analysis of the Evolution of Active Travel Behaviour in Canada}\label{math-sci}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1986.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1992.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1998.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2005.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2010.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2015.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_1992.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_1998.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2005.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2010.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2015.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_data.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_data.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1986\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1992\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1998\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2005\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2010\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2015\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_1992\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_1998\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2005\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2010\_f.Rda"}\NormalTok{))}
+\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2015\_f.Rda"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{abstract-1}{%
 \section{Abstract}\label{abstract-1}}
@@ -2148,35 +2177,6 @@ Following a thorough process of model selection and parameter estimation, we cal
 
 The General Social Survey (GSS) data emerged as an invaluable repository in our detailed examination of active travel behavior in Canada. It provided a comprehensive view of individual preferences and behaviors about active modes of transportation, specifically walking and cycling. By focusing on the years 1986 to 2015, we sought to capture the evolution of active travel against the backdrop of crucial urban development changes, societal shifts in attitudes towards health and the environment, and modifications in transportation infrastructure and policies.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1986.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1992.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1998.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2005.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2010.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2015.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_1992.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_1998.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2005.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2010.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2015.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_data.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_data.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1986\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1992\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_1998\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2005\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2010\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/walking\_2015\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_1992\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_1998\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2005\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2010\_f.Rda"}\NormalTok{))}
-\FunctionTok{load}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\FunctionTok{here}\NormalTok{(), }\StringTok{"/data/cycling\_2015\_f.Rda"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
 \begingroup\fontsize{12}{14}\selectfont
 
 \begin{longtable}[t]{>{}llcccccc}
@@ -2186,19 +2186,19 @@ The General Social Survey (GSS) data emerged as an invaluable repository in our 
 \cmidrule(l{3pt}r{3pt}){3-8}
 Mode & Statistic & 1986 & 1992 & 1998 & 2005 & 2010 & 2015\\
 \midrule
-\textbf{\cellcolor{gray!6}{cycling}} & \cellcolor{gray!6}{Count} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{126} & \cellcolor{gray!6}{119} & \cellcolor{gray!6}{330} & \cellcolor{gray!6}{230} & \cellcolor{gray!6}{240}\\
+\textbf{\cellcolor{gray!10}{cycling}} & \cellcolor{gray!10}{Count} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{126} & \cellcolor{gray!10}{119} & \cellcolor{gray!10}{330} & \cellcolor{gray!10}{230} & \cellcolor{gray!10}{240}\\
 \cmidrule{1-8}\pagebreak[0]
 \textbf{} & max & NA & 90 & 90 & 90 & 85 & 90\\
 \cmidrule{1-8}\pagebreak[0]
-\textbf{\cellcolor{gray!6}{}} & \cellcolor{gray!6}{mean} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{24} & \cellcolor{gray!6}{21} & \cellcolor{gray!6}{18} & \cellcolor{gray!6}{18} & \cellcolor{gray!6}{22}\\
+\textbf{\cellcolor{gray!10}{}} & \cellcolor{gray!10}{mean} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{24} & \cellcolor{gray!10}{21} & \cellcolor{gray!10}{18} & \cellcolor{gray!10}{18} & \cellcolor{gray!10}{22}\\
 \cmidrule{1-8}\pagebreak[0]
 \textbf{} & min & NA & 5 & 2 & 1 & 1 & 5\\
 \cmidrule{1-8}\pagebreak[0]
-\textbf{\cellcolor{gray!6}{NA}} & \cellcolor{gray!6}{Count} & \cellcolor{gray!6}{4229} & \cellcolor{gray!6}{1473} & \cellcolor{gray!6}{1657} & \cellcolor{gray!6}{5517} & \cellcolor{gray!6}{4360} & \cellcolor{gray!6}{3217}\\
+\textbf{\cellcolor{gray!10}{NA}} & \cellcolor{gray!10}{Count} & \cellcolor{gray!10}{4229} & \cellcolor{gray!10}{1473} & \cellcolor{gray!10}{1657} & \cellcolor{gray!10}{5517} & \cellcolor{gray!10}{4360} & \cellcolor{gray!10}{3217}\\
 \cmidrule{1-8}\pagebreak[0]
 \textbf{} & max & 90 & 90 & 90 & 90 & 90 & 90\\
 \cmidrule{1-8}\pagebreak[0]
-\textbf{\cellcolor{gray!6}{}} & \cellcolor{gray!6}{mean} & \cellcolor{gray!6}{17} & \cellcolor{gray!6}{17} & \cellcolor{gray!6}{10} & \cellcolor{gray!6}{12} & \cellcolor{gray!6}{12} & \cellcolor{gray!6}{16}\\
+\textbf{\cellcolor{gray!10}{}} & \cellcolor{gray!10}{mean} & \cellcolor{gray!10}{17} & \cellcolor{gray!10}{17} & \cellcolor{gray!10}{10} & \cellcolor{gray!10}{12} & \cellcolor{gray!10}{12} & \cellcolor{gray!10}{16}\\
 \cmidrule{1-8}\pagebreak[0]
 \textbf{} & min & 1 & 1 & 1 & 0 & 0 & 5\\
 \bottomrule
@@ -2222,11 +2222,11 @@ As highlighted in Table \ref{tab:table_13}, throughout the 30 years under study,
 \cmidrule(l{3pt}r{3pt}){3-6} \cmidrule(l{3pt}r{3pt}){7-10} \cmidrule(l{3pt}r{3pt}){11-14}
 \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Destination}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Mode}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Minimum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Median}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Maximum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Percentage}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Minimum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Median}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Maximum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Percentage}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Minimum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Median}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Maximum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Percentage}}\\
 \midrule
-\cellcolor{gray!6}{Home} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{15} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{45.4} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{10} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{58.9} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{5.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{51.2}\\
+\cellcolor{gray!10}{Home} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{15} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{45.4} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{10} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{58.9} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{5.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{51.2}\\
 Other's home & Walking & 1 & 10 & 90 & 43.0 & 1 & 5 & 90 & 21.6 & 1 & 5.0 & 90 & 28.2\\
-\cellcolor{gray!6}{Work or school} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{10} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{11.5} & \cellcolor{gray!6}{2} & \cellcolor{gray!6}{10} & \cellcolor{gray!6}{60} & \cellcolor{gray!6}{19.6} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{6.5} & \cellcolor{gray!6}{75} & \cellcolor{gray!6}{20.5}\\
+\cellcolor{gray!10}{Work or school} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{10} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{11.5} & \cellcolor{gray!10}{2} & \cellcolor{gray!10}{10} & \cellcolor{gray!10}{60} & \cellcolor{gray!10}{19.6} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{6.5} & \cellcolor{gray!10}{75} & \cellcolor{gray!10}{20.5}\\
 Home &  & NA & NA & NA & NA & 5 & 20 & 90 & 54.8 & 2 & 15.0 & 90 & 52.9\\
-\cellcolor{gray!6}{Work or school} & \cellcolor{gray!6}{cycling} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{15} & \cellcolor{gray!6}{45} & \cellcolor{gray!6}{27.8} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{20.0} & \cellcolor{gray!6}{75} & \cellcolor{gray!6}{29.4}\\
+\cellcolor{gray!10}{Work or school} & \cellcolor{gray!10}{cycling} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{15} & \cellcolor{gray!10}{45} & \cellcolor{gray!10}{27.8} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{20.0} & \cellcolor{gray!10}{75} & \cellcolor{gray!10}{29.4}\\
 \addlinespace
 Other's home &  & NA & NA & NA & NA & 5 & 10 & 70 & 17.5 & 2 & 10.0 & 80 & 17.6\\
 \bottomrule
@@ -2243,33 +2243,33 @@ Other's home &  & NA & NA & NA & NA & 5 & 10 & 70 & 17.5 & 2 & 10.0 & 80 & 17.6\
 \cmidrule(l{3pt}r{3pt}){3-6} \cmidrule(l{3pt}r{3pt}){7-10} \cmidrule(l{3pt}r{3pt}){11-14}
 \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Destination}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Mode}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Minimum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Median}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Maximum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Percentage}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Minimum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Median}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Maximum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Percentage}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Minimum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Median}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Maximum}} & \multicolumn{1}{>{\centering\arraybackslash}p{1cm}}{\textbf{Percentage}}\\
 \midrule
-\cellcolor{gray!6}{Home} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{0} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{44.3} & \cellcolor{gray!6}{0} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{43.6} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{45.0}\\
+\cellcolor{gray!10}{Home} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{44.3} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{43.6} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{45.0}\\
 Work or school & Walking & 0 & 10.0 & 70 & 17.1 & 0 & 10.0 & 80 & 15.0 & 5 & 10.0 & 80 & 15.2\\
-\cellcolor{gray!6}{Grocery store, other stores or mall} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{12.5} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{7.5} & \cellcolor{gray!6}{85} & \cellcolor{gray!6}{13.3} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{11.8}\\
+\cellcolor{gray!10}{Grocery store, other stores or mall} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{12.5} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{7.5} & \cellcolor{gray!10}{85} & \cellcolor{gray!10}{13.3} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{11.8}\\
 Restaurant, bar or club &  & 0 & 5.0 & 85 & 9.4 & 1 & 5.0 & 90 & 10.0 & 5 & 10.0 & 90 & 8.4\\
-\cellcolor{gray!6}{Other's home} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{5.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{11.7} & \cellcolor{gray!6}{0} & \cellcolor{gray!6}{5.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{11.4} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{80} & \cellcolor{gray!6}{7.3}\\
+\cellcolor{gray!10}{Other's home} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{5.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{11.7} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{5.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{11.4} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{80} & \cellcolor{gray!10}{7.3}\\
 \addlinespace
 Sports centre, field or arena &  & NA & NA & NA & NA & NA & NA & NA & NA & 5 & 10.0 & 45 & 3.3\\
-\cellcolor{gray!6}{Outdoors} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{5.0} & \cellcolor{gray!6}{60} & \cellcolor{gray!6}{3.6} & \cellcolor{gray!6}{0} & \cellcolor{gray!6}{9.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{80} & \cellcolor{gray!6}{2.8}\\
+\cellcolor{gray!10}{Outdoors} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{5.0} & \cellcolor{gray!10}{60} & \cellcolor{gray!10}{3.6} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{9.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{5.1} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{80} & \cellcolor{gray!10}{2.8}\\
 In the neighbourhood &  & NA & NA & NA & NA & NA & NA & NA & NA & 5 & 10.0 & 60 & 2.1\\
-\cellcolor{gray!6}{Library, museum or theatre} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{12.5} & \cellcolor{gray!6}{40} & \cellcolor{gray!6}{0.6} & \cellcolor{gray!6}{2} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{40} & \cellcolor{gray!6}{0.7} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{40} & \cellcolor{gray!6}{1.6}\\
+\cellcolor{gray!10}{Library, museum or theatre} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{12.5} & \cellcolor{gray!10}{40} & \cellcolor{gray!10}{0.6} & \cellcolor{gray!10}{2} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{40} & \cellcolor{gray!10}{0.7} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{40} & \cellcolor{gray!10}{1.6}\\
 Place of worship &  & 1 & 10.0 & 30 & 0.9 & 1 & 8.0 & 60 & 0.9 & 5 & 15.0 & 45 & 1.1\\
 \addlinespace
-\cellcolor{gray!6}{Medical, dental or other health clinic} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{45} & \cellcolor{gray!6}{1.0}\\
+\cellcolor{gray!10}{Medical, dental or other health clinic} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{45} & \cellcolor{gray!10}{1.0}\\
 Business &  & NA & NA & NA & NA & NA & NA & NA & NA & 5 & 10.0 & 30 & 0.2\\
-\cellcolor{gray!6}{Home} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{15.0} & \cellcolor{gray!6}{75} & \cellcolor{gray!6}{48.5} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{15.0} & \cellcolor{gray!6}{75} & \cellcolor{gray!6}{50.4} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{20.0} & \cellcolor{gray!6}{80} & \cellcolor{gray!6}{46.2}\\
+\cellcolor{gray!10}{Home} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{15.0} & \cellcolor{gray!10}{75} & \cellcolor{gray!10}{48.5} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{15.0} & \cellcolor{gray!10}{75} & \cellcolor{gray!10}{50.4} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{20.0} & \cellcolor{gray!10}{80} & \cellcolor{gray!10}{46.2}\\
 Work or school & cycling & 1 & 15.0 & 90 & 22.1 & 1 & 15.0 & 85 & 24.3 & 5 & 15.0 & 60 & 28.7\\
-\cellcolor{gray!6}{Grocery store, other stores or mall} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{2} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{30} & \cellcolor{gray!6}{10.3} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{10.0} & \cellcolor{gray!6}{75} & \cellcolor{gray!6}{9.1} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{15.0} & \cellcolor{gray!6}{80} & \cellcolor{gray!6}{6.7}\\
+\cellcolor{gray!10}{Grocery store, other stores or mall} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{2} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{30} & \cellcolor{gray!10}{10.3} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{10.0} & \cellcolor{gray!10}{75} & \cellcolor{gray!10}{9.1} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{15.0} & \cellcolor{gray!10}{80} & \cellcolor{gray!10}{6.7}\\
 \addlinespace
 Other's home &  & 1 & 15.0 & 35 & 9.1 & 5 & 10.0 & 45 & 9.6 & 5 & 15.0 & 40 & 5.4\\
-\cellcolor{gray!6}{Restaurant, bar or club} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{20.0} & \cellcolor{gray!6}{35} & \cellcolor{gray!6}{3.0} & \cellcolor{gray!6}{10} & \cellcolor{gray!6}{12.5} & \cellcolor{gray!6}{15} & \cellcolor{gray!6}{1.7} & \cellcolor{gray!6}{10} & \cellcolor{gray!6}{17.5} & \cellcolor{gray!6}{60} & \cellcolor{gray!6}{4.2}\\
+\cellcolor{gray!10}{Restaurant, bar or club} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{5} & \cellcolor{gray!10}{20.0} & \cellcolor{gray!10}{35} & \cellcolor{gray!10}{3.0} & \cellcolor{gray!10}{10} & \cellcolor{gray!10}{12.5} & \cellcolor{gray!10}{15} & \cellcolor{gray!10}{1.7} & \cellcolor{gray!10}{10} & \cellcolor{gray!10}{17.5} & \cellcolor{gray!10}{60} & \cellcolor{gray!10}{4.2}\\
 Sports centre, field or arena &  & NA & NA & NA & NA & NA & NA & NA & NA & 10 & 15.0 & 15 & 2.9\\
-\cellcolor{gray!6}{Medical, dental or other health clinic} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{10} & \cellcolor{gray!6}{15.0} & \cellcolor{gray!6}{90} & \cellcolor{gray!6}{2.1}\\
+\cellcolor{gray!10}{Medical, dental or other health clinic} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{10} & \cellcolor{gray!10}{15.0} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{2.1}\\
 Outdoors &  & 5 & 15.0 & 45 & 6.1 & 3 & 7.5 & 20 & 3.5 & 15 & 20.0 & 30 & 1.2\\
 \addlinespace
-\cellcolor{gray!6}{In the neighbourhood} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{10} & \cellcolor{gray!6}{30.0} & \cellcolor{gray!6}{45} & \cellcolor{gray!6}{1.2}\\
+\cellcolor{gray!10}{In the neighbourhood} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{10} & \cellcolor{gray!10}{30.0} & \cellcolor{gray!10}{45} & \cellcolor{gray!10}{1.2}\\
 Library, museum or theatre &  & 10 & 12.5 & 15 & 0.6 & 10 & 25.0 & 30 & 1.3 & 15 & 15.0 & 15 & 0.8\\
-\cellcolor{gray!6}{Place of worship} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{20} & \cellcolor{gray!6}{20.0} & \cellcolor{gray!6}{20} & \cellcolor{gray!6}{0.3} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{15} & \cellcolor{gray!6}{15.0} & \cellcolor{gray!6}{15} & \cellcolor{gray!6}{0.4}\\
+\cellcolor{gray!10}{Place of worship} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{20} & \cellcolor{gray!10}{20.0} & \cellcolor{gray!10}{20} & \cellcolor{gray!10}{0.3} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{15} & \cellcolor{gray!10}{15.0} & \cellcolor{gray!10}{15} & \cellcolor{gray!10}{0.4}\\
 \bottomrule
 \end{longtable}
 \endgroup{}
@@ -2367,7 +2367,7 @@ To objectively assess the fit of each distribution, model selection criteria suc
 Following the detailed statistical analysis, we present four comprehensive tables that encapsulate AIC, BIC, and log-likelihood values of each destination by mode and year (Tables \ref{tab:table_16},\ref{tab:table_17}, \ref{tab:table_18}, and \ref{tab:table_19}). These tables summarize the fitting process for each distribution evaluated, illuminating the decision-making process for selecting the most suitable distribution for each destination category. The tables illustrate our model selection process, highlighting the distribution that emerged as the best fit for each specific context based on the lowest AIC and BIC values and the highest log-likelihood scores. The first table delineates the statistical metrics for walking trips, while the second table deals with trips made by bicycle. Each table is organized to showcase the comparison across different years, thus offering insights into the temporal dynamics of travel behavior and the evolution of distance decay characteristics. By presenting the diagnostics in this tabular format, we aim to provide a clear and accessible reference demonstrating the distributional trends and patterns discerned from the GSS dataset.
 
 \begin{landscape}\begin{table}[!h]
-
+\centering
 \caption{\label{tab:table-imw1}\label{tab:table_16}Impedance functions and selection criteria across different destinations for walking trips (1986, 1992 and 1998)}
 \centering
 \fontsize{7}{9}\selectfont
@@ -2377,11 +2377,11 @@ Following the detailed statistical analysis, we present four comprehensive table
 \cmidrule(l{3pt}r{3pt}){3-6} \cmidrule(l{3pt}r{3pt}){7-10} \cmidrule(l{3pt}r{3pt}){11-14}
 Destinations & Distribution Functions & logLik & AIC & BIC & Selected Function & logLik & AIC & BIC & Selected Function & logLik & AIC & BIC & Selected Function\\
 \midrule
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Gamma}} & \cellcolor{gray!6}{-3445.93} & \cellcolor{gray!6}{1363.40} & \cellcolor{gray!6}{1369.64} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-3445.93} & \cellcolor{gray!6}{6895.85} & \cellcolor{gray!6}{6905.38} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-2822.99} & \cellcolor{gray!6}{5649.98} & \cellcolor{gray!6}{5659.47} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Gamma}} & \cellcolor{gray!10}{-3445.93} & \cellcolor{gray!10}{1363.40} & \cellcolor{gray!10}{1369.64} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-3445.93} & \cellcolor{gray!10}{6895.85} & \cellcolor{gray!10}{6905.38} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-2822.99} & \cellcolor{gray!10}{5649.98} & \cellcolor{gray!10}{5659.47} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Weibull}} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Weibull}} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-3}{*}{\raggedright\arraybackslash Home}}} & \em{\cellcolor{gray!6}{Exponential}} & \cellcolor{gray!6}{-3462.38} & \cellcolor{gray!6}{1387.32} & \cellcolor{gray!6}{1390.43} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-3462.38} & \cellcolor{gray!6}{6926.75} & \cellcolor{gray!6}{6931.52} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-2829.02} & \cellcolor{gray!6}{5660.04} & \cellcolor{gray!6}{5664.78} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-3}{*}{\raggedright\arraybackslash Home}}} & \em{\cellcolor{gray!10}{Exponential}} & \cellcolor{gray!10}{-3462.38} & \cellcolor{gray!10}{1387.32} & \cellcolor{gray!10}{1390.43} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-3462.38} & \cellcolor{gray!10}{6926.75} & \cellcolor{gray!10}{6931.52} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-2829.02} & \cellcolor{gray!10}{5660.04} & \cellcolor{gray!10}{5664.78} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{1-14}
 \textbf{} & \em{Gamma} & -976.83 & 491.96 & 496.01 & Gamma & -976.83 & 1957.66 & 1964.99 & Gamma & -1173.77 & 2351.53 & 2359.19 & Gamma\\
 \cmidrule{2-14}
@@ -2389,22 +2389,22 @@ Destinations & Distribution Functions & logLik & AIC & BIC & Selected Function &
 \cmidrule{2-14}
 \textbf{} & \em{Exponential} & -1021.74 & 495.93 & 497.96 & Gamma & -1021.74 & 2045.48 & 2049.14 &  & -1177.45 & 2356.91 & 2360.74 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-4}{*}{\raggedright\arraybackslash work or school}}} & \em{\cellcolor{gray!6}{Lognormal}} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-4}{*}{\raggedright\arraybackslash work or school}}} & \em{\cellcolor{gray!10}{Lognormal}} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{1-14}
 \textbf{} & \em{Gamma} & -1097.09 & 1296.75 & 1302.91 & Gamma & -1097.09 & 2198.17 & 2205.70 & Gamma & -1493.73 & 2991.47 & 2999.76 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Weibull}} & \cellcolor{gray!6}{-1108.03} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-1108.03} & \cellcolor{gray!6}{2220.05} & \cellcolor{gray!6}{2227.58} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-1498.74} & \cellcolor{gray!6}{3001.47} & \cellcolor{gray!6}{3009.77} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Weibull}} & \cellcolor{gray!10}{-1108.03} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-1108.03} & \cellcolor{gray!10}{2220.05} & \cellcolor{gray!10}{2227.58} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-1498.74} & \cellcolor{gray!10}{3001.47} & \cellcolor{gray!10}{3009.77} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-14}
 \textbf{} & \em{Exponential} & -1114.47 & 1312.24 & 1315.32 & Gamma & -1114.47 & 2230.94 & 2234.70 &  & -1499.40 & 3000.80 & 3004.95 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-4}{*}{\raggedright\arraybackslash Other's home}}} & \em{\cellcolor{gray!6}{Lognormal}} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-4}{*}{\raggedright\arraybackslash Other's home}}} & \em{\cellcolor{gray!10}{Lognormal}} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma}\\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{landscape}
 
 \begin{landscape}\begin{table}[!h]
-
+\centering
 \caption{\label{tab:table-imw2}\label{tab:table_17}Impedance functions and selection criteria across different destinations for walking trips (2005, 2010, and 2015).}
 \centering
 \fontsize{7}{9}\selectfont
@@ -2414,27 +2414,27 @@ Destinations & Distribution Functions & logLik & AIC & BIC & Selected Function &
 \cmidrule(l{3pt}r{3pt}){3-6} \cmidrule(l{3pt}r{3pt}){7-10} \cmidrule(l{3pt}r{3pt}){11-14}
 Destinations & Distribution Functions & logLik & AIC & BIC & Selected Function & logLik & AIC & BIC & Selected Function & logLik & AIC & BIC & Selected Function\\
 \midrule
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Gamma}} & \cellcolor{gray!6}{-8561.05} & \cellcolor{gray!6}{17126.11} & \cellcolor{gray!6}{17137.71} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-6773.82} & \cellcolor{gray!6}{13551.64} & \cellcolor{gray!6}{13562.73} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-4899.43} & \cellcolor{gray!6}{9802.87} & \cellcolor{gray!6}{9813.22} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Gamma}} & \cellcolor{gray!10}{-8561.05} & \cellcolor{gray!10}{17126.11} & \cellcolor{gray!10}{17137.71} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-6773.82} & \cellcolor{gray!10}{13551.64} & \cellcolor{gray!10}{13562.73} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-4899.43} & \cellcolor{gray!10}{9802.87} & \cellcolor{gray!10}{9813.22} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-14}
 \textbf{} & \em{Weibull} & -8585.21 & 17174.43 & 17186.03 & Gamma & -6785.96 & 13575.91 & 13587.01 & Gamma & -4959.63 & 9923.26 & 9933.61 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-3}{*}{\raggedright\arraybackslash Home}}} & \em{\cellcolor{gray!6}{Exponential}} & \cellcolor{gray!6}{-8618.16} & \cellcolor{gray!6}{17238.32} & \cellcolor{gray!6}{17244.12} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-6791.86} & \cellcolor{gray!6}{13585.73} & \cellcolor{gray!6}{13591.28} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-5050.70} & \cellcolor{gray!6}{10103.41} & \cellcolor{gray!6}{10108.58} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-3}{*}{\raggedright\arraybackslash Home}}} & \em{\cellcolor{gray!10}{Exponential}} & \cellcolor{gray!10}{-8618.16} & \cellcolor{gray!10}{17238.32} & \cellcolor{gray!10}{17244.12} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-6791.86} & \cellcolor{gray!10}{13585.73} & \cellcolor{gray!10}{13591.28} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-5050.70} & \cellcolor{gray!10}{10103.41} & \cellcolor{gray!10}{10108.58} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{1-14}
 \textbf{} & \em{Gamma} & -3241.56 & 6487.13 & 6496.83 & Gamma & -2243.15 & 4490.30 & 4499.27 & Lognormal & -1697.00 & 3398.00 & 3406.33 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Weibull}} & \cellcolor{gray!6}{-3254.75} & \cellcolor{gray!6}{6513.50} & \cellcolor{gray!6}{6523.20} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-2252.50} & \cellcolor{gray!6}{4509.00} & \cellcolor{gray!6}{4517.97} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{-1721.97} & \cellcolor{gray!6}{3447.95} & \cellcolor{gray!6}{3456.28} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Weibull}} & \cellcolor{gray!10}{-3254.75} & \cellcolor{gray!10}{6513.50} & \cellcolor{gray!10}{6523.20} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-2252.50} & \cellcolor{gray!10}{4509.00} & \cellcolor{gray!10}{4517.97} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{-1721.97} & \cellcolor{gray!10}{3447.95} & \cellcolor{gray!10}{3456.28} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-14}
 \textbf{} & \em{Exponential} & -3277.81 & 6557.62 & 6562.47 & Gamma & -2269.31 & 4540.63 & 4545.11 & Lognormal & -1789.93 & 3581.86 & 3586.02 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-4}{*}{\raggedright\arraybackslash work or school}}} & \em{\cellcolor{gray!6}{Lognormal}} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-2229.51} & \cellcolor{gray!6}{4463.03} & \cellcolor{gray!6}{4472.00} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-4}{*}{\raggedright\arraybackslash work or school}}} & \em{\cellcolor{gray!10}{Lognormal}} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-2229.51} & \cellcolor{gray!10}{4463.03} & \cellcolor{gray!10}{4472.00} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{1-14}
 \textbf{} & \em{Gamma} & -2030.84 & 4065.68 & 4074.62 & Lognormal & -1565.60 & 3135.20 & 3143.61 & exponential & -805.12 & 1614.25 & 1621.11 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Weibull}} & \cellcolor{gray!6}{-2035.93} & \cellcolor{gray!6}{4075.86} & \cellcolor{gray!6}{4084.80} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{-1563.85} & \cellcolor{gray!6}{3131.70} & \cellcolor{gray!6}{3140.11} & \cellcolor{gray!6}{exponential} & \cellcolor{gray!6}{-817.06} & \cellcolor{gray!6}{1638.13} & \cellcolor{gray!6}{1644.99} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Weibull}} & \cellcolor{gray!10}{-2035.93} & \cellcolor{gray!10}{4075.86} & \cellcolor{gray!10}{4084.80} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{-1563.85} & \cellcolor{gray!10}{3131.70} & \cellcolor{gray!10}{3140.11} & \cellcolor{gray!10}{exponential} & \cellcolor{gray!10}{-817.06} & \cellcolor{gray!10}{1638.13} & \cellcolor{gray!10}{1644.99} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-14}
 \textbf{} & \em{Exponential} & -2037.41 & 4076.81 & 4081.28 & Lognormal & -1565.64 & 3133.28 & 3137.49 & exponential & -832.40 & 1666.81 & 1670.24 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-4}{*}{\raggedright\arraybackslash Other's home}}} & \em{\cellcolor{gray!6}{Lognormal}} & \cellcolor{gray!6}{-1996.71} & \cellcolor{gray!6}{3997.42} & \cellcolor{gray!6}{4006.36} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{exponential} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-4}{*}{\raggedright\arraybackslash Other's home}}} & \em{\cellcolor{gray!10}{Lognormal}} & \cellcolor{gray!10}{-1996.71} & \cellcolor{gray!10}{3997.42} & \cellcolor{gray!10}{4006.36} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{exponential} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -2449,35 +2449,35 @@ Destinations & Distribution Functions & logLik & AIC & BIC & Selected Function &
 \cmidrule(l{3pt}r{3pt}){3-6} \cmidrule(l{3pt}r{3pt}){7-10} \cmidrule(l{3pt}r{3pt}){11-14}
   & Destinations & Distribution Functions & logLik & AIC & BIC & Selected Function & logLik & AIC & BIC & Selected Function & logLik & AIC & BIC & Selected Function\\
 \midrule
-\textbf{\cellcolor{gray!6}{18}} & \em{\cellcolor{gray!6}{Grocery store}} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-2374.42} & \cellcolor{gray!6}{4752.83} & \cellcolor{gray!6}{4761.91} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-1941.04} & \cellcolor{gray!6}{3886.07} & \cellcolor{gray!6}{3894.79} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-1261.07} & \cellcolor{gray!6}{2526.14} & \cellcolor{gray!6}{2533.89} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{18}} & \em{\cellcolor{gray!10}{Grocery store}} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-2374.42} & \cellcolor{gray!10}{4752.83} & \cellcolor{gray!10}{4761.91} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-1941.04} & \cellcolor{gray!10}{3886.07} & \cellcolor{gray!10}{3894.79} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-1261.07} & \cellcolor{gray!10}{2526.14} & \cellcolor{gray!10}{2533.89} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{1-15}
 \textbf{19} & \em{Grocery store} & Weibull & -2383.11 & 4770.22 & 4779.29 & Gamma & -1946.26 & 3896.51 & 3905.23 & Gamma & -1281.20 & 2566.40 & 2574.15 & Gamma\\
 \cmidrule{1-15}
-\textbf{\cellcolor{gray!6}{20}} & \em{\cellcolor{gray!6}{Grocery store}} & \cellcolor{gray!6}{Exponential} & \cellcolor{gray!6}{-2395.37} & \cellcolor{gray!6}{4792.74} & \cellcolor{gray!6}{4797.28} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-1951.49} & \cellcolor{gray!6}{3904.97} & \cellcolor{gray!6}{3909.33} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-1320.99} & \cellcolor{gray!6}{2643.99} & \cellcolor{gray!6}{2647.86} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{20}} & \em{\cellcolor{gray!10}{Grocery store}} & \cellcolor{gray!10}{Exponential} & \cellcolor{gray!10}{-2395.37} & \cellcolor{gray!10}{4792.74} & \cellcolor{gray!10}{4797.28} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-1951.49} & \cellcolor{gray!10}{3904.97} & \cellcolor{gray!10}{3909.33} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-1320.99} & \cellcolor{gray!10}{2643.99} & \cellcolor{gray!10}{2647.86} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{1-15}
 \textbf{21} & \em{Library} & Gamma & -634.37 & 1272.73 & 1279.31 & Gamma & -96.31 & 196.62 & 199.35 & Gamma & -155.78 & 315.55 & 319.25 & Lognormal\\
 \cmidrule{1-15}
-\textbf{\cellcolor{gray!6}{22}} & \em{\cellcolor{gray!6}{Library}} & \cellcolor{gray!6}{Weibull} & \cellcolor{gray!6}{-637.63} & \cellcolor{gray!6}{1279.26} & \cellcolor{gray!6}{1285.84} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-96.99} & \cellcolor{gray!6}{197.97} & \cellcolor{gray!6}{200.71} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-159.04} & \cellcolor{gray!6}{322.08} & \cellcolor{gray!6}{325.79} & \cellcolor{gray!6}{Lognormal}\\
+\textbf{\cellcolor{gray!10}{22}} & \em{\cellcolor{gray!10}{Library}} & \cellcolor{gray!10}{Weibull} & \cellcolor{gray!10}{-637.63} & \cellcolor{gray!10}{1279.26} & \cellcolor{gray!10}{1285.84} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-96.99} & \cellcolor{gray!10}{197.97} & \cellcolor{gray!10}{200.71} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-159.04} & \cellcolor{gray!10}{322.08} & \cellcolor{gray!10}{325.79} & \cellcolor{gray!10}{Lognormal}\\
 \cmidrule{1-15}
 \textbf{23} & \em{Library} & Lognormal & NA & NA & NA & Gamma & -95.82 & 195.63 & 198.36 & Gamma & -153.89 & 311.78 & 315.48 & Lognormal\\
 \cmidrule{1-15}
-\textbf{\cellcolor{gray!6}{24}} & \em{\cellcolor{gray!6}{Library}} & \cellcolor{gray!6}{Exponential} & \cellcolor{gray!6}{-642.38} & \cellcolor{gray!6}{1286.77} & \cellcolor{gray!6}{1290.05} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-99.43} & \cellcolor{gray!6}{200.87} & \cellcolor{gray!6}{202.24} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-172.58} & \cellcolor{gray!6}{347.16} & \cellcolor{gray!6}{349.01} & \cellcolor{gray!6}{Lognormal}\\
+\textbf{\cellcolor{gray!10}{24}} & \em{\cellcolor{gray!10}{Library}} & \cellcolor{gray!10}{Exponential} & \cellcolor{gray!10}{-642.38} & \cellcolor{gray!10}{1286.77} & \cellcolor{gray!10}{1290.05} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-99.43} & \cellcolor{gray!10}{200.87} & \cellcolor{gray!10}{202.24} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-172.58} & \cellcolor{gray!10}{347.16} & \cellcolor{gray!10}{349.01} & \cellcolor{gray!10}{Lognormal}\\
 \cmidrule{1-15}
 \textbf{25} & \em{Restaurant} & Gamma & -1672.51 & 3349.01 & 3357.51 & Lognormal & -1471.84 & 2947.67 & 2955.83 & Gamma & -884.43 & 1772.87 & 1779.91 & Gamma\\
 \cmidrule{1-15}
-\textbf{\cellcolor{gray!6}{26}} & \em{\cellcolor{gray!6}{Restaurant}} & \cellcolor{gray!6}{Exponential} & \cellcolor{gray!6}{-1707.84} & \cellcolor{gray!6}{3417.67} & \cellcolor{gray!6}{3421.92} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{-1480.30} & \cellcolor{gray!6}{2962.59} & \cellcolor{gray!6}{2966.68} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-921.28} & \cellcolor{gray!6}{1844.56} & \cellcolor{gray!6}{1848.08} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{26}} & \em{\cellcolor{gray!10}{Restaurant}} & \cellcolor{gray!10}{Exponential} & \cellcolor{gray!10}{-1707.84} & \cellcolor{gray!10}{3417.67} & \cellcolor{gray!10}{3421.92} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{-1480.30} & \cellcolor{gray!10}{2962.59} & \cellcolor{gray!10}{2966.68} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-921.28} & \cellcolor{gray!10}{1844.56} & \cellcolor{gray!10}{1848.08} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{1-15}
 \textbf{27} & \em{Restaurant} & Weibull & -1685.20 & 3374.41 & 3382.91 & Lognormal & -1478.49 & 2960.99 & 2969.15 & Gamma & NA & NA & NA & Gamma\\
 \cmidrule{1-15}
-\textbf{\cellcolor{gray!6}{28}} & \em{\cellcolor{gray!6}{Restaurant}} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{-1657.24} & \cellcolor{gray!6}{3318.48} & \cellcolor{gray!6}{3326.98} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{28}} & \em{\cellcolor{gray!10}{Restaurant}} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{-1657.24} & \cellcolor{gray!10}{3318.48} & \cellcolor{gray!10}{3326.98} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{1-15}
 \textbf{29} & \em{Place of worship} & Gamma & -154.97 & 313.93 & 317.63 & Gamma & -131.33 & 266.67 & 270.09 & Gamma & -127.23 & 258.47 & 261.64 & Lognormal\\
 \cmidrule{1-15}
-\textbf{\cellcolor{gray!6}{30}} & \em{\cellcolor{gray!6}{Place of worship}} & \cellcolor{gray!6}{Exponential} & \cellcolor{gray!6}{-160.42} & \cellcolor{gray!6}{322.85} & \cellcolor{gray!6}{324.70} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-135.90} & \cellcolor{gray!6}{273.81} & \cellcolor{gray!6}{275.52} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-136.37} & \cellcolor{gray!6}{274.74} & \cellcolor{gray!6}{276.33} & \cellcolor{gray!6}{Lognormal}\\
+\textbf{\cellcolor{gray!10}{30}} & \em{\cellcolor{gray!10}{Place of worship}} & \cellcolor{gray!10}{Exponential} & \cellcolor{gray!10}{-160.42} & \cellcolor{gray!10}{322.85} & \cellcolor{gray!10}{324.70} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-135.90} & \cellcolor{gray!10}{273.81} & \cellcolor{gray!10}{275.52} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-136.37} & \cellcolor{gray!10}{274.74} & \cellcolor{gray!10}{276.33} & \cellcolor{gray!10}{Lognormal}\\
 \cmidrule{1-15}
 \textbf{31} & \em{Place of worship} & Normal & NA & NA & NA & Gamma & -150.95 & 305.90 & 309.33 & Gamma & -132.78 & 269.56 & 272.73 & Lognormal\\
 \cmidrule{1-15}
-\textbf{\cellcolor{gray!6}{32}} & \em{\cellcolor{gray!6}{Place of worship}} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-139.70} & \cellcolor{gray!6}{283.40} & \cellcolor{gray!6}{286.83} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-127.01} & \cellcolor{gray!6}{258.02} & \cellcolor{gray!6}{261.19} & \cellcolor{gray!6}{Lognormal}\\
+\textbf{\cellcolor{gray!10}{32}} & \em{\cellcolor{gray!10}{Place of worship}} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-139.70} & \cellcolor{gray!10}{283.40} & \cellcolor{gray!10}{286.83} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-127.01} & \cellcolor{gray!10}{258.02} & \cellcolor{gray!10}{261.19} & \cellcolor{gray!10}{Lognormal}\\
 \cmidrule{1-15}
 \textbf{33} & \em{Place of worship} & Weibull & NA & NA & NA & Gamma & -133.39 & 270.77 & 274.20 & Gamma & -128.23 & 260.46 & 263.63 & Lognormal\\
 \bottomrule
@@ -2487,7 +2487,7 @@ Destinations & Distribution Functions & logLik & AIC & BIC & Selected Function &
 \end{landscape}
 
 \begin{landscape}\begin{table}[!h]
-
+\centering
 \caption{\label{tab:table-imc1}\label{tab:table_18}Impedance functions and selection criteria across different destinations for cycling trips (1992 and 1998)}
 \centering
 \fontsize{7}{9}\selectfont
@@ -2508,38 +2508,38 @@ Function
 Function
 1998\\
 \midrule
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Gamma}} & \cellcolor{gray!6}{-296.80} & \cellcolor{gray!6}{597.61} & \cellcolor{gray!6}{602.07} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-250.55} & \cellcolor{gray!6}{505.09} & \cellcolor{gray!6}{509.38} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Gamma}} & \cellcolor{gray!10}{-296.80} & \cellcolor{gray!10}{597.61} & \cellcolor{gray!10}{602.07} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-250.55} & \cellcolor{gray!10}{505.09} & \cellcolor{gray!10}{509.38} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-10}
 \textbf{} & \em{Weibull} & -297.36 & 598.72 & 603.19 &  & NA & NA & NA & \\
 \cmidrule{2-10}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-3}{*}{\raggedright\arraybackslash Home}}} & \em{\cellcolor{gray!6}{Exponential}} & \cellcolor{gray!6}{-299.38} & \cellcolor{gray!6}{600.77} & \cellcolor{gray!6}{603.00} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-253.36} & \cellcolor{gray!6}{508.72} & \cellcolor{gray!6}{510.86} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-3}{*}{\raggedright\arraybackslash Home}}} & \em{\cellcolor{gray!10}{Exponential}} & \cellcolor{gray!10}{-299.38} & \cellcolor{gray!10}{600.77} & \cellcolor{gray!10}{603.00} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-253.36} & \cellcolor{gray!10}{508.72} & \cellcolor{gray!10}{510.86} & \cellcolor{gray!10}{}\\
 \cmidrule{1-10}
 \textbf{} & \em{Gamma} & -130.98 & 265.96 & 269.07 & Gamma & -141.00 & 286.00 & 289.11 & Gamma\\
 \cmidrule{2-10}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Weibull}} & \cellcolor{gray!6}{-131.06} & \cellcolor{gray!6}{266.11} & \cellcolor{gray!6}{269.22} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-141.71} & \cellcolor{gray!6}{287.42} & \cellcolor{gray!6}{290.53} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Weibull}} & \cellcolor{gray!10}{-131.06} & \cellcolor{gray!10}{266.11} & \cellcolor{gray!10}{269.22} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-141.71} & \cellcolor{gray!10}{287.42} & \cellcolor{gray!10}{290.53} & \cellcolor{gray!10}{}\\
 \cmidrule{2-10}
 \textbf{} & \em{Exponential} & -138.32 & 278.64 & 280.19 &  & -145.69 & 293.37 & 294.93 & \\
 \cmidrule{2-10}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Normal}} & \cellcolor{gray!6}{-134.55} & \cellcolor{gray!6}{273.10} & \cellcolor{gray!6}{276.21} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-148.73} & \cellcolor{gray!6}{301.45} & \cellcolor{gray!6}{304.56} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Normal}} & \cellcolor{gray!10}{-134.55} & \cellcolor{gray!10}{273.10} & \cellcolor{gray!10}{276.21} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-148.73} & \cellcolor{gray!10}{301.45} & \cellcolor{gray!10}{304.56} & \cellcolor{gray!10}{}\\
 \cmidrule{2-10}
 \textbf{\multirow[t]{-5}{*}{\raggedright\arraybackslash work or school}} & \em{Lognormal} & NA & NA & NA &  & NA & NA & NA & \\
 \cmidrule{1-10}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Gamma}} & \cellcolor{gray!6}{-82.31} & \cellcolor{gray!6}{168.63} & \cellcolor{gray!6}{170.81} & \cellcolor{gray!6}{Lognormal} & \cellcolor{gray!6}{-77.65} & \cellcolor{gray!6}{159.31} & \cellcolor{gray!6}{161.40} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Gamma}} & \cellcolor{gray!10}{-82.31} & \cellcolor{gray!10}{168.63} & \cellcolor{gray!10}{170.81} & \cellcolor{gray!10}{Lognormal} & \cellcolor{gray!10}{-77.65} & \cellcolor{gray!10}{159.31} & \cellcolor{gray!10}{161.40} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-10}
 \textbf{} & \em{Poisson} & NA & NA & NA &  & NA & NA & NA & \\
 \cmidrule{2-10}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Exponential}} & \cellcolor{gray!6}{-83.18} & \cellcolor{gray!6}{168.37} & \cellcolor{gray!6}{169.46} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-78.97} & \cellcolor{gray!6}{159.95} & \cellcolor{gray!6}{160.99} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Exponential}} & \cellcolor{gray!10}{-83.18} & \cellcolor{gray!10}{168.37} & \cellcolor{gray!10}{169.46} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-78.97} & \cellcolor{gray!10}{159.95} & \cellcolor{gray!10}{160.99} & \cellcolor{gray!10}{}\\
 \cmidrule{2-10}
 \textbf{} & \em{Normal} & -91.85 & 187.69 & 189.87 &  & -88.37 & 180.73 & 182.82 & \\
 \cmidrule{2-10}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-5}{*}{\raggedright\arraybackslash Other's home}}} & \em{\cellcolor{gray!6}{Lognormal}} & \cellcolor{gray!6}{-80.22} & \cellcolor{gray!6}{164.44} & \cellcolor{gray!6}{166.62} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-75.86} & \cellcolor{gray!6}{155.73} & \cellcolor{gray!6}{157.82} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-5}{*}{\raggedright\arraybackslash Other's home}}} & \em{\cellcolor{gray!10}{Lognormal}} & \cellcolor{gray!10}{-80.22} & \cellcolor{gray!10}{164.44} & \cellcolor{gray!10}{166.62} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-75.86} & \cellcolor{gray!10}{155.73} & \cellcolor{gray!10}{157.82} & \cellcolor{gray!10}{}\\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{landscape}
 
 \begin{landscape}\begin{table}[!h]
-
+\centering
 \caption{\label{tab:table-imc2}\label{tab:table_19}Impedance functions and selection criteria across different destinations for cycling trips (2005, 2010, and 2015).}
 \centering
 \fontsize{7}{9}\selectfont
@@ -2565,31 +2565,31 @@ Function
 Function
 2015\\
 \midrule
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Gamma}} & \cellcolor{gray!6}{-626.82} & \cellcolor{gray!6}{1257.63} & \cellcolor{gray!6}{1263.78} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-428.16} & \cellcolor{gray!6}{860.32} & \cellcolor{gray!6}{865.72} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-411.02} & \cellcolor{gray!6}{826.04} & \cellcolor{gray!6}{831.33} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Gamma}} & \cellcolor{gray!10}{-626.82} & \cellcolor{gray!10}{1257.63} & \cellcolor{gray!10}{1263.78} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-428.16} & \cellcolor{gray!10}{860.32} & \cellcolor{gray!10}{865.72} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-411.02} & \cellcolor{gray!10}{826.04} & \cellcolor{gray!10}{831.33} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-14}
 \textbf{} & \em{Weibull} & -629.25 & 1262.51 & 1268.66 &  & NA & NA & NA &  & -415.09 & 834.17 & 839.46 & \\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-3}{*}{\raggedright\arraybackslash Home}}} & \em{\cellcolor{gray!6}{Exponential}} & \cellcolor{gray!6}{-636.08} & \cellcolor{gray!6}{1274.17} & \cellcolor{gray!6}{1277.24} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-436.23} & \cellcolor{gray!6}{874.46} & \cellcolor{gray!6}{877.16} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-431.52} & \cellcolor{gray!6}{865.03} & \cellcolor{gray!6}{867.68} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-3}{*}{\raggedright\arraybackslash Home}}} & \em{\cellcolor{gray!10}{Exponential}} & \cellcolor{gray!10}{-636.08} & \cellcolor{gray!10}{1274.17} & \cellcolor{gray!10}{1277.24} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-436.23} & \cellcolor{gray!10}{874.46} & \cellcolor{gray!10}{877.16} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-431.52} & \cellcolor{gray!10}{865.03} & \cellcolor{gray!10}{867.68} & \cellcolor{gray!10}{}\\
 \cmidrule{1-14}
 \textbf{} & \em{Gamma} & -292.44 & 588.88 & 593.46 & Gamma & -215.86 & 435.73 & 439.74 & Gamma & -255.26 & 514.52 & 518.99 & Gamma\\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Weibull}} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-216.67} & \cellcolor{gray!6}{437.34} & \cellcolor{gray!6}{441.35} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-258.10} & \cellcolor{gray!6}{520.20} & \cellcolor{gray!6}{524.67} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Weibull}} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-216.67} & \cellcolor{gray!10}{437.34} & \cellcolor{gray!10}{441.35} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-258.10} & \cellcolor{gray!10}{520.20} & \cellcolor{gray!10}{524.67} & \cellcolor{gray!10}{}\\
 \cmidrule{2-14}
 \textbf{} & \em{Exponential} & -296.38 & 594.77 & 597.06 &  & -222.50 & 446.99 & 449.00 &  & -279.83 & 561.66 & 563.89 & \\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Normal}} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-264.66} & \cellcolor{gray!6}{533.33} & \cellcolor{gray!6}{537.80} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Normal}} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-264.66} & \cellcolor{gray!10}{533.33} & \cellcolor{gray!10}{537.80} & \cellcolor{gray!10}{}\\
 \cmidrule{2-14}
 \textbf{\multirow[t]{-5}{*}{\raggedright\arraybackslash work or school}} & \em{Lognormal} & NA & NA & NA &  & -218.20 & 440.39 & 444.41 &  & -254.79 & 513.58 & 518.05 & \\
 \cmidrule{1-14}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Gamma}} & \cellcolor{gray!6}{-106.61} & \cellcolor{gray!6}{217.21} & \cellcolor{gray!6}{220.01} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-78.57} & \cellcolor{gray!6}{161.14} & \cellcolor{gray!6}{163.32} & \cellcolor{gray!6}{Gamma} & \cellcolor{gray!6}{-42.17} & \cellcolor{gray!6}{88.34} & \cellcolor{gray!6}{89.47} & \cellcolor{gray!6}{Gamma}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Gamma}} & \cellcolor{gray!10}{-106.61} & \cellcolor{gray!10}{217.21} & \cellcolor{gray!10}{220.01} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-78.57} & \cellcolor{gray!10}{161.14} & \cellcolor{gray!10}{163.32} & \cellcolor{gray!10}{Gamma} & \cellcolor{gray!10}{-42.17} & \cellcolor{gray!10}{88.34} & \cellcolor{gray!10}{89.47} & \cellcolor{gray!10}{Gamma}\\
 \cmidrule{2-14}
 \textbf{} & \em{Poisson} & -161.62 & 325.24 & 326.64 &  & -131.33 & 264.66 & 265.75 &  & -51.23 & 104.45 & 105.02 & \\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{}} & \em{\cellcolor{gray!6}{Exponential}} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-81.04} & \cellcolor{gray!6}{164.07} & \cellcolor{gray!6}{165.17} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{-47.87} & \cellcolor{gray!6}{97.73} & \cellcolor{gray!6}{98.30} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{}} & \em{\cellcolor{gray!10}{Exponential}} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-81.04} & \cellcolor{gray!10}{164.07} & \cellcolor{gray!10}{165.17} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{-47.87} & \cellcolor{gray!10}{97.73} & \cellcolor{gray!10}{98.30} & \cellcolor{gray!10}{}\\
 \cmidrule{2-14}
 \textbf{} & \em{Normal} & -110.01 & 224.03 & 226.83 &  & -84.37 & 172.74 & 174.93 &  & -45.41 & 94.82 & 95.95 & \\
 \cmidrule{2-14}
-\textbf{\cellcolor{gray!6}{\multirow[t]{-5}{*}{\raggedright\arraybackslash Other's home}}} & \em{\cellcolor{gray!6}{Lognormal}} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{}\\
+\textbf{\cellcolor{gray!10}{\multirow[t]{-5}{*}{\raggedright\arraybackslash Other's home}}} & \em{\cellcolor{gray!10}{Lognormal}} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -2614,11 +2614,11 @@ Function
 2010 & Selected
 Function
 2010 & logLik
-2015 & AIC
+\textbf{\cellcolor{gray!10}{2015}} & \em{NA} & AIC
 2015 & BIC
 2015 & Selected
 Function
-\textbf{\cellcolor{gray!6}{2015}} & \em{NA}\\
+2015\\
 
 
 \bottomrule
