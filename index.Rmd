@@ -51,21 +51,20 @@ csl: csl/apa.csl
 lot: true
 lof: true
 header-includes:
-- \usepackage{amsmath} 
-- \usepackage{array}
-- \usepackage{colortbl}
-- \usepackage{booktabs}
-- \usepackage{float}
-- \usepackage{longtable}
-- \usepackage{makecell}
+#- \usepackage{amsmath} 
+#- \usepackage{array}
+#- \usepackage{colortbl}
+#- \usepackage{booktabs}
+#- \usepackage{float}
+#- \usepackage{longtable}
+#- \usepackage{makecell}
 - \usepackage{multirow}
-- \usepackage[normalem]{ulem}
-- \usepackage{pdflscape}
-- \usepackage{tabu}
-- \usepackage{threeparttable}
-- \usepackage{threeparttablex}
-- \usepackage{wrapfig}
-- \usepackage{xcolor}
+#- \usepackage[normalem]{ulem}
+#- \usepackage{pdflscape}
+#- \usepackage{tabu}
+#- \usepackage{threeparttable}
+#- \usepackage{threeparttablex}
+#- \usepackage{wrapfig}
 ---
 
 <!--
@@ -81,7 +80,7 @@ If you'd like to include a comment that won't be produced in your resulting file
 If you receive a duplicate label error after knitting, make sure to delete the index.Rmd file and then knit again.
 -->
 
-```{r index-include-packages, eval=FALSE, include = FALSE}
+```{r include_packages, include = FALSE}
 # This chunk ensures that the macdown package is
 # installed and loaded. This macdown package includes
 # the template files for the thesis.
@@ -89,21 +88,8 @@ if(!require(remotes))
   install.packages("remotes", repos = "http://cran.rstudio.com")
 if(!require(macdown))
   remotes::install_github("paezha/macdown")
-
-
-if (!require("remotes")) 
-  install.packages("remotes", repos = "https://cran.rstudio.org")
-remotes::install_github("rstudio/bookdown")
-remotes::install_github("ismayc/thesisdown")
+library(macdown)
 ```
-
-```{r index-load-packages, include=FALSE}
-library(macdown) # An updated R Markdown thesis template using the bookdown package
-library(remotes) # R Package Installation from Remote Repositories, Including
-'GitHub'
-```
-
-
 
 <!--
 The acknowledgements, preface, dedication, and abstract are added into the PDF
@@ -115,33 +101,10 @@ version automatically by inputting them in the YAML at the top of this file.
 -->
 
 
-
 <!--
 
 BEGINNING HERE ADD THE DOCUMENTS THAT CONFORM THE MAIN BODY OF THE THESIS
 
 Instead the files and their order are defined in `_bookdown.yml`. This prevents the README.Rmd file from being picked up when rendering.
+
 -->
-
-```{r eval=!knitr::is_latex_output(), child=here::here("01-introduction.Rmd")}
-
-```
-
-```{r eval=!knitr::is_latex_output(), child=here::here("02-data-sources-needs.Rmd")}
-
-```
-
-```{r eval=!knitr::is_latex_output(), child=here::here("03-active-impedance-functions.Rmd")}
-
-```
-
-```{r eval=!knitr::is_latex_output(), child=here::here("04-conclusion.Rmd")}
-
-```
-
-```{r eval=!knitr::is_latex_output(), child=here::here("99-references.Rmd")}
-
-```
-
-
-

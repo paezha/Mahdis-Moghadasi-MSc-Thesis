@@ -38,7 +38,7 @@ In general, accessibility can be measured at either the individual-based or loca
 
 Location-based accessibility offers a notable advantage in terms of ease of computation (Bhat, 2000). Researchers typically rely on average travel time between two points, population data, and aggregated activity data when calculating place-based accessibility. Consequently, cumulative-opportunity accessibility emerges as one of the most widely employed methods for assessing accessibility. Furthermore, space-time accessibility examines how individuals can engage in desired activities while encountering various constraints [@miller1991modelling; @kwan1998; @lee1998application]. This framework is based on Hagerstrand's (1970) time geography model, which identifies three factors influencing individual accessibility. The first factor is capability constraint, where people can only engage in activities when awake and face travel impediments at all times. The second constraint is coupling, which mandates specific tasks to be performed at designated times. For instance, individuals typically remain at their workplace during working hours (e.g., 8 AM to 5 PM). The final constraint is the authority constraint, which encompasses activity opening hours. As a result, individuals may be unable to access a park late at night due to its closure. Space-time accessibility, as measured by Ilag's (1970) study, captures the number of activities that can be accomplished under various constraints [@ilagcrstrand1970people]. According to the research, space-time accessibility (i.e., person-based accessibility) is considered a superior measure to cumulative-opportunity accessibility (i.e., place-based accessibility) since it accounts for an individual's actual travel behavior. It is attributed to space-time accessibility incorporating temporal variations in transportation systems, activities, and individuals' unique travel patterns.
 
-In contrast, place-based accessibility, which does not fully address temporal constraints, may yield inaccuracies when assessing accessibility. On the other hand, space-time accessibility considers temporal variations in activities[@fransen2015identifying; @boisjoly2017]. Place-based accessibility assumes that all activities are carried out during hours chosen at random by researchers. However, activities are only available during their regular business hours. It is necessary to incorporate factors relevant to active transportation to formulate a comprehensive accessibility formula for active transportation modes. Presented here is one potential formula as an illustration equation \@ref(eq:accessibility):
+In contrast, place-based accessibility, which does not fully address temporal constraints, may yield inaccuracies when assessing accessibility. On the other hand, space-time accessibility considers temporal variations in activities[@fransen2015identifying; @boisjoly2017]. Place-based accessibility assumes that all activities are carried out during hours chosen at random by researchers. However, activities are only available during their regular business hours. It is necessary to incorporate factors relevant to active transportation to formulate a comprehensive accessibility formula for active transportation modes. Presented here is one potential formula as an illustration equation \ref{eq:accessibility}:
 
 \begin{equation}
 A^{pk}_i = \sum _{j=1} ^ {J} g(O^ k_{j}) f(c^p_{ij})
@@ -46,13 +46,13 @@ A^{pk}_i = \sum _{j=1} ^ {J} g(O^ k_{j}) f(c^p_{ij})
 \end{equation}
 
 
-With functions for the opportunities that allow this equation \@ref(eq:opportunities-function): 
+With functions for the opportunities that allow this equation \ref{eq:opportunities-function}: 
 \begin{equation}
 g(O_j) = O_j
 \label{eq:opportunities-function}
 \end{equation}
 
-\noindent as well as possibly agglomeration effects as in equation \@ref(eq:agglomeration-effects): 
+\noindent as well as possibly agglomeration effects as in equation \ref{eq:agglomeration-effects}: 
 
 \begin{equation}
 g(O_j) = O^\alpha_j
@@ -61,17 +61,13 @@ g(O_j) = O^\alpha_j
 
 This type of accessibility measure is based on Hansen's work in 1959, which quantifies accessibility by considering the number of reachable opportunities through an impedance function, also known as spatial decay. The impedance function decreases opportunities as travel costs increase, encompassing factors such as time, money, and other relevant variables. Various formulas, including negative power, exponential, lognormal, and log-logistic, can be employed to compute the impedance function [@hansen1959accessibility; @ingram1971concept; @reggiani2011accessibility; @geurs2003evaluation; @vale2016active]. In the formula, $A_i$, $O_j$, and $C_{ij}$ represent matrices of accessibility opportunities and costs, respectively. Following the development of @levinson2020towards, the functions (g and f) discount opportunities and costs based on the diminishing value of opportunities concerning both number and cost. The matrix of weighted opportunities $O_j$ can consider different activity types, times of day, and available modes. In contrast, the matrix of cost elements $C_{ij}$ can incorporate total social costs or generalized internal costs, depending on the specific objectives [@levinson2020towards].
 
-The formulation of the decay function's cumulative opportunities (rectangular) can be expressed as equation \@ref(eq:decay-functions-cumulative-opportunities):
+The formulation of the decay function's cumulative opportunities (rectangular) can be expressed as equation \ref{eq:decay-functions-cumulative-opportunities}:
 \begin{equation}
-f(c^p_{ij}) = 
-\begin{cases}
-  1 & \text{if } c^p_{ij} \le \gamma^p \\
-  0 & \text{otherwise}
-\end{cases}
+f(c^p_{ij}) = X
 \label{eq:decay-functions-cumulative-opportunities}
 \end{equation}
 
-In addition, The widely used exponential decay formulation in gravity models is frequently given by equation \@ref(eq:exponential-distance-decay): 
+In addition, The widely used exponential decay formulation in gravity models is frequently given by equation \ref{eq:exponential-distance-decay}: 
 
 \begin{equation}
 f(c^p_{ij}) = \exp(-\theta c^p_{ij})
@@ -112,28 +108,24 @@ Some studies have examined the level of services provided by the bicycle network
 
 Activity-based measures encompass two types: gravity-based measures (also known as Hansen-type measures) [@hansen1959accessibility]) and cumulative opportunities measures. Gravity-based measures also referred to as attraction-accessibility or potential measures, consider the number of opportunities weighted by the associated travel cost. These measures utilize a travel impedance function that assigns higher value to opportunities closer to proximity. Scholars have emphasized the importance of selecting an appropriate impedance function, resulting in the application of various functions such as power, negative exponential, logistic, and Gaussian functions [@iacono2010; @lowry2012assessment; @vasconcelos2012evaluation; @vale2017influence]. In a recent study by Vale and Pereira (2017), twenty pedestrian accessibility measures were examined, and it was found that the modified Gaussian and exponential functions demonstrated the highest robustness for modeling walking accessibility. On the other hand, cumulative opportunity measures, also known as isochrones or contour measures, quantify the number of opportunities within a specified catchment area [@vale2016active].
 
-A gravity-based measure is derived from the denominator of the gravity model and is weighted by opportunities based on an impedance function. This function can be represented as equation \@ref(eq:gravity-measures):[@vale2016active]:
+A gravity-based measure is derived from the denominator of the gravity model and is weighted by opportunities based on an impedance function. This function can be represented as equation \ref{eq:gravity-measures} [@vale2016active]:
 
 \begin{equation}
 A_i = \sum_{j = 1}^{J} W_{j} f(c_{ij})
 \label{eq:gravity-measures}
 \end{equation}
 
-The equation \@ref(eq:gravity-measures) provides the measure of accessibility from the origin location $i$, where $W_j$ represents the relevant opportunities found at $j$, and $f(c_{ij})$ denotes the cost of moving between $i$ and $j$. The function $f()$ defines a kernel centered around location $i$. Activity-based measures are valuable in complementary opportunities, such as jobs, services, people, and parks. In these scenarios, access to more opportunities and proximity (as modeled in gravity-based models) is advantageous.
+The equation \ref{eq:gravity-measures} provides the measure of accessibility from the origin location $i$, where $W_j$ represents the relevant opportunities found at $j$, and $f(c_{ij})$ denotes the cost of moving between $i$ and $j$. The function $f()$ defines a kernel centered around location $i$. Activity-based measures are valuable in complementary opportunities, such as jobs, services, people, and parks. In these scenarios, access to more opportunities and proximity (as modeled in gravity-based models) is advantageous.
 
-Cumulative opportunities, also referred to as isochrones or contour measures, count the number of opportunities within a specified catchment area. In contrast to the utility measure, which assesses accessibility based on the "net utility" gained from travel, the cumulative measure quantifies accessibility by considering the total number of reachable opportunities and their associated travel costs. In contrast with gravity-based measures, in a cumulative measure (equation \@ref(eq:gravity-measures)), the distance decay function is binary and calculated using equation \@ref(eq:binary): 
+Cumulative opportunities, also referred to as isochrones or contour measures, count the number of opportunities within a specified catchment area. In contrast to the utility measure, which assesses accessibility based on the "net utility" gained from travel, the cumulative measure quantifies accessibility by considering the total number of reachable opportunities and their associated travel costs. In contrast with gravity-based measures, in a cumulative measure (equation \ref{eq:gravity-measures}), the distance decay function is binary and calculated using equation \ref{eq:binary}: 
 
 \begin{equation}
-f(c_{ij} \le \gamma _i) = 
-\begin{cases}
-  1 & \text{if } c_{ij} \le \gamma _i \\
-  0 & \text{otherwise}
-\end{cases}
+f(c_{ij} \le \gamma _i) = X
 \label{eq:binary}
 \end{equation}
 
 
-In the equation \@ref(eq:binary), $\gamma$ represents the threshold value. According to this formula, all opportunities located within the $\gamma$ threshold are considered accessible. Additionally, $f(c)$ is an indicator function that yields a value of 1 if the logical statement in the function's argument is valid (i.e. if the cost of reaching $j$ from $i$ does not exceed the bandwidth parameter value), and 0 otherwise. Alternative distance-decay functions (such as inverse distance or negative exponential) can generate smoother map patterns, as discussed by [@o2003aggregate]. However, they require more parameters and introduce distance- or cost-discounted schemes that are more challenging to interpret. Prior research has indicated that cumulative opportunity measures exhibit a high degree of correlation, irrespective of the distance-decay function employed [@kwan1998]. Consequently, our preference lies with simplicity and interpretability when selecting our accessibility indicator.
+In the equation \ref{eq:binary}, $\gamma$ represents the threshold value. According to this formula, all opportunities located within the $\gamma$ threshold are considered accessible. Additionally, $f(c)$ is an indicator function that yields a value of 1 if the logical statement in the function's argument is valid (i.e. if the cost of reaching $j$ from $i$ does not exceed the bandwidth parameter value), and 0 otherwise. Alternative distance-decay functions (such as inverse distance or negative exponential) can generate smoother map patterns, as discussed by [@o2003aggregate]. However, they require more parameters and introduce distance- or cost-discounted schemes that are more challenging to interpret. Prior research has indicated that cumulative opportunity measures exhibit a high degree of correlation, irrespective of the distance-decay function employed [@kwan1998]. Consequently, our preference lies with simplicity and interpretability when selecting our accessibility indicator.
 
 ### Distance-based measures
 
@@ -145,26 +137,22 @@ Distance-based measures consider accessibility in terms of proximity, whether tr
 
 In distance-based accessibility measures, distance is considered as the travel impedance. Typically, four types of distances are employed: 1) Euclidean distance, which is commonly used for walkability assessments, especially in health studies [@apparicio2008comparing], 2) Manhattan distance, 3) shortest network distance [@lundberg2012accessibility; @hochmair2015assessment], and 4) shortest network time [@pearce2006neighbourhoods; @paez2012]. Furthermore, there are two approaches to measuring distance. The first method calculates the distance to the closest facility of each type, determining the distance from each zone centroid to the closest or the first n closest facilities (e.g., medical centers). The second method calculates the distance to all nearby facilities, based on the concept of floating catchment areas, which considers the closest facility irrespective of distance. It measures the distance from each zone center to the closest or the first closest facilities of different types (e.g., medical centers, shopping centers,  and so on).
 
-Distance to nearest location is calculated based on equation \@ref(eq:distance-based-accessibility):
+Distance to nearest location is calculated based on equation \ref{eq:distance-based-accessibility}:
 
 \begin{equation}
 A^{ip} = \min_{j \in L^p} (d_{ij})
 \label{eq:distance-based-accessibility}
 \end{equation}
 
-In this equation \@ref(eq:distance-based-accessibility), $A^{ip}$ is the accessibility of zone $i$ to the location of type p, $L^p$ is a set of locations of type p, and $(d_{ij})$ is distance (or travel time for a given mode) from i to location j in set $L_p$. This measure is consistent with a straightforward location model in which the nearest location is always chosen with a probability of 1.0. (equation \@ref(eq:distance-based-measure))
+In this equation \ref{eq:distance-based-accessibility}, $A^{ip}$ is the accessibility of zone $i$ to the location of type p, $L^p$ is a set of locations of type p, and $(d_{ij})$ is distance (or travel time for a given mode) from i to location j in set $L_p$. This measure is consistent with a straightforward location model in which the nearest location is always chosen with a probability of 1.0. (equation \ref{eq:distance-based-measure})
 
 \begin{equation}
-P^{ip}_j = 
-\begin{cases}
-  1 & \text{if } d_{ij} = \min_{j \in L^p} d_{ij} \\
-  0 & \text{otherwise}
-\end{cases}
+P^{ip}_j = X
 \label{eq:distance-based-measure}
 \end{equation}
 
 
-In equation \@ref(eq:distance-based-measure), $P_j^{ip}$ represents the probability of selecting location $j$ for purpose $p$, given that one is situated in zone $i$. However, this measure suffers from two limitations. Firstly, it needs to account for the size or attractiveness of locations. Secondly, it does not investigate the cumulative impact of having access to multiple locations. Consequently, it is not advisable to employ this method as a standalone measure when calculating accessibility.
+In equation \ref{eq:distance-based-measure}, $P_j^{ip}$ represents the probability of selecting location $j$ for purpose $p$, given that one is situated in zone $i$. However, this measure suffers from two limitations. Firstly, it needs to account for the size or attractiveness of locations. Secondly, it does not investigate the cumulative impact of having access to multiple locations. Consequently, it is not advisable to employ this method as a standalone measure when calculating accessibility.
 
 ### Topological or infrastructure-based measures
 
@@ -179,7 +167,7 @@ There are three types of topological measures: The first group evaluates the lev
 
 Utility-based measures assess accessibility by considering individual preferences and utilizing the log-sum of discrete choice models applied to destination choice analysis [@ben2021disaggregate]. This approach, often referred to as the benefit measure, offers a more accurate representation of individual accessibility compared to location-based measures. Furthermore, individual-based accessibility provides more representative measurements than place-based accessibility and reflects the population's access. Aggregating accessibility through this method is a commonly used approach [@geurs2003evaluation; @wachs1973physical]. The utility-based measure can be calculated using two methods:
 
-They are assuming that a decision-maker perceives the utility of a destination as $U_j = V_j + \epsilon_j$, where $\epsilon_j$ represents the individual's idiosyncratic deviation in terms of how they perceive the utility of alternative j relative to the population's average utility, $V_j$. The person chooses the alternative that generates the maximum perceived utility, $U_j$. Under commonly used assumptions, the probability that j is the alternative with the maximum utility and is thus chosen can be calculated using the multinomial logit (MNL) model (equation \@ref(eq:utility-based-measure))[@train2009discrete]:
+They are assuming that a decision-maker perceives the utility of a destination as $U_j = V_j + \epsilon_j$, where $\epsilon_j$ represents the individual's idiosyncratic deviation in terms of how they perceive the utility of alternative j relative to the population's average utility, $V_j$. The person chooses the alternative that generates the maximum perceived utility, $U_j$. Under commonly used assumptions, the probability that j is the alternative with the maximum utility and is thus chosen can be calculated using the multinomial logit (MNL) model (equation \ref{eq:utility-based-measure}) [@train2009discrete]:
 
 \begin{equation}
 P_j^{ip} = \frac{e^{V_j}}{\sum_{j' \in L^{ip}} e^{V_{j'}}} = \frac{e^{\beta z_j}}{\sum_{j' \in L^{ip}} e^{\beta z_{j'}}}
@@ -187,16 +175,16 @@ P_j^{ip} = \frac{e^{V_j}}{\sum_{j' \in L^{ip}} e^{V_{j'}}} = \frac{e^{\beta z_j}
 \end{equation}
 
 
-In equation \@ref(eq:utility-based-measure), ${V_j} = \beta{Z_j}$ represents the systematic utility of alternative $j$, where ${Z_j}$ is a vector of explanatory variables, and $\beta$ is a row vector of parameters.
+In equation \ref{eq:utility-based-measure}, ${V_j} = \beta{Z_j}$ represents the systematic utility of alternative $j$, where ${Z_j}$ is a vector of explanatory variables, and $\beta$ is a row vector of parameters.
 
-The actual perceived maximum utility is unobservable. However, in the case of the MNL model, it has been demonstrated [@ben1985discrete] that the expected maximum utility $(I^{ip})$ associated with this choice can be calculated using the following equation, denoted as equation \@ref(eq:maximum-utility):
+The actual perceived maximum utility is unobservable. However, in the case of the MNL model, it has been demonstrated [@ben1985discrete] that the expected maximum utility $(I^{ip})$ associated with this choice can be calculated using the following equation, denoted as equation \ref{eq:maximum-utility}:
 
 \begin{equation}
 I^{ip} = E\left[ \max_j (U_j) \right] = \ln\left(\sum_{j \in L^{ip}} e^{\beta z_j} \right)
 \label{eq:maximum-utility}
 \end{equation}
 
-That is, it is the natural logarithm of the denominator of the logit choice model (sometimes referred to as the "log sum" term). Further, it can also be shown that this expected maximum utility is the consumer's surplus for this choice. Thus, it is a standard measure of economic benefit. Given this, Ben-Akiva and Lerman (1985) argue that it also provides a behaviorally and economically sound definition of accessibility: accessibility for a given activity is the expected utility derived from participation in this activity, which is the consumer surplus associated with it. That is equation \@ref(eq:Accessibility-maximum-utility):
+That is, it is the natural logarithm of the denominator of the logit choice model (sometimes referred to as the "log sum" term). Further, it can also be shown that this expected maximum utility is the consumer's surplus for this choice. Thus, it is a standard measure of economic benefit. Given this, Ben-Akiva and Lerman (1985) argue that it also provides a behaviorally and economically sound definition of accessibility: accessibility for a given activity is the expected utility derived from participation in this activity, which is the consumer surplus associated with it. That is equation \ref{eq:Accessibility-maximum-utility}:
 
 
 \begin{equation}
@@ -238,8 +226,14 @@ colnames(table1) <- c(
 
 # Create the styled table with the caption and additional styles
 styled_table1 <- table1 %>%
-  kable(format = "latex", booktabs = TRUE, align = 'c', caption = "\\label{tab:table_1}Cycling-Specific Accessibility Measures in Various Studies") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped", "scale_down"))%>%
+  kable(format = "latex", 
+        booktabs = TRUE, 
+        align = 'c', 
+        caption = "\\label{tab:table_1}Cycling-Specific Accessibility Measures in Various Studies") %>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped", "scale_down")
+                latex_options=c("scale_down")
+                )%>%
   column_spec(2:6, width = "5cm")%>%
   row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
@@ -277,7 +271,10 @@ colnames(table_2) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_2 <- table_2 %>%
   kable(format = "latex", booktabs = TRUE, caption = "\\label{tab:table_2}Walking-Specific Accessibility Measures in Various Studies") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped", "scale_down"))%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped", "scale_down")
+                latex_options=c("scale_down")
+                )%>%
   column_spec(2:6, width = "5cm")%>%
   row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
@@ -322,7 +319,9 @@ colnames(table_3) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_3 <- table_3 %>%
   kable(format = "latex", booktabs = TRUE,longtable = TRUE, caption = "\\label{tab:table_3}Studies examining walkability") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 8)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped"), 
+                font_size = 8)%>%
   column_spec(1:6, width = "3cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
@@ -372,7 +371,9 @@ colnames(table_4) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_4 <- table_4 %>%
   kable(format = "latex", booktabs = TRUE,longtable = TRUE, caption = "\\label{tab:table_4}Studies examining Bikeability") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 8)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped"), 
+                font_size = 8)%>%
   column_spec(1:6, width = "3cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
@@ -430,7 +431,9 @@ colnames(table_5) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_5 <- table_5 %>%
   kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_5}Required data according to each active transportation accessibility of measure") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 10)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped"), 
+                font_size = 10)%>%
   column_spec(1:7, width = "2.5cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
@@ -490,7 +493,9 @@ colnames(table_6) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_6 <- table_6 %>%
   kable(format = "latex", booktabs = TRUE, caption = "\\label{tab:table_6}A Comprehensive Analysis of Variables in Household Travel Surveys") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 10)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped"), 
+                font_size = 10)%>%
   column_spec(1:3, width = "5cm")%>%
    row_spec(0, bold = TRUE, align = "c")
 styled_table_6
@@ -678,7 +683,9 @@ table_7 <- data.frame(
 # Create the styled table with the caption and additional styles
 styled_table_7 <- table_7 %>%
   kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_7}Analysis of Data Sources in Various Surveys Across Canada") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 8)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped"), 
+                font_size = 8)%>%
   column_spec(1:5, width = "3cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
@@ -998,7 +1005,10 @@ colnames(table_8) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_8 <- table_8 %>%
   kable(format = "latex", booktabs = TRUE, caption = " \\label{tab:table-8} Availability of datasets") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped", "scale_down"), font_size = 8)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped", "scale_down"),
+                latex_options=c("scale_down"),
+                font_size = 8)%>%
   column_spec(1:5, width = "3cm")%>%
    row_spec(0, bold = TRUE, align = "c")
 styled_table_8
@@ -1068,7 +1078,9 @@ colnames(table_9) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_9 <- table_9 %>%
   kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_9}Thresholds of walking and cycling travel time and distance") %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 12)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped"), 
+                font_size = 12)%>%
   column_spec(1:2, width = "9cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
@@ -1079,9 +1091,9 @@ styled_table_9
 
 Impedance function is used to describe the willingness of cyclists and pedestrians to travel to a destination as a function of cost (distance, time, etc.); it is a component of accessibility [@iacono2010; @yang2012walking; @arranz2019]. The impedance function obtained by fitting to a real dataset provides a continuous description of cycling and walking probability at different costs. The spatial distribution of bicycle and pedestrian travel can be expressed using distance decay functions [@iacono2010] as the travel distance is a limiting factor for implementing use[@larsen2011travel]. Distance decay functions describe the effect of distance on spatial interactions and typically express distance as a function of travel impedance (time or cost). Rybarczyk and Wu (2010) identified the importance of the spatial patterns of bicycle facilities and local network connectivity when studying accessibility. Furthermore, increased connectivity within a network also allows for increased accessibility[@rybarczyk2010bicycle].
 
-Some researchers have argued that -- like maximum travel thresholds -- distance-decay rates should differ according to trip purpose and different population groups [@garcia2013walking; @wu2019measuring]. Similarly, researchers also argue that walking and cycling impedance functions should be calculated separately due to their differing travel speeds and maximum travel ranges [@cheng2019investigating]. For example, the distance-decay curve for work trips shown in Figure \@ref(fig:initiative) assumes that cyclists are half as likely to reach a work destination 20 minutes away than one 10 minutes away. Therefore, jobs 20 minutes away would be applied half the weight of jobs 10 minutes away. These cycling weights differ slightly from walking trips since fewer people are willing to walk longer to work. While adjusting the distance-decay functions by mode has the potential to improve accuracy, it can also be said that a consistent approach to measuring accessibility across modes is preferable due to the possibility of causing one mode to seem less accessible when applying different decay functions (State et al. Initiative, 2021).
+Some researchers have argued that -- like maximum travel thresholds -- distance-decay rates should differ according to trip purpose and different population groups [@garcia2013walking; @wu2019measuring]. Similarly, researchers also argue that walking and cycling impedance functions should be calculated separately due to their differing travel speeds and maximum travel ranges [@cheng2019investigating]. For example, the distance-decay curve for work trips shown in Figure \ref{fig:initiative} assumes that cyclists are half as likely to reach a work destination 20 minutes away than one 10 minutes away. Therefore, jobs 20 minutes away would be applied half the weight of jobs 10 minutes away. These cycling weights differ slightly from walking trips since fewer people are willing to walk longer to work. While adjusting the distance-decay functions by mode has the potential to improve accuracy, it can also be said that a consistent approach to measuring accessibility across modes is preferable due to the possibility of causing one mode to seem less accessible when applying different decay functions (State et al. Initiative, 2021).
 
-Regarding the types of impedance functions considered, a negative exponential curve is familiar [@saghapour2017measuring; @wu2019measuring] -- example shown in Figure \@ref(fig:initiative). However, some studies have also calculated study-specific distance-decay curves based on trip data rather than assuming a standard function. Wu, Lu et al. (2019) calculated a distance-decay function using data from Shenzhen's dockless bicycle-sharing system. Their findings show that a lognormal distance decay best fits the distribution of bike-sharing trips, with the willingness to cycle increasing up to 500m and decreasing after that. García-Palomares, Gutiérrez et al. (2013) took a similar approach to measure walking accessibility to metro stations and found a linear distance-decay trend that varied significantly by age [@garcia2013walking; @wu2019measuring].
+Regarding the types of impedance functions considered, a negative exponential curve is familiar [@saghapour2017measuring; @wu2019measuring] -- example shown in Figure \ref{fig:initiative}. However, some studies have also calculated study-specific distance-decay curves based on trip data rather than assuming a standard function. Wu, Lu et al. (2019) calculated a distance-decay function using data from Shenzhen's dockless bicycle-sharing system. Their findings show that a lognormal distance decay best fits the distribution of bike-sharing trips, with the willingness to cycle increasing up to 500m and decreasing after that. García-Palomares, Gutiérrez et al. (2013) took a similar approach to measure walking accessibility to metro stations and found a linear distance-decay trend that varied significantly by age [@garcia2013walking; @wu2019measuring].
 
 ```{r initiative,echo = FALSE, fig.cap="Example travel time decay functions by mode for work vs non work trips (Source: State Smart Transportation Initiative - based on data from 2017 National Household Travel Survey)", out.width="0.9\\linewidth", fig.align="center"}
 include_graphics(path = "figure/ch02-Fig-02.jpg")
@@ -1093,7 +1105,7 @@ One of the factors associated with the natural environment that affects bicycle 
 
 Few studies have considered slope in measures of active accessibility. However, it is acknowledged as an essential factor since people often avoid routes with significant elevation gain, and routes with steep slopes may significantly impact accessibility. Often, network analyst tools use the shortest path from the road network, which may not reflect actual cycling or walking behavior. Vale, Saraiva, et al. (2015) concluded that slopes should always be included in the accessibility of bicycling and that they are also crucial for walking. However, it is mainly absent from walking accessibility measures [@vale2016active]. However, the greater availability of elevation data and advances in research in various disciplines offer opportunities to understand the behavior of individuals better when traveling in infrastructure-poor contexts and challenge assumptions surrounding the most significant costs to be minimized. Papa, Carpentieri, et al. (2018) also highlighted a significant difference in catchment areas when including versus excluding the slope attribute (33% $km^2$ difference for adults over 75) [@papa2018measuring]. Wood, Jones et al. (2018) studied the sensitivity in distance calculation to variations in three travel-time modeling approaches, taking as reference a model that accounted for variations in land cover and directionality in slope (anisotropy). They found that an approach based on measuring Euclidean distances on a flat surface underestimated the distance traveled relative to the reference. The second approach, which calculated the distances constrained to a road network, also varied substantially from the reference, underestimating it in some areas and overestimating it in others. Finally, the third approach, which accounted for land cover and elevation but ignored the directionality of slopes, slightly underestimated travel times [@wood2018pedestrian].
 
-Lundberg (2012) examined the local cycling and walking networks through Geographic Information Systems (GIS) using accessibility. They extracted a percent slope raster layer from the DEM layer obtained from part of the National Elevation Dataset (NED). The percent slope of the DEM ranged from 0 to 360. In Arc Map, the rise equals the run when the slope angle equals 45 degrees. Expressed as a percentage, the slope of this angle is 100%. As the slope angle approaches vertical (90o), the percentage slope approaches infinity. An X  and Y coordinate was first calculated for the start point of each line segment. Next, an X and Y coordinate was calculated for the endpoint of each line segment. Arc Map's 3D Analyst extension was used to convert the street network into a 3D layer, at which point the percent slope could be calculated as the Z-value for each line segment in the network. A Z-value (elevation) was calculated at each line segment's start and end points. The equation \@ref(eq:slope) was used to derive the percent slope for each line segment: 
+Lundberg (2012) examined the local cycling and walking networks through Geographic Information Systems (GIS) using accessibility. They extracted a percent slope raster layer from the DEM layer obtained from part of the National Elevation Dataset (NED). The percent slope of the DEM ranged from 0 to 360. In Arc Map, the rise equals the run when the slope angle equals 45 degrees. Expressed as a percentage, the slope of this angle is 100%. As the slope angle approaches vertical (90o), the percentage slope approaches infinity. An X  and Y coordinate was first calculated for the start point of each line segment. Next, an X and Y coordinate was calculated for the endpoint of each line segment. Arc Map's 3D Analyst extension was used to convert the street network into a 3D layer, at which point the percent slope could be calculated as the Z-value for each line segment in the network. A Z-value (elevation) was calculated at each line segment's start and end points. The equation \ref{eq:slope} was used to derive the percent slope for each line segment: 
 
 \begin{equation}
 \frac{End_z - Start_z}{\sqrt{(End_x - Start_x)^2 + (End_y - Start_y)^2}} \times 100
@@ -1121,12 +1133,14 @@ colnames(table_10) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_10 <- table_10 %>%
   kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_10}Bicycle travel speeds used in GIS modeling", align = c('c', 'c')) %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 12)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped"), 
+                font_size = 12)%>%
   column_spec(1:2, width = "5cm")%>%
    row_spec(0, bold = TRUE, align = "c")
 styled_table_10
 ```
-Pedestrian travel speeds were also calculated based on the effect of slope. Tobler's hiking function was used to identify the effect of slope on travel speed. The equation \@ref(eq:modified-formula) represents the modified Tobler's formula adjusted for percent slope as follows:
+Pedestrian travel speeds were also calculated based on the effect of slope. Tobler's hiking function was used to identify the effect of slope on travel speed. The equation \ref{eq:modified-formula} represents the modified Tobler's formula adjusted for percent slope as follows:
 
 \begin{equation}
 V = 6 e^{-3.5 |s + 0.05|}
@@ -1152,27 +1166,28 @@ colnames(table_11) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_11 <- table_11 %>%
   kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_11}Pedestrian travel speeds used in GIS modeling", align = c('c', 'c')) %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 12)%>%
+  kable_styling(full_width = FALSE, #latex_options=c("striped"), 
+                font_size = 12)%>%
   column_spec(1:2, width = "5cm")%>%
    row_spec(0, bold = TRUE, align = "c")
 styled_table_11
 ```
 
-In another study, Paez et al. (2020) calculated the slope from the vertical and horizontal displacements. The instantaneous slope $m$ is given by the derivative of $y = f(x)$ concerning $x$. This is given by the equation \@ref(eq:calculating-the-slope-from-the-vertical-and-horizontal-displacements) [@paez2020]:
+In another study, Paez et al. (2020) calculated the slope from the vertical and horizontal displacements. The instantaneous slope $m$ is given by the derivative of $y = f(x)$ concerning $x$. This is given by the equation \ref{eq:calculating-the-slope-from-the-vertical-and-horizontal-displacements} [@paez2020]:
 
 \begin{equation}
 m = \frac{\Delta V}{\Delta h}
 \label{eq:calculating-the-slope-from-the-vertical-and-horizontal-displacements}
 \end{equation}
 
-In a DEM layer, two physical aspects of the landscape related to resistance can be obtained directly from the grid: the vertical and horizontal displacement between nodes i and j. $\Delta V$ and $\Delta h$ are vertical and horizontal displacements, respectively. This slope is linked to speed via Tobler's formula for hiking travel using equation \@ref(eq:slope-linked-to-speed-via-formula)[@tobler1993three]:
+In a DEM layer, two physical aspects of the landscape related to resistance can be obtained directly from the grid: the vertical and horizontal displacement between nodes i and j. $\Delta V$ and $\Delta h$ are vertical and horizontal displacements, respectively. This slope is linked to speed via Tobler's formula for hiking travel using equation \ref{eq:slope-linked-to-speed-via-formula} [@tobler1993three]:
 
 \begin{equation}
 S = 100 e^{-3.5 |m + 0.5|}
 \label{eq:slope-linked-to-speed-via-formula}
 \end{equation}
 
-Where the speed S is in $m/min$, the amount of speed can be converted into travel time in minutes if it is divided the distance by speed using equation \@ref(eq:amount-of-speed):
+Where the speed S is in $m/min$, the amount of speed can be converted into travel time in minutes if it is divided the distance by speed using equation \ref{eq:amount-of-speed}:
 
 \begin{equation}
 t = \frac{d_i}{100 e^{-3.5 |m + 0.5|}} = \frac{1}{100} d_i e^{3.5 |m + 0.5|}
@@ -1180,7 +1195,7 @@ t = \frac{d_i}{100 e^{-3.5 |m + 0.5|}} = \frac{1}{100} d_i e^{3.5 |m + 0.5|}
 \end{equation}
 
 
-Where $d_i$ can be the distance on the surface as discussed above or can be approximated by the horizontal distance $\Delta h$, as seen in Figure \@ref(fig:surface-distance), travel time tends to increase as the slope increases. Figure \@ref(fig:surface-distance) by [@paez2020] illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.  
+Where $d_i$ can be the distance on the surface as discussed above or can be approximated by the horizontal distance $\Delta h$, as seen in Figure \ref{fig:surface-distance}, travel time tends to increase as the slope increases. Figure \ref{fig:surface-distance} by [@paez2020] illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.  
 
 
 ```{r surface-distance, echo = FALSE, fig.cap="Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). 'Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility.' Findings, September.", out.width="0.9\\linewidth", fig.align="center"}
@@ -1224,7 +1239,9 @@ colnames(table_12) <- c(
 # Create the styled table with the caption and additional styles
 styled_table_12 <- table_12 %>%
   kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_12}The Canadian Bikeway Comfort and Safety (Can-BICS) Classification System", align = c('c', 'c')) %>%
-  kable_styling(full_width = FALSE, latex_options=c("striped"), font_size = 12)%>%
+  kable_styling(full_width = FALSE, 
+                #latex_options=c("striped"), 
+                font_size = 12)%>%
   column_spec(1:2, width = "5cm")%>%
    row_spec(0, bold = TRUE, align = "c")
 styled_table_12
@@ -1252,7 +1269,7 @@ Eliciting user needs data is discovering requirements for a project by accessing
 ```{r Flowchart,echo = FALSE, fig.cap="Elicitation data needs in interview", out.width="0.9\\linewidth", fig.align="center"}
 knitr::include_graphics("figure/ch02-Fig-04.png")
 ```
-Figure \@ref(fig:Flowchart) presented is a structured approach for eliciting user needs data in the context of evaluating transportation projects or policies with a focus on accessibility, particularly walking and cycling modes. The flowchart is designed through a comprehensive set of questions tailored to gather detailed information from organizations on their current practices, preferences, and data needs related to accessibility analysis. The starting point questions whether the organization has previously used the accessibility method to evaluate transportation projects or policies focused on active travel modes like walking and cycling. This dichotomous branch leads to two separate pathways:
+Figure \ref{fig:Flowchart} presented is a structured approach for eliciting user needs data in the context of evaluating transportation projects or policies with a focus on accessibility, particularly walking and cycling modes. The flowchart is designed through a comprehensive set of questions tailored to gather detailed information from organizations on their current practices, preferences, and data needs related to accessibility analysis. The starting point questions whether the organization has previously used the accessibility method to evaluate transportation projects or policies focused on active travel modes like walking and cycling. This dichotomous branch leads to two separate pathways:
 If 'Yes':
 The flowchart prompts the interviewer to inquire about the specific accessibility measurement tools the organization has used and their preferences among these.
 Questions then delve into the modes of transportation, types of destinations analyzed, and whether analyses consider different traveler capabilities, reflecting inclusivity in their assessments.
