@@ -129,8 +129,8 @@ The Inverse Power function is defined as (\ref{eq:inverse}):
 \begin{equation}
 f(t_{ij}) =
 \begin{cases}
-  1 \& \text{if } t_{ij} \le 1 \\
-  t_{ij}^{-\beta} \& \text{otherwise}
+  1 & \text{if } t_{ij} \le 1 \\
+  t_{ij}^{-\beta} & \text{otherwise}
 \end{cases}
 \label{eq:inverse}
 \end{equation}
@@ -179,8 +179,8 @@ Defined as Equation \ref{eq:cumulative-rectan}:
 \begin{equation}
 f(t_{ij}) =
 \begin{cases}
-  1 \& \text{if } t_{ij} \le t \\
-  0 \& \text{otherwise}
+  1 & \text{if } t_{ij} \le t \\
+  0 & \text{otherwise}
 \end{cases}
 \label{eq:cumulative-rectan}
 \end{equation}
@@ -195,8 +195,8 @@ The equation of cumulative opportunities linear is as follows (Equation \ref{eq:
 \begin{equation}
 f(t_{ij}) =
 \begin{cases}
-  1 - \frac{t_{ij}}{\bar{t}} \& \text{if } t_{ij} \le \bar{t} \\
-  0 \& \text{otherwise}
+  1 - \frac{t_{ij}}{\bar{t}} & \text{if } t_{ij} \le \bar{t} \\
+  0 & \text{otherwise}
 \end{cases}
 \label{eq:cumulative-linear}
 \end{equation}
@@ -208,6 +208,15 @@ This linear function provides a gradual decrease in accessibility with an increa
 The formula of this function is presented below  (Equation \ref{eq:gamma-imped})
 
 
+
+\begin{equation}
+f(c_{ij}) = 
+   \begin{cases}
+\frac{1}{\sigma^\alpha\Gamma(\alpha)} c_{ij}^{\alpha-1} \cdot e^{-\frac{c_{ij}}{\sigma}} & \text{if } 0 \leq c_{ij} <      \infty  \text{ and } \alpha, \sigma > 0 \\
+0 & \text{otherwise}
+   \end{cases}
+\label{eq:gamma-imped}
+\end{equation}
 
 
 
@@ -232,7 +241,14 @@ In this context, the variable $c_{ij}$ denotes the travel time between locations
 
 The Beta distribution has probability density function (\ref{eq:beta-functions})
 
-
+\begin{equation}
+f(c_{ij}) = 
+\begin{cases}
+\frac{1}{B(\alpha, \beta)} c_{ij}^{\alpha - 1}(1 - c_{ij})^{\beta - 1} & \text{if } 0 \leq c_{ij} < \infty \\
+0 & \text{otherwise}
+\end{cases}
+\label{eq:beta-functions}
+\end{equation}
 
 The Equation \ref{eq:beta-functions} represents the probability density function of the Beta distribution, a continuous probability distribution with two shape parameters. In this formula, $c_{ij}$is a specific impedance or cost between a point $i$ and point $j$ which is between 0 and 1, inclusive. It represents the possible outcomes of the Beta distribution, where $c_{ij}$ is the probability of an event occurring. $\alpha$ is the first shape parameter, and $\beta$ is the second shape parameter. These parameters control the shape of the Beta distribution, where both are positive and more than 0. They can be any positive real numbers, and they determine the behavior of the probability density function, dictating where most of the distribution's "weight" is. The term $B(\alpha, \beta)$ in the denominator is the Beta function, which is a normalization constant to ensure that the total probability integrates to 1 over the interval from 0 to 1. The Beta function is related to the Gamma function and is defined for positive values of $\alpha$ and $\beta$. It ensures that the probability density function is scaled correctly. This formula gives us the likelihood of $c_{ij}$ when the distribution is defined by particular $\alpha$ and $\beta$ parameters.
 
@@ -250,6 +266,14 @@ The Poisson distribution (\ref{eq:poisson-functions}) is a discrete probability 
 
 The Weibull distribution with shape $\alpha$ and scale $\theta$ has a probability density function as follows:
 
+\begin{equation}
+f(c_{ij}) =
+\begin{cases}
+\left( \frac{\alpha}{\theta}\right) \left( \frac{c_{ij}}{\theta}\right)^{\alpha - 1} e^{-\left(\frac{c_{ij}}{\theta}\right)^\alpha} & \text{if } 0 \leq c_{ij} \\
+0 & \text{otherwise}
+\end{cases}
+\label{eq:weibull-functions}
+\end{equation}
 
 
 The Weibull distribution (Equation \ref{eq:weibull-functions}) is a continuous probability distribution used to model various data types, particularly where the data shows a changing failure rate over time. This flexibility makes the Weibull distribution especially suited to reliability analysis, life data analysis, and modeling failure times. $f(c_{ij})$ represents the probability density function (pdf) of the Weibull distribution, with $c_{ij}$ being the variable of interest. here, $c_{ij}$ would represent the impedance value, such as time or cost associated with traveling between two points. $\alpha$ is the shape parameter of the Weibull distribution. It determines the form of the probability distribution function and can indicate whether the failure rate is increasing, constant, or decreasing over time. In fact,it would shape the distribution of impedance experiences, such as whether impedances are more common as trips get longer or shorter. $\theta$ is the scale parameter of the Weibull distribution. It stretches or compresses the distribution along the horizontal axis and is akin to the 'characteristic life' in reliability terminology.
@@ -281,6 +305,68 @@ Following a thorough process of model selection and parameter estimation, we cal
 ### Descriptive analysis of walking and cycling trips from 1986 to 2015
 
 The General Social Survey (GSS) data emerged as an invaluable repository in our detailed examination of active travel behavior in Canada. It provided a comprehensive view of individual preferences and behaviors about active modes of transportation, specifically walking and cycling. By focusing on the years 1986 to 2015, we sought to capture the evolution of active travel against the backdrop of crucial urban development changes, societal shifts in attitudes towards health and the environment, and modifications in transportation infrastructure and policies.
+
+
+\newpage
+
+```{r ch03-make-table-01, echo=FALSE, cache=FALSE}
+
+# Assuming 'trip' is your initial data frame and it's already been loaded.
+
+# Filter out trips with DURATION greater than 90
+trip_filtered <- trip %>%
+  filter(DURATION <= 90)
+
+# Calculate the count of trips for each mode and year
+# Summarize counts by year and mode
+trip_counts <- trip_filtered %>%
+  group_by(YEAR, MODE) %>%
+  summarise(Count = n(), .groups = "drop") %>%
+  pivot_wider(names_from = YEAR, values_from = Count)
+
+# Calculate min, mean, and max statistics
+stats_data <- trip_filtered %>%
+  group_by(YEAR, MODE) %>%
+  summarise(
+    min = min(DURATION),
+    mean = mean(DURATION),
+    max = max(DURATION),
+    .groups = "drop"
+  ) %>%
+  pivot_longer(cols = c(min, mean, max), names_to = "Statistic", values_to = "Value") %>%
+  pivot_wider(names_from = YEAR, values_from = Value)
+
+# Combine counts and stats into one data frame
+final_data <- bind_rows(
+  trip_counts %>% mutate(Statistic = "Count"),
+  stats_data
+) %>%
+  mutate(MODE = factor(MODE, levels = c("walking", "cycling"))) %>%
+  arrange(MODE, Statistic) %>%
+  mutate(across(where(is.numeric), ~ round(.x, 0)))
+
+# Replace NA in MODE with "walking"
+final_data$MODE <- replace_na(final_data$MODE, "walking")
+
+# Rename the 'MODE' column to 'Mode' before generating the table
+final_data <- final_data %>%
+  rename(Mode = MODE) %>%
+  dplyr::select(Mode, Statistic, everything())
+
+# Generate the table with 'Statistic' as the second column
+styled_ch03_table_01 <- final_data %>%
+  kable(format = "latex", booktabs = TRUE, longtable = TRUE, 
+        caption = "\\label{tab:ch03-table-01}Descriptive Analysis of Active Transportation Modes: Walking and Cycling Statistics from 1986 to 2015",  
+        align = c('l', 'l', rep('c', ncol(final_data) - 2))) %>%
+  kable_styling(full_width = FALSE, font_size = 12) %>%
+  column_spec(1, bold = TRUE) %>%
+  add_header_above(c(" " = 2, "Year" = ncol(final_data) - 2)) %>%
+  collapse_rows(columns = 1, valign = "top", latex_hline = "major")
+
+# Print the table
+styled_ch03_table_01
+
+```
 
 
 Our primary method was rooted in descriptive analysis. We parsed vast quantities of data to discern overarching patterns and trends. A salient feature emerging from this analysis was the duration of trips undertaken.Table \ref{tab:ch03-table-01} contains a detailed compilation of descriptive statistics showing the fluctuating patterns of walking and cycling trips between 1986 and 2015. The data is categorized under two principal modes of transit: walking and cycling, with each category further explored through four statistical metrics: count, maximum (max), mean, and minimum (min), each quantified in minutes. In the walking trips section, the 'count' metric represents the number of recorded trips for each year. The journey began in 1986 with 384 recorded walking trips, escalating to 1,473 by 1992, indicating a burgeoning preference for walking during this period. The peak was reached in 1998 with 1,657 trips, which increased to an unprecedented 5,517 trips by 2005, possibly reflecting societal shifts toward healthier lifestyles or environmental concerns. However, post-2005, a downward trend emerged, with counts reducing to 4,360 trips in 2010 and further to 2,796 in 2015, possibly due to changing urban landscapes or the advent of alternative transportation modes. 
@@ -376,7 +462,7 @@ styled_ch03_table_02 <- wide_data %>%
     booktabs = TRUE, 
     longtable = TRUE, 
     align = c(rep("c", ncol(wide_data))),
-    caption = "\\label{tab:ch03-table-03}Comparative Trip Stats by Mode and Destination: 1986, 1992, 1998",
+    caption = "\\label{tab:ch03-table-02}Comparative Trip Stats by Mode and Destination: 1986, 1992, 1998",
     col.names = c("Destination", "Mode*","Min*","Med*","Max*", "P*", "Min","Med","Max", "P", "Min","Med","Max", "P")
   ) %>%
   kable_styling(full_width = FALSE, 

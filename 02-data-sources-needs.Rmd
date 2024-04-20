@@ -226,16 +226,14 @@ colnames(ch02_table_01) <- c(
 
 # Create the styled table with the caption and additional styles
 styled_ch02_table_01 <- ch02_table_01 %>%
-  kable(format = "latex", 
-        booktabs = TRUE, 
-        align = 'c', 
-        caption = "\\label{tab:ch02-make-table-01}Cycling-Specific Accessibility Measures in Various Studies") %>%
+  kable(format = "latex", booktabs = TRUE, caption = "\\label{tab:Ch02-make-table-01}Cycling-Specific Accessibility Measures in Various Studies") %>%
   kable_styling(full_width = FALSE, 
                 latex_options = c("scale_down")
                 ) %>%
   column_spec(2:6, width = "5cm") %>%
   row_spec(0, bold = TRUE, align = "c") %>%
   landscape()
+styled_ch02_table_01
 ```
 
 
@@ -270,7 +268,6 @@ colnames(ch02_table_02) <- c(
 styled_ch02_table_02 <- ch02_table_02 %>%
   kable(format = "latex", booktabs = TRUE, caption = "\\label{tab:Ch02-make-table-02}Walking-Specific Accessibility Measures in Various Studies") %>%
   kable_styling(full_width = FALSE, 
-                #latex_options=c("striped", "scale_down")
                 latex_options=c("scale_down")
                 )%>%
   column_spec(2:6, width = "5cm")%>%
@@ -1038,7 +1035,7 @@ ch02_table_09 <- data.frame(
     "Lam and Morrall (1982)",
     "O'Sullivan and Morrall (1996)",
     "Arasan, Rengaraju et al. (1996)",
-    "Nicholls (2001), Smoyer?Tomic, \\ Hewko et al. (2004)",
+    "Nicholls (2001), Smoyer Tomic, \\ Hewko et al. (2004)",
     "Zhao, Chow et al. (2003)",
     "Van Herzele and Wiedemann (2003)",
     "Tsou, Hung et al. (2005)",
@@ -1095,14 +1092,12 @@ styled_ch02_table_09
 
 Impedance function is used to describe the willingness of cyclists and pedestrians to travel to a destination as a function of cost (distance, time, etc.); it is a component of accessibility [@iacono2010; @yang2012walking; @arranz2019]. The impedance function obtained by fitting to a real dataset provides a continuous description of cycling and walking probability at different costs. The spatial distribution of bicycle and pedestrian travel can be expressed using distance decay functions [@iacono2010] as the travel distance is a limiting factor for implementing use[@larsen2011travel]. Distance decay functions describe the effect of distance on spatial interactions and typically express distance as a function of travel impedance (time or cost). Rybarczyk and Wu (2010) identified the importance of the spatial patterns of bicycle facilities and local network connectivity when studying accessibility. Furthermore, increased connectivity within a network also allows for increased accessibility[@rybarczyk2010bicycle].
 
-Some researchers have argued that -- like maximum travel thresholds -- distance-decay rates should differ according to trip purpose and different population groups [@garcia2013walking; @wu2019measuring]. Similarly, researchers also argue that walking and cycling impedance functions should be calculated separately due to their differing travel speeds and maximum travel ranges [@cheng2019investigating]. For example, the distance-decay curve for work trips shown in Figure \ref{fig:initiative} assumes that cyclists are half as likely to reach a work destination 20 minutes away than one 10 minutes away. Therefore, jobs 20 minutes away would be applied half the weight of jobs 10 minutes away. These cycling weights differ slightly from walking trips since fewer people are willing to walk longer to work. While adjusting the distance-decay functions by mode has the potential to improve accuracy, it can also be said that a consistent approach to measuring accessibility across modes is preferable due to the possibility of causing one mode to seem less accessible when applying different decay functions (State et al. Initiative, 2021).
+Some researchers have argued that -- like maximum travel thresholds -- distance-decay rates should differ according to trip purpose and different population groups [@garcia2013walking; @wu2019measuring]. Similarly, researchers also argue that walking and cycling impedance functions should be calculated separately due to their differing travel speeds and maximum travel ranges [@cheng2019investigating]. For example, the distance-decay curve for work trips shown in Figure \ref{fig:ch02-plot-fig-02} assumes that cyclists are half as likely to reach a work destination 20 minutes away than one 10 minutes away. Therefore, jobs 20 minutes away would be applied half the weight of jobs 10 minutes away. These cycling weights differ slightly from walking trips since fewer people are willing to walk longer to work. While adjusting the distance-decay functions by mode has the potential to improve accuracy, it can also be said that a consistent approach to measuring accessibility across modes is preferable due to the possibility of causing one mode to seem less accessible when applying different decay functions (State et al. Initiative, 2021).
 
 Regarding the types of impedance functions considered, a negative exponential curve is familiar [@saghapour2017measuring; @wu2019measuring] -- example shown in Figure \ref{fig:ch02-plot-fig-02}. However, some studies have also calculated study-specific distance-decay curves based on trip data rather than assuming a standard function. Wu, Lu et al. (2019) calculated a distance-decay function using data from Shenzhen's dockless bicycle-sharing system. Their findings show that a lognormal distance decay best fits the distribution of bike-sharing trips, with the willingness to cycle increasing up to 500m and decreasing after that. García-Palomares, Gutiérrez et al. (2013) took a similar approach to measure walking accessibility to metro stations and found a linear distance-decay trend that varied significantly by age [@garcia2013walking; @wu2019measuring].
 
-```{r ch02-plot-fig-02, echo=FALSE, out.width="100%", fig.cap="Example travel time decay functions by mode for work vs non work trips (Source: State Smart Transportation Initiative - based on data from 2017 National Household Travel Survey)", fig.align="center"}
+```{r ch02-plot-fig-02, echo=FALSE, out.width="50%", fig.cap="Example travel time decay functions by mode for work vs non work trips (Source: State Smart Transportation Initiative - based on data from 2017 National Household Travel Survey)", fig.align="center"}
 include_graphics(path = "figure/ch02-Fig-02.jpg")
-
-
 ```
 
 ### Slope
@@ -1204,7 +1199,7 @@ t = \frac{d_i}{100 e^{-3.5 |m + 0.5|}} = \frac{1}{100} d_i e^{3.5 |m + 0.5|}
 Where $d_i$ can be the distance on the surface as discussed above or can be approximated by the horizontal distance $\Delta h$, as seen in Figure \ref{fig:ch02-plot-fig-03}, travel time tends to increase as the slope increases. Figure \ref{fig:ch02-plot-fig-03} by [@paez2020] illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.  
 
 
-```{r ch02-plot-fig-03, echo=FALSE, out.width="100%", fig.cap="Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). 'Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility.' Findings, September.", fig.align="center"}
+```{r ch02-plot-fig-03, echo=FALSE, out.width="50%", fig.cap="Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). 'Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility.' Findings, September.", fig.align="center"}
 include_graphics(path = "figure/ch02-Fig-03.jpg")
 ```
 

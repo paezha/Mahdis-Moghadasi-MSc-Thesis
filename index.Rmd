@@ -21,13 +21,18 @@ output:
 # The next two lines allow you to change the spacing in your thesis. You can 
 # switch out \onehalfspacing with \singlespacing or \doublespacing, if desired.
 header-includes:
+    - \usepackage{amsmath}
+    - \usepackage{mathtools}
     - \usepackage{setspace}\onehalfspacing
     - \usepackage{float}
     - \usepackage{url}
     - \PassOptionsToPackage{usenames,dvipsnames}{xcolor}
     - \usepackage{colortbl}
-    - \usepackage{bibentry}
-    - \usepackage{hyperref}
+    - \usepackage[utf8]{inputenc}
+    - \usepackage{graphicx}
+    - \usepackage{amssymb}
+    - \usepackage{parskip}
+
 
 # This will automatically install the {remotes} package and {thesisdown}
 # Change this to FALSE if you'd like to install them manually on your own.
@@ -76,8 +81,6 @@ bibliography: bib/thesis.bib
 csl: csl/apa.csl
 lot: true
 lof: true
-
-
 ---
 
 <!--

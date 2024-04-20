@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.19)  19 APR 2024 21:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.20)  20 APR 2024 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -386,78 +386,141 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
-Package scrhack Info: loading lscape hack on input line 52.
+Package scrhack Info: loading lscape hack on input line 51.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/lscape.hak
 File: lscape.hak 2023/07/07 v3.41 KOMA-Script scrhack part (hacking package lscape)
 Package scrhack Info: \landscape patched to make \textheight change optional on input line 90.
 \scrh@LT@textheight=\skip66
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip67
+For additional information on amsmath, use the `?' option.
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen186
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count307
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count308
+\leftroot@=\count309
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count310
+\DOTSCASE@=\count311
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box67
+\strutbox@=\box68
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen187
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count312
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count313
+\dotsspace@=\muskip17
+\c@parentequation=\count314
+\dspbrk@lvl=\count315
+\tag@help=\toks24
+\row@=\count316
+\column@=\count317
+\maxfields@=\count318
+\andhelp@=\toks25
+\eqnshift@=\dimen188
+\alignsep@=\dimen189
+\tagshift@=\dimen190
+\tagwidth@=\dimen191
+\totwidth@=\dimen192
+\lineht@=\dimen193
+\@envbody=\toks26
+\multlinegap=\skip68
+\multlinetaggap=\skip69
+\mathdisplay@stack=\toks27
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip70
+\multirow@cntb=\count319
+\multirow@dima=\skip71
+\bigstrutjot=\dimen194
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count307
+\lrq@indent=\count320
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
-\c@tabx@nest=\count308
-\c@listtotal=\count309
-\c@listcount=\count310
-\c@liststart=\count311
-\c@liststop=\count312
-\c@citecount=\count313
-\c@citetotal=\count314
-\c@multicitecount=\count315
-\c@multicitetotal=\count316
-\c@instcount=\count317
-\c@maxnames=\count318
-\c@minnames=\count319
-\c@maxitems=\count320
-\c@minitems=\count321
-\c@citecounter=\count322
-\c@maxcitecounter=\count323
-\c@savedcitecounter=\count324
-\c@uniquelist=\count325
-\c@uniquename=\count326
-\c@refsection=\count327
-\c@refsegment=\count328
-\c@maxextratitle=\count329
-\c@maxextratitleyear=\count330
-\c@maxextraname=\count331
-\c@maxextradate=\count332
-\c@maxextraalpha=\count333
-\c@abbrvpenalty=\count334
-\c@highnamepenalty=\count335
-\c@lownamepenalty=\count336
-\c@maxparens=\count337
-\c@parenlevel=\count338
-\blx@tempcnta=\count339
-\blx@tempcntb=\count340
-\blx@tempcntc=\count341
-\c@blx@maxsection=\count342
-\blx@maxsegment@0=\count343
-\blx@notetype=\count344
-\blx@parenlevel@text=\count345
-\blx@parenlevel@foot=\count346
-\blx@sectionciteorder@0=\count347
-\blx@sectionciteorderinternal@0=\count348
-\blx@entrysetcounter=\count349
-\blx@biblioinstance=\count350
-\labelnumberwidth=\skip67
-\labelalphawidth=\skip68
-\biblabelsep=\skip69
-\bibitemsep=\skip70
-\bibnamesep=\skip71
-\bibinitsep=\skip72
-\bibparsep=\skip73
-\bibhang=\skip74
+\c@tabx@nest=\count321
+\c@listtotal=\count322
+\c@listcount=\count323
+\c@liststart=\count324
+\c@liststop=\count325
+\c@citecount=\count326
+\c@citetotal=\count327
+\c@multicitecount=\count328
+\c@multicitetotal=\count329
+\c@instcount=\count330
+\c@maxnames=\count331
+\c@minnames=\count332
+\c@maxitems=\count333
+\c@minitems=\count334
+\c@citecounter=\count335
+\c@maxcitecounter=\count336
+\c@savedcitecounter=\count337
+\c@uniquelist=\count338
+\c@uniquename=\count339
+\c@refsection=\count340
+\c@refsegment=\count341
+\c@maxextratitle=\count342
+\c@maxextratitleyear=\count343
+\c@maxextraname=\count344
+\c@maxextradate=\count345
+\c@maxextraalpha=\count346
+\c@abbrvpenalty=\count347
+\c@highnamepenalty=\count348
+\c@lownamepenalty=\count349
+\c@maxparens=\count350
+\c@parenlevel=\count351
+\blx@tempcnta=\count352
+\blx@tempcntb=\count353
+\blx@tempcntc=\count354
+\c@blx@maxsection=\count355
+\blx@maxsegment@0=\count356
+\blx@notetype=\count357
+\blx@parenlevel@text=\count358
+\blx@parenlevel@foot=\count359
+\blx@sectionciteorder@0=\count360
+\blx@sectionciteorderinternal@0=\count361
+\blx@entrysetcounter=\count362
+\blx@biblioinstance=\count363
+\labelnumberwidth=\skip72
+\labelalphawidth=\skip73
+\biblabelsep=\skip74
+\bibitemsep=\skip75
+\bibnamesep=\skip76
+\bibinitsep=\skip77
+\bibparsep=\skip78
+\bibhang=\skip79
 \blx@bcfin=\read3
 \blx@bcfout=\write3
 \blx@langwohyphens=\language7
-\c@mincomprange=\count351
-\c@maxcomprange=\count352
-\c@mincompwidth=\count353
+\c@mincomprange=\count364
+\c@maxcomprange=\count365
+\c@mincompwidth=\count366
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/blx-dm.def
@@ -467,88 +530,88 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'authoryear.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count354
-\c@savedafterword=\count355
-\c@annotator=\count356
-\c@savedannotator=\count357
-\c@author=\count358
-\c@savedauthor=\count359
-\c@bookauthor=\count360
-\c@savedbookauthor=\count361
-\c@commentator=\count362
-\c@savedcommentator=\count363
-\c@editor=\count364
-\c@savededitor=\count365
-\c@editora=\count366
-\c@savededitora=\count367
-\c@editorb=\count368
-\c@savededitorb=\count369
-\c@editorc=\count370
-\c@savededitorc=\count371
-\c@foreword=\count372
-\c@savedforeword=\count373
-\c@holder=\count374
-\c@savedholder=\count375
-\c@introduction=\count376
-\c@savedintroduction=\count377
-\c@namea=\count378
-\c@savednamea=\count379
-\c@nameb=\count380
-\c@savednameb=\count381
-\c@namec=\count382
-\c@savednamec=\count383
-\c@translator=\count384
-\c@savedtranslator=\count385
-\c@shortauthor=\count386
-\c@savedshortauthor=\count387
-\c@shorteditor=\count388
-\c@savedshorteditor=\count389
-\c@labelname=\count390
-\c@savedlabelname=\count391
-\c@institution=\count392
-\c@savedinstitution=\count393
-\c@lista=\count394
-\c@savedlista=\count395
-\c@listb=\count396
-\c@savedlistb=\count397
-\c@listc=\count398
-\c@savedlistc=\count399
-\c@listd=\count400
-\c@savedlistd=\count401
-\c@liste=\count402
-\c@savedliste=\count403
-\c@listf=\count404
-\c@savedlistf=\count405
-\c@location=\count406
-\c@savedlocation=\count407
-\c@organization=\count408
-\c@savedorganization=\count409
-\c@origlocation=\count410
-\c@savedoriglocation=\count411
-\c@origpublisher=\count412
-\c@savedorigpublisher=\count413
-\c@publisher=\count414
-\c@savedpublisher=\count415
-\c@language=\count416
-\c@savedlanguage=\count417
-\c@origlanguage=\count418
-\c@savedoriglanguage=\count419
-\c@pageref=\count420
-\c@savedpageref=\count421
-\shorthandwidth=\skip75
-\shortjournalwidth=\skip76
-\shortserieswidth=\skip77
-\shorttitlewidth=\skip78
-\shortauthorwidth=\skip79
-\shorteditorwidth=\skip80
-\locallabelnumberwidth=\skip81
-\locallabelalphawidth=\skip82
-\localshorthandwidth=\skip83
-\localshortjournalwidth=\skip84
-\localshortserieswidth=\skip85
-\localshorttitlewidth=\skip86
-\localshortauthorwidth=\skip87
-\localshorteditorwidth=\skip88
+\c@afterword=\count367
+\c@savedafterword=\count368
+\c@annotator=\count369
+\c@savedannotator=\count370
+\c@author=\count371
+\c@savedauthor=\count372
+\c@bookauthor=\count373
+\c@savedbookauthor=\count374
+\c@commentator=\count375
+\c@savedcommentator=\count376
+\c@editor=\count377
+\c@savededitor=\count378
+\c@editora=\count379
+\c@savededitora=\count380
+\c@editorb=\count381
+\c@savededitorb=\count382
+\c@editorc=\count383
+\c@savededitorc=\count384
+\c@foreword=\count385
+\c@savedforeword=\count386
+\c@holder=\count387
+\c@savedholder=\count388
+\c@introduction=\count389
+\c@savedintroduction=\count390
+\c@namea=\count391
+\c@savednamea=\count392
+\c@nameb=\count393
+\c@savednameb=\count394
+\c@namec=\count395
+\c@savednamec=\count396
+\c@translator=\count397
+\c@savedtranslator=\count398
+\c@shortauthor=\count399
+\c@savedshortauthor=\count400
+\c@shorteditor=\count401
+\c@savedshorteditor=\count402
+\c@labelname=\count403
+\c@savedlabelname=\count404
+\c@institution=\count405
+\c@savedinstitution=\count406
+\c@lista=\count407
+\c@savedlista=\count408
+\c@listb=\count409
+\c@savedlistb=\count410
+\c@listc=\count411
+\c@savedlistc=\count412
+\c@listd=\count413
+\c@savedlistd=\count414
+\c@liste=\count415
+\c@savedliste=\count416
+\c@listf=\count417
+\c@savedlistf=\count418
+\c@location=\count419
+\c@savedlocation=\count420
+\c@organization=\count421
+\c@savedorganization=\count422
+\c@origlocation=\count423
+\c@savedoriglocation=\count424
+\c@origpublisher=\count425
+\c@savedorigpublisher=\count426
+\c@publisher=\count427
+\c@savedpublisher=\count428
+\c@language=\count429
+\c@savedlanguage=\count430
+\c@origlanguage=\count431
+\c@savedoriglanguage=\count432
+\c@pageref=\count433
+\c@savedpageref=\count434
+\shorthandwidth=\skip80
+\shortjournalwidth=\skip81
+\shortserieswidth=\skip82
+\shorttitlewidth=\skip83
+\shortauthorwidth=\skip84
+\shorteditorwidth=\skip85
+\locallabelnumberwidth=\skip86
+\locallabelalphawidth=\skip87
+\localshorthandwidth=\skip88
+\localshortjournalwidth=\skip89
+\localshortserieswidth=\skip90
+\localshorttitlewidth=\skip91
+\localshortauthorwidth=\skip92
+\localshorteditorwidth=\skip93
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/blx-compat.def
@@ -558,19 +621,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
-\c@textcitecount=\count422
-\c@textcitetotal=\count423
-\c@textcitemaxnames=\count424
-\c@biburlbigbreakpenalty=\count425
-\c@biburlbreakpenalty=\count426
-\c@biburlnumpenalty=\count427
-\c@biburlucpenalty=\count428
-\c@biburllcpenalty=\count429
-\biburlbigskip=\muskip17
-\biburlnumskip=\muskip18
-\biburlucskip=\muskip19
-\biburllcskip=\muskip20
-\c@smartand=\count430
+\c@textcitecount=\count435
+\c@textcitetotal=\count436
+\c@textcitemaxnames=\count437
+\c@biburlbigbreakpenalty=\count438
+\c@biburlbreakpenalty=\count439
+\c@biburlnumpenalty=\count440
+\c@biburlucpenalty=\count441
+\c@biburllcpenalty=\count442
+\biburlbigskip=\muskip18
+\biburlnumskip=\muskip19
+\biburlucskip=\muskip20
+\biburllcskip=\muskip21
+\c@smartand=\count443
 )
 Package biblatex Info: Trying to load natbib compatibility...
 Package biblatex Info: ... file 'blx-natbib.def' found.
@@ -586,8 +649,8 @@ Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count431
-\c@bbx:relatedtotal=\count432
+\c@bbx:relatedcount=\count444
+\c@bbx:relatedtotal=\count445
 ))
 Package biblatex Info: Trying to load citation style 'authoryear'...
 Package biblatex Info: ... file 'authoryear.cbx' found.
@@ -619,13 +682,13 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 xurl: Set penalties for biblatex
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
-\csq@reset=\count433
-\csq@gtype=\count434
-\csq@glevel=\count435
-\csq@qlevel=\count436
-\csq@maxlvl=\count437
-\csq@tshold=\count438
-\csq@ltx@everypar=\toks24
+\csq@reset=\count446
+\csq@gtype=\count447
+\csq@glevel=\count448
+\csq@qlevel=\count449
+\csq@maxlvl=\count450
+\csq@tshold=\count451
+\csq@ltx@everypar=\toks28
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
 )
@@ -636,30 +699,30 @@ File: csquotes.cfg
 )
 Package csquotes Info: Enabling multilingual quotes.
 )
-\csllabelwidth=\skip89
-\cslhangindent=\skip90
+\cslhangindent=\skip94
+\csllabelwidth=\skip95
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count439
-\calc@Bcount=\count440
-\calc@Adimen=\dimen186
-\calc@Bdimen=\dimen187
-\calc@Askip=\skip91
-\calc@Bskip=\skip92
+\calc@Acount=\count452
+\calc@Bcount=\count453
+\calc@Adimen=\dimen195
+\calc@Bdimen=\dimen196
+\calc@Askip=\skip96
+\calc@Bskip=\skip97
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count441
-\calc@Cskip=\skip93
+\calc@Ccount=\count454
+\calc@Cskip=\skip98
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/acro/acro.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
 Package: l3keys2e 2024-03-14 LaTeX2e option processing using LaTeX3 keys
 )
 Package: acro 2022/04/01 v3.8 typeset acronyms and other abbreviations (CN)
-\l__acro_tmpa_int=\count442
-\l__acro_tmpb_int=\count443
-\l__acro_tmpc_int=\count444
-\l__acro_tmpd_int=\count445
+\l__acro_tmpa_int=\count455
+\l__acro_tmpb_int=\count456
+\l__acro_tmpc_int=\count457
+\l__acro_tmpd_int=\count458
 Loading module `base' ...
 Loading module `interface' ...
 Loading module `aux' ...
@@ -668,25 +731,25 @@ Loading module `acronyms' ...
 Loading module `formatting' ...
 Loading module `ppfixes' ...
 Loading module `tools' ...
-\l__acro_minimal_usage_int=\count446
-\l__acro_nest_int=\count447
-\g_acro_barrier_int=\count448
-\g_acro_barrier_total_int=\count449
+\l__acro_minimal_usage_int=\count459
+\l__acro_nest_int=\count460
+\g_acro_barrier_int=\count461
+\g_acro_barrier_total_int=\count462
 Loading module `commands' ...
-\l_acro_nest_level_int=\count450
+\l_acro_nest_level_int=\count463
 Loading module `templates' ...
 Loading module `list' ...
 Loading module `pages' ...
-\l__acro_pages_seq_threshold_int=\count451
+\l__acro_pages_seq_threshold_int=\count464
 Loading module `locale' ...
 Loading module `pdfsupport' ...
 Loading module `patch' ...
 Loading module `definitions' ...
 Loading module `upgrade' ...
 )
-\c@g@acro@est@int=\count452
-\c@g@acro@Xl@int=\count453
-\c@g@acro@Xg@int=\count454
+\c@g@acro@est@int=\count465
+\c@g@acro@Xl@int=\count466
+\c@g@acro@Xg@int=\count467
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgfplots/pgfplotstable.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
@@ -694,11 +757,11 @@ Package: pgfplotstable 2021/05/15 v1.18.1 Table typesetting and Pretty-printing 
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgfplots/pgfplots.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks25
-\pgfutil@tempdima=\dimen188
-\pgfutil@tempdimb=\dimen189
+\pgfutil@everybye=\toks29
+\pgfutil@tempdima=\dimen197
+\pgfutil@tempdimb=\dimen198
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box67
+\pgfutil@abb=\box69
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
@@ -706,31 +769,31 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks26
-\pgfkeys@temptoks=\toks27
+\pgfkeys@pathtoks=\toks30
+\pgfkeys@temptoks=\toks31
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks28
+\pgfkeys@tmptoks=\toks32
 ))
-\pgf@x=\dimen190
-\pgf@y=\dimen191
-\pgf@xa=\dimen192
-\pgf@ya=\dimen193
-\pgf@xb=\dimen194
-\pgf@yb=\dimen195
-\pgf@xc=\dimen196
-\pgf@yc=\dimen197
-\pgf@xd=\dimen198
-\pgf@yd=\dimen199
+\pgf@x=\dimen199
+\pgf@y=\dimen256
+\pgf@xa=\dimen257
+\pgf@ya=\dimen258
+\pgf@xb=\dimen259
+\pgf@yb=\dimen260
+\pgf@xc=\dimen261
+\pgf@yc=\dimen262
+\pgf@xd=\dimen263
+\pgf@yd=\dimen264
 \w@pgf@writea=\write4
 \r@pgf@reada=\read4
-\c@pgf@counta=\count455
-\c@pgf@countb=\count456
-\c@pgf@countc=\count457
-\c@pgf@countd=\count458
-\t@pgf@toka=\toks29
-\t@pgf@tokb=\toks30
-\t@pgf@tokc=\toks31
-\pgf@sys@id@count=\count459
+\c@pgf@counta=\count468
+\c@pgf@countb=\count469
+\c@pgf@countc=\count470
+\c@pgf@countd=\count471
+\t@pgf@toka=\toks33
+\t@pgf@tokb=\toks34
+\t@pgf@tokc=\toks35
+\pgf@sys@id@count=\count472
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -741,8 +804,8 @@ File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count460
-\pgfsyssoftpath@bigbuffer@items=\count461
+\pgfsyssoftpath@smallbuffer@items=\count473
+\pgfsyssoftpath@bigbuffer@items=\count474
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -764,52 +827,52 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen256
-\pgfmath@count=\count462
-\pgfmath@box=\box68
-\pgfmath@toks=\toks32
-\pgfmath@stack@operand=\toks33
-\pgfmath@stack@operation=\toks34
+\pgfmath@dimen=\dimen265
+\pgfmath@count=\count475
+\pgfmath@box=\box70
+\pgfmath@toks=\toks36
+\pgfmath@stack@operand=\toks37
+\pgfmath@stack@operation=\toks38
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count463
+\c@pgfmathroundto@lastzeros=\count476
 )) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen257
-\pgf@picmaxx=\dimen258
-\pgf@picminy=\dimen259
-\pgf@picmaxy=\dimen260
-\pgf@pathminx=\dimen261
-\pgf@pathmaxx=\dimen262
-\pgf@pathminy=\dimen263
-\pgf@pathmaxy=\dimen264
-\pgf@xx=\dimen265
-\pgf@xy=\dimen266
-\pgf@yx=\dimen267
-\pgf@yy=\dimen268
-\pgf@zx=\dimen269
-\pgf@zy=\dimen270
+\pgf@picminx=\dimen266
+\pgf@picmaxx=\dimen267
+\pgf@picminy=\dimen268
+\pgf@picmaxy=\dimen269
+\pgf@pathminx=\dimen270
+\pgf@pathmaxx=\dimen271
+\pgf@pathminy=\dimen272
+\pgf@pathmaxy=\dimen273
+\pgf@xx=\dimen274
+\pgf@xy=\dimen275
+\pgf@yx=\dimen276
+\pgf@yy=\dimen277
+\pgf@zx=\dimen278
+\pgf@zy=\dimen279
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen271
-\pgf@path@lasty=\dimen272
+\pgf@path@lastx=\dimen280
+\pgf@path@lasty=\dimen281
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen273
-\pgf@shorten@start@additional=\dimen274
+\pgf@shorten@end@additional=\dimen282
+\pgf@shorten@start@additional=\dimen283
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box69
-\pgf@hbox=\box70
-\pgf@layerbox@main=\box71
-\pgf@picture@serial@count=\count464
+\pgfpic=\box71
+\pgf@hbox=\box72
+\pgf@layerbox@main=\box73
+\pgf@picture@serial@count=\count477
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen275
+\pgflinewidth=\dimen284
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen276
-\pgf@pt@y=\dimen277
-\pgf@pt@temp=\dimen278
+\pgf@pt@x=\dimen285
+\pgf@pt@y=\dimen286
+\pgf@pt@temp=\dimen287
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -818,17 +881,17 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen279
+\pgfarrowsep=\dimen288
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen280
-\pgf@sys@shading@range@num=\count465
-\pgf@shadingcount=\count466
+\pgf@max=\dimen289
+\pgf@sys@shading@range@num=\count478
+\pgf@shadingcount=\count479
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box72
+\pgfexternal@startupbox=\box74
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
@@ -839,91 +902,91 @@ File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box73
+\pgfnodeparttextbox=\box75
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen281
-\pgf@nodesepend=\dimen282
+\pgf@nodesepstart=\dimen290
+\pgf@nodesepend=\dimen291
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen283
-\pgffor@skip=\dimen284
-\pgffor@stack=\toks35
-\pgffor@toks=\toks36
+\pgffor@iter=\dimen292
+\pgffor@skip=\dimen293
+\pgffor@stack=\toks39
+\pgffor@toks=\toks40
 )) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count467
-\pgfplotmarksize=\dimen285
+\pgf@plot@mark@count=\count480
+\pgfplotmarksize=\dimen294
 )
-\tikz@lastx=\dimen286
-\tikz@lasty=\dimen287
-\tikz@lastxsaved=\dimen288
-\tikz@lastysaved=\dimen289
-\tikz@lastmovetox=\dimen290
-\tikz@lastmovetoy=\dimen291
-\tikzleveldistance=\dimen292
-\tikzsiblingdistance=\dimen293
-\tikz@figbox=\box74
-\tikz@figbox@bg=\box75
-\tikz@tempbox=\box76
-\tikz@tempbox@bg=\box77
-\tikztreelevel=\count468
-\tikznumberofchildren=\count469
-\tikznumberofcurrentchild=\count470
-\tikz@fig@count=\count471
+\tikz@lastx=\dimen295
+\tikz@lasty=\dimen296
+\tikz@lastxsaved=\dimen297
+\tikz@lastysaved=\dimen298
+\tikz@lastmovetox=\dimen299
+\tikz@lastmovetoy=\dimen300
+\tikzleveldistance=\dimen301
+\tikzsiblingdistance=\dimen302
+\tikz@figbox=\box76
+\tikz@figbox@bg=\box77
+\tikz@tempbox=\box78
+\tikz@tempbox@bg=\box79
+\tikztreelevel=\count481
+\tikznumberofchildren=\count482
+\tikznumberofcurrentchild=\count483
+\tikz@fig@count=\count484
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count472
-\pgfmatrixcurrentcolumn=\count473
-\pgf@matrix@numberofcolumns=\count474
+\pgfmatrixcurrentrow=\count485
+\pgfmatrixcurrentcolumn=\count486
+\pgf@matrix@numberofcolumns=\count487
 )
-\tikz@expandcount=\count475
+\tikz@expandcount=\count488
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks37
-\t@pgfplots@tokb=\toks38
-\t@pgfplots@tokc=\toks39
-\pgfplots@tmpa=\dimen294
-\c@pgfplots@coordindex=\count476
-\c@pgfplots@scanlineindex=\count477
+\t@pgfplots@toka=\toks41
+\t@pgfplots@tokb=\toks42
+\t@pgfplots@tokc=\toks43
+\pgfplots@tmpa=\dimen303
+\c@pgfplots@coordindex=\count489
+\c@pgfplots@scanlineindex=\count490
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks40
-\t@pgf@tokb=\toks41
-\t@pgf@tokc=\toks42
+\t@pgf@toka=\toks44
+\t@pgf@tokb=\toks45
+\t@pgf@tokc=\toks46
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count478
+\c@pgfplotsarray@tmp=\count491
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count479
-\t@pgfplotstable@a=\toks43
+\c@pgfplotstable@counta=\count492
+\t@pgfplotstable@a=\toks47
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count480
+\c@pgfplotslibrarysurf@no=\count493
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen295
-\pgfdecoratedremainingdistance=\dimen296
-\pgfdecoratedinputsegmentcompleteddistance=\dimen297
-\pgfdecoratedinputsegmentremainingdistance=\dimen298
-\pgf@decorate@distancetomove=\dimen299
-\pgf@decorate@repeatstate=\count481
-\pgfdecorationsegmentamplitude=\dimen300
-\pgfdecorationsegmentlength=\dimen301
+\pgfdecoratedcompleteddistance=\dimen304
+\pgfdecoratedremainingdistance=\dimen305
+\pgfdecoratedinputsegmentcompleteddistance=\dimen306
+\pgfdecoratedinputsegmentremainingdistance=\dimen307
+\pgf@decorate@distancetomove=\dimen308
+\pgf@decorate@repeatstate=\count494
+\pgfdecorationsegmentamplitude=\dimen309
+\pgfdecorationsegmentlength=\dimen310
 )
-\tikz@lib@dec@box=\box78
+\tikz@lib@dec@box=\box80
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count482
-\pgfplots@xmin@reg=\dimen302
-\pgfplots@xmax@reg=\dimen303
-\pgfplots@ymin@reg=\dimen304
-\pgfplots@ymax@reg=\dimen305
-\pgfplots@zmin@reg=\dimen306
-\pgfplots@zmax@reg=\dimen307
+\pgfplots@numplots=\count495
+\pgfplots@xmin@reg=\dimen311
+\pgfplots@xmax@reg=\dimen312
+\pgfplots@ymin@reg=\dimen313
+\pgfplots@ymax@reg=\dimen314
+\pgfplots@zmin@reg=\dimen315
+\pgfplots@zmax@reg=\dimen316
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
@@ -931,31 +994,61 @@ File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable.code.tex (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable.coltype.code.tex)))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 220.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 228.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) (./thesis.aux
+
+LaTeX Warning: Label `tab:ch02-make-table-03' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-04' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-05' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-06' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-07' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-08' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-09' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-10' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-11' multiply defined.
+
+
+LaTeX Warning: Label `tab:ch02-make-table-12' multiply defined.
+
 )
-No file thesis.aux.
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 220.
-LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -999,7 +1092,8 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 220.
+Package hyperref Info: Link coloring ON on input line 228.
+(./thesis.out) (./thesis.out)
 \@outlinefile=\write5
 \openout5 = `thesis.out'.
 
@@ -1007,7 +1101,7 @@ Package biblatex Info: Trying to load language 'nil'...
 Package biblatex Info: ... file 'nil.lbx' not found.
 
 Package biblatex Warning: Language 'nil' not supported.
-(biblatex)                Using dummy definitions on input line 220.
+(biblatex)                Using dummy definitions on input line 228.
 
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
@@ -1017,15 +1111,15 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis.bbl' not found.
 No file thesis.bbl.
-Package biblatex Info: Reference section=0 on input line 220.
-Package biblatex Info: Reference segment=0 on input line 220.
+Package biblatex Info: Reference section=0 on input line 228.
+Package biblatex Info: Reference segment=0 on input line 228.
 Package pgfplots notification 'compat/show suggested version=true': you might benefit from \pgfplotsset{compat=1.18} (current compat level: 1.12).
 
 [1
 
 
 {c:/Users/user/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 258.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 266.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
@@ -1040,14 +1134,7 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 
 
-]
-
-LaTeX Warning: Reference `lastoffront' on page ii undefined on input line 304.
-
-
-LaTeX Warning: Reference `LastPage' on page ii undefined on input line 304.
-
-[2
+] [2
 
 
 ] [3
@@ -1064,7 +1151,7 @@ LaTeX Warning: Reference `LastPage' on page ii undefined on input line 304.
  Acknowledgements
 --------------------
 
-Underfull \hbox (badness 1377) in paragraph at lines 336--337
+Underfull \hbox (badness 1377) in paragraph at lines 344--345
 \T1/lmr/m/n/10.95 guidance, expertise, and invaluable mentorship have significantly influenced the
  []
 
@@ -1074,37 +1161,57 @@ Underfull \hbox (badness 1377) in paragraph at lines 336--337
 
 ] [6
 
-]
-No file thesis.toc.
-\tf@toc=\write6
-\openout6 = `thesis.toc'.
-
+] (./thesis.toc
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8.
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8.
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 8.
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 8.
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 8.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 8.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 8.
 [7
 
 
 
-]
-No file thesis.lof.
+])
+\tf@toc=\write6
+\openout6 = `thesis.toc'.
+
+[8] (./thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
-[8
+[9
 
-]
-No file thesis.lot.
+] (./thesis.lot)
 \tf@lot=\write8
 \openout8 = `thesis.lot'.
 
-[9
+[10
 
 ]
 --------------------
  Declaration of Authorship
 --------------------
-[10
+[11
 
 ]
-Underfull \hbox (badness 2384) in paragraph at lines 395--396
+Underfull \hbox (badness 2384) in paragraph at lines 403--404
 []\T1/lmr/m/n/10.95 The necessity for active mobility extends beyond just the development of
  []
 
@@ -1113,7 +1220,7 @@ Underfull \hbox (badness 2384) in paragraph at lines 395--396
 
 
 ]
-Underfull \hbox (badness 1400) in paragraph at lines 400--401
+Underfull \hbox (badness 1400) in paragraph at lines 408--409
 \T1/lmr/m/n/10.95 metrics employed in active transportation research. The initial phase of this
  []
 
@@ -1125,362 +1232,198 @@ Chapter 1.
 [5
 
 ]
-Underfull \hbox (badness 1048) in paragraph at lines 424--425
+Underfull \hbox (badness 1048) in paragraph at lines 432--433
 \T1/lmr/m/n/10.95 based planning (S. L. Handy & Niemeier, 1997; Social Exclusion Unit, 2003).
  []
 
 [6]
-Underfull \hbox (badness 1048) in paragraph at lines 428--429
+Underfull \hbox (badness 1048) in paragraph at lines 436--437
 []\T1/lmr/m/n/10.95 In principle, accessibility analysis is versatile enough to be applied to ATB
  []
 
 [7]
-Underfull \hbox (badness 1028) in paragraph at lines 436--437
+Underfull \hbox (badness 1028) in paragraph at lines 444--445
 \T1/lmr/m/n/10.95 planning aims to ensure that all individuals have reasonable travel times to a
  []
 
 [8]
-Underfull \hbox (badness 2111) in paragraph at lines 440--441
+Underfull \hbox (badness 2111) in paragraph at lines 448--449
 []\T1/lmr/m/n/10.95 Location-based accessibility offers a notable advantage in terms of ease of
  []
 
 [9]
-
-LaTeX Warning: Reference `eq:accessibility' on page 10 undefined on input line 442.
-
-
-Underfull \hbox (badness 1297) in paragraph at lines 442--443
+Underfull \hbox (badness 1297) in paragraph at lines 450--451
 []\T1/lmr/m/n/10.95 In contrast, place-based accessibility, which does not fully address temporal
  []
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 444.
-(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
-File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 444.
-(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 444.
-(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 444.
-(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
-File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 444.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 444.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 444.
-
-LaTeX Warning: Reference `eq:opportunities-function' on page 10 undefined on input line 449.
-
-
-LaTeX Warning: Reference `eq:agglomeration-effects' on page 10 undefined on input line 455.
-
 [10{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
-
-LaTeX Warning: Reference `eq:decay-functions-cumulative-opportunities' on page 11 undefined on input line 464.
-
-
-LaTeX Warning: Reference `eq:exponential-distance-decay' on page 11 undefined on input line 470.
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 477--478
+Underfull \hbox (badness 2269) in paragraph at lines 485--486
 []\T1/lmr/m/n/10.95 Generally, proximity plays a significant role in determining preferences for
  []
 
 
-Underfull \hbox (badness 2384) in paragraph at lines 488--490
+Underfull \hbox (badness 2384) in paragraph at lines 496--498
 []\T1/lmr/m/n/10.95 Time constraints: Time-saving considerations can impact accessibility as
  []
 
 [11{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Underfull \hbox (badness 3460) in paragraph at lines 495--496
+Underfull \hbox (badness 3460) in paragraph at lines 503--504
 \T1/lmr/m/n/10.95 activity-based, distance-based, topological or infrastructure-based, utility-based,
  []
 
-[12] [13]
-
-LaTeX Warning: Reference `eq:gravity-measures' on page 14 undefined on input line 514.
-
-
-LaTeX Warning: Reference `eq:gravity-measures' on page 14 undefined on input line 521.
-
-[14]
-
-LaTeX Warning: Reference `eq:gravity-measures' on page 15 undefined on input line 523.
-
-
-LaTeX Warning: Reference `eq:binary' on page 15 undefined on input line 523.
-
-
-LaTeX Warning: Reference `eq:binary' on page 15 undefined on input line 530.
-
-
-Underfull \hbox (badness 1264) in paragraph at lines 540--541
+[12] [13] [14]
+Underfull \hbox (badness 1264) in paragraph at lines 548--549
 []\T1/lmr/m/n/10.95 In distance-based accessibility measures, distance is considered as the travel
  []
 
 [15]
-
-LaTeX Warning: Reference `eq:distance-based-accessibility' on page 16 undefined on input line 542.
-
-
-LaTeX Warning: Reference `eq:distance-based-accessibility' on page 16 undefined on input line 549.
-
-
-LaTeX Warning: Reference `eq:distance-based-measure' on page 16 undefined on input line 549.
-
-
-LaTeX Warning: Reference `eq:distance-based-measure' on page 16 undefined on input line 556.
-
-
-Underfull \hbox (badness 1067) in paragraph at lines 560--561
+Underfull \hbox (badness 1067) in paragraph at lines 568--569
 \T1/lmr/m/n/10.95 Topological-based measures consider accessibility in terms of the street network
  []
 
-[16]
-
-LaTeX Warning: Reference `eq:utility-based-measure' on page 17 undefined on input line 570.
+[16] [17] [18] [19] [20] [21
 
 
-LaTeX Warning: Reference `eq:utility-based-measure' on page 17 undefined on input line 577.
 
 
-LaTeX Warning: Reference `eq:maximum-utility' on page 17 undefined on input line 579.
+] [22
 
-
-LaTeX Warning: Reference `eq:Accessibility-maximum-utility' on page 17 undefined on input line 586.
-
-[17]
-
-LaTeX Warning: Reference `tab:Ch02-make-table-01' on page 18 undefined on input line 593.
-
-
-LaTeX Warning: Reference `tab:Ch02-make-table-02' on page 18 undefined on input line 593.
-
-[18] [19]
-
-LaTeX Warning: Reference `tab:ch02-make-table-03' on page 20 undefined on input line 625.
-
-[20
-
-
-] [21
-
-] [22] [23] [24] [25] [26] [27]
-Underfull \hbox (badness 1502) in paragraph at lines 690--692
+] [23] [24] [25] [26] [27] [28]
+Underfull \hbox (badness 1502) in paragraph at lines 719--721
 []\T1/lmr/m/n/10.95 Explicit polygon features created around specific trajectories of individual
  []
 
+[29
 
-LaTeX Warning: Reference `tab:ch02-make-table-04' on page 28 undefined on input line 692.
+] [30
 
-[28
-
-] [29
-
-] [30] [31] [32] [33] [34]
-Underfull \hbox (badness 1024) in paragraph at lines 727--728
+] [31] [32] [33] [34] [35]
+Underfull \hbox (badness 1024) in paragraph at lines 756--757
 \T1/lmr/m/n/10.95 information services, and communication infrastructures. The collected data is
  []
 
-[35
+[36
 
-]
-
-LaTeX Warning: Reference `tab:ch02-make-table-05' on page 36 undefined on input line 740.
-
-
-LaTeX Warning: Reference `tab:ch02-make-table-05' on page 36 undefined on input line 740.
-
-
-LaTeX Warning: Reference `tab:ch02-make-table-05' on page 36 undefined on input line 740.
-
-[36]
-Overfull \hbox (3.13248pt too wide) in paragraph at lines 747--747
+] [37]
+Overfull \hbox (3.13248pt too wide) in paragraph at lines 776--776
  []|\T1/lmr/bx/n/10 Data/Methods| 
  []
 
 
-Overfull \hbox (15.17378pt too wide) in paragraph at lines 752--752
+Overfull \hbox (15.17378pt too wide) in paragraph at lines 781--781
 \T1/lmr/m/n/10 origins/destinations 
  []
 
-[37
+[38
 
-] [38] [39]
-Underfull \hbox (badness 1112) in paragraph at lines 762--762
+] [39] [40]
+Underfull \hbox (badness 1112) in paragraph at lines 791--791
 []\T1/lmr/bx/n/14.4 Assessing Data Availability and Requirements for
  []
 
-<figure/ch02-Fig-01.jpg, id=303, 639.1077pt x 385.44pt>
+<figure/ch02-Fig-01.jpg, id=605, 639.1077pt x 385.44pt>
 File: figure/ch02-Fig-01.jpg Graphic file (type jpg)
 <use figure/ch02-Fig-01.jpg>
-Package pdftex.def Info: figure/ch02-Fig-01.jpg  used on input line 770.
+Package pdftex.def Info: figure/ch02-Fig-01.jpg  used on input line 799.
 (pdftex.def)             Requested size: 418.25545pt x 252.25038pt.
-[40
+[41
 
-] [41 <./figure/ch02-Fig-01.jpg>]
+] [42 <./figure/ch02-Fig-01.jpg>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 813.
+(Font)              <10> on input line 842.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 813.
+(Font)              <7> on input line 842.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 813.
+(Font)              <5> on input line 842.
 
-Overfull \hbox (44.53589pt too wide) in paragraph at lines 813--833
+Overfull \hbox (44.53589pt too wide) in paragraph at lines 842--862
  [][] 
  []
 
-[42] [43]
-Underfull \hbox (badness 1478) in paragraph at lines 847--848
+[43] [44]
+Underfull \hbox (badness 1478) in paragraph at lines 876--877
 []\T1/lmr/m/n/10.95 The Montreal OD (Origin-Destination) survey is a large-scale cross-sectional
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 847--848
+Underfull \hbox (badness 1142) in paragraph at lines 876--877
 \T1/lmr/m/n/10.95 household travel survey conducted every five years since 1970 in the Montreal
  []
 
-[44]
-Underfull \hbox (badness 1845) in paragraph at lines 857--858
+[45]
+Underfull \hbox (badness 1845) in paragraph at lines 886--887
 \T1/lmr/m/n/10.95 information on travel behavior, including trip purpose (such as work, school,
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 857--858
+Underfull \hbox (badness 2173) in paragraph at lines 886--887
 \T1/lmr/m/n/10.95 recreational/social/entertainment, home, work business trip, shopping, personal
  []
 
-[45] [46] [47]
-Underfull \hbox (badness 1052) in paragraph at lines 911--912
+[46] [47] [48]
+Underfull \hbox (badness 1052) in paragraph at lines 940--941
 \T1/lmr/m/n/10.95 programs. The data have been made available to the public. They can be
  []
 
-[48]
-Underfull \hbox (badness 2035) in paragraph at lines 931--932
+[49]
+Underfull \hbox (badness 2035) in paragraph at lines 960--961
 []\T1/lmr/m/n/10.95 The 2018 survey was a household-based survey that collected demographic
  []
 
-[49] [50] [51]
-Underfull \hbox (badness 2469) in paragraph at lines 964--965
+[50] [51] [52]
+Underfull \hbox (badness 2469) in paragraph at lines 993--994
 \T1/lmr/m/n/10.95 for each trip, the purpose of the trip (work, post-secondary school, school,
  []
 
-[52]
-Underfull \hbox (badness 1527) in paragraph at lines 987--989
+[53]
+Underfull \hbox (badness 1527) in paragraph at lines 1016--1018
 \T1/lmr/m/n/10.95 and their households, as captured by the Survey, including age, gender,
  []
 
-[53] [54] [55
+[54] [55] [56
 
-] [56] [57] [58] [59
+] [57] [58] [59] [60
 
-] [60] [61] [62]
-Underfull \hbox (badness 1603) in paragraph at lines 1288--1289
+] [61] [62] [63]
+Underfull \hbox (badness 1603) in paragraph at lines 1317--1318
 []\T1/lmr/m/n/10.95 Educational Institutions: This dataset provides information regarding the
  []
 
-[63] [64]
-Underfull \hbox (badness 2080) in paragraph at lines 1384--1386
+[64] [65]
+Underfull \hbox (badness 2080) in paragraph at lines 1413--1415
 []\T1/lmr/m/n/10.95 Outdoor Recreation Equipment: Points representation of HRM-owned or
  []
 
-[65] [66] [67]
+[66] [67] [68] [69] [70] [71
 
-LaTeX Warning: Reference `tab:ch02-make-table-08' on page 68 undefined on input line 1511.
-
-[68]
-
-LaTeX Warning: Reference `tab:ch02-make-table-09' on page 69 undefined on input line 1550.
-
-[69] [70
-
-] [71] [72]
-
-LaTeX Warning: Reference `fig:initiative' on page 73 undefined on input line 1588.
-
-
-LaTeX Warning: Reference `fig:ch02-plot-fig-02' on page 73 undefined on input line 1590.
-
-<figure/ch02-Fig-02.jpg, id=468, 462.97969pt x 335.00156pt>
+] [72] [73]
+<figure/ch02-Fig-02.jpg, id=767, 462.97969pt x 335.00156pt>
 File: figure/ch02-Fig-02.jpg Graphic file (type jpg)
 <use figure/ch02-Fig-02.jpg>
-Package pdftex.def Info: figure/ch02-Fig-02.jpg  used on input line 1594.
-(pdftex.def)             Requested size: 418.25545pt x 302.64363pt.
-[73
+Package pdftex.def Info: figure/ch02-Fig-02.jpg  used on input line 1623.
+(pdftex.def)             Requested size: 209.12772pt x 151.32181pt.
+[74
 
-] [74 <./figure/ch02-Fig-02.jpg>]
-
-LaTeX Warning: Reference `eq:slope' on page 75 undefined on input line 1607.
-
-
-Underfull \hbox (badness 1881) in paragraph at lines 1607--1608
+] [75 <./figure/ch02-Fig-02.jpg>]
+Underfull \hbox (badness 1881) in paragraph at lines 1636--1637
 []\T1/lmr/m/n/10.95 Lundberg (2012) examined the local cycling and walking networks through
  []
 
-[75]
-
-LaTeX Warning: Reference `tab:ch02-make-table-10' on page 76 undefined on input line 1614.
-
-[76]
-
-LaTeX Warning: Reference `eq:modified-formula' on page 77 undefined on input line 1639.
-
-
-LaTeX Warning: Reference `tab:ch02-make-table-11' on page 77 undefined on input line 1646.
-
-
-LaTeX Warning: Reference `eq:calculating-the-slope-from-the-vertical-and-horizontal-displacements' on page 77 undefined on input line 1669.
-
-
-LaTeX Warning: Reference `eq:slope-linked-to-speed-via-formula' on page 77 undefined on input line 1676.
-
-[77]
-
-LaTeX Warning: Reference `eq:amount-of-speed' on page 78 undefined on input line 1683.
-
-
-LaTeX Warning: Reference `fig:ch02-plot-fig-03' on page 78 undefined on input line 1690.
-
-
-LaTeX Warning: Reference `fig:ch02-plot-fig-03' on page 78 undefined on input line 1690.
-
-<figure/ch02-Fig-03.jpg, id=498, 248.78787pt x 385.65318pt>
+[76] [77]
+<figure/ch02-Fig-03.jpg, id=796, 248.78787pt x 385.65318pt>
 File: figure/ch02-Fig-03.jpg Graphic file (type jpg)
 <use figure/ch02-Fig-03.jpg>
-Package pdftex.def Info: figure/ch02-Fig-03.jpg  used on input line 1694.
-(pdftex.def)             Requested size: 418.25545pt x 648.36366pt.
-
-LaTeX Warning: Float too large for page by 106.09969pt on input line 1699.
-
+Package pdftex.def Info: figure/ch02-Fig-03.jpg  used on input line 1723.
+(pdftex.def)             Requested size: 209.12772pt x 324.18182pt.
 [78] [79 <./figure/ch02-Fig-03.jpg>] [80] [81]
-<figure/ch02-Fig-04.png, id=524, 1909.1325pt x 2161.57562pt>
+<figure/ch02-Fig-04.png, id=816, 1909.1325pt x 2161.57562pt>
 File: figure/ch02-Fig-04.png Graphic file (type png)
 <use figure/ch02-Fig-04.png>
-Package pdftex.def Info: figure/ch02-Fig-04.png  used on input line 1757.
+Package pdftex.def Info: figure/ch02-Fig-04.png  used on input line 1786.
 (pdftex.def)             Requested size: 418.25545pt x 473.53615pt.
 
-LaTeX Warning: Reference `fig:ch02-plot-fig-04' on page 82 undefined on input line 1764.
-
-
-Underfull \hbox (badness 1226) in paragraph at lines 1764--1774
-\T1/lmr/m/n/10.95 particularly walking and cycling modes. The flowchart is designed through a
- []
-
-
-Underfull \hbox (badness 1281) in paragraph at lines 1764--1774
-\T1/lmr/m/n/10.95 The starting point questions whether the organization has previously used the
- []
-
-
-Underfull \hbox (badness 1019) in paragraph at lines 1764--1774
-\T1/lmr/m/n/10.95 analyzed, and whether analyses consider different traveler capabilities, reflecting
+Underfull \hbox (badness 1466) in paragraph at lines 1793--1803
+[]\T1/lmr/m/n/10.95 Figure [][]1.4[][] presented is a structured approach for eliciting user needs data
  []
 
 [82] [83 <./figure/ch02-Fig-04.png>]
@@ -1491,379 +1434,276 @@ Chapter 2.
 [84
 
 ] [85] [86] [87] [88]
-
-LaTeX Warning: Reference `eq:gen' on page 89 undefined on input line 1810.
-
-
-Underfull \hbox (badness 1127) in paragraph at lines 1810--1811
+Underfull \hbox (badness 1127) in paragraph at lines 1839--1840
 []\T1/lmr/m/n/10.95 Research demonstrates that two primary types of accessibility indicators are
  []
 
 [89] [90]
-Underfull \hbox (badness 2790) in paragraph at lines 1829--1830
+Underfull \hbox (badness 2790) in paragraph at lines 1858--1859
 \T1/lmr/m/n/10.95 regarding the non-linear nature of inverse distance-decay functions in human
  []
 
-[91]
-
-LaTeX Warning: Reference `eq:inverse' on page 92 undefined on input line 1841.
-
-[92]
-
-LaTeX Warning: Reference `eq:negative-exponential' on page 93 undefined on input line 1860.
-
-
-LaTeX Warning: Reference `eq:modified-gaussian' on page 93 undefined on input line 1875.
-
-
-LaTeX Warning: Reference `eq:logarithmic-normal' on page 93 undefined on input line 1890.
-
-[93]
-
-LaTeX Warning: Reference `eq:cumulative-rectan' on page 94 undefined on input line 1905.
-
-
-LaTeX Warning: Reference `eq:cumulative-linear' on page 94 undefined on input line 1924.
-
-
-LaTeX Warning: Reference `eq:gamma-imped' on page 94 undefined on input line 1943.
-
-
-LaTeX Warning: Reference `eq:log-logistic-decay-functions' on page 94 undefined on input line 1953.
-
-[94]
-
-LaTeX Warning: Reference `eq:beta-functions' on page 95 undefined on input line 1968.
-
-
-LaTeX Warning: Reference `eq:beta-functions' on page 95 undefined on input line 1970.
-
-
-LaTeX Warning: Reference `eq:poisson-functions' on page 95 undefined on input line 1983.
-
-
-LaTeX Warning: Reference `eq:poisson-functions' on page 95 undefined on input line 1983.
-
-
-LaTeX Warning: Reference `eq:weibull-functions' on page 95 undefined on input line 1993.
-
-[95] [96] [97] [98]
-
-LaTeX Warning: Reference `tab:ch03-table-01' on page 99 undefined on input line 2023.
-
-[99]
-
-LaTeX Warning: Reference `tab:ch03-table-01' on page 100 undefined on input line 2029.
-
-
-Overfull \hbox (10.4746pt too wide) in paragraph at lines 2038--2038
+[91] [92] [93] [94] [95] [96] [97] [98] [99] [100]
+Overfull \hbox (10.4746pt too wide) in paragraph at lines 2124--2124
  []|\T1/lmr/bx/n/6 Mode*| 
  []
 
 
-Overfull \hbox (4.64558pt too wide) in paragraph at lines 2038--2038
+Overfull \hbox (4.64558pt too wide) in paragraph at lines 2124--2124
  []|\T1/lmr/bx/n/6 Min*| 
  []
 
 
-Overfull \hbox (6.0886pt too wide) in paragraph at lines 2038--2038
+Overfull \hbox (6.0886pt too wide) in paragraph at lines 2124--2124
  []|\T1/lmr/bx/n/6 Med*| 
  []
 
 
-Overfull \hbox (6.1081pt too wide) in paragraph at lines 2038--2038
+Overfull \hbox (6.1081pt too wide) in paragraph at lines 2124--2124
  []|\T1/lmr/bx/n/6 Max*| 
  []
 
 
-Overfull \hbox (1.9276pt too wide) in paragraph at lines 2038--2038
+Overfull \hbox (1.9276pt too wide) in paragraph at lines 2124--2124
  []|\T1/lmr/bx/n/6 Med| 
  []
 
 
-Overfull \hbox (1.9471pt too wide) in paragraph at lines 2038--2038
+Overfull \hbox (1.9471pt too wide) in paragraph at lines 2124--2124
  []|\T1/lmr/bx/n/6 Max| 
  []
 
 
-Overfull \hbox (1.9276pt too wide) in paragraph at lines 2038--2038
+Overfull \hbox (1.9276pt too wide) in paragraph at lines 2124--2124
  []|\T1/lmr/bx/n/6 Med| 
  []
 
 
-Overfull \hbox (1.9471pt too wide) in paragraph at lines 2038--2038
+Overfull \hbox (1.9471pt too wide) in paragraph at lines 2124--2124
  []|\T1/lmr/bx/n/6 Max| 
  []
 
 
-Overfull \hbox (11.98405pt too wide) in paragraph at lines 2041--2041
+Overfull \hbox (11.98405pt too wide) in paragraph at lines 2127--2127
  []|\T1/lmr/m/n/6 Walking| 
  []
 
 
-Overfull \hbox (8.13403pt too wide) in paragraph at lines 2044--2044
+Overfull \hbox (8.13403pt too wide) in paragraph at lines 2130--2130
  []|\T1/lmr/m/n/6 cycling| 
  []
 
 
-Overfull \hbox (10.4746pt too wide) in paragraph at lines 2058--2058
+Overfull \hbox (10.4746pt too wide) in paragraph at lines 2144--2144
  []|\T1/lmr/bx/n/6 Mode*| 
  []
 
 
-Overfull \hbox (4.64558pt too wide) in paragraph at lines 2058--2058
+Overfull \hbox (4.64558pt too wide) in paragraph at lines 2144--2144
  []|\T1/lmr/bx/n/6 Min*| 
  []
 
 
-Overfull \hbox (6.0886pt too wide) in paragraph at lines 2058--2058
+Overfull \hbox (6.0886pt too wide) in paragraph at lines 2144--2144
  []|\T1/lmr/bx/n/6 Med*| 
  []
 
 
-Overfull \hbox (6.1081pt too wide) in paragraph at lines 2058--2058
+Overfull \hbox (6.1081pt too wide) in paragraph at lines 2144--2144
  []|\T1/lmr/bx/n/6 Max*| 
  []
 
 
-Overfull \hbox (1.9276pt too wide) in paragraph at lines 2058--2058
+Overfull \hbox (1.9276pt too wide) in paragraph at lines 2144--2144
  []|\T1/lmr/bx/n/6 Med| 
  []
 
 
-Overfull \hbox (1.9471pt too wide) in paragraph at lines 2058--2058
+Overfull \hbox (1.9471pt too wide) in paragraph at lines 2144--2144
  []|\T1/lmr/bx/n/6 Max| 
  []
 
 
-Overfull \hbox (1.9276pt too wide) in paragraph at lines 2058--2058
+Overfull \hbox (1.9276pt too wide) in paragraph at lines 2144--2144
  []|\T1/lmr/bx/n/6 Med| 
  []
 
 
-Overfull \hbox (1.9471pt too wide) in paragraph at lines 2058--2058
+Overfull \hbox (1.9471pt too wide) in paragraph at lines 2144--2144
  []|\T1/lmr/bx/n/6 Max| 
  []
 
 
-Overfull \hbox (11.98405pt too wide) in paragraph at lines 2061--2061
+Overfull \hbox (11.98405pt too wide) in paragraph at lines 2147--2147
  []|\T1/lmr/m/n/6 Walking| 
  []
 
 
-Overfull \hbox (8.13403pt too wide) in paragraph at lines 2074--2074
+Overfull \hbox (8.13403pt too wide) in paragraph at lines 2160--2160
  []|\T1/lmr/m/n/6 cycling| 
  []
 
-[100]
-
-LaTeX Warning: Reference `tab:ch03-table-02' on page 101 undefined on input line 2089.
-
-
-LaTeX Warning: Reference `tab:ch03-table-03' on page 101 undefined on input line 2089.
-
-
-LaTeX Warning: Reference `tab:ch03-table-02' on page 101 undefined on input line 2091.
-
-[101] [102] [103] [104]
-<figure/ch03_fig_01.jpg, id=650, 5119.125pt x 6624.75pt>
+[101] [102] [103] [104] [105]
+<figure/ch03_fig_01.jpg, id=957, 5119.125pt x 6624.75pt>
 File: figure/ch03_fig_01.jpg Graphic file (type jpg)
 <use figure/ch03_fig_01.jpg>
-Package pdftex.def Info: figure/ch03_fig_01.jpg  used on input line 2123.
+Package pdftex.def Info: figure/ch03_fig_01.jpg  used on input line 2209.
 (pdftex.def)             Requested size: 418.25545pt x 541.21132pt.
-<figure/ch03_fig_02.jpg, id=651, 5119.125pt x 6624.75pt>
+<figure/ch03_fig_02.jpg, id=958, 5119.125pt x 6624.75pt>
 File: figure/ch03_fig_02.jpg Graphic file (type jpg)
 <use figure/ch03_fig_02.jpg>
-Package pdftex.def Info: figure/ch03_fig_02.jpg  used on input line 2132.
+Package pdftex.def Info: figure/ch03_fig_02.jpg  used on input line 2218.
 (pdftex.def)             Requested size: 418.25545pt x 541.21132pt.
-[105] [106 <./figure/ch03_fig_01.jpg>] [107 <./figure/ch03_fig_02.jpg>] [108]
-Underfull \hbox (badness 1062) in paragraph at lines 2159--2160
+[106] [107 <./figure/ch03_fig_01.jpg>] [108 <./figure/ch03_fig_02.jpg>] [109]
+Underfull \hbox (badness 1062) in paragraph at lines 2245--2246
 []\T1/lmr/m/n/10.95 A methodical statistical approach was adopted to determine the appropriate
  []
 
-[109]
-
-LaTeX Warning: Reference `tab:ch03-table-04' on page 110 undefined on input line 2163.
-
-
-LaTeX Warning: Reference `tab:ch03-table-05' on page 110 undefined on input line 2163.
-
-
-LaTeX Warning: Reference `tab:ch03-table-07' on page 110 undefined on input line 2163.
-
-
-LaTeX Warning: Reference `tab:ch03-table-08' on page 110 undefined on input line 2163.
-
+[110]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 2170.
+(Font)              <12> on input line 2256.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 2222.
+(Font)              <9> on input line 2308.
 
-LaTeX Warning: Float too large for page by 3.97156pt on input line 2281.
+LaTeX Warning: Float too large for page by 3.97156pt on input line 2367.
 
 
-LaTeX Warning: Float too large for page by 68.97156pt on input line 2355.
+LaTeX Warning: Float too large for page by 68.97156pt on input line 2441.
 
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 2362.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 2448.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <11> on input line 2362.
+(Font)              <11> on input line 2448.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.69997> on input line 2362.
+(Font)              <7.69997> on input line 2448.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.5> on input line 2362.
+(Font)              <5.5> on input line 2448.
 
-LaTeX Warning: Float too large for page by 11.56528pt on input line 2458.
+LaTeX Warning: Float too large for page by 11.56528pt on input line 2544.
 
 
-LaTeX Warning: Float too large for page by 94.56528pt on input line 2524.
+LaTeX Warning: Float too large for page by 94.56528pt on input line 2610.
 
-[110] [111] [112] [113] [114] [115] [116]
-<figure/ch03_fig_03.jpg, id=714, 2559.5625pt x 3312.375pt>
+[111] [112] [113] [114] [115] [116] [117]
+<figure/ch03_fig_03.jpg, id=1017, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_03.jpg Graphic file (type jpg)
 <use figure/ch03_fig_03.jpg>
-Package pdftex.def Info: figure/ch03_fig_03.jpg  used on input line 2534.
+Package pdftex.def Info: figure/ch03_fig_03.jpg  used on input line 2620.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-03' on page 117 undefined on input line 2541.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-03' on page 117 undefined on input line 2543.
-
-[117] [118 <./figure/ch03_fig_03.jpg>]
-<figure/ch03_fig_04.jpg, id=724, 2559.5625pt x 3312.375pt>
+[118] [119 <./figure/ch03_fig_03.jpg>]
+<figure/ch03_fig_04.jpg, id=1028, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_04.jpg Graphic file (type jpg)
 <use figure/ch03_fig_04.jpg>
-Package pdftex.def Info: figure/ch03_fig_04.jpg  used on input line 2547.
+Package pdftex.def Info: figure/ch03_fig_04.jpg  used on input line 2633.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-04' on page 119 undefined on input line 2554.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-04' on page 119 undefined on input line 2556.
-
-<figure/ch03_fig_05.jpg, id=725, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_05.jpg, id=1031, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_05.jpg Graphic file (type jpg)
 <use figure/ch03_fig_05.jpg>
-Package pdftex.def Info: figure/ch03_fig_05.jpg  used on input line 2560.
+Package pdftex.def Info: figure/ch03_fig_05.jpg  used on input line 2646.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-05' on page 119 undefined on input line 2567.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-05' on page 119 undefined on input line 2568.
-
-[119] [120 <./figure/ch03_fig_04.jpg>] [121 <./figure/ch03_fig_05.jpg>]
-<figure/ch03_fig_06.jpg, id=740, 2559.5625pt x 3312.375pt>
+[120] [121 <./figure/ch03_fig_04.jpg>] [122 <./figure/ch03_fig_05.jpg>]
+<figure/ch03_fig_06.jpg, id=1047, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_06.jpg Graphic file (type jpg)
 <use figure/ch03_fig_06.jpg>
-Package pdftex.def Info: figure/ch03_fig_06.jpg  used on input line 2572.
+Package pdftex.def Info: figure/ch03_fig_06.jpg  used on input line 2658.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-06' on page 122 undefined on input line 2579.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-06' on page 122 undefined on input line 2579.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-06' on page 122 undefined on input line 2579.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-06' on page 122 undefined on input line 2581.
-
-<figure/ch03_fig_07.jpg, id=741, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_07.jpg, id=1052, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_07.jpg Graphic file (type jpg)
 <use figure/ch03_fig_07.jpg>
-Package pdftex.def Info: figure/ch03_fig_07.jpg  used on input line 2586.
+Package pdftex.def Info: figure/ch03_fig_07.jpg  used on input line 2672.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-07' on page 122 undefined on input line 2593.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-07' on page 122 undefined on input line 2593.
-
-[122] [123 <./figure/ch03_fig_06.jpg>] [124 <./figure/ch03_fig_07.jpg>]
-<figure/ch03_fig_08.jpg, id=757, 2559.5625pt x 3312.375pt>
+[123] [124 <./figure/ch03_fig_06.jpg>] [125 <./figure/ch03_fig_07.jpg>]
+<figure/ch03_fig_08.jpg, id=1068, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_08.jpg Graphic file (type jpg)
 <use figure/ch03_fig_08.jpg>
-Package pdftex.def Info: figure/ch03_fig_08.jpg  used on input line 2597.
+Package pdftex.def Info: figure/ch03_fig_08.jpg  used on input line 2683.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-08' on page 125 undefined on input line 2604.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-08' on page 125 undefined on input line 2604.
-
-<figure/ch03_fig_09.jpg, id=758, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_09.jpg, id=1071, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_09.jpg Graphic file (type jpg)
 <use figure/ch03_fig_09.jpg>
-Package pdftex.def Info: figure/ch03_fig_09.jpg  used on input line 2607.
+Package pdftex.def Info: figure/ch03_fig_09.jpg  used on input line 2693.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-09' on page 125 undefined on input line 2610.
-
-[125] [126 <./figure/ch03_fig_08.jpg>] [127 <./figure/ch03_fig_09.jpg>]
-<figure/ch03_fig_10.jpg, id=773, 2559.5625pt x 3312.375pt>
+[126] [127 <./figure/ch03_fig_08.jpg>] [128 <./figure/ch03_fig_09.jpg>]
+<figure/ch03_fig_10.jpg, id=1086, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_10.jpg Graphic file (type jpg)
 <use figure/ch03_fig_10.jpg>
-Package pdftex.def Info: figure/ch03_fig_10.jpg  used on input line 2613.
+Package pdftex.def Info: figure/ch03_fig_10.jpg  used on input line 2699.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-10' on page 128 undefined on input line 2616.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-12' on page 128 undefined on input line 2618.
-
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-14' on page 128 undefined on input line 2618.
-
-<figure/ch03_fig_11.jpg, id=774, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_11.jpg, id=1090, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_11.jpg Graphic file (type jpg)
 <use figure/ch03_fig_11.jpg>
-Package pdftex.def Info: figure/ch03_fig_11.jpg  used on input line 2620.
+Package pdftex.def Info: figure/ch03_fig_11.jpg  used on input line 2706.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-[128] [129 <./figure/ch03_fig_10.jpg>]
-<figure/ch03_fig_12.jpg, id=785, 2559.5625pt x 3312.375pt>
+[129] [130 <./figure/ch03_fig_10.jpg>]
+<figure/ch03_fig_12.jpg, id=1099, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_12.jpg Graphic file (type jpg)
 <use figure/ch03_fig_12.jpg>
-Package pdftex.def Info: figure/ch03_fig_12.jpg  used on input line 2624.
+Package pdftex.def Info: figure/ch03_fig_12.jpg  used on input line 2710.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
-LaTeX Warning: Reference `fig:ch03-plot-fig-12' on page 130 undefined on input line 2631.
-
-[130 <./figure/ch03_fig_11.jpg>] [131 <./figure/ch03_fig_12.jpg>]
-<figure/ch03_fig_13.jpg, id=795, 2559.5625pt x 3312.375pt>
+[131 <./figure/ch03_fig_11.jpg>] [132 <./figure/ch03_fig_12.jpg>]
+<figure/ch03_fig_13.jpg, id=1109, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_13.jpg Graphic file (type jpg)
 <use figure/ch03_fig_13.jpg>
-Package pdftex.def Info: figure/ch03_fig_13.jpg  used on input line 2635.
+Package pdftex.def Info: figure/ch03_fig_13.jpg  used on input line 2721.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-[132]
-<figure/ch03_fig_14.jpg, id=800, 2559.5625pt x 3312.375pt>
+[133]
+<figure/ch03_fig_14.jpg, id=1115, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_14.jpg Graphic file (type jpg)
 <use figure/ch03_fig_14.jpg>
-Package pdftex.def Info: figure/ch03_fig_14.jpg  used on input line 2639.
+Package pdftex.def Info: figure/ch03_fig_14.jpg  used on input line 2725.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
+[134 <./figure/ch03_fig_13.jpg>] [135 <./figure/ch03_fig_14.jpg>] [136] [137] [138
 
-LaTeX Warning: Reference `fig:ch03-plot-fig-14' on page 133 undefined on input line 2646.
+] [139
 
-[133 <./figure/ch03_fig_13.jpg>] [134 <./figure/ch03_fig_14.jpg>] [135] [136] [137
 
-]
+] [140] [141] [142] [143] [144]
+Underfull \hbox (badness 1939) in paragraph at lines 3095--3096
+[]\T1/lmr/m/n/10.95 Iseki, H., & Tingstrom, M. (2014). A new approach for bikeshed analysis
+ []
 
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
+[145] [146] [147] [148] [149] [150]
+Underfull \hbox (badness 3068) in paragraph at lines 3380--3381
+\T1/lmr/m/n/10.95 accessibility, and equality: An analysis of cycling commuting in bogota.
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2684 ...citeproctext]{ref-achuthan2007measuring}
-                                                   
+
+Underfull \hbox (badness 4686) in paragraph at lines 3398--3399
+\T1/lmr/m/n/10.95 accessibility in metropolitan areas. \T1/lmr/m/it/10.95 International Journal of Sustainable
+ []
+
+[151] [152]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3515.
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [153] [154] 
+enddocument/afterlastpage: lastpage setting LastPage.
+(./thesis.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2020/03/25>
+ ***********
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 279F154BA04D5F95F4FE5760CB3DEE02;7362.
+Package logreq Info: Writing requests to 'thesis.run.xml'.
+\openout1 = `thesis.run.xml'.
+
+ ) 
 Here is how much of TeX's memory you used:
- 48004 strings out of 476063
- 1149440 string characters out of 5791200
- 2094375 words of memory out of 5000000
- 69206 multiletter control sequences out of 15000+600000
- 689319 words of font info for 106 fonts, out of 8000000 for 9000
+ 49414 strings out of 476063
+ 1174877 string characters out of 5791200
+ 2129305 words of memory out of 5000000
+ 70292 multiletter control sequences out of 15000+600000
+ 689801 words of font info for 107 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 115i,12n,121p,4297b,1193s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,12n,121p,4297b,1196s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on thesis.pdf (172 pages, 22331485 bytes).
+PDF statistics:
+ 1710 PDF objects out of 1728 (max. 8388607)
+ 1451 compressed objects within 15 object streams
+ 553 named destinations out of 1000 (max. 500000)
+ 407 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-!  ==> Fatal error occurred, no output PDF file produced!
