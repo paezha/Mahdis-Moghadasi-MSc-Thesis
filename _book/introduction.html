@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Active Transportation Modes: Data Requirements and Historical Analysis of Impedance Functions</title>
+  <meta name="description" content="Active Transportation Modes: Data Requirements and Historical Analysis of Impedance Functions" />
+  <meta name="generator" content="bookdown 0.38.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Active Transportation Modes: Data Requirements and Historical Analysis of Impedance Functions" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Active Transportation Modes: Data Requirements and Historical Analysis of Impedance Functions" />
+  
+  
+  
+
+<meta name="author" content="Mahdis Moghadasi" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="rmd-basics.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> Data Sources and Needs for Active Travel-Based Accessibility Analysis: A Canadian Perspective</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#abstract"><i class="fa fa-check"></i><b>1.1</b> Abstract</a></li>
+<li class="chapter" data-level="1.2" data-path="rmd-basics.html"><a href="rmd-basics.html#introduction-1"><i class="fa fa-check"></i><b>1.2</b> Introduction</a></li>
+<li class="chapter" data-level="1.3" data-path="rmd-basics.html"><a href="rmd-basics.html#background"><i class="fa fa-check"></i><b>1.3</b> Background</a></li>
+<li class="chapter" data-level="1.4" data-path="rmd-basics.html"><a href="rmd-basics.html#methods-for-atb-accessibility-analysis"><i class="fa fa-check"></i><b>1.4</b> Methods for ATB accessibility analysis</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="rmd-basics.html"><a href="rmd-basics.html#activity-based-measures"><i class="fa fa-check"></i><b>1.4.1</b> Activity-based measures</a></li>
+<li class="chapter" data-level="1.4.2" data-path="rmd-basics.html"><a href="rmd-basics.html#distance-based-measures"><i class="fa fa-check"></i><b>1.4.2</b> Distance-based measures</a></li>
+<li class="chapter" data-level="1.4.3" data-path="rmd-basics.html"><a href="rmd-basics.html#topological-or-infrastructure-based-measures"><i class="fa fa-check"></i><b>1.4.3</b> Topological or infrastructure-based measures</a></li>
+<li class="chapter" data-level="1.4.4" data-path="rmd-basics.html"><a href="rmd-basics.html#utility-based-measures"><i class="fa fa-check"></i><b>1.4.4</b> Utility-based measures</a></li>
+<li class="chapter" data-level="1.4.5" data-path="rmd-basics.html"><a href="rmd-basics.html#walkability-measures"><i class="fa fa-check"></i><b>1.4.5</b> Walkability measures</a></li>
+<li class="chapter" data-level="1.4.6" data-path="rmd-basics.html"><a href="rmd-basics.html#bikeability-measures"><i class="fa fa-check"></i><b>1.4.6</b> Bikeability measures</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="rmd-basics.html"><a href="rmd-basics.html#a-framework-for-assessing-data-sources-and-needs"><i class="fa fa-check"></i><b>1.5</b> A framework for assessing data sources and needs</a></li>
+<li class="chapter" data-level="1.6" data-path="rmd-basics.html"><a href="rmd-basics.html#assessing-data-availability-and-requirements-for-calculating-active-mode-accessibility"><i class="fa fa-check"></i><b>1.6</b> Assessing Data Availability and Requirements for Calculating Active Mode Accessibility</a></li>
+<li class="chapter" data-level="1.7" data-path="rmd-basics.html"><a href="rmd-basics.html#important-considerations-and-possible-challenges"><i class="fa fa-check"></i><b>1.7</b> Important considerations and possible challenges</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="rmd-basics.html"><a href="rmd-basics.html#travel-timedistance-thresholds"><i class="fa fa-check"></i><b>1.7.1</b> Travel time/distance thresholds</a></li>
+<li class="chapter" data-level="1.7.2" data-path="rmd-basics.html"><a href="rmd-basics.html#impedance-functions"><i class="fa fa-check"></i><b>1.7.2</b> Impedance functions</a></li>
+<li class="chapter" data-level="1.7.3" data-path="rmd-basics.html"><a href="rmd-basics.html#slope"><i class="fa fa-check"></i><b>1.7.3</b> Slope</a></li>
+<li class="chapter" data-level="1.7.4" data-path="rmd-basics.html"><a href="rmd-basics.html#weather"><i class="fa fa-check"></i><b>1.7.4</b> Weather</a></li>
+<li class="chapter" data-level="1.7.5" data-path="rmd-basics.html"><a href="rmd-basics.html#level-of-traffic-stress"><i class="fa fa-check"></i><b>1.7.5</b> Level of Traffic Stress</a></li>
+<li class="chapter" data-level="1.7.6" data-path="rmd-basics.html"><a href="rmd-basics.html#originsdestinations-applying-weights"><i class="fa fa-check"></i><b>1.7.6</b> Origins/destinations &amp; applying weights</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="rmd-basics.html"><a href="rmd-basics.html#summary"><i class="fa fa-check"></i><b>1.8</b> Summary</a></li>
+<li class="chapter" data-level="1.9" data-path="rmd-basics.html"><a href="rmd-basics.html#discussion"><i class="fa fa-check"></i><b>1.9</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="math-sci.html"><a href="math-sci.html"><i class="fa fa-check"></i><b>2</b> A Historical Analysis of the Evolution of Active Travel Behaviour in Canada</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="math-sci.html"><a href="math-sci.html#abstract-1"><i class="fa fa-check"></i><b>2.1</b> Abstract</a></li>
+<li class="chapter" data-level="2.2" data-path="math-sci.html"><a href="math-sci.html#introduction-2"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
+<li class="chapter" data-level="2.3" data-path="math-sci.html"><a href="math-sci.html#background-1"><i class="fa fa-check"></i><b>2.3</b> Background</a></li>
+<li class="chapter" data-level="2.4" data-path="math-sci.html"><a href="math-sci.html#materials-and-methods"><i class="fa fa-check"></i><b>2.4</b> Materials and Methods</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="math-sci.html"><a href="math-sci.html#the-gss-survey"><i class="fa fa-check"></i><b>2.4.1</b> The GSS survey</a></li>
+<li class="chapter" data-level="2.4.2" data-path="math-sci.html"><a href="math-sci.html#estimating-impedance-function-parameters"><i class="fa fa-check"></i><b>2.4.2</b> Estimating impedance function parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="math-sci.html"><a href="math-sci.html#results-and-discusion"><i class="fa fa-check"></i><b>2.5</b> Results and discusion</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="math-sci.html"><a href="math-sci.html#descriptive-analysis-of-walking-and-cycling-trips-from-1986-to-2015"><i class="fa fa-check"></i><b>2.5.1</b> Descriptive analysis of walking and cycling trips from 1986 to 2015</a></li>
+<li class="chapter" data-level="2.5.2" data-path="math-sci.html"><a href="math-sci.html#impedance-function-analysis"><i class="fa fa-check"></i><b>2.5.2</b> Impedance function analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Active Transportation Modes: Data Requirements and Historical Analysis of Impedance Functions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Active Transportation Modes: Data Requirements and Historical Analysis of Impedance Functions</h1>
+<p class="author"><em>Mahdis Moghadasi</em></p>
+<div class="abstract">
+<p class="abstract">Abstract</p>
+<p>Active travel, encompassing walking and cycling, has emerged as a vital component in pursuing sustainable, healthy, and efficient urban transportation systems. This thesis comprises two interrelated studies that collectively contribute to a comprehensive understanding of active travel behavior and its analysis within the Canadian context. At the first step, we focused on the data prerequisites and sources required for active accessibility analysis, systematically evaluates geographic accessibility measures and data specificity essential to assessing walking and cycling in the Canadian urban landscape. As accessibility increasingly takes center stage in urban transportation policies, it becomes imperative to understand the unique data requirements and methodological considerations for these non-motorized modes. This review thoroughly examines the accessibility measures used in recent literature and the various data sources and considerations associated with walking and cycling accessibility analysis. The comparative analysis encompasses metrics, origin-destination considerations, geographic scales, and travel time or distance calculations, shedding light on the complexities and nuances of active travel data analysis. In the subsequent phase of our research, we extensively analyzed active travel behavior trends in Canada, spanning three decades from 1986 to 2015. This study uses data from Canada’s General Social Survey to examine individual preferences and behaviors related to walking and cycling. The focus is mainly on understanding how these behaviors vary according to different trip purposes and geographical contexts. Our approach involved the intricate calibration of empirical impedance functions to gain insights into the temporal willingness of individuals to travel to various destinations using active modes of transportation. This aspect of the study is crucial in quantifying the time individuals are willing to allocate to walking and cycling to reach their destinations. The investigation notably provides a historical perspective on the evolution of active mobility over the past 35 years. This historical analysis is pivotal in unraveling the changes in active travel behavior, influenced by factors such as urban development trends, societal attitudes towards health and environmental sustainability, and modifications in transportation infrastructure and policy frameworks. Our findings reveal significant and consistent disparities in trip durations between walking and cycling modes, accompanied by intriguing temporal variations over the years. Moreover, the study delves deeper into the analysis of specific destinations, uncovering evolving patterns and distance-decay effects in active travel behavior. These patterns indicate how the proximity of destinations influences the choice and duration of active travel.While primarily centered on the Canadian context, this study offers valuable insights that apply to the global discourse on sustainable and active transportation. It underscores the crucial role of active travel in shaping the future of urban transportation systems, advocating for a shift from traditional mobility-centric approaches to an accessibility-focused paradigm. This shift recognizes walking and cycling as alternative modes and fundamental elements of vibrant, sustainable urban environments. The comprehensive nature of this study goes beyond presenting empirical findings; it contributes significantly to the broader conversation on urban mobility, emphasizing the importance of these modes in promoting healthier, more sustainable, and livable cities. The research findings are a vital resource for urban planners, policymakers, and academic researchers worldwide, guiding decision-making processes to enhance urban mobility. By elucidating the data prerequisites and behavioral patterns associated with active travel, this thesis informs the development of strategies that foster urban settings conducive to active and sustainable transportation methods. These insights are instrumental in advancing our understanding of how to effectively integrate walking and cycling into the urban fabric, thereby supporting the evolution of urban areas towards greater sustainability and livability.</p>
+</div>
+</div>
+<div id="introduction" class="section level1 unnumbered hasAnchor">
+<h1>Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The challenge of addressing sustainable transportation is increasingly recognized as a crucial issue in contemporary global societies. The European Environment Agency (2020) highlights a growing awareness of the numerous and significant adverse effects of transportation, which threaten all three pillars of sustainability <span class="citation">(Agency, 2020)</span>. These detrimental effects are predominantly evident in urban regions, yet these areas also emerge as the primary arenas for developing and implementing innovative solutions. A key strategy among these is the shift from predominantly carbon-dependent and motorized personal transport to more active, non-motorized modes of mobility, recognized as one of the most effective approaches for promoting sustainable transportation.</p>
+<p>Based on this approach, active mobility sets itself apart from other transportation modalities with its unique benefits. Research by Koszowski et al. (2019) illustrates that active mobility offers carbon neutrality, spatial efficiency, and considerable health advantages. This form of transportation is gaining preference among many urban dwellers over public transit, as evidenced by the rapid expansion of urban infrastructure designed to facilitate active travel <span class="citation">(Dunning &amp; Nurse, 2020; Koszowski et al., 2019; Laverty, Millett, Majeed, &amp; Vamos, 2020)</span>. However, challenges remain, such as the decline in public transportation use and the potential rise in car usage, which pose significant threats to achieving sustainable transportation goals<span class="citation">(Aloi et al., 2020; Beck &amp; Hensher, 2020)</span>. Despite these challenges, active mobility is viable in cities where walking and cycling account for a significant share of multi-modal transportation and play a pivotal role in shaping urban mobility and advancing sustainability.</p>
+<p>The necessity for active mobility extends beyond just the development of transportation infrastructure; it requires an all-encompassing approach that integrates both spatial and transportation considerations. This holistic perspective leads to the recognition of ‘accessibility’ as an essential theoretical framework, adept at addressing the intertwined challenges of transportation and urban planning in a cohesive manner. Hansen’s seminal definition of accessibility in 1959 as ‘the potential of opportunities for interaction’ laid the foundation for this approach <span class="citation">(Hansen, 1959)</span>. As a result of this, Geurs and van Wee (2004) further underscore the significance of examining how the spatial distribution of activities aligns with the ease of accessing these activities from different points within an urban setting <span class="citation">(K. T. Geurs &amp; Van Wee, 2004)</span>. Additionally, Koenig (1980) draws attention to the crucial elements of assessing both the geographical distribution of activities and their accessibility, thereby providing a comprehensive lens through which urban mobility can be understood and enhanced. This integrated perspective of accessibility not only facilitates a deeper understanding of urban dynamics but also guides the development of more effective strategies for sustainable urban mobility <span class="citation">(Koenig, 1980)</span>.</p>
+<p>Because of the wide range of factors influencing accessibility, numerous and diverse accessibility metrics have been developed. As identified by Handy and Niemeier (1997), Geurs and van Wee (2004), Miller (2005), and Paez et al. (2012), these metrics vary in their level of detail and ease of implementation. One approach, person-based measures, focuses on the accessibility level experienced by an individual <span class="citation">(K. T. Geurs &amp; Van Wee, 2004; S. L. Handy &amp; Niemeier, 1997; Miller, 2005; Owen &amp; Levinson, 2015 ; Paez, Scott, &amp; Morency, 2012a)</span>. This method integrates land use and transportation system characteristics with an individual’s spatial and temporal constraints. Although person-based measures offer valuable insights into individual accessibility experiences, they present considerable challenges in assessing land use and transportation systems on a regional scale. An alternative approach is utility-based measures, as van Wee (2016) described. These measures evaluate the economic benefits resulting from network changes and can be incorporated into traditional cost-benefit analyses. Despite covering most accessibility components, utility-based measures are seldom applied in practice due to difficulties in interpretation and communication <span class="citation">(Wee &amp; Geurs, 2016)</span>.
+On the other hand, location-based metrics are more frequently employed in planning, offering a comprehensive view of regional accessibility <span class="citation">(Geneviève Boisjoly &amp; El-Geneidy, 2017)</span>. These metrics assess the ease of reaching destinations from a specific location, considering both the spatial distribution of opportunities (like jobs or healthcare services) and mobility between locations. The transportation aspect of this approach, which typically focuses on travel time or distance, is often mode-specific <span class="citation">(K. T. Geurs &amp; Van Wee, 2004; S. Handy, 1993; Hansen, 1959; Owen &amp; Levinson, 2015; Vickerman, 1974)</span>. Common location-based metrics include the cumulative-opportunities measure, which calculates reachable opportunities within a given travel cost threshold, and the gravity-based measure, which uses a distance-decay function to weigh opportunities based on their relative distance or travel time.</p>
+<p>It is important to note that, in comparison to motorized transportation, there has been little research into accessibility metrics in the realm of active transportation. This study aims to address this gap by comprehensively analyzing various accessibility metrics employed in active transportation research. The initial phase of this investigation involves thoroughly examining the metrics used in existing studies on active transportation. Subsequently, the research delves into the data requirements for calculating these accessibility metrics. A critical aspect of this inquiry is determining the feasibility of accessing and utilizing the necessary data, particularly in active transportation modes such as cycling and walking. The study seeks to ascertain whether the acquisition and application of such data are practicable under the typical conditions encountered in active transportation scenarios. This exploration not only contributes to a deeper understanding of the methodological challenges in measuring accessibility in active transportation but also provides insights into the potential for implementing these metrics in practical urban planning and policy-making.</p>
+<p>Furthermore, a significant body of literature has contributed to assessing accessibility levels for active modes of transportation in recent decades, generally agreeing on two primary components for measuring accessibility: (1) the location and attractiveness of urban opportunities (benefit side) and (2) the impedance of travel from origins in the network to the destinations (cost side). Specifically, the calculation of accessibility using impedance functions has emerged as a crucial research topic that has garnered substantial attention from scholars in the fields of transport planning, urban geography, and sustainable development <span class="citation">(Currie, 2010; L. D. Frank, Schmid, Sallis, Chapman, &amp; Saelens, 2005; Iacono, Krizek, &amp; El-Geneidy, 2010; Krizek, 2005; Millward, Spinney, &amp; Scott, 2013; Nassir, Hickman, Malekzadeh, &amp; Irannezhad, 2016; Saghapour, Moridpour, &amp; Thompson, 2017; X. Wu, Lu, Lin, &amp; Yang, 2019; Yang &amp; Diez-Roux, 2012)</span>. The impedance function, in its various forms, measures the willingness to travel a certain distance to reach desired destinations. It is a valuable tool for analyzing spatial patterns of travel behavior and can be used for any mode of transportation planning <span class="citation">(Millward et al., 2013)</span>. So, there is limited information on the willingness of some individuals to walk or cycle greater distances. Equally, there needs to be more data on how distance affects the nature of the activity, the desirability of the destinations, and the characteristics of those embarking on the trip in different contexts. Hence, it is imperative to investigate the evolution of impedance function over time due to its inherently dynamic nature, which fluctuates in response to the evolution of transportation networks and shifts in urban spatial configurations <span class="citation">(Iacono et al., 2010; Iacono, Krizek, &amp; El-Geneidy, 2008)</span>.</p>
+<p>Various impedance functions have been utilized to describe the distribution of walking and cycling trips, both in general and for specific purposes <span class="citation">(Iacono et al., 2010, 2008; Larsen, El-Geneidy, &amp; Yasmin, 2010; Li, Huang, &amp; Axhausen, 2020a; Millward et al., 2013; D. S. Vale &amp; Pereira, 2017; Yang &amp; Diez-Roux, 2012)</span>. Scholars place significant emphasis on selecting an appropriate impedance function, leading to a diverse range of cost decay functions being employed. These various specifications primarily vary in their treatment of the influence of distance, consequently impacting the accessibility measurement <span class="citation">(De Vries, Nijkamp, &amp; Rietveld, 2009; ITF., 2017; Osth, Lyhagen, &amp; Reggiani, 2016; Reggiani, Bucci, &amp; Russo, 2011)</span>. However, negative exponential distance-decay functions are commonly used in assessing non-motorized accessibility, capturing the willingness of individuals to walk or cycle to destinations <span class="citation">(K. T. Geurs &amp; Ritsema van Eck, 2001; S. L. Handy &amp; Niemeier, 1997; Iacono et al., 2010; Li et al., 2020a; Millward et al., 2013; D. S. Vale &amp; Pereira, 2017; Vega, 2012)</span>. The merit of this function lies in its ability to attribute decreasing influences to more remote opportunities, thereby offering a more accurate estimation for shorter journeys, especially those undertaken by non-motorized modes <span class="citation">(Fotheringham &amp; O’Kelly, 1989; Iacono et al., 2010; Kanafani, 1983)</span>.</p>
+<p>In addition to determining the form of the impedance function, extracting accurate travel times from existing network models can be challenging, which limits the options and makes distance a more practical choice <span class="citation">(Arranz-Lopez, Soria-Lara, Witlox, &amp; Paez, 2019a; S. L. Handy &amp; Niemeier, 1997; Iacono et al., 2010; Yang &amp; Diez-Roux, 2012)</span>. Furthermore, researchers specializing in active modes of transportation have faced challenges stemming from a need for more objective data concerning walking and cycling behavior. Estimating specialized impedance functions specific to non-motorized modes requires appropriate travel survey data that can capture pedestrian and cycle behavior. Often, researchers have resorted to relying on retrospective questionnaires, which assess subjective aspects such as the frequency and duration of walking and cycling activities. Notably, regional household travel surveys, including trips made by non-motorized modes, have been employed for this purpose <span class="citation">(Iacono et al., 2010; Millward et al., 2013)</span>. In contrast to these localized surveys, some datasets provide a nationwide perspective, encompassing travel for various trip purposes and offering insights into details like travel episode origins, destinations, and time-based lengths. This comprehensive approach furnishes a more holistic understanding of active transportation behavior on a national scale. Nevertheless, only some studies, such as Yang et al. (2012), have examined active travel behavior nationally <span class="citation">(Yang &amp; Diez-Roux, 2012)</span>.</p>
+<p>Addressing the previously identified gaps and precisely the challenge of using uniform decay curves, such as the negative exponential function for both cycling and walking in accessibility assessments, this study endeavors to identify the most appropriate distance decay function for various destinations and time periods. Our research delves into the complexities of actual travel behavior, emphasizing active transportation modes. We utilize historical data from the General Social Survey (GSS) from 1986 to 2015 in Canada to calculate the impedance function for cycling and walking trips. By doing so, this study conducts a comparative analysis of travel behaviors associated with these two modes.</p>
+<p>Moreover, we recognize that non-work travel encompasses a spectrum of trip intentions and diverse traveler behaviors, making the impedance function an essential analytical tool for examining non-work accessibility. Grengs (2015) emphasizes the importance of crafting distinct functions for each travel purpose, a principle that guides our analysis <span class="citation">(Grengs, 2015)</span>. Our investigation will encompass a variety of trip intents, ranging from commutes to homes, workplaces, or educational institutions to social visits, outdoor activities, business trips, shopping, cultural outings to libraries, museums, or theaters, dining out, and engaging in religious practices. By drawing on a nationally representative sample of Canadian residents, our research intends to bridge the empirical data gap concerning the frequency and duration of typical pedestrian and cycling trips for different purposes. In doing so, it aspires to provide a nuanced understanding of active travel behavior. Ultimately, this comprehensive analysis seeks to contribute meaningfully to the ongoing conversation on active transportation, shedding light on its role in shaping travel behavior and accessibility.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="rmd-basics.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

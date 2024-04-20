@@ -193,15 +193,15 @@ A^{p}_i = \ln \left(\sum_{j \in L^{ip}} e^{\beta z_j} \right)
 \end{equation}
 
 
-In our analysis, Tables \ref{tab:table_1} and Tables \ref{tab:table_2} methodically categorize studies based on the various metrics employed to assess accessibility via active transportation modes, explicitly walking and cycling. This categorization highlights the varied methodological approaches adopted in the field. Our literature review indicates that a diverse array of measures has been applied in the context of cycling to analyze accessibility. These range from simple distance-based metrics to more complex models. Conversely, the majority of studies focusing on walking accessibility have predominantly utilized active-based measures. In addition, a limited number of studies have incorporated utility-based measures. These metrics generally evaluate the economic benefits and utilities derived from changes in the network, providing a different perspective on accessibility. However, a comparative analysis conducted by Vale et al. (2016) illuminates a notable discrepancy in the research volume focused on cycling-specific accessibility relative to walking. Their comprehensive review, which encompasses 84 papers on walking and cycling accessibility published up to September 2013, reveals a significant skew towards walking-oriented studies. This imbalance underscores the need for more focused research on cycling accessibility to better understand and enhance this active transportation mode [@vale2016active].
+In our analysis, Tables \ref{tab:Ch02-make-table-01} and Tables \ref{tab:Ch02-make-table-02} methodically categorize studies based on the various metrics employed to assess accessibility via active transportation modes, explicitly walking and cycling. This categorization highlights the varied methodological approaches adopted in the field. Our literature review indicates that a diverse array of measures has been applied in the context of cycling to analyze accessibility. These range from simple distance-based metrics to more complex models. Conversely, the majority of studies focusing on walking accessibility have predominantly utilized active-based measures. In addition, a limited number of studies have incorporated utility-based measures. These metrics generally evaluate the economic benefits and utilities derived from changes in the network, providing a different perspective on accessibility. However, a comparative analysis conducted by Vale et al. (2016) illuminates a notable discrepancy in the research volume focused on cycling-specific accessibility relative to walking. Their comprehensive review, which encompasses 84 papers on walking and cycling accessibility published up to September 2013, reveals a significant skew towards walking-oriented studies. This imbalance underscores the need for more focused research on cycling accessibility to better understand and enhance this active transportation mode [@vale2016active].
 
 
-```{r echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-01, echo=FALSE, cache=FALSE, warning=FALSE}
 # Ensure the output is in LaTeX for a PDF document
 options(knitr.table.format = "latex")
 
 # Create the table
-table1 <- data.frame(
+ch02_table_01 <- data.frame(
   "Type.of.metric" = c("Activity-based", "", "", "Distance-based", "", "Topology-based"),
   "Study" = c("Murphy and Owen (2019)", "Faghih Imani, Miller et al. (2019)", "Wu, Lu et al. (2019)", "Houde, Apparicio et al. (2018)", "Pérez, Buck et al. (2017)", "Mekuria (2012)"),
   "Measure" = c("Gap in Cumulative Access to Job Opportunities: A Comparative Analysis of LTS 1-4 Based on Weighted Accessibility by Worker Count", "Cumulative Access to Opportunities: Employment and Population Analysis Using Calculated Isochrones for LTS 1-4.", "Utilizing a Gravity-Based Approach: Evaluating Accessibility to Points of Interest at Metro Stations through a Lognormal Distance Decay Function (Validated by the Distribution of Bicycle-Metro Trip Data)", "Proximity to Cycling Infrastructure: 1. Network distance to the closest segment of the cycling network. 2. Network distance to exclusive bicycle pathways", "1. Dedicated Cycling Network Accessibility: The distance from the centroid of each census tract to the closest segment of the bicycle network was evaluated to ascertain the accessibility level of the respective tracts. 2. Traffic Stress Assessment: The Level of Traffic Stress (LTS) network was employed to gauge accessibility within the district.", "Network Connectivity Assessed by LTS 1-4: This measures the percentage of trips and nodes connected within the network"),
@@ -213,7 +213,7 @@ table1 <- data.frame(
 )
 
 #Changing column names
-colnames(table1) <- c(
+colnames(ch02_table_01) <- c(
   "Metric Type",
   "Study",
   "Measure",
@@ -225,27 +225,25 @@ colnames(table1) <- c(
 )
 
 # Create the styled table with the caption and additional styles
-styled_table1 <- table1 %>%
+styled_ch02_table_01 <- ch02_table_01 %>%
   kable(format = "latex", 
         booktabs = TRUE, 
         align = 'c', 
-        caption = "\\label{tab:table_1}Cycling-Specific Accessibility Measures in Various Studies") %>%
+        caption = "\\label{tab:ch02-make-table-01}Cycling-Specific Accessibility Measures in Various Studies") %>%
   kable_styling(full_width = FALSE, 
-                #latex_options=c("striped", "scale_down")
-                latex_options=c("scale_down")
-                )%>%
-  column_spec(2:6, width = "5cm")%>%
-  row_spec(0, bold = TRUE, align = "c")%>%
+                latex_options = c("scale_down")
+                ) %>%
+  column_spec(2:6, width = "5cm") %>%
+  row_spec(0, bold = TRUE, align = "c") %>%
   landscape()
-styled_table1
 ```
 
 
 
-```{r echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-02, echo=FALSE, cache=FALSE, warning=FALSE}
 
 # Create the table
-table_2 <- data.frame(
+ch02_table_02 <- data.frame(
   "Type of metric" = c("Activity-based", "", "", "", "", "", "Utility-based", "2013"),
   "Study" = c("Cheng, Caset et al. (2019)", "eyes, Páez et al. (2014)", "García-Palomares, Gutiérrez et al. (2013)", "Papa, Carpentieri et al. (2018)", "", "", "Blecic, Ivan, et al", ""),
   "Measure" = c("Cumulative Accessibility Opportunities: Evaluation of chess/card rooms and urban parks catered to both senior and younger adults. The park areas were assessed and given weight according to their dimensions", "Cumulative Access Opportunities to Urban Parks: An assessment was conducted focusing on park spaces designed for children, with each park's weight determined by its size. The accessibility was evaluated in two primary ways: 1. Based on individual attributes extracted from the travel survey. 2. According to various scenario profiles, such as gender, age, income, and other demographic factors", "Quality of Access Indicators for Metro Stations: The evaluation assessed the extent of the population served by these stations. Furthermore, accessibility was analyzed by distinct age groups, employing a distance decay function tailored to each age category", "Contour-Based Accessibility Evaluation: This study employed a method to determine bus service catchment areas. The analysis incorporated the number of residents served, categorized by age groups. Furthermore, catchment areas were computed both considering and disregarding the network slope", "", "", "", ""),
@@ -257,7 +255,7 @@ table_2 <- data.frame(
 )
 
 #Changing column names
-colnames(table_2) <- c(
+colnames(ch02_table_02) <- c(
   "Metric Type",
   "Study",
   "Measure",
@@ -269,8 +267,8 @@ colnames(table_2) <- c(
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_2 <- table_2 %>%
-  kable(format = "latex", booktabs = TRUE, caption = "\\label{tab:table_2}Walking-Specific Accessibility Measures in Various Studies") %>%
+styled_ch02_table_02 <- ch02_table_02 %>%
+  kable(format = "latex", booktabs = TRUE, caption = "\\label{tab:Ch02-make-table-02}Walking-Specific Accessibility Measures in Various Studies") %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped", "scale_down")
                 latex_options=c("scale_down")
@@ -278,7 +276,7 @@ styled_table_2 <- table_2 %>%
   column_spec(2:6, width = "5cm")%>%
   row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
-styled_table_2
+styled_ch02_table_02
 
 ```
 
@@ -292,13 +290,13 @@ Walkability indices can be defined based on both the social and physical environ
 There are four main categories of walkability measures: Frank's Walkability Index, Walk Score, Objective Walkability Index (OWI), and Graz's Walkability Index. In Frank's index, the walkability score is determined by summing normalized scores across factors identified based on the concept of walkability. Residential density, land-use mix, retail floor area ratio, and intersection density are used to measure walkability. Grasser, Van Dyck, et al. (2013) further enhanced Frank's index for assessing European cities by incorporating population density, household density, entropy index for land-use mix, and three-way intersection density, resulting in the Graz walkability index [@grasser2013objectively]. Additionally, other theory-based methods, such as OWI, have been proposed. Weiss, Maantay, et al. (2010) developed OWI, which includes street connectivity, land-use mix, pedestrian safety, neighborhood aesthetics, neighborhood safety, and neighborhood infrastructure[@weiss2010promoting]. In 2011, Duncan, Aldstadt et al. (2011) introduced a Walk Score to measure the walkability of neighborhoods. Walk Score identifies eight types of walking attractors: errands, culture, grocery, park, dining and drinking, school, and shopping. Although Walk Score can be assessed for any location worldwide, validation is necessary for locations outside the US, Canada, Australia, and New Zealand due to incomplete geolocated data [@duncan2011validation; @WalkScore2020].
 
 Most studies assessing walkability have utilized Frank's index and Walk Score [@frank2005linking; @frank2006many; @frank2010development; @vale2016active]. The cr
-itical difference between these approaches lies in the methodology employed. Walk Score utilizes a gravity-based approach, where opportunities are weighted using a distance decay function, while the Walkability Index relies on a cumulative opportunities measure. Table \ref{tab:table_3} summarizes this categorization.
+itical difference between these approaches lies in the methodology employed. Walk Score utilizes a gravity-based approach, where opportunities are weighted using a distance decay function, while the Walkability Index relies on a cumulative opportunities measure. Table \ref{tab:ch02-make-table-03} summarizes this categorization.
 
 
-```{r echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-03, echo=FALSE, cache=FALSE, warning=FALSE}
 
 # Create the table data
-table_3 <- data.frame(
+ch02_table_03 <- data.frame(
   Methods = c("Frank's Walkability Index","","","","","","","","","","","","","","","","","","","","","","","","","","", "The Walk Score calculates a numerical value by evaluating the walking distance to amenities across nine distinct amenity categories","","", "The Graz Walkability Index is devised, building upon the foundational structure of the American City and Frank's walkability indices" ,"",""),
   Author = c("Frank et al. (2005a,b), Frank et al., (2010)","","","","Manaugh and El-Geneidy (2011)","","","", "Adhikari et al.,(2021)", "","","", "Azmi et al., (2013)", "","", "Liao et al., (2020)", "","","", "Arellana et al., (2021)", "","","", "Ruiz-Padillo et al., (2018)", "","","","Duncan et al., (2011)","","","Grasser et al. (2017)", "",""),
   Variables = c("Net residential/ Population density", "Retail floor area ratio","Intersection density", "Land use mix", "Net residential/ Population density", "Retail floor area ratio", "Intersection density", "Land use mix","residential density", "The commercial floor-to-area ratio", "Land-use mix", "Intersection density","Mixed-use planning", "Density", "Street connectivity", "The variables within this section are categorized into four distinct components: 1. Density, 2. Facilities, 3. Green Space, and 4. Land Use Mix", "","","","Intersection density", "Land use entropy score", "Population density", "Commercial density","Public Security", "Traffic Safety ", "Convenience and attractiveness: Street connectivity, Destination's proximity (number of shops and services), Mix of uses proximity (number of shops and services), attractiveness", "Characters of the roots:Pavement Quality, Pavement width, Slope", " Walking distance to amenities","Intersection density metrics","Average block length","Net residential/ Population density/ household density", "Intersection density", "Land use mix (entropy index for land-use mix)"),
@@ -308,7 +306,7 @@ table_3 <- data.frame(
 )
 
 #Changing column names
-colnames(table_3) <- c(
+colnames(ch02_table_03) <- c(
   "Methods",
   "Author",
   "Variables",
@@ -318,15 +316,15 @@ colnames(table_3) <- c(
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_3 <- table_3 %>%
-  kable(format = "latex", booktabs = TRUE,longtable = TRUE, caption = "\\label{tab:table_3}Studies examining walkability") %>%
+styled_ch02_table_03 <- ch02_table_03 %>%
+  kable(format = "latex", booktabs = TRUE,longtable = TRUE, caption = "\\label{tab:ch02-make-table-03}Studies examining walkability") %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped"), 
                 font_size = 8)%>%
   column_spec(1:6, width = "3cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
-styled_table_3
+styled_ch02_table_03
 ```
 
 
@@ -342,13 +340,13 @@ The assessment of bikeability in an environment involves considering the followi
 
 -   Explicit polygon features created around specific trajectories of individual respondents, such as buffers or ellipsoids, or based on the topology of the transport network [@madsen2014developing; @frank2017international].
 
--   The presence of connected infrastructures as a functional component of entire towns and urban fabrics [@lowry2012assessment]. According to Lowry, Callister et al. (2012), this covers the term "Bikeability." In the following, Table \ref{tab:table_4}  prepares some of the studies that used the bikeability index.
+-   The presence of connected infrastructures as a functional component of entire towns and urban fabrics [@lowry2012assessment]. According to Lowry, Callister et al. (2012), this covers the term "Bikeability." In the following, Table \ref{tab:ch02-make-table-04}  prepares some of the studies that used the bikeability index.
 
 
-```{r echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-04, echo=FALSE, cache=FALSE, warning=FALSE}
 
 # Create the table data
-table_4 <- data.frame(
+ch02_table_04 <- data.frame(
   Author = c("Lowry, Callister et al. (2012)","","","Nielsen and Skov-Petersen (2018)","","","McNeil (2011)","","","Saghapour (2017)","","","",""),
   Study_area = c("Moscow, Idaho","","","Denmark","","","Portland, Oregon","","","Melbourne, Australia","","","",""),
   Measure = c("A bikeability assessment devised based on the widely adopted accessibility equation known as Hansen's model", "The objective of this computation is to identify the optimal routes connecting zone i with each respective destination j","","This research provides a detailed micro-level analysis of factors influencing bikeability, encompassing aspects such as population density and accessibility, infrastructure provisions, as well as terrain characteristics", "The assessment of accessibility in this study was computed based on the shortest network distance between the starting points of trips","","The assessment of bike accessibility, commonly referred to as bikeability, within a neighborhood is carried out using a 20-minute neighborhood criterion specifically tailored for bicycles","Utilizing a scoring methodology to evaluate bikeability, this study introduces an innovative index for quantifying the degree of bike-friendliness within an area","","The Cycling Accessibility Index (CAI) was developed to quantify cycling accessibility within metropolitan areas. It takes into account travel distance as a factor affecting impedance and integrates cycling catchments within local areas","Using gravity-based measures of accessibility","Network models are employed to define suitable cycling catchments and construct an Origin-Destination (O-D) cost matrix for the evaluation of cycling accessibility","",""),
@@ -360,7 +358,7 @@ table_4 <- data.frame(
 
 
 #Changing column names
-colnames(table_4) <- c(
+colnames(ch02_table_04) <- c(
   "Author",
   "Study_area",
   "Measure",
@@ -370,15 +368,15 @@ colnames(table_4) <- c(
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_4 <- table_4 %>%
-  kable(format = "latex", booktabs = TRUE,longtable = TRUE, caption = "\\label{tab:table_4}Studies examining Bikeability") %>%
+styled_ch02_table_04 <- ch02_table_04 %>%
+  kable(format = "latex", booktabs = TRUE,longtable = TRUE, caption = "\\label{tab:ch02-make-table-04}Studies examining Bikeability") %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped"), 
                 font_size = 8)%>%
   column_spec(1:6, width = "3cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
-styled_table_4
+styled_ch02_table_04
 
 ```
 
@@ -399,13 +397,13 @@ This study employs a user-centered methodology to support the design of a multid
 
 - Once the requirements have been established, the next step involves automatically generating the conceptual schema of the data warehouse and extracting the multidimensional knowledge from the data sources.
 
-These three steps enable a systematic and efficient approach to designing the data warehouse and aligning it with the requirements and analytical capabilities of the available data sources. Table \ref{tab:table_5} shows required data based on each measure. Table 5, referenced in the study, is crucial in illustrating the specific data requirements associated with each identified measure. This table provides a detailed overview of the data elements necessary for each aspect of the multidimensional analysis. It categorizes the required data based on various dimensions and measures, offering a clear and organized representation of the data needs. This comprehensive tabulation is instrumental for users and designers alike, serving as a guide for understanding the data dependencies and requirements integral to the data warehouse design process. By providing this level of detail, Table \ref{tab:table_5} ensures that users can readily identify the data components relevant to their specific analytical needs, thereby enhancing the overall usability and effectiveness of the data warehouse. This table, referenced in the study, is crucial in illustrating the specific data requirements associated with each identified measure. This table provides a detailed overview of the data elements necessary for each aspect of the multidimensional analysis. It categorizes the required data based on various dimensions and measures, offering a clear and organized representation of the data needs. This comprehensive tabulation is instrumental for users and designers alike, serving as a guide for understanding the data dependencies and requirements integral to the data warehouse design process. By providing this level of detail, Table \ref{tab:table_5} ensures that users can readily identify the data components relevant to their specific analytical needs, thereby enhancing the overall usability and effectiveness of the data warehouse.
+These three steps enable a systematic and efficient approach to designing the data warehouse and aligning it with the requirements and analytical capabilities of the available data sources. Table \ref{tab:ch02-make-table-05} shows required data based on each measure. Table 5, referenced in the study, is crucial in illustrating the specific data requirements associated with each identified measure. This table provides a detailed overview of the data elements necessary for each aspect of the multidimensional analysis. It categorizes the required data based on various dimensions and measures, offering a clear and organized representation of the data needs. This comprehensive tabulation is instrumental for users and designers alike, serving as a guide for understanding the data dependencies and requirements integral to the data warehouse design process. By providing this level of detail, Table \ref{tab:ch02-make-table-05} ensures that users can readily identify the data components relevant to their specific analytical needs, thereby enhancing the overall usability and effectiveness of the data warehouse. This table, referenced in the study, is crucial in illustrating the specific data requirements associated with each identified measure. This table provides a detailed overview of the data elements necessary for each aspect of the multidimensional analysis. It categorizes the required data based on various dimensions and measures, offering a clear and organized representation of the data needs. This comprehensive tabulation is instrumental for users and designers alike, serving as a guide for understanding the data dependencies and requirements integral to the data warehouse design process. By providing this level of detail, Table \ref{tab:ch02-make-table-05} ensures that users can readily identify the data components relevant to their specific analytical needs, thereby enhancing the overall usability and effectiveness of the data warehouse.
 
 
-```{r echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-05, echo=FALSE, cache=FALSE, warning=FALSE}
 
 # Create the table data
-table_5 <- data.frame(
+ch02_table_05 <- data.frame(
   `Data / Methods` = c("Activity-based","","Distance-based","Infrastructure-based","Utility-based","Walkability","Bikeability"),
   `Travel Data` = c("Travel data is usually obtained from surveys and includes information about each trip such as duration, start point, end point, origin and destination.","","-----","-----","Travel data is required","Travel data is usually obtained from surveys and includes information about each trip such as duration, start point, end point, origin and destination", "Travel data is required and includes information about each trip such as duration, start point, end point, origin and destination"),
   `Users Data` = c("Travel behavior characteristics such as age, gender, income, can be considered if the data are available","",
@@ -419,7 +417,7 @@ table_5 <- data.frame(
 )
 
 #Changing column names
-colnames(table_5) <- c(
+colnames(ch02_table_05) <- c(
   "Data/Methods",
   "Travel data",
   "Users Data",
@@ -430,15 +428,15 @@ colnames(table_5) <- c(
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_5 <- table_5 %>%
-  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_5}Required data according to each active transportation accessibility of measure") %>%
+styled_ch02_table_05 <- ch02_table_05 %>%
+  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:ch02-make-table-05}Required data according to each active transportation accessibility of measure") %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped"), 
                 font_size = 10)%>%
   column_spec(1:7, width = "2.5cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
-styled_table_5
+styled_ch02_table_05
 ```
 
 
@@ -448,7 +446,12 @@ In this section of the thesis, we embark on a comprehensive exploration of the v
 
 The figure further specifies key datasets used in the analysis, such as the General Social Survey (GSS) Data and Household Surveys under Trip Data, and a range of tools and databases like the Origin-Destination Survey of different regions, Open Street Map (OSM), Can-BICS, and various municipal open-source data sets under Spatial Data. This visual classification in Figure 1.1 aids in understanding the intricate web of data required for active mode accessibility calculation and highlights the comprehensive approach taken in this study to encompass the multifaceted nature of active travel behavior and its context within urban settings.
 
-![Classification of required data](figure/ch02-Fig-01.jpg){fig-align="center" width=90% height=60%}
+
+```{r ch02-plot-fig-01, echo=FALSE, out.width="100%", fig.cap="Classification of required data", fig.align="center"}
+
+knitr::include_graphics("figure/ch02-Fig-01.jpg")
+```
+
 
 **General social survey (GSS)**
 
@@ -474,32 +477,32 @@ One of the existing data sources that can be utilized for data needs is the hous
 
 The following is an overview of the categories of data that are obtained through the household travel surveys:
 
-```{r, echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-06, echo=FALSE, cache=FALSE, warning=FALSE}
 
 
 # Create the table data
-table_6 <- data.frame(
+ch02_table_06 <- data.frame(
   `Household levels` = c("Home location", "Dwelling type", "Household size (# people)", "Number of vehicles", "Number of bicycles", "Household income", "Home parking (#off-street spots)", "", "", "", "", ""),
   `Person level` = c("Gender", "Age", "Driver’s licence", "Transit pass", "Student status", "School level", "School location", "", "", "", "", ""),
   `Trip level` = c("Origin location", "Destination location", "Trip departure time (start and end time)", "Purpose of travel (destination activity)", "Mode(s) of travel (up to 5)", "Number of vehicle occupants (if driver or passenger)", "Employment status", "Workplace location", "Parking at work and school(free or pay)", "Other occupational status", "Location of residence", "Frequency of cycling, walking, and other active mode use")
 )
 
 #Changing column names
-colnames(table_6) <- c(
+colnames(ch02_table_06) <- c(
   "Household levels",
   "Person level",
   "Trip level"
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_6 <- table_6 %>%
-  kable(format = "latex", booktabs = TRUE, caption = "\\label{tab:table_6}A Comprehensive Analysis of Variables in Household Travel Surveys") %>%
+styled_ch02_table_06 <- ch02_table_06 %>%
+  kable(format = "latex", booktabs = TRUE, caption = "\\label{tab:ch02-make-table-06}A Comprehensive Analysis of Variables in Household Travel Surveys") %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped"), 
                 font_size = 10)%>%
   column_spec(1:3, width = "5cm")%>%
    row_spec(0, bold = TRUE, align = "c")
-styled_table_6
+styled_ch02_table_06
 
 ```
 
@@ -654,7 +657,7 @@ The North Shore Transportation Survey (NSTS) 2019 is a biennial survey of North 
 The following table is an overview of data sources from various household travel surveys conducted across Canada, as explained before. The detailed breakdown by survey, year, and data type provides a comprehensive overview of the methodologies. It focuses on travel surveys across Canadian regions. It details the type of data collected in these surveys, categorized into three main sections: Household Data, Person Data, and Trip Data. The table lists multiple surveys, such as the General Social Survey (GSS), Transportation Tomorrow Survey (TTS), and Autorité régionale de transport métropolitain survey (ARTM), among others. For each survey, the table specifies the year or years of the survey and the kind of information collected. For instance, the GSS is conducted every five years, such as in 1986, 1992, 1998, 2005, 2010, and 2015 collected household data ( including dwelling type, household size, and household income), personal data (such as gender, age, student status, school level, and employment status), and trip data (including modes of travel, the purpose of travel, start time and end time). Each survey's data points vary, focusing on demographic information such as household size, income, and employment status. In contrast, others delve into trip specifics like start and end times, trip purposes, and travel modes. 
 
 
-```{r echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-07,echo=FALSE, cache=FALSE, warning=FALSE}
 
 # Create the table data
 Survey <- c("General social survey (GSS)", "", "", "", "", "Transportation Tomorrow Survey survey (TTS)", "", "", "", "", "", "", "", "Autorité régionale de transport métropolitain survey (ARTM)", "", "", "", "", "", "", "", "", "", "", "Vancouver panel survey (VTS)", "", "", "", "", "", "", "Origin-Destination survey of National Capital Region", "", "", "", "", "", "Origin-Destination survey of Capital Regional District (CRD)", "", "", "", "", "Origin-Destination survey of Nanaimo City", "", "", "", "", "Edmonton and Region Household Travel Survey (ERHTS)", "", "", "", "", "", "Calgary and Region Travel and Activity Survey (CARTAS)", "", "", "", "", "", "City of Saskatoon Household Travel Survey", "", "", "", "", "Okanagan Travel Survey (OTS)", "", "", "", "", "", "", "", "Winnipeg Area Travel Survey (WATS)", "", "", "", "", "", "The London Household Travel Survey", "", "", "", "", "", "Kingston Household Travel Survey", "", "", "", "","North Shore Transportation Survey (NSTS)", "", "", "", "", "")
@@ -671,7 +674,7 @@ Personal_Data <- c(Personal_Data, rep(NA, length(Survey) - length(Personal_Data)
 Trip_Data <- c("Mode(s) of travel", "Purpose of travel", "Start Time", "End Time", "", "Trip number for persons in household", "Start Time", "End Time", "Mode of the trip", "Purpose of the trip", "Geocode of origins and destinations", "", "", "Origins location", "Destination location", "Trip purpose", "Mode of transportation", "Start Time", "End Time", "", "", "", "", "", "Trip purpose", "Mode of transportation", "Travel distance", "Start Time", "End Time", "Geocoded origin and destination", "Trip frequency", "Trip origion and destination", "purpose of trip", "Time of travel", "Mode of transportation", "", "", "Trip origins and destinations", "travel modes", "trip purposes", "Start Time", "End Time", "Purpose of the trip", "Mode of transportation", "Trip distance", "Trip duration", "", "Number of trips", "Trip duration", "Distance traveled", "Mode of transportation", "Travel purpose", "Travel time", "Frequency of travel", "Length of trips", "Mode of transportation", "Trip purpose","Start Time", "End Time", "Trip purpose", "Mode of transportation", "Origin and destination", "Time of travel", "Travel distance", "Geocode origin and destination coordinates", "Trip departure time", "Trip arrival time", "Trip purpose", "Mode of travel", "", "", "", "Origin and destinations", "Purpose of travel", "Mode(s) of travel", "Departure time", "Arrival time", "", "Modes of transportation", "Travel purposes", "Start Time", "End Time", "Location of origin and destination", "Distance traveled", "Frequency of trip", "Purpose of trips", "Modes of transportation", "Trip distances", "Travel times","Location of origin and destination", "Trip demand", "Purpose of travel", "Mode of travel", "Origin and destination", "Occupation")
 Trip_Data <- c(Trip_Data, rep(NA, length(Survey) - length(Trip_Data)))
 
-table_7 <- data.frame(
+ch02_table_07 <- data.frame(
   Survey = Survey,
   Year_of_Survey = Year_of_Survey,
   Household_Data = Household_Data,
@@ -682,15 +685,15 @@ table_7 <- data.frame(
 
 
 # Create the styled table with the caption and additional styles
-styled_table_7 <- table_7 %>%
-  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_7}Analysis of Data Sources in Various Surveys Across Canada") %>%
+styled_ch02_table_07 <- ch02_table_07 %>%
+  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:ch02-make-table-07}Analysis of Data Sources in Various Surveys Across Canada") %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped"), 
                 font_size = 8)%>%
   column_spec(1:5, width = "3cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
-styled_table_7
+styled_ch02_table_07
 
 ```
 
@@ -964,15 +967,15 @@ This dataset combines sidewalks, trails, and links, forming a continuous network
 * Facilities: This dataset includes arenas, pools, community centers, park facilities, etc. It also includes joint venture features.
 
 \newpage
-Table \ref{tab:table-8} presents a structured overview of the availability of different data types across several travel-related datasets in Canada. The table is organized into seven categories: Travel Data, Users Data, Origin-Destination Data, Cycling and Walking Data, Spatial Data, and Additional Data, which we explained in Table 1.5. Each category corresponds to a specific type of information that might be useful for active travel-based accessibility analysis.
+Table \ref{tab:ch02-make-table-08} presents a structured overview of the availability of different data types across several travel-related datasets in Canada. The table is organized into seven categories: Travel Data, Users Data, Origin-Destination Data, Cycling and Walking Data, Spatial Data, and Additional Data, which we explained in Table 1.5. Each category corresponds to a specific type of information that might be useful for active travel-based accessibility analysis.
 The General Social Survey (GSS), Transportation Tomorrow Survey (TTS) of Toronto, and Autorité régionale de transport métropolitain (ARTM) survey of Montreal are comprehensive datasets that provide a wide range of information, covering most of the data categories identified. For instance, the GSS and TTS both include Travel, Users, and Origin-Destination Data, with TTS also offering insights into Cycling and Walking as well as Spatial Data, indicating its extensive coverage of travel behaviors and patterns.
 On the other hand, localized datasets such as the Vancouver open data and Montreal open data, although not as comprehensive as the GSS or TTS, still offer valuable information in specific categories, including Origin-Destination and Cycling and Walking data, which are essential for urban planning and promoting active transportation modes.
 This categorization and subsequent analysis highlight the richness and diversity of data available for transportation and urban planning in Canada. It demonstrates the potential for these datasets to inform policy-making and infrastructure development, particularly in enhancing active travel accessibility and understanding spatial dynamics within urban environments. The datasets that provide additional data, such as stress levels from the Canadian Business Counts (CBC) dataset, suggest opportunities for multidimensional analyses that can incorporate psychological factors into accessibility studies.
 
-```{r Table8, echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-08, echo=FALSE, cache=FALSE, warning=FALSE}
 
 # Create the data frame for the table
-table_8 <- data.frame(
+ch02_table_08 <- data.frame(
   Dataset = c(
     "General social survey (GSS)",
     "Transportation Tomorrow Survey (TTS) of Toronto",
@@ -993,7 +996,7 @@ table_8 <- data.frame(
 )
 
 #Changing column names
-colnames(table_8) <- c(
+colnames(ch02_table_08) <- c(
   "Dataset",
   "Travel Data",
   "Users Data",
@@ -1004,15 +1007,15 @@ colnames(table_8) <- c(
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_8 <- table_8 %>%
-  kable(format = "latex", booktabs = TRUE, caption = " \\label{tab:table-8} Availability of datasets") %>%
+styled_ch02_table_08 <- ch02_table_08 %>%
+  kable(format = "latex", booktabs = TRUE, caption = " \\label{tab:ch02-make-table-08} Availability of datasets") %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped", "scale_down"),
                 latex_options=c("scale_down"),
                 font_size = 8)%>%
   column_spec(1:5, width = "3cm")%>%
    row_spec(0, bold = TRUE, align = "c")
-styled_table_8
+styled_ch02_table_08
 ```
 
 ## Important considerations and possible challenges
@@ -1025,11 +1028,11 @@ A notable issue with conventional normative methods, as identified by Páez, Sco
 
 The task of selecting appropriate travel time or distance thresholds is critically acknowledged for its substantial impact on research outcomes in accessibility studies. This selection process demands a refined strategy that accommodates different thresholds for varied modes of transportation to accurately reflect their distinct attributes and the diverse abilities of different demographic groups. Despite this necessity, a notable inconsistency persists in applying these thresholds, even within the same mode, highlighting an imperative for a more unified methodological approach.
 
-Research, such as the study conducted by Xing et al. (2018), has delved into the sensitivity of accessibility outcomes to different time thresholds, exploring ranges between 15 to 35 minutes. These investigations generally reveal minimal variance within such intervals, suggesting that adopting a multimodal approach could mitigate overestimations and preserve uniformity across varied time thresholds. Yet, the definitive influence of threshold selection on accessibility metrics warrants further investigation. Furthermore, applying universal thresholds across all destination types and demographic groups fails to account for the heterogeneity in mobility needs and capacities. For instance, Saghapour (2017) underlines the necessity of differentiating thresholds based on destination types, advocating for distinct travel times for accessing retail and recreational centers versus community services. Similarly, imposing identical thresholds on all age groups neglects the unique mobility challenges seniors and children encounter, who may navigate slower or require more effort to traverse identical distances. While such distinctions have been recognized in the context of walking, their application to cycling remains inadequately addressed, suggesting a potential avenue for methodological refinement in accessibility studies [@xing2018measuring;@saghapour2017measuring ]. In the following, Table \ref{tab:table_9}  shows the thresholds of bicycle and walking travel time and distance in different studies.
+Research, such as the study conducted by Xing et al. (2018), has delved into the sensitivity of accessibility outcomes to different time thresholds, exploring ranges between 15 to 35 minutes. These investigations generally reveal minimal variance within such intervals, suggesting that adopting a multimodal approach could mitigate overestimations and preserve uniformity across varied time thresholds. Yet, the definitive influence of threshold selection on accessibility metrics warrants further investigation. Furthermore, applying universal thresholds across all destination types and demographic groups fails to account for the heterogeneity in mobility needs and capacities. For instance, Saghapour (2017) underlines the necessity of differentiating thresholds based on destination types, advocating for distinct travel times for accessing retail and recreational centers versus community services. Similarly, imposing identical thresholds on all age groups neglects the unique mobility challenges seniors and children encounter, who may navigate slower or require more effort to traverse identical distances. While such distinctions have been recognized in the context of walking, their application to cycling remains inadequately addressed, suggesting a potential avenue for methodological refinement in accessibility studies [@xing2018measuring;@saghapour2017measuring ]. In the following, Table \ref{tab:ch02-make-table-09}  shows the thresholds of bicycle and walking travel time and distance in different studies.
 
-```{r Table9, echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-09, echo=FALSE, cache=FALSE, warning=FALSE}
 # Sample data
-table_9 <- data.frame(
+ch02_table_09 <- data.frame(
   `Distance/Time thresholds` = c(
     "Neilson and Fowler (1972), \\ O'Neill, Ramsey et al. (1992), \\ Hsiao, Lu et al. (1997), \\ Murray and Wu (2003), \\ Zhao, Chow et al. (2003), \\ Kimpel, Dueker et al. (2007), \\ Gutiérrez and García-Palomares (2008)",
     "Lam and Morrall (1982)",
@@ -1071,21 +1074,21 @@ table_9 <- data.frame(
 )
 
 #Changing column names
-colnames(table_9) <- c(
+colnames(ch02_table_09) <- c(
   "Distance/Time thresholds",
   "Description"
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_9 <- table_9 %>%
-  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_9}Thresholds of walking and cycling travel time and distance") %>%
+styled_ch02_table_09 <- ch02_table_09 %>%
+  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:ch02-make-table-09}Thresholds of walking and cycling travel time and distance") %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped"), 
                 font_size = 12)%>%
   column_spec(1:2, width = "9cm")%>%
    row_spec(0, bold = TRUE, align = "c")%>%
   landscape()
-styled_table_9
+styled_ch02_table_09
 ```
 
 ### Impedance functions
@@ -1094,10 +1097,12 @@ Impedance function is used to describe the willingness of cyclists and pedestria
 
 Some researchers have argued that -- like maximum travel thresholds -- distance-decay rates should differ according to trip purpose and different population groups [@garcia2013walking; @wu2019measuring]. Similarly, researchers also argue that walking and cycling impedance functions should be calculated separately due to their differing travel speeds and maximum travel ranges [@cheng2019investigating]. For example, the distance-decay curve for work trips shown in Figure \ref{fig:initiative} assumes that cyclists are half as likely to reach a work destination 20 minutes away than one 10 minutes away. Therefore, jobs 20 minutes away would be applied half the weight of jobs 10 minutes away. These cycling weights differ slightly from walking trips since fewer people are willing to walk longer to work. While adjusting the distance-decay functions by mode has the potential to improve accuracy, it can also be said that a consistent approach to measuring accessibility across modes is preferable due to the possibility of causing one mode to seem less accessible when applying different decay functions (State et al. Initiative, 2021).
 
-Regarding the types of impedance functions considered, a negative exponential curve is familiar [@saghapour2017measuring; @wu2019measuring] -- example shown in Figure \ref{fig:initiative}. However, some studies have also calculated study-specific distance-decay curves based on trip data rather than assuming a standard function. Wu, Lu et al. (2019) calculated a distance-decay function using data from Shenzhen's dockless bicycle-sharing system. Their findings show that a lognormal distance decay best fits the distribution of bike-sharing trips, with the willingness to cycle increasing up to 500m and decreasing after that. García-Palomares, Gutiérrez et al. (2013) took a similar approach to measure walking accessibility to metro stations and found a linear distance-decay trend that varied significantly by age [@garcia2013walking; @wu2019measuring].
+Regarding the types of impedance functions considered, a negative exponential curve is familiar [@saghapour2017measuring; @wu2019measuring] -- example shown in Figure \ref{fig:ch02-plot-fig-02}. However, some studies have also calculated study-specific distance-decay curves based on trip data rather than assuming a standard function. Wu, Lu et al. (2019) calculated a distance-decay function using data from Shenzhen's dockless bicycle-sharing system. Their findings show that a lognormal distance decay best fits the distribution of bike-sharing trips, with the willingness to cycle increasing up to 500m and decreasing after that. García-Palomares, Gutiérrez et al. (2013) took a similar approach to measure walking accessibility to metro stations and found a linear distance-decay trend that varied significantly by age [@garcia2013walking; @wu2019measuring].
 
-```{r initiative,echo = FALSE, fig.cap="Example travel time decay functions by mode for work vs non work trips (Source: State Smart Transportation Initiative - based on data from 2017 National Household Travel Survey)", out.width="0.9\\linewidth", fig.align="center"}
+```{r ch02-plot-fig-02, echo=FALSE, out.width="100%", fig.cap="Example travel time decay functions by mode for work vs non work trips (Source: State Smart Transportation Initiative - based on data from 2017 National Household Travel Survey)", fig.align="center"}
 include_graphics(path = "figure/ch02-Fig-02.jpg")
+
+
 ```
 
 ### Slope
@@ -1114,32 +1119,32 @@ Lundberg (2012) examined the local cycling and walking networks through Geograph
 \end{equation}
 
 
-Slope values indicate uphill travel, while negative slope values indicate downhill travel. In this regard, they proposed different walking and cycling speeds based on the different slopes using Parkin and Rotheram's (2010) findings on the impact of slopes on bicycle travel speeds[@parkin2010design]. Table \ref{tab:table_10}  summarizes the various bicycle travel speeds used in the GIS modeling.
+Slope values indicate uphill travel, while negative slope values indicate downhill travel. In this regard, they proposed different walking and cycling speeds based on the different slopes using Parkin and Rotheram's (2010) findings on the impact of slopes on bicycle travel speeds[@parkin2010design]. Table \ref{tab:ch02-make-table-10}  summarizes the various bicycle travel speeds used in the GIS modeling.
 
 \newpage
 
-```{r table10, echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-10, echo=FALSE, cache=FALSE, warning=FALSE}
 # Data
-table_10 <- data.frame(
+ch02_table_10 <- data.frame(
   Slope = c(-10, -7, -5, -2, 0, 2, 5, 7, 10),
   `Speed(mph)` = c(18.8, 17.1, 16.1, 14.5, 13.4, 11.7, 8.9, 7.2, 4.5)
 )
 
 #Changing column names
-colnames(table_10) <- c(
+colnames(ch02_table_10) <- c(
   "Slope",
   "Speed(mph)"
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_10 <- table_10 %>%
-  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_10}Bicycle travel speeds used in GIS modeling", align = c('c', 'c')) %>%
+styled_ch02_table_10 <- ch02_table_10 %>%
+  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:ch02-make-table-10}Bicycle travel speeds used in GIS modeling", align = c('c', 'c')) %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped"), 
                 font_size = 12)%>%
   column_spec(1:2, width = "5cm")%>%
    row_spec(0, bold = TRUE, align = "c")
-styled_table_10
+styled_ch02_table_10
 ```
 Pedestrian travel speeds were also calculated based on the effect of slope. Tobler's hiking function was used to identify the effect of slope on travel speed. The equation \ref{eq:modified-formula} represents the modified Tobler's formula adjusted for percent slope as follows:
 
@@ -1149,29 +1154,29 @@ V = 6 e^{-3.5 |s + 0.05|}
 \end{equation}
 
 
-Where v is velocity, e is the base for natural logarithms, and s is the slope in percent. Table \ref{tab:table_11}  summarizes a pedestrian's travel speed used in the modeling in GIS.
+Where v is velocity, e is the base for natural logarithms, and s is the slope in percent. Table \ref{tab:ch02-make-table-11}  summarizes a pedestrian's travel speed used in the modeling in GIS.
 
-```{r table11, echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-11, echo=FALSE, cache=FALSE, warning=FALSE}
 # Data
-table_11 <- data.frame(
+ch02_table_11 <- data.frame(
   Slope = c(10, 7.5, 5, 2.5, 0, -2.5, -5, -7.5, -10),
   `Speed(mph)` = c(1.6, 2.1, 2.4, 2.8, 3.1, 3.6, 3.1, 2.6, 2.3)
 )
 
 #Changing column names
-colnames(table_11) <- c(
+colnames(ch02_table_11) <- c(
   "Slope",
   "Speed(mph)"
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_11 <- table_11 %>%
-  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_11}Pedestrian travel speeds used in GIS modeling", align = c('c', 'c')) %>%
-  kable_styling(full_width = FALSE, #latex_options=c("striped"), 
+styled_ch02_table_11 <- ch02_table_11 %>%
+  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:ch02-make-table-11}Pedestrian travel speeds used in GIS modeling", align = c('c', 'c')) %>%
+  kable_styling(full_width = FALSE, 
                 font_size = 12)%>%
   column_spec(1:2, width = "5cm")%>%
    row_spec(0, bold = TRUE, align = "c")
-styled_table_11
+styled_ch02_table_11
 ```
 
 In another study, Paez et al. (2020) calculated the slope from the vertical and horizontal displacements. The instantaneous slope $m$ is given by the derivative of $y = f(x)$ concerning $x$. This is given by the equation \ref{eq:calculating-the-slope-from-the-vertical-and-horizontal-displacements} [@paez2020]:
@@ -1196,10 +1201,10 @@ t = \frac{d_i}{100 e^{-3.5 |m + 0.5|}} = \frac{1}{100} d_i e^{3.5 |m + 0.5|}
 \end{equation}
 
 
-Where $d_i$ can be the distance on the surface as discussed above or can be approximated by the horizontal distance $\Delta h$, as seen in Figure \ref{fig:surface-distance}, travel time tends to increase as the slope increases. Figure \ref{fig:surface-distance} by [@paez2020] illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.  
+Where $d_i$ can be the distance on the surface as discussed above or can be approximated by the horizontal distance $\Delta h$, as seen in Figure \ref{fig:ch02-plot-fig-03}, travel time tends to increase as the slope increases. Figure \ref{fig:ch02-plot-fig-03} by [@paez2020] illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.  
 
 
-```{r surface-distance, echo = FALSE, fig.cap="Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). 'Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility.' Findings, September.", out.width="0.9\\linewidth", fig.align="center"}
+```{r ch02-plot-fig-03, echo=FALSE, out.width="100%", fig.cap="Relationship between surface distance/travel time and slope, adapted from Higgins, C. D. (2021). 'Hiking with Tobler: Tracking Movement and Calibrating a Cost Function for Personalized 3D Accessibility.' Findings, September.", fig.align="center"}
 include_graphics(path = "figure/ch02-Fig-03.jpg")
 ```
 
@@ -1221,31 +1226,31 @@ Painted bike lanes may be assigned LTS 1 to 4 depending on the speed, width, and
 
 Trails and park walkways are LTS 1 but may be categorized as non-conforming Can-BICS facilities depending on the trail surface (e.g., gravel or dirt vs. paved).
 
-```{r table12, echo=FALSE, cache=FALSE, warning=FALSE}
+```{r ch02-make-table-12, echo=FALSE, cache=FALSE, warning=FALSE}
 
 # Data
-table_12 <- data.frame(
+ch02_table_12 <- data.frame(
   `Facility Type` = c("Cycle tracks", "Local street bikeway", "Bike paths", "Multi-use paths", "Painted Bike lanes", "Park trails and walkways"),
   `Can-BICS Class` = c("High comfort", "High comfort", "High comfort", "Medium comfort", "Low comfort", "Non-conforming"),
   `LTS Category` = c("1", "1 or 2", "1", "1", "1 to 4", "1")
 )
 
 #Changing column names
-colnames(table_12) <- c(
+colnames(ch02_table_12) <- c(
   "Facility Type",
   "Can-BICS Class",
   "LTS Category"
 )
 
 # Create the styled table with the caption and additional styles
-styled_table_12 <- table_12 %>%
-  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:table_12}The Canadian Bikeway Comfort and Safety (Can-BICS) Classification System", align = c('c', 'c')) %>%
+styled_ch02_table_12 <- ch02_table_12 %>%
+  kable(format = "latex", booktabs = TRUE, longtable = TRUE, caption = "\\label{tab:ch02-make-table-12}The Canadian Bikeway Comfort and Safety (Can-BICS) Classification System", align = c('c', 'c')) %>%
   kable_styling(full_width = FALSE, 
                 #latex_options=c("striped"), 
                 font_size = 12)%>%
   column_spec(1:2, width = "5cm")%>%
    row_spec(0, bold = TRUE, align = "c")
-styled_table_12
+styled_ch02_table_12
 ```
 
 
@@ -1267,10 +1272,10 @@ When selecting an accessibility measure, there is a trade-off between complexity
 
 Eliciting user needs data is discovering requirements for a project by accessing available knowledge sources and communicating with stakeholders who directly or indirectly influence the requirements. Among the available requirements elicitation techniques, the most common and effective elicitation technique is interviews with stakeholders[@engelbrektsson2000eliciting; @browne2001empirical; @friedrich2007towards; @hadar2014role]. As a result, in this section, we discuss some of the questions required to extract data users' requirements.
 
-```{r Flowchart,echo = FALSE, fig.cap="Elicitation data needs in interview", out.width="0.9\\linewidth", fig.align="center"}
+```{r ch02-plot-fig-04, echo=FALSE, out.width="100%", fig.cap="Elicitation data needs in interview", fig.align="center"}
 knitr::include_graphics("figure/ch02-Fig-04.png")
 ```
-Figure \ref{fig:Flowchart} presented is a structured approach for eliciting user needs data in the context of evaluating transportation projects or policies with a focus on accessibility, particularly walking and cycling modes. The flowchart is designed through a comprehensive set of questions tailored to gather detailed information from organizations on their current practices, preferences, and data needs related to accessibility analysis. The starting point questions whether the organization has previously used the accessibility method to evaluate transportation projects or policies focused on active travel modes like walking and cycling. This dichotomous branch leads to two separate pathways:
+Figure \ref{fig:ch02-plot-fig-04} presented is a structured approach for eliciting user needs data in the context of evaluating transportation projects or policies with a focus on accessibility, particularly walking and cycling modes. The flowchart is designed through a comprehensive set of questions tailored to gather detailed information from organizations on their current practices, preferences, and data needs related to accessibility analysis. The starting point questions whether the organization has previously used the accessibility method to evaluate transportation projects or policies focused on active travel modes like walking and cycling. This dichotomous branch leads to two separate pathways:
 If 'Yes':
 The flowchart prompts the interviewer to inquire about the specific accessibility measurement tools the organization has used and their preferences among these.
 Questions then delve into the modes of transportation, types of destinations analyzed, and whether analyses consider different traveler capabilities, reflecting inclusivity in their assessments.

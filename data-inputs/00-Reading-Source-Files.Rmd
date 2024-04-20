@@ -1568,6 +1568,99 @@ save(cycling_data,
      ascii = FALSE)
 ```
 
+# Creating integrated dataset of walking and cycling trips
+
+To conduct a descriptive analysis of walking and cycling trips, an integrated dataset named "trip" has been constructed. This dataset encompasses comprehensive data pertaining to both walking and cycling activities. 
+
+
+```{r creating an integrated data, include=FALSE,  cache=FALSE}
+# creating an integrated data frame from 1986 to 2015
+trip <- rbind(walking_2015, cycling_2015, walking_2010, cycling_2010, walking_2005, cycling_2005, cycling_1998, walking_1998, walking_1992, cycling_1992, walking_1986)
+
+# Change cyclingtrip in cycling_2010 to cycling 
+unique_modes <- unique(trip$MODE)
+print(unique_modes)
+trip$MODE[trip$MODE == "cyclingtrip"] <- "cycling"
+
+# Change the name of some values in the dest column in the dataset 
+# Ensure that 'dest_label' is the correct column name
+trip <- trip |>
+  mutate(dest_label = case_when(
+    dest_label == "Restaurant/bar" ~ "Restaurant, bar or club",
+    dest_label == "Outdoors away from home" ~ "outdoors",
+    dest_label == "Grocery store, other stores or mall" ~ "Grocery store",
+    dest_label == "Restaurant, bar or club" ~ "Restaurant",
+    dest_label == "Sports centre, field or arena" ~ "Sport area",
+    dest_label == "Medical, dental or other health clinic" ~ "Health clinic",
+    dest_label == "In the neighbourhood" ~ "Outdoors",
+    dest_label == "Library, museum or theatre" ~ "Library",
+    TRUE ~ dest_label  # This line ensures other values remain unchanged
+  ))
+```
+
+Save this data frame:
+```{r}
+save(trip,
+     file = paste0(here(), "/data/trip.Rda"),
+     compress = "bzip2",
+     version = 2,
+     ascii = FALSE)
+```
+
+# Creating integrated dataset for providing impedance function graphs 
+
+Two distinct datasets were constructed to analyze mobility patterns: walking_data_f and cycling_data_f. Each dataset was meticulously compiled to contain different modes of transportation, such as walking and cycling. A crucial step involved the integration of impedance functions into both datasets to further enhance our analysis. This was accomplished by creating a new column in each dataset, aptly named 'Impedance', which aggregates the various impedance functions corresponding to a range of destinations. These functions are designed to quantify individuals' resistance or difficulty when traveling to different locations. The inclusion of this column allows for a more nuanced understanding of how destination-specific factors influence walking and cycling behaviors. 
+
+
+
+```{r, echo=FALSE, message=FALSE}
+# preparing data set in order to create impedance function graphs to different destinations
+#walking
+walking_2015_f <- walking_2015_f |>
+  mutate(f_t = coalesce(f_300, f_301, f_302, f_303, f_305, f_306, f_307, f_309, f_310))
+walking_2010_f <- walking_2010_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3, f_6, f_9))
+walking_2005_f <- walking_2005_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3, f_4, f_5, f_6, f_9, f_10))
+walking_1998_f <- walking_1998_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3))
+walking_1992_f <- walking_1992_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3))
+walking_1986_f <- walking_1986_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3))
+
+walking_data_f <- bind_rows(walking_2015_f, walking_2010_f, walking_2005_f,walking_1998_f, walking_1992_f,walking_1986_f )
+
+#Cycling
+cycling_2015_f <- cycling_2015_f |>
+  mutate(f_t = coalesce(f_300, f_301, f_303, f_306, f_309))
+cycling_2010_f <- cycling_2010_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3, f_6, f_9))
+cycling_2005_f <- cycling_2005_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3, f_4, f_6, f_9))
+cycling_1998_f <- cycling_1998_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3))
+cycling_1992_f <- cycling_1992_f |>
+  mutate(f_t = coalesce(f_1, f_2, f_3))
+cycling_data_f <- bind_rows(cycling_2015_f, cycling_2010_f, cycling_2005_f,cycling_1998_f, cycling_1992_f )
+```
+
+
+Save these data frames:
+```{r}
+save(walking_data_f,
+     file = paste0(here(), "/data/walking_data_f.Rda"),
+     compress = "bzip2",
+     version = 2,
+     ascii = FALSE)
+
+save(cycling_data_f,
+     file = paste0(here(), "/data/cycling_data_f.Rda"),
+     compress = "bzip2",
+     version = 2,
+     ascii = FALSE)
+```
+
 
 
 
