@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.20)  20 APR 2024 16:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.20)  20 APR 2024 17:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1544,12 +1544,12 @@ Overfull \hbox (8.13403pt too wide) in paragraph at lines 2160--2160
  []
 
 [101] [102] [103] [104] [105]
-<figure/ch03_fig_01.jpg, id=957, 5119.125pt x 6624.75pt>
+<figure/ch03_fig_01.jpg, id=959, 5119.125pt x 6624.75pt>
 File: figure/ch03_fig_01.jpg Graphic file (type jpg)
 <use figure/ch03_fig_01.jpg>
 Package pdftex.def Info: figure/ch03_fig_01.jpg  used on input line 2209.
 (pdftex.def)             Requested size: 418.25545pt x 541.21132pt.
-<figure/ch03_fig_02.jpg, id=958, 5119.125pt x 6624.75pt>
+<figure/ch03_fig_02.jpg, id=960, 5119.125pt x 6624.75pt>
 File: figure/ch03_fig_02.jpg Graphic file (type jpg)
 <use figure/ch03_fig_02.jpg>
 Package pdftex.def Info: figure/ch03_fig_02.jpg  used on input line 2218.
@@ -1584,69 +1584,69 @@ LaTeX Warning: Float too large for page by 11.56528pt on input line 2544.
 LaTeX Warning: Float too large for page by 94.56528pt on input line 2610.
 
 [111] [112] [113] [114] [115] [116] [117]
-<figure/ch03_fig_03.jpg, id=1017, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_03.jpg, id=1019, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_03.jpg Graphic file (type jpg)
 <use figure/ch03_fig_03.jpg>
 Package pdftex.def Info: figure/ch03_fig_03.jpg  used on input line 2620.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 [118] [119 <./figure/ch03_fig_03.jpg>]
-<figure/ch03_fig_04.jpg, id=1028, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_04.jpg, id=1030, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_04.jpg Graphic file (type jpg)
 <use figure/ch03_fig_04.jpg>
 Package pdftex.def Info: figure/ch03_fig_04.jpg  used on input line 2633.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-<figure/ch03_fig_05.jpg, id=1031, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_05.jpg, id=1033, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_05.jpg Graphic file (type jpg)
 <use figure/ch03_fig_05.jpg>
 Package pdftex.def Info: figure/ch03_fig_05.jpg  used on input line 2646.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 [120] [121 <./figure/ch03_fig_04.jpg>] [122 <./figure/ch03_fig_05.jpg>]
-<figure/ch03_fig_06.jpg, id=1047, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_06.jpg, id=1049, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_06.jpg Graphic file (type jpg)
 <use figure/ch03_fig_06.jpg>
 Package pdftex.def Info: figure/ch03_fig_06.jpg  used on input line 2658.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-<figure/ch03_fig_07.jpg, id=1052, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_07.jpg, id=1054, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_07.jpg Graphic file (type jpg)
 <use figure/ch03_fig_07.jpg>
 Package pdftex.def Info: figure/ch03_fig_07.jpg  used on input line 2672.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 [123] [124 <./figure/ch03_fig_06.jpg>] [125 <./figure/ch03_fig_07.jpg>]
-<figure/ch03_fig_08.jpg, id=1068, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_08.jpg, id=1070, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_08.jpg Graphic file (type jpg)
 <use figure/ch03_fig_08.jpg>
 Package pdftex.def Info: figure/ch03_fig_08.jpg  used on input line 2683.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-<figure/ch03_fig_09.jpg, id=1071, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_09.jpg, id=1073, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_09.jpg Graphic file (type jpg)
 <use figure/ch03_fig_09.jpg>
 Package pdftex.def Info: figure/ch03_fig_09.jpg  used on input line 2693.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 [126] [127 <./figure/ch03_fig_08.jpg>] [128 <./figure/ch03_fig_09.jpg>]
-<figure/ch03_fig_10.jpg, id=1086, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_10.jpg, id=1088, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_10.jpg Graphic file (type jpg)
 <use figure/ch03_fig_10.jpg>
 Package pdftex.def Info: figure/ch03_fig_10.jpg  used on input line 2699.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-<figure/ch03_fig_11.jpg, id=1090, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_11.jpg, id=1092, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_11.jpg Graphic file (type jpg)
 <use figure/ch03_fig_11.jpg>
 Package pdftex.def Info: figure/ch03_fig_11.jpg  used on input line 2706.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 [129] [130 <./figure/ch03_fig_10.jpg>]
-<figure/ch03_fig_12.jpg, id=1099, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_12.jpg, id=1101, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_12.jpg Graphic file (type jpg)
 <use figure/ch03_fig_12.jpg>
 Package pdftex.def Info: figure/ch03_fig_12.jpg  used on input line 2710.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 [131 <./figure/ch03_fig_11.jpg>] [132 <./figure/ch03_fig_12.jpg>]
-<figure/ch03_fig_13.jpg, id=1109, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_13.jpg, id=1111, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_13.jpg Graphic file (type jpg)
 <use figure/ch03_fig_13.jpg>
 Package pdftex.def Info: figure/ch03_fig_13.jpg  used on input line 2721.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 [133]
-<figure/ch03_fig_14.jpg, id=1115, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_14.jpg, id=1117, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_14.jpg Graphic file (type jpg)
 <use figure/ch03_fig_14.jpg>
 Package pdftex.def Info: figure/ch03_fig_14.jpg  used on input line 2725.
@@ -1693,17 +1693,17 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  49414 strings out of 476063
- 1174877 string characters out of 5791200
+ 1174737 string characters out of 5791200
  2129305 words of memory out of 5000000
  70292 multiletter control sequences out of 15000+600000
  689801 words of font info for 107 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  115i,12n,121p,4297b,1196s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on thesis.pdf (172 pages, 22331485 bytes).
+Output written on thesis.pdf (172 pages, 22331527 bytes).
 PDF statistics:
- 1710 PDF objects out of 1728 (max. 8388607)
- 1451 compressed objects within 15 object streams
+ 1712 PDF objects out of 1728 (max. 8388607)
+ 1453 compressed objects within 15 object streams
  553 named destinations out of 1000 (max. 500000)
  407 words of extra memory for PDF output out of 10000 (max. 10000000)
 

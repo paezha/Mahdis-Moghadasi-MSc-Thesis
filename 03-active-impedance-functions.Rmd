@@ -88,18 +88,18 @@ Accessibility is conceptualized as the potential to access geographically disper
 
 Examining impedance functions concerning different transportation modes and destinations is a valuable foundation for comprehending the travel behavior attributed to each mode. The parameters of impedance functions offer insights into the spatial coverage provided by each mode of transportation. By segmenting modal trips based on their purposes, comparing the distribution of trips between various purposes for each transportation mode (work-related and non-work purposes) becomes possible. Empirically derived impedance functions offer valuable evidence that can be utilized to examine and substantiate various claims about travel behavior, thus supporting urban planning endeavors. For instance, the current interest in creating "livable" communities revolves around loosely held assumptions regarding individuals' willingness to walk and cycle to different destinations. A common belief is that people are generally willing to walk up to a quarter of a mile to access most locations [@untermann1984accommodating]. However, there remains limited information regarding whether specific individuals are open to walking or cycling longer distances and, if so, how much farther they are willing to travel. Moreover, there needs to be more evidence concerning the influence of trip characteristics, destination attractiveness, and individual characteristics on the impact of distance on walking and cycling behaviors[@geurs2006accessibility].
 
-Since Hansen's foundational research, various categories of accessibility measures have been developed, such as active-based, infrastructure-based, individual-based, and utility-based indicators [@hansen1959accessibility; @geurs2004]. Accessibility metrics, particularly those of the gravity type or potential measures, have been extensively utilized in active modes [@miller2005place]. These measures primarily stem from the gravity model, where an impedance function weighs opportunities. In fact, these are designed by weighting opportunities within an area according to an attraction measure and then diminishing each based on an impedance measure [for example, @geertman1995gis; @handy1993regional]. Equation 2.1 expresses the general representation of the accessibility equation:
+Since Hansen's foundational research, various categories of accessibility measures have been developed, such as active-based, infrastructure-based, individual-based, and utility-based indicators [@hansen1959accessibility; @geurs2004]. Accessibility metrics, particularly those of the gravity type or potential measures, have been extensively utilized in active modes [@miller2005place]. These measures primarily stem from the gravity model, where an impedance function weighs opportunities. In fact, these are designed by weighting opportunities within an area according to an attraction measure and then diminishing each based on an impedance measure [for example, @geertman1995gis; @handy1993regional]. Equation \ref{eq:ch03-equation-01} expresses the general representation of the accessibility equation:
 
 \begin{equation}
 A_{ik}^{pt} = \sum_{j=1}^J g(O_j^t) f(C_{ij}^p)
-\label{eq:gen}
+\label{eq:ch03-equation-01}
 \end{equation}
 
-Research demonstrates that two primary types of accessibility indicators are predominantly used in studies. According to equation \ref{eq:gen}, the first one revolves around **Opportunities**, which are weighted by an impedance (characterized by a relevant decreasing function of travel cost or time required to access these opportunities. The accessibility measure $A^ {pt}_{ik}$ signifies accessibility from an origin i at a specific time t to a particular destination type k tailored for an individual of type p. The function $g(O^t_{jk})$ quantifies the appeal of opportunities categorized under type k at destination j, accessible at time t. Simultaneously, $f(C^p_{ij})$ represents the impedance while traveling from origin i to destination j for a person belonging to type p. It's worth noting that the functional form $f()$ delineates an impedance decay function. Meanwhile, $C^p_{ij}$ signifies the generalized travel cost, potentially encompassing factors such as time, distance, and exertion.
+Research demonstrates that two primary types of accessibility indicators are predominantly used in studies. According to equation \ref{eq:ch03-equation-01}, the first one revolves around **Opportunities**, which are weighted by an impedance (characterized by a relevant decreasing function of travel cost or time required to access these opportunities. The accessibility measure $A^ {pt}_{ik}$ signifies accessibility from an origin i at a specific time t to a particular destination type k tailored for an individual of type p. The function $g(O^t_{jk})$ quantifies the appeal of opportunities categorized under type k at destination j, accessible at time t. Simultaneously, $f(C^p_{ij})$ represents the impedance while traveling from origin i to destination j for a person belonging to type p. It's worth noting that the functional form $f()$ delineates an impedance decay function. Meanwhile, $C^p_{ij}$ signifies the generalized travel cost, potentially encompassing factors such as time, distance, and exertion.
 
 Within the gravity model, the second variable concerns the cost associated with the spatial gap between a trip's start and end points (origins and destinations). Moreover, the third pivotal variable, crucial for constructing this model, involves the mathematical formulation delineating the travel impedance between origins and destinations. This "cost" can be articulated in terms of physical distance, travel duration, financial outlay, or a fusion of these elements. Among these, travel duration emerges as the chief cost measure and is the metric chosen for this particular investigation[@handy1993regional; @fotheringham1989spatial; @grengs2004measuring; @hess2005access]. In fact, when selecting a format for the impedance function, the researcher must determine which variable (time, cost, or both) will measure impedance. Historically, both these measures have been employed, with specific instances incorporating the concept of generalized cost [@handy1997measuring]. For non-motorized travel modes, however, the prevalent choice is distance, attributed to the challenges in obtaining precise travel times from existing network models designed for walking and bicycling. Previous studies indicate that adopting either time or distance as the impedance variable is appropriate [@handy1997measuring]. While the first two variables are derived from the attributes of the built environment, the impedance parameter captures aspects of human behavior, making its determination an intricate undertaking.
 
-The second type pertains to the **Cumulative-opportunity** metrics, often referred to as **isochronic indices**. These evaluate accessibility by determining the number or proportion of opportunities available within a specified travel duration or distance from a reference point. These metrics avoid making presumptions about travel decay. They utilize a rectangular function, categorizing travel as "acceptable" within certain thresholds and "unacceptable" beyond them. One of the main complexities with these metrics is deciding on the appropriate cutoff point. This decision can be based on prevailing mobility patterns of the population, or it can mirror established norms, conventions, or the researcher's informed projections [@vickerman1974accessibility]. This metric can be interpreted as a specialized solution of Equation 2.2. In this context, the impedance function is designated as 1 when $C_{ij}< x$ and 0 when $C_{ij} > x$.
+The second type pertains to the **Cumulative-opportunity** metrics, often referred to as **isochronic indices**. These evaluate accessibility by determining the number or proportion of opportunities available within a specified travel duration or distance from a reference point. These metrics avoid making presumptions about travel decay. They utilize a rectangular function, categorizing travel as "acceptable" within certain thresholds and "unacceptable" beyond them. One of the main complexities with these metrics is deciding on the appropriate cutoff point. This decision can be based on prevailing mobility patterns of the population, or it can mirror established norms, conventions, or the researcher's informed projections [@vickerman1974accessibility]. This metric can be interpreted as a specialized solution of Equation \ref{eq:ch03-equation-02} In this context, the impedance function is designated as 1 when $C_{ij}< x$ and 0 when $C_{ij} > x$.
 
 
 \begin{equation}
@@ -108,7 +108,7 @@ C_{ij} =
   1 \& \text{if } c_{ij} \le x \\
   0 \& \text{if } c_{ij} > x
 \end{cases}
-\label{eq:Rectangular form of impedance function}
+\label{eq:ch03-equation-02}
 \end{equation}
 
 
@@ -124,7 +124,7 @@ Furthermore, recent investigations into impedance functions have shed light on t
 
 - **Inverse Power equation** 
 
-The Inverse Power function is defined as (\ref{eq:inverse}):
+The Inverse Power function is defined as (\ref{eq:ch03-equation-03}):
 
 \begin{equation}
 f(t_{ij}) =
@@ -132,7 +132,7 @@ f(t_{ij}) =
   1 & \text{if } t_{ij} \le 1 \\
   t_{ij}^{-\beta} & \text{otherwise}
 \end{cases}
-\label{eq:inverse}
+\label{eq:ch03-equation-03}
 \end{equation}
 
 
@@ -141,40 +141,40 @@ This function posits that impedance is inversely proportional to travel time $(t
 
 - **Negative Exponential equation** 
 
-The Negative Exponential function (\ref{eq:negative-exponential}) is given by:
+The Negative Exponential function (\ref{eq:ch03-equation-04}) is given by:
 
 \begin{equation}
 f(t_{ij}) = e^{-\beta t_{ij}}
-\label{eq:negative-exponential}
+\label{eq:ch03-equation-04}
 \end{equation}
 
 This model suggests that impedance decreases exponentially with increasing travel time $(t_{ij})$. The parameter $\beta$ represents the decay rate, with higher values indicating a faster decrease in accessibility with increasing travel time. This function is widely used due to its simplicity and ability to model the rapid drop-off in accessibility over distance.
 
 - **Modified Gaussian equation** 
 
-The Modified Gaussian function is expressed as (\ref{eq:modified-gaussian}):
+The Modified Gaussian function is expressed as (\ref{eq:ch03-equation-05}):
 
 \begin{equation}
 f(t_{ij}) = e^{-\frac{t_{ij}^2}{2}}
-\label{eq:modified-gaussian}
+\label{eq:ch03-equation-05}
 \end{equation}
 
 This function follows a Gaussian distribution pattern, implying that the impedance decreases in a bell-shaped curve as travel time increases, with a slower decline near the origin and a less steep drop at larger distances. It captures the gradual reduction in accessibility with distance more realistically than the exponential or power functions.
 
 - **Logarithmic normal distribution function equation** 
 
-Presented as Equation \ref{eq:logarithmic-normal} [@wu2019measuring]:
+Presented as Equation \ref{eq:ch03-equation-06} [@wu2019measuring]:
 
 \begin{equation}
 f(c_{ij}) = \alpha \frac{1}{\sqrt{2\pi} x \sigma} e^{-\frac{(\ln t - \mu)^2}{2\sigma^2}}
-\label{eq:logarithmic-normal}
+\label{eq:ch03-equation-06}
 \end{equation}
 
 Here, the variable $x$ represents the distance traveled in active modes. The parameters, represented as $\alpha$, $\mu$, and $\sigma$, hold significant importance in this analysis as they undergo estimation. Together, these parameters exert control over the shape of the curve under investigation. The function accounts for impedance distribution across different travel times in a log-normal format, offering a more nuanced view of accessibility. [@wu2019measuring].
 
 - **Cumulative Opportunities Rectangular Function** 
 
-Defined as Equation \ref{eq:cumulative-rectan}:
+Defined as Equation \ref{eq:ch03-equation-07}:
 
 \begin{equation}
 f(t_{ij}) =
@@ -182,7 +182,7 @@ f(t_{ij}) =
   1 & \text{if } t_{ij} \le t \\
   0 & \text{otherwise}
 \end{cases}
-\label{eq:cumulative-rectan}
+\label{eq:ch03-equation-07}
 \end{equation}
 
 
@@ -190,7 +190,7 @@ This function assumes a binary approach to accessibility. For travel times $(t_{
 
 - **Cumulative Opportunities Linear** 
 
-The equation of cumulative opportunities linear is as follows (Equation \ref{eq:cumulative-linear}): 
+The equation of cumulative opportunities linear is as follows (Equation \ref{eq:ch03-equation-08}): 
 
 \begin{equation}
 f(t_{ij}) =
@@ -198,14 +198,14 @@ f(t_{ij}) =
   1 - \frac{t_{ij}}{\bar{t}} & \text{if } t_{ij} \le \bar{t} \\
   0 & \text{otherwise}
 \end{cases}
-\label{eq:cumulative-linear}
+\label{eq:ch03-equation-08}
 \end{equation}
 
 This linear function provides a gradual decrease in accessibility with an increase in travel time up to a particular average time $\bar{t}$. Beyond this average time, accessibility is considered zero. This model is beneficial for representing a more gradual decay in accessibility than the abrupt drop-off in the rectangular model.
 
 - **Gamma distribution** 
 
-The formula of this function is presented below  (Equation \ref{eq:gamma-imped})
+The formula of this function is presented below  (Equation \ref{eq:ch03-equation-09})
 
 
 
@@ -215,7 +215,7 @@ f(c_{ij}) =
 \frac{1}{\sigma^\alpha\Gamma(\alpha)} c_{ij}^{\alpha-1} \cdot e^{-\frac{c_{ij}}{\sigma}} & \text{if } 0 \leq c_{ij} <      \infty  \text{ and } \alpha, \sigma > 0 \\
 0 & \text{otherwise}
    \end{cases}
-\label{eq:gamma-imped}
+\label{eq:ch03-equation-09}
 \end{equation}
 
 
@@ -227,11 +227,11 @@ The Gamma function introduces a flexible model, parameterized by $\alpha$ and $\
 
 - **Log-logistic decay functions** 
 
-The log-logistic function was displayed in Equation \ref{eq:log-logistic-decay-functions}.
+The log-logistic function was displayed in Equation \ref{eq:ch03-equation-10}.
 
 \begin{equation}
 f(c_{ij}) = \frac {1}{1+ \exp(a + b\ln c_{ij})}
-\label{eq:log-logistic-decay-functions}
+\label{eq:ch03-equation-10}
 \end{equation}
 
 In this context, the variable $c_{ij}$ denotes the travel time between locations $i$ and $j$, while parameters $a$ and $b$ are the subject of estimation. In this log-logistic model, the impedance is a function of the natural logarithm of travel time $\ln c_{ij}$. Parameters $a$and $b$ define the steepness of the decay curve. This function is helpful for scenarios where a logistic decay pattern is more representative of the travel behavior being modeled [@thorsen1999network].
@@ -239,7 +239,7 @@ In this context, the variable $c_{ij}$ denotes the travel time between locations
 
 - **Beta distribution**
 
-The Beta distribution has probability density function (\ref{eq:beta-functions})
+The Beta distribution has probability density function (\ref{eq:ch03-equation-11})
 
 \begin{equation}
 f(c_{ij}) = 
@@ -247,19 +247,19 @@ f(c_{ij}) =
 \frac{1}{B(\alpha, \beta)} c_{ij}^{\alpha - 1}(1 - c_{ij})^{\beta - 1} & \text{if } 0 \leq c_{ij} < \infty \\
 0 & \text{otherwise}
 \end{cases}
-\label{eq:beta-functions}
+\label{eq:ch03-equation-11}
 \end{equation}
 
-The Equation \ref{eq:beta-functions} represents the probability density function of the Beta distribution, a continuous probability distribution with two shape parameters. In this formula, $c_{ij}$is a specific impedance or cost between a point $i$ and point $j$ which is between 0 and 1, inclusive. It represents the possible outcomes of the Beta distribution, where $c_{ij}$ is the probability of an event occurring. $\alpha$ is the first shape parameter, and $\beta$ is the second shape parameter. These parameters control the shape of the Beta distribution, where both are positive and more than 0. They can be any positive real numbers, and they determine the behavior of the probability density function, dictating where most of the distribution's "weight" is. The term $B(\alpha, \beta)$ in the denominator is the Beta function, which is a normalization constant to ensure that the total probability integrates to 1 over the interval from 0 to 1. The Beta function is related to the Gamma function and is defined for positive values of $\alpha$ and $\beta$. It ensures that the probability density function is scaled correctly. This formula gives us the likelihood of $c_{ij}$ when the distribution is defined by particular $\alpha$ and $\beta$ parameters.
+The Equation \ref{eq:ch03-equation-11} represents the probability density function of the Beta distribution, a continuous probability distribution with two shape parameters. In this formula, $c_{ij}$is a specific impedance or cost between a point $i$ and point $j$ which is between 0 and 1, inclusive. It represents the possible outcomes of the Beta distribution, where $c_{ij}$ is the probability of an event occurring. $\alpha$ is the first shape parameter, and $\beta$ is the second shape parameter. These parameters control the shape of the Beta distribution, where both are positive and more than 0. They can be any positive real numbers, and they determine the behavior of the probability density function, dictating where most of the distribution's "weight" is. The term $B(\alpha, \beta)$ in the denominator is the Beta function, which is a normalization constant to ensure that the total probability integrates to 1 over the interval from 0 to 1. The Beta function is related to the Gamma function and is defined for positive values of $\alpha$ and $\beta$. It ensures that the probability density function is scaled correctly. This formula gives us the likelihood of $c_{ij}$ when the distribution is defined by particular $\alpha$ and $\beta$ parameters.
 
 - **Poisson distribution**
 
 \begin{equation}
 P(c_{ij} = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad \text{for } k = 0, 1, 2, \ldots
-\label{eq:poisson-functions}
+\label{eq:ch03-equation-12}
 \end{equation}
 
-The Poisson distribution (\ref{eq:poisson-functions}) is a discrete probability distribution that expresses the likelihood of a given number of events occurring within a fixed interval of time or space, assuming these events occur with a known constant mean rate and independently of the time since the last event. It is named after the French mathematician Siméon Denis Poisson. In Equation \ref{eq:poisson-functions}, $P(c_{ij} =k)$ represents the probability that the impedance between point $i$ and point $j$ is exactly $k$. The impedance could refer to various factors such as travel time, cost, or distance that might impede the movement or flow between these two points.$\lambda$ is the average rate of impedance observed in the system or estimated from data. It represents the expected number of impedances that occur over a given interval. In the context of accessibility, it could be the average number of barriers or frictions encountered when traveling between different locations. $k$ is the actual observed number of impedances; for example, this could be the actual number of barriers experienced on a particular route. The use of the Poisson distribution to model impedance is based on the assumption that the events (or impedances) occur randomly and independently within a given spatial or temporal frame of reference.
+The Poisson distribution (\ref{eq:ch03-equation-12}) is a discrete probability distribution that expresses the likelihood of a given number of events occurring within a fixed interval of time or space, assuming these events occur with a known constant mean rate and independently of the time since the last event. It is named after the French mathematician Siméon Denis Poisson. In Equation \ref{eq:ch03-equation-12}, $P(c_{ij} =k)$ represents the probability that the impedance between point $i$ and point $j$ is exactly $k$. The impedance could refer to various factors such as travel time, cost, or distance that might impede the movement or flow between these two points.$\lambda$ is the average rate of impedance observed in the system or estimated from data. It represents the expected number of impedances that occur over a given interval. In the context of accessibility, it could be the average number of barriers or frictions encountered when traveling between different locations. $k$ is the actual observed number of impedances; for example, this could be the actual number of barriers experienced on a particular route. The use of the Poisson distribution to model impedance is based on the assumption that the events (or impedances) occur randomly and independently within a given spatial or temporal frame of reference.
 
 
 -  **Weibull distribution**
@@ -272,11 +272,11 @@ f(c_{ij}) =
 \left( \frac{\alpha}{\theta}\right) \left( \frac{c_{ij}}{\theta}\right)^{\alpha - 1} e^{-\left(\frac{c_{ij}}{\theta}\right)^\alpha} & \text{if } 0 \leq c_{ij} \\
 0 & \text{otherwise}
 \end{cases}
-\label{eq:weibull-functions}
+\label{eq:ch03-equation-13}
 \end{equation}
 
 
-The Weibull distribution (Equation \ref{eq:weibull-functions}) is a continuous probability distribution used to model various data types, particularly where the data shows a changing failure rate over time. This flexibility makes the Weibull distribution especially suited to reliability analysis, life data analysis, and modeling failure times. $f(c_{ij})$ represents the probability density function (pdf) of the Weibull distribution, with $c_{ij}$ being the variable of interest. here, $c_{ij}$ would represent the impedance value, such as time or cost associated with traveling between two points. $\alpha$ is the shape parameter of the Weibull distribution. It determines the form of the probability distribution function and can indicate whether the failure rate is increasing, constant, or decreasing over time. In fact,it would shape the distribution of impedance experiences, such as whether impedances are more common as trips get longer or shorter. $\theta$ is the scale parameter of the Weibull distribution. It stretches or compresses the distribution along the horizontal axis and is akin to the 'characteristic life' in reliability terminology.
+The Weibull distribution (Equation \ref{eq:ch03-equation-13}) is a continuous probability distribution used to model various data types, particularly where the data shows a changing failure rate over time. This flexibility makes the Weibull distribution especially suited to reliability analysis, life data analysis, and modeling failure times. $f(c_{ij})$ represents the probability density function (pdf) of the Weibull distribution, with $c_{ij}$ being the variable of interest. here, $c_{ij}$ would represent the impedance value, such as time or cost associated with traveling between two points. $\alpha$ is the shape parameter of the Weibull distribution. It determines the form of the probability distribution function and can indicate whether the failure rate is increasing, constant, or decreasing over time. In fact,it would shape the distribution of impedance experiences, such as whether impedances are more common as trips get longer or shorter. $\theta$ is the scale parameter of the Weibull distribution. It stretches or compresses the distribution along the horizontal axis and is akin to the 'characteristic life' in reliability terminology.
 
 Based on the above description, the inverse power, negative exponential, and modified Gaussian functions consistently diminish the influence of opportunities as travel time increases, governed by an impedance parameter $\beta$ that incorporates travel cost considerations. Originating from early gravity models of spatial interaction [@stewart1948demographic; @zipf1949human], the inverse power function exhibits a rapid decrease in opportunity influence as travel time lengthens. While power functions draw parallels with Newtonian physics, their direct applicability to human travel behavior has faced scrutiny [@sen2012gravity]. In contrast, the negative exponential function adopts a more gradual approach. Supported by robust theoretical foundations rooted in entropy maximization [@wilson1971family] and choice behavior theory [@fotheringham1989spatial], this function has emerged as a de facto standard in applied accessibility analysis due to its theoretically sound underpinnings. On the other hand, the modified Gaussian function displays a considerably gentler decline in influence near its origin and an overall slower decay rate. 
 

@@ -447,39 +447,39 @@ In general, accessibility can be measured at either the individual-based or loca
 
 Location-based accessibility offers a notable advantage in terms of ease of computation (Bhat, 2000). Researchers typically rely on average travel time between two points, population data, and aggregated activity data when calculating place-based accessibility. Consequently, cumulative-opportunity accessibility emerges as one of the most widely employed methods for assessing accessibility. Furthermore, space-time accessibility examines how individuals can engage in desired activities while encountering various constraints (Kwan, 1998a; M. S. Lee \& McNally, 1998; Miller, 1991). This framework is based on Hagerstrand's (1970) time geography model, which identifies three factors influencing individual accessibility. The first factor is capability constraint, where people can only engage in activities when awake and face travel impediments at all times. The second constraint is coupling, which mandates specific tasks to be performed at designated times. For instance, individuals typically remain at their workplace during working hours (e.g., 8 AM to 5 PM). The final constraint is the authority constraint, which encompasses activity opening hours. As a result, individuals may be unable to access a park late at night due to its closure. Space-time accessibility, as measured by Ilag's (1970) study, captures the number of activities that can be accomplished under various constraints (Ilagcrstrand, 1970). According to the research, space-time accessibility (i.e., person-based accessibility) is considered a superior measure to cumulative-opportunity accessibility (i.e., place-based accessibility) since it accounts for an individual's actual travel behavior. It is attributed to space-time accessibility incorporating temporal variations in transportation systems, activities, and individuals' unique travel patterns.
 
-In contrast, place-based accessibility, which does not fully address temporal constraints, may yield inaccuracies when assessing accessibility. On the other hand, space-time accessibility considers temporal variations in activities(Genevieve Boisjoly \& El-Geneidy, 2017; Fransen et al., 2015). Place-based accessibility assumes that all activities are carried out during hours chosen at random by researchers. However, activities are only available during their regular business hours. It is necessary to incorporate factors relevant to active transportation to formulate a comprehensive accessibility formula for active transportation modes. Presented here is one potential formula as an illustration equation \ref{eq:accessibility}:
+In contrast, place-based accessibility, which does not fully address temporal constraints, may yield inaccuracies when assessing accessibility. On the other hand, space-time accessibility considers temporal variations in activities(Genevieve Boisjoly \& El-Geneidy, 2017; Fransen et al., 2015). Place-based accessibility assumes that all activities are carried out during hours chosen at random by researchers. However, activities are only available during their regular business hours. It is necessary to incorporate factors relevant to active transportation to formulate a comprehensive accessibility formula for active transportation modes. Presented here is one potential formula as an illustration equation \ref{eq:ch02-equation-01}:
 
 \begin{equation}
 A^{pk}_i = \sum _{j=1} ^ {J} g(O^ k_{j}) f(c^p_{ij})
-\label{eq:accessibility}
+\label{eq:ch02-equation-01}
 \end{equation}
 
-With functions for the opportunities that allow this equation \ref{eq:opportunities-function}:
+With functions for the opportunities that allow this equation \ref{eq:ch02-equation-02}:
 \begin{equation}
 g(O_j) = O_j
-\label{eq:opportunities-function}
+\label{eq:ch02-equation-02}
 \end{equation}
 
-\noindent as well as possibly agglomeration effects as in equation \ref{eq:agglomeration-effects}:
+\noindent as well as possibly agglomeration effects as in equation \ref{eq:ch02-equation-03}:
 
 \begin{equation}
 g(O_j) = O^\alpha_j
-\label{eq:agglomeration-effects}
+\label{eq:ch02-equation-03}
 \end{equation}
 
 This type of accessibility measure is based on Hansen's work in 1959, which quantifies accessibility by considering the number of reachable opportunities through an impedance function, also known as spatial decay. The impedance function decreases opportunities as travel costs increase, encompassing factors such as time, money, and other relevant variables. Various formulas, including negative power, exponential, lognormal, and log-logistic, can be employed to compute the impedance function (K. T. Geurs, Eck, et al., 2003; Hansen, 1959; Ingram, 1971; Reggiani et al., 2011; D. S. Vale et al., 2016). In the formula, \(A_i\), \(O_j\), and \(C_{ij}\) represent matrices of accessibility opportunities and costs, respectively. Following the development of D. Levinson \& Wu (2020), the functions (g and f) discount opportunities and costs based on the diminishing value of opportunities concerning both number and cost. The matrix of weighted opportunities \(O_j\) can consider different activity types, times of day, and available modes. In contrast, the matrix of cost elements \(C_{ij}\) can incorporate total social costs or generalized internal costs, depending on the specific objectives (D. Levinson \& Wu, 2020).
 
-The formulation of the decay function's cumulative opportunities (rectangular) can be expressed as equation \ref{eq:decay-functions-cumulative-opportunities}:
+The formulation of the decay function's cumulative opportunities (rectangular) can be expressed as equation \ref{eq:ch02-equation-04}:
 \begin{equation}
 f(c^p_{ij}) = X
-\label{eq:decay-functions-cumulative-opportunities}
+\label{eq:ch02-equation-04}
 \end{equation}
 
-In addition, The widely used exponential decay formulation in gravity models is frequently given by equation \ref{eq:exponential-distance-decay}:
+In addition, The widely used exponential decay formulation in gravity models is frequently given by equation \ref{eq:ch02-equation-05}:
 
 \begin{equation}
 f(c^p_{ij}) = \exp(-\theta c^p_{ij})
-\label{eq:exponential-distance-decay}
+\label{eq:ch02-equation-05}
 \end{equation}
 
 Generally, proximity plays a significant role in determining preferences for opportunities, with closer options being preferred over more distant ones (Miller, 2004). Furthermore, studies have shown that fewer trips occur between distant locations than nearby ones, indicating that interaction is less likely in remote areas(Ingram, 1971). To calibrate travel impedance functions, researchers often utilize trip likelihood or trip rate data from travel surveys, allowing for a better understanding of interaction patterns(K. T. Geurs \& Ritsema van Eck, 2001; Ingram, 1971). Therefore, impedance functions effectively capture reduced interaction between different places, and trip rates can serve as valuable calibration parameters for the travel impedance function \(f(C_{ij})\).
@@ -519,23 +519,23 @@ Some studies have examined the level of services provided by the bicycle network
 
 Activity-based measures encompass two types: gravity-based measures (also known as Hansen-type measures) (Hansen, 1959)) and cumulative opportunities measures. Gravity-based measures also referred to as attraction-accessibility or potential measures, consider the number of opportunities weighted by the associated travel cost. These measures utilize a travel impedance function that assigns higher value to opportunities closer to proximity. Scholars have emphasized the importance of selecting an appropriate impedance function, resulting in the application of various functions such as power, negative exponential, logistic, and Gaussian functions (Iacono et al., 2010; M. B. Lowry et al., 2012; D. S. Vale \& Pereira, 2017; Vasconcelos \& Farias, 2012). In a recent study by Vale and Pereira (2017), twenty pedestrian accessibility measures were examined, and it was found that the modified Gaussian and exponential functions demonstrated the highest robustness for modeling walking accessibility. On the other hand, cumulative opportunity measures, also known as isochrones or contour measures, quantify the number of opportunities within a specified catchment area (D. S. Vale et al., 2016).
 
-A gravity-based measure is derived from the denominator of the gravity model and is weighted by opportunities based on an impedance function. This function can be represented as equation \ref{eq:gravity-measures} (D. S. Vale et al., 2016):
+A gravity-based measure is derived from the denominator of the gravity model and is weighted by opportunities based on an impedance function. This function can be represented as equation \ref{eq:ch02-equation-06} (D. S. Vale et al., 2016):
 
 \begin{equation}
 A_i = \sum_{j = 1}^{J} W_{j} f(c_{ij})
-\label{eq:gravity-measures}
+\label{eq:ch02-equation-06}
 \end{equation}
 
-The equation \ref{eq:gravity-measures} provides the measure of accessibility from the origin location \(i\), where \(W_j\) represents the relevant opportunities found at \(j\), and \(f(c_{ij})\) denotes the cost of moving between \(i\) and \(j\). The function \(f()\) defines a kernel centered around location \(i\). Activity-based measures are valuable in complementary opportunities, such as jobs, services, people, and parks. In these scenarios, access to more opportunities and proximity (as modeled in gravity-based models) is advantageous.
+The equation \ref{eq:ch02-equation-06} provides the measure of accessibility from the origin location \(i\), where \(W_j\) represents the relevant opportunities found at \(j\), and \(f(c_{ij})\) denotes the cost of moving between \(i\) and \(j\). The function \(f()\) defines a kernel centered around location \(i\). Activity-based measures are valuable in complementary opportunities, such as jobs, services, people, and parks. In these scenarios, access to more opportunities and proximity (as modeled in gravity-based models) is advantageous.
 
-Cumulative opportunities, also referred to as isochrones or contour measures, count the number of opportunities within a specified catchment area. In contrast to the utility measure, which assesses accessibility based on the ``net utility'' gained from travel, the cumulative measure quantifies accessibility by considering the total number of reachable opportunities and their associated travel costs. In contrast with gravity-based measures, in a cumulative measure (equation \ref{eq:gravity-measures}), the distance decay function is binary and calculated using equation \ref{eq:binary}:
+Cumulative opportunities, also referred to as isochrones or contour measures, count the number of opportunities within a specified catchment area. In contrast to the utility measure, which assesses accessibility based on the ``net utility'' gained from travel, the cumulative measure quantifies accessibility by considering the total number of reachable opportunities and their associated travel costs. In contrast with gravity-based measures, in a cumulative measure (equation \ref{eq:ch02-equation-06}), the distance decay function is binary and calculated using equation \ref{eq:ch02-equation-07}:
 
 \begin{equation}
 f(c_{ij} \le \gamma _i) = X
-\label{eq:binary}
+\label{eq:ch02-equation-07}
 \end{equation}
 
-In the equation \ref{eq:binary}, \(\gamma\) represents the threshold value. According to this formula, all opportunities located within the \(\gamma\) threshold are considered accessible. Additionally, \(f(c)\) is an indicator function that yields a value of 1 if the logical statement in the function's argument is valid (i.e.~if the cost of reaching \(j\) from \(i\) does not exceed the bandwidth parameter value), and 0 otherwise. Alternative distance-decay functions (such as inverse distance or negative exponential) can generate smoother map patterns, as discussed by (OKelly \& Horner, 2003). However, they require more parameters and introduce distance- or cost-discounted schemes that are more challenging to interpret. Prior research has indicated that cumulative opportunity measures exhibit a high degree of correlation, irrespective of the distance-decay function employed (Kwan, 1998a). Consequently, our preference lies with simplicity and interpretability when selecting our accessibility indicator.
+In the equation \ref{eq:ch02-equation-07}, \(\gamma\) represents the threshold value. According to this formula, all opportunities located within the \(\gamma\) threshold are considered accessible. Additionally, \(f(c)\) is an indicator function that yields a value of 1 if the logical statement in the function's argument is valid (i.e.~if the cost of reaching \(j\) from \(i\) does not exceed the bandwidth parameter value), and 0 otherwise. Alternative distance-decay functions (such as inverse distance or negative exponential) can generate smoother map patterns, as discussed by (OKelly \& Horner, 2003). However, they require more parameters and introduce distance- or cost-discounted schemes that are more challenging to interpret. Prior research has indicated that cumulative opportunity measures exhibit a high degree of correlation, irrespective of the distance-decay function employed (Kwan, 1998a). Consequently, our preference lies with simplicity and interpretability when selecting our accessibility indicator.
 
 \subsection{Distance-based measures}\label{distance-based-measures}
 
@@ -547,21 +547,21 @@ Distance-based measures consider accessibility in terms of proximity, whether tr
 
 In distance-based accessibility measures, distance is considered as the travel impedance. Typically, four types of distances are employed: 1) Euclidean distance, which is commonly used for walkability assessments, especially in health studies (Apparicio et al., 2008), 2) Manhattan distance, 3) shortest network distance (Hochmair, 2015; Lundberg, 2012), and 4) shortest network time (Paez et al., 2012b; Pearce, Witten, \& Bartie, 2006). Furthermore, there are two approaches to measuring distance. The first method calculates the distance to the closest facility of each type, determining the distance from each zone centroid to the closest or the first n closest facilities (e.g., medical centers). The second method calculates the distance to all nearby facilities, based on the concept of floating catchment areas, which considers the closest facility irrespective of distance. It measures the distance from each zone center to the closest or the first closest facilities of different types (e.g., medical centers, shopping centers, and so on).
 
-Distance to nearest location is calculated based on equation \ref{eq:distance-based-accessibility}:
+Distance to nearest location is calculated based on equation \ref{eq:ch02-equation-08}:
 
 \begin{equation}
 A^{ip} = \min_{j \in L^p} (d_{ij})
-\label{eq:distance-based-accessibility}
+\label{eq:ch02-equation-08}
 \end{equation}
 
-In this equation \ref{eq:distance-based-accessibility}, \(A^{ip}\) is the accessibility of zone \(i\) to the location of type p, \(L^p\) is a set of locations of type p, and \((d_{ij})\) is distance (or travel time for a given mode) from i to location j in set \(L_p\). This measure is consistent with a straightforward location model in which the nearest location is always chosen with a probability of 1.0. (equation \ref{eq:distance-based-measure})
+In this equation \ref{eq:ch02-equation-08}, \(A^{ip}\) is the accessibility of zone \(i\) to the location of type p, \(L^p\) is a set of locations of type p, and \((d_{ij})\) is distance (or travel time for a given mode) from i to location j in set \(L_p\). This measure is consistent with a straightforward location model in which the nearest location is always chosen with a probability of 1.0. (equation \ref{eq:ch02-equation-09})
 
 \begin{equation}
 P^{ip}_j = X
-\label{eq:distance-based-measure}
+\label{eq:ch02-equation-09}
 \end{equation}
 
-In equation \ref{eq:distance-based-measure}, \(P_j^{ip}\) represents the probability of selecting location \(j\) for purpose \(p\), given that one is situated in zone \(i\). However, this measure suffers from two limitations. Firstly, it needs to account for the size or attractiveness of locations. Secondly, it does not investigate the cumulative impact of having access to multiple locations. Consequently, it is not advisable to employ this method as a standalone measure when calculating accessibility.
+In equation \ref{eq:ch02-equation-09}, \(P_j^{ip}\) represents the probability of selecting location \(j\) for purpose \(p\), given that one is situated in zone \(i\). However, this measure suffers from two limitations. Firstly, it needs to account for the size or attractiveness of locations. Secondly, it does not investigate the cumulative impact of having access to multiple locations. Consequently, it is not advisable to employ this method as a standalone measure when calculating accessibility.
 
 \subsection{Topological or infrastructure-based measures}\label{topological-or-infrastructure-based-measures}
 
@@ -575,27 +575,27 @@ There are three types of topological measures: The first group evaluates the lev
 
 Utility-based measures assess accessibility by considering individual preferences and utilizing the log-sum of discrete choice models applied to destination choice analysis (M. Ben-Akiva \& Lerman, 2021). This approach, often referred to as the benefit measure, offers a more accurate representation of individual accessibility compared to location-based measures. Furthermore, individual-based accessibility provides more representative measurements than place-based accessibility and reflects the population's access. Aggregating accessibility through this method is a commonly used approach (K. T. Geurs et al., 2003; Wachs \& Kumagai, 1973). The utility-based measure can be calculated using two methods:
 
-They are assuming that a decision-maker perceives the utility of a destination as \(U_j = V_j + \epsilon_j\), where \(\epsilon_j\) represents the individual's idiosyncratic deviation in terms of how they perceive the utility of alternative j relative to the population's average utility, \(V_j\). The person chooses the alternative that generates the maximum perceived utility, \(U_j\). Under commonly used assumptions, the probability that j is the alternative with the maximum utility and is thus chosen can be calculated using the multinomial logit (MNL) model (equation \ref{eq:utility-based-measure}) (Train, 2009):
+They are assuming that a decision-maker perceives the utility of a destination as \(U_j = V_j + \epsilon_j\), where \(\epsilon_j\) represents the individual's idiosyncratic deviation in terms of how they perceive the utility of alternative j relative to the population's average utility, \(V_j\). The person chooses the alternative that generates the maximum perceived utility, \(U_j\). Under commonly used assumptions, the probability that j is the alternative with the maximum utility and is thus chosen can be calculated using the multinomial logit (MNL) model (equation \ref{eq:ch02-equation-10}) (Train, 2009):
 
 \begin{equation}
 P_j^{ip} = \frac{e^{V_j}}{\sum_{j' \in L^{ip}} e^{V_{j'}}} = \frac{e^{\beta z_j}}{\sum_{j' \in L^{ip}} e^{\beta z_{j'}}}
-\label{eq:utility-based-measure}
+\label{eq:ch02-equation-10}
 \end{equation}
 
-In equation \ref{eq:utility-based-measure}, \({V_j} = \beta{Z_j}\) represents the systematic utility of alternative \(j\), where \({Z_j}\) is a vector of explanatory variables, and \(\beta\) is a row vector of parameters.
+In equation \ref{eq:ch02-equation-10}, \({V_j} = \beta{Z_j}\) represents the systematic utility of alternative \(j\), where \({Z_j}\) is a vector of explanatory variables, and \(\beta\) is a row vector of parameters.
 
-The actual perceived maximum utility is unobservable. However, in the case of the MNL model, it has been demonstrated (M. E. Ben-Akiva, Lerman, Lerman, et al., 1985) that the expected maximum utility \((I^{ip})\) associated with this choice can be calculated using the following equation, denoted as equation \ref{eq:maximum-utility}:
+The actual perceived maximum utility is unobservable. However, in the case of the MNL model, it has been demonstrated (M. E. Ben-Akiva, Lerman, Lerman, et al., 1985) that the expected maximum utility \((I^{ip})\) associated with this choice can be calculated using the following equation, denoted as equation \ref{eq:ch02-equation-11}:
 
 \begin{equation}
 I^{ip} = E\left[ \max_j (U_j) \right] = \ln\left(\sum_{j \in L^{ip}} e^{\beta z_j} \right)
-\label{eq:maximum-utility}
+\label{eq:ch02-equation-11}
 \end{equation}
 
-That is, it is the natural logarithm of the denominator of the logit choice model (sometimes referred to as the ``log sum'' term). Further, it can also be shown that this expected maximum utility is the consumer's surplus for this choice. Thus, it is a standard measure of economic benefit. Given this, Ben-Akiva and Lerman (1985) argue that it also provides a behaviorally and economically sound definition of accessibility: accessibility for a given activity is the expected utility derived from participation in this activity, which is the consumer surplus associated with it. That is equation \ref{eq:Accessibility-maximum-utility}:
+That is, it is the natural logarithm of the denominator of the logit choice model (sometimes referred to as the ``log sum'' term). Further, it can also be shown that this expected maximum utility is the consumer's surplus for this choice. Thus, it is a standard measure of economic benefit. Given this, Ben-Akiva and Lerman (1985) argue that it also provides a behaviorally and economically sound definition of accessibility: accessibility for a given activity is the expected utility derived from participation in this activity, which is the consumer surplus associated with it. That is equation \ref{eq:ch02-equation-12}:
 
 \begin{equation}
 A^{p}_i = \ln \left(\sum_{j \in L^{ip}} e^{\beta z_j} \right)
-\label{eq:Accessibility-maximum-utility}
+\label{eq:ch02-equation-12}
 \end{equation}
 
 In our analysis, Tables \ref{tab:Ch02-make-table-01} and Tables \ref{tab:Ch02-make-table-02} methodically categorize studies based on the various metrics employed to assess accessibility via active transportation modes, explicitly walking and cycling. This categorization highlights the varied methodological approaches adopted in the field. Our literature review indicates that a diverse array of measures has been applied in the context of cycling to analyze accessibility. These range from simple distance-based metrics to more complex models. Conversely, the majority of studies focusing on walking accessibility have predominantly utilized active-based measures. In addition, a limited number of studies have incorporated utility-based measures. These metrics generally evaluate the economic benefits and utilities derived from changes in the network, providing a different perspective on accessibility. However, a comparative analysis conducted by Vale et al.~(2016) illuminates a notable discrepancy in the research volume focused on cycling-specific accessibility relative to walking. Their comprehensive review, which encompasses 84 papers on walking and cycling accessibility published up to September 2013, reveals a significant skew towards walking-oriented studies. This imbalance underscores the need for more focused research on cycling accessibility to better understand and enhance this active transportation mode (D. S. Vale et al., 2016).
@@ -1633,11 +1633,11 @@ One of the factors associated with the natural environment that affects bicycle 
 
 Few studies have considered slope in measures of active accessibility. However, it is acknowledged as an essential factor since people often avoid routes with significant elevation gain, and routes with steep slopes may significantly impact accessibility. Often, network analyst tools use the shortest path from the road network, which may not reflect actual cycling or walking behavior. Vale, Saraiva, et al.~(2015) concluded that slopes should always be included in the accessibility of bicycling and that they are also crucial for walking. However, it is mainly absent from walking accessibility measures (D. S. Vale et al., 2016). However, the greater availability of elevation data and advances in research in various disciplines offer opportunities to understand the behavior of individuals better when traveling in infrastructure-poor contexts and challenge assumptions surrounding the most significant costs to be minimized. Papa, Carpentieri, et al.~(2018) also highlighted a significant difference in catchment areas when including versus excluding the slope attribute (33\% \(km^2\) difference for adults over 75) (Papa, Carpentieri, \& Guida, 2018). Wood, Jones et al.~(2018) studied the sensitivity in distance calculation to variations in three travel-time modeling approaches, taking as reference a model that accounted for variations in land cover and directionality in slope (anisotropy). They found that an approach based on measuring Euclidean distances on a flat surface underestimated the distance traveled relative to the reference. The second approach, which calculated the distances constrained to a road network, also varied substantially from the reference, underestimating it in some areas and overestimating it in others. Finally, the third approach, which accounted for land cover and elevation but ignored the directionality of slopes, slightly underestimated travel times (Wood, Jones, Peters, \& Richards, 2018).
 
-Lundberg (2012) examined the local cycling and walking networks through Geographic Information Systems (GIS) using accessibility. They extracted a percent slope raster layer from the DEM layer obtained from part of the National Elevation Dataset (NED). The percent slope of the DEM ranged from 0 to 360. In Arc Map, the rise equals the run when the slope angle equals 45 degrees. Expressed as a percentage, the slope of this angle is 100\%. As the slope angle approaches vertical (90o), the percentage slope approaches infinity. An X and Y coordinate was first calculated for the start point of each line segment. Next, an X and Y coordinate was calculated for the endpoint of each line segment. Arc Map's 3D Analyst extension was used to convert the street network into a 3D layer, at which point the percent slope could be calculated as the Z-value for each line segment in the network. A Z-value (elevation) was calculated at each line segment's start and end points. The equation \ref{eq:slope} was used to derive the percent slope for each line segment:
+Lundberg (2012) examined the local cycling and walking networks through Geographic Information Systems (GIS) using accessibility. They extracted a percent slope raster layer from the DEM layer obtained from part of the National Elevation Dataset (NED). The percent slope of the DEM ranged from 0 to 360. In Arc Map, the rise equals the run when the slope angle equals 45 degrees. Expressed as a percentage, the slope of this angle is 100\%. As the slope angle approaches vertical (90o), the percentage slope approaches infinity. An X and Y coordinate was first calculated for the start point of each line segment. Next, an X and Y coordinate was calculated for the endpoint of each line segment. Arc Map's 3D Analyst extension was used to convert the street network into a 3D layer, at which point the percent slope could be calculated as the Z-value for each line segment in the network. A Z-value (elevation) was calculated at each line segment's start and end points. The equation \ref{eq:ch02-equation-13} was used to derive the percent slope for each line segment:
 
 \begin{equation}
 \frac{End_z - Start_z}{\sqrt{(End_x - Start_x)^2 + (End_y - Start_y)^2}} \times 100
-\label{eq:slope}
+\label{eq:ch02-equation-13}
 \end{equation}
 
 Slope values indicate uphill travel, while negative slope values indicate downhill travel. In this regard, they proposed different walking and cycling speeds based on the different slopes using Parkin and Rotheram's (2010) findings on the impact of slopes on bicycle travel speeds(Parkin \& Rotheram, 2010). Table \ref{tab:ch02-make-table-10} summarizes the various bicycle travel speeds used in the GIS modeling.
@@ -1665,11 +1665,11 @@ Slope values indicate uphill travel, while negative slope values indicate downhi
 \end{longtable}
 \endgroup{}
 
-Pedestrian travel speeds were also calculated based on the effect of slope. Tobler's hiking function was used to identify the effect of slope on travel speed. The equation \ref{eq:modified-formula} represents the modified Tobler's formula adjusted for percent slope as follows:
+Pedestrian travel speeds were also calculated based on the effect of slope. Tobler's hiking function was used to identify the effect of slope on travel speed. The equation \ref{eq:ch02-equation-14} represents the modified Tobler's formula adjusted for percent slope as follows:
 
 \begin{equation}
 V = 6 e^{-3.5 |s + 0.05|}
-\label{eq:modified-formula}
+\label{eq:ch02-equation-14}
 \end{equation}
 
 Where v is velocity, e is the base for natural logarithms, and s is the slope in percent. Table \ref{tab:ch02-make-table-11} summarizes a pedestrian's travel speed used in the modeling in GIS.
@@ -1695,25 +1695,25 @@ Where v is velocity, e is the base for natural logarithms, and s is the slope in
 \end{longtable}
 \endgroup{}
 
-In another study, Paez et al.~(2020) calculated the slope from the vertical and horizontal displacements. The instantaneous slope \(m\) is given by the derivative of \(y = f(x)\) concerning \(x\). This is given by the equation \ref{eq:calculating-the-slope-from-the-vertical-and-horizontal-displacements} (Paez et al., 2020):
+In another study, Paez et al.~(2020) calculated the slope from the vertical and horizontal displacements. The instantaneous slope \(m\) is given by the derivative of \(y = f(x)\) concerning \(x\). This is given by the equation \ref{eq:ch02-equation-15} (Paez et al., 2020):
 
 \begin{equation}
 m = \frac{\Delta V}{\Delta h}
-\label{eq:calculating-the-slope-from-the-vertical-and-horizontal-displacements}
+\label{eq:ch02-equation-15}
 \end{equation}
 
-In a DEM layer, two physical aspects of the landscape related to resistance can be obtained directly from the grid: the vertical and horizontal displacement between nodes i and j. \(\Delta V\) and \(\Delta h\) are vertical and horizontal displacements, respectively. This slope is linked to speed via Tobler's formula for hiking travel using equation \ref{eq:slope-linked-to-speed-via-formula} (Tobler, 1993):
+In a DEM layer, two physical aspects of the landscape related to resistance can be obtained directly from the grid: the vertical and horizontal displacement between nodes i and j. \(\Delta V\) and \(\Delta h\) are vertical and horizontal displacements, respectively. This slope is linked to speed via Tobler's formula for hiking travel using equation \ref{eq:ch02-equation-16} (Tobler, 1993):
 
 \begin{equation}
 S = 100 e^{-3.5 |m + 0.5|}
-\label{eq:slope-linked-to-speed-via-formula}
+\label{eq:ch02-equation-16}
 \end{equation}
 
-Where the speed S is in \(m/min\), the amount of speed can be converted into travel time in minutes if it is divided the distance by speed using equation \ref{eq:amount-of-speed}:
+Where the speed S is in \(m/min\), the amount of speed can be converted into travel time in minutes if it is divided the distance by speed using equation \ref{eq:ch02-equation-17}:
 
 \begin{equation}
 t = \frac{d_i}{100 e^{-3.5 |m + 0.5|}} = \frac{1}{100} d_i e^{3.5 |m + 0.5|}
-\label{eq:amount-of-speed}
+\label{eq:ch02-equation-17}
 \end{equation}
 
 Where \(d_i\) can be the distance on the surface as discussed above or can be approximated by the horizontal distance \(\Delta h\), as seen in Figure \ref{fig:ch02-plot-fig-03}, travel time tends to increase as the slope increases. Figure \ref{fig:ch02-plot-fig-03} by (Paez et al., 2020) illustrates the calibrated results of a bespoke walking cost function that factors in varying terrain gradients and their impact on travel efficiency.
@@ -1829,18 +1829,18 @@ Accessibility is conceptualized as the potential to access geographically disper
 
 Examining impedance functions concerning different transportation modes and destinations is a valuable foundation for comprehending the travel behavior attributed to each mode. The parameters of impedance functions offer insights into the spatial coverage provided by each mode of transportation. By segmenting modal trips based on their purposes, comparing the distribution of trips between various purposes for each transportation mode (work-related and non-work purposes) becomes possible. Empirically derived impedance functions offer valuable evidence that can be utilized to examine and substantiate various claims about travel behavior, thus supporting urban planning endeavors. For instance, the current interest in creating ``livable'' communities revolves around loosely held assumptions regarding individuals' willingness to walk and cycle to different destinations. A common belief is that people are generally willing to walk up to a quarter of a mile to access most locations (Untermann, 1984). However, there remains limited information regarding whether specific individuals are open to walking or cycling longer distances and, if so, how much farther they are willing to travel. Moreover, there needs to be more evidence concerning the influence of trip characteristics, destination attractiveness, and individual characteristics on the impact of distance on walking and cycling behaviors(K. Geurs, 2006).
 
-Since Hansen's foundational research, various categories of accessibility measures have been developed, such as active-based, infrastructure-based, individual-based, and utility-based indicators (K. T. Geurs \& Van Wee, 2004; Hansen, 1959). Accessibility metrics, particularly those of the gravity type or potential measures, have been extensively utilized in active modes (Miller, 2005). These measures primarily stem from the gravity model, where an impedance function weighs opportunities. In fact, these are designed by weighting opportunities within an area according to an attraction measure and then diminishing each based on an impedance measure (for example, Geertman \& Ritsema Van Eck, 1995; S. Handy, 1993). Equation 2.1 expresses the general representation of the accessibility equation:
+Since Hansen's foundational research, various categories of accessibility measures have been developed, such as active-based, infrastructure-based, individual-based, and utility-based indicators (K. T. Geurs \& Van Wee, 2004; Hansen, 1959). Accessibility metrics, particularly those of the gravity type or potential measures, have been extensively utilized in active modes (Miller, 2005). These measures primarily stem from the gravity model, where an impedance function weighs opportunities. In fact, these are designed by weighting opportunities within an area according to an attraction measure and then diminishing each based on an impedance measure (for example, Geertman \& Ritsema Van Eck, 1995; S. Handy, 1993). Equation \ref{eq:ch03-equation-01} expresses the general representation of the accessibility equation:
 
 \begin{equation}
 A_{ik}^{pt} = \sum_{j=1}^J g(O_j^t) f(C_{ij}^p)
-\label{eq:gen}
+\label{eq:ch03-equation-01}
 \end{equation}
 
-Research demonstrates that two primary types of accessibility indicators are predominantly used in studies. According to equation \ref{eq:gen}, the first one revolves around \textbf{Opportunities}, which are weighted by an impedance (characterized by a relevant decreasing function of travel cost or time required to access these opportunities. The accessibility measure \(A^ {pt}_{ik}\) signifies accessibility from an origin i at a specific time t to a particular destination type k tailored for an individual of type p.~The function \(g(O^t_{jk})\) quantifies the appeal of opportunities categorized under type k at destination j, accessible at time t. Simultaneously, \(f(C^p_{ij})\) represents the impedance while traveling from origin i to destination j for a person belonging to type p.~It's worth noting that the functional form \(f()\) delineates an impedance decay function. Meanwhile, \(C^p_{ij}\) signifies the generalized travel cost, potentially encompassing factors such as time, distance, and exertion.
+Research demonstrates that two primary types of accessibility indicators are predominantly used in studies. According to equation \ref{eq:ch03-equation-01}, the first one revolves around \textbf{Opportunities}, which are weighted by an impedance (characterized by a relevant decreasing function of travel cost or time required to access these opportunities. The accessibility measure \(A^ {pt}_{ik}\) signifies accessibility from an origin i at a specific time t to a particular destination type k tailored for an individual of type p.~The function \(g(O^t_{jk})\) quantifies the appeal of opportunities categorized under type k at destination j, accessible at time t. Simultaneously, \(f(C^p_{ij})\) represents the impedance while traveling from origin i to destination j for a person belonging to type p.~It's worth noting that the functional form \(f()\) delineates an impedance decay function. Meanwhile, \(C^p_{ij}\) signifies the generalized travel cost, potentially encompassing factors such as time, distance, and exertion.
 
 Within the gravity model, the second variable concerns the cost associated with the spatial gap between a trip's start and end points (origins and destinations). Moreover, the third pivotal variable, crucial for constructing this model, involves the mathematical formulation delineating the travel impedance between origins and destinations. This ``cost'' can be articulated in terms of physical distance, travel duration, financial outlay, or a fusion of these elements. Among these, travel duration emerges as the chief cost measure and is the metric chosen for this particular investigation(Fotheringham \& O'Kelly, 1989; Grengs, 2004; S. Handy, 1993; Hess, 2005). In fact, when selecting a format for the impedance function, the researcher must determine which variable (time, cost, or both) will measure impedance. Historically, both these measures have been employed, with specific instances incorporating the concept of generalized cost (S. L. Handy \& Niemeier, 1997). For non-motorized travel modes, however, the prevalent choice is distance, attributed to the challenges in obtaining precise travel times from existing network models designed for walking and bicycling. Previous studies indicate that adopting either time or distance as the impedance variable is appropriate (S. L. Handy \& Niemeier, 1997). While the first two variables are derived from the attributes of the built environment, the impedance parameter captures aspects of human behavior, making its determination an intricate undertaking.
 
-The second type pertains to the \textbf{Cumulative-opportunity} metrics, often referred to as \textbf{isochronic indices}. These evaluate accessibility by determining the number or proportion of opportunities available within a specified travel duration or distance from a reference point. These metrics avoid making presumptions about travel decay. They utilize a rectangular function, categorizing travel as ``acceptable'' within certain thresholds and ``unacceptable'' beyond them. One of the main complexities with these metrics is deciding on the appropriate cutoff point. This decision can be based on prevailing mobility patterns of the population, or it can mirror established norms, conventions, or the researcher's informed projections (Vickerman, 1974). This metric can be interpreted as a specialized solution of Equation 2.2. In this context, the impedance function is designated as 1 when \(C_{ij}< x\) and 0 when \(C_{ij} > x\).
+The second type pertains to the \textbf{Cumulative-opportunity} metrics, often referred to as \textbf{isochronic indices}. These evaluate accessibility by determining the number or proportion of opportunities available within a specified travel duration or distance from a reference point. These metrics avoid making presumptions about travel decay. They utilize a rectangular function, categorizing travel as ``acceptable'' within certain thresholds and ``unacceptable'' beyond them. One of the main complexities with these metrics is deciding on the appropriate cutoff point. This decision can be based on prevailing mobility patterns of the population, or it can mirror established norms, conventions, or the researcher's informed projections (Vickerman, 1974). This metric can be interpreted as a specialized solution of Equation \ref{eq:ch03-equation-02} In this context, the impedance function is designated as 1 when \(C_{ij}< x\) and 0 when \(C_{ij} > x\).
 
 \begin{equation}
 C_{ij} =
@@ -1848,7 +1848,7 @@ C_{ij} =
   1 \& \text{if } c_{ij} \le x \\
   0 \& \text{if } c_{ij} > x
 \end{cases}
-\label{eq:Rectangular form of impedance function}
+\label{eq:ch03-equation-02}
 \end{equation}
 
 The study of travel behaviors has resulted in the development of various mathematical functions that have been carefully developed by comparing observed walking and cycling trips with predefined mathematical distributions over time. The choice of the impedance function is critical, as it is deeply intertwined with the gravitational force of travel, subsequently influencing accessibility evaluation outcomes (Breheny, 1978; Kwan, 1998b; Talen \& Anselin, 1998). It should be noted that the domain of transportation research has seen an increased focus on various formulations related to accessibility. Pre-eminent research in this domain has been presented by the likes of Song (1996), Handy and Niemeier (1997), Handy and Clifton (2001), and Iacono et al.~(2010)(Clifton \& Handy, 2001; S. L. Handy \& Niemeier, 1997; Iacono et al., 2010; Song, 1996). While the majority of these studies focus on automobile transportation, Iacono et al.~(2010), Millward et al.~(2013), and Vale et al.~(2017) investigate active modes of transportation, such as walking and cycling. Their findings show that the attractiveness of destinations declines significantly beyond a mile.
@@ -1867,7 +1867,7 @@ Furthermore, recent investigations into impedance functions have shed light on t
   \textbf{Inverse Power equation}
 \end{itemize}
 
-The Inverse Power function is defined as (\ref{eq:inverse}):
+The Inverse Power function is defined as (\ref{eq:ch03-equation-03}):
 
 \begin{equation}
 f(t_{ij}) =
@@ -1875,7 +1875,7 @@ f(t_{ij}) =
   1 & \text{if } t_{ij} \le 1 \\
   t_{ij}^{-\beta} & \text{otherwise}
 \end{cases}
-\label{eq:inverse}
+\label{eq:ch03-equation-03}
 \end{equation}
 
 This function posits that impedance is inversely proportional to travel time \((t_{ij})\) (represents the travel time between location i (origin) and location j (destination))raised to the power of \(\beta\), a parameter to be estimated. For travel times less than or equal to one unit, the impedance is set to 1, reflecting a baseline accessibility. As the travel time increases beyond one unit, the function decays according to the power of \(\beta\), indicating a diminishing probability of a traveler choosing a destination as the distance increases.
@@ -1886,11 +1886,11 @@ This function posits that impedance is inversely proportional to travel time \((
   \textbf{Negative Exponential equation}
 \end{itemize}
 
-The Negative Exponential function (\ref{eq:negative-exponential}) is given by:
+The Negative Exponential function (\ref{eq:ch03-equation-04}) is given by:
 
 \begin{equation}
 f(t_{ij}) = e^{-\beta t_{ij}}
-\label{eq:negative-exponential}
+\label{eq:ch03-equation-04}
 \end{equation}
 
 This model suggests that impedance decreases exponentially with increasing travel time \((t_{ij})\). The parameter \(\beta\) represents the decay rate, with higher values indicating a faster decrease in accessibility with increasing travel time. This function is widely used due to its simplicity and ability to model the rapid drop-off in accessibility over distance.
@@ -1901,11 +1901,11 @@ This model suggests that impedance decreases exponentially with increasing trave
   \textbf{Modified Gaussian equation}
 \end{itemize}
 
-The Modified Gaussian function is expressed as (\ref{eq:modified-gaussian}):
+The Modified Gaussian function is expressed as (\ref{eq:ch03-equation-05}):
 
 \begin{equation}
 f(t_{ij}) = e^{-\frac{t_{ij}^2}{2}}
-\label{eq:modified-gaussian}
+\label{eq:ch03-equation-05}
 \end{equation}
 
 This function follows a Gaussian distribution pattern, implying that the impedance decreases in a bell-shaped curve as travel time increases, with a slower decline near the origin and a less steep drop at larger distances. It captures the gradual reduction in accessibility with distance more realistically than the exponential or power functions.
@@ -1916,11 +1916,11 @@ This function follows a Gaussian distribution pattern, implying that the impedan
   \textbf{Logarithmic normal distribution function equation}
 \end{itemize}
 
-Presented as Equation \ref{eq:logarithmic-normal} (X. Wu et al., 2019):
+Presented as Equation \ref{eq:ch03-equation-06} (X. Wu et al., 2019):
 
 \begin{equation}
 f(c_{ij}) = \alpha \frac{1}{\sqrt{2\pi} x \sigma} e^{-\frac{(\ln t - \mu)^2}{2\sigma^2}}
-\label{eq:logarithmic-normal}
+\label{eq:ch03-equation-06}
 \end{equation}
 
 Here, the variable \(x\) represents the distance traveled in active modes. The parameters, represented as \(\alpha\), \(\mu\), and \(\sigma\), hold significant importance in this analysis as they undergo estimation. Together, these parameters exert control over the shape of the curve under investigation. The function accounts for impedance distribution across different travel times in a log-normal format, offering a more nuanced view of accessibility. (X. Wu et al., 2019).
@@ -1931,7 +1931,7 @@ Here, the variable \(x\) represents the distance traveled in active modes. The p
   \textbf{Cumulative Opportunities Rectangular Function}
 \end{itemize}
 
-Defined as Equation \ref{eq:cumulative-rectan}:
+Defined as Equation \ref{eq:ch03-equation-07}:
 
 \begin{equation}
 f(t_{ij}) =
@@ -1939,7 +1939,7 @@ f(t_{ij}) =
   1 & \text{if } t_{ij} \le t \\
   0 & \text{otherwise}
 \end{cases}
-\label{eq:cumulative-rectan}
+\label{eq:ch03-equation-07}
 \end{equation}
 
 This function assumes a binary approach to accessibility. For travel times \((t_{ij})\) below a certain threshold \(t\), full accessibility (value 1) is granted. Beyond this threshold, accessibility rapidly drops to zero, representing a stark division between accessible and inaccessible areas.
@@ -1950,7 +1950,7 @@ This function assumes a binary approach to accessibility. For travel times \((t_
   \textbf{Cumulative Opportunities Linear}
 \end{itemize}
 
-The equation of cumulative opportunities linear is as follows (Equation \ref{eq:cumulative-linear}):
+The equation of cumulative opportunities linear is as follows (Equation \ref{eq:ch03-equation-08}):
 
 \begin{equation}
 f(t_{ij}) =
@@ -1958,7 +1958,7 @@ f(t_{ij}) =
   1 - \frac{t_{ij}}{\bar{t}} & \text{if } t_{ij} \le \bar{t} \\
   0 & \text{otherwise}
 \end{cases}
-\label{eq:cumulative-linear}
+\label{eq:ch03-equation-08}
 \end{equation}
 
 This linear function provides a gradual decrease in accessibility with an increase in travel time up to a particular average time \(\bar{t}\). Beyond this average time, accessibility is considered zero. This model is beneficial for representing a more gradual decay in accessibility than the abrupt drop-off in the rectangular model.
@@ -1969,7 +1969,7 @@ This linear function provides a gradual decrease in accessibility with an increa
   \textbf{Gamma distribution}
 \end{itemize}
 
-The formula of this function is presented below (Equation \ref{eq:gamma-imped})
+The formula of this function is presented below (Equation \ref{eq:ch03-equation-09})
 
 \begin{equation}
 f(c_{ij}) = 
@@ -1977,7 +1977,7 @@ f(c_{ij}) =
 \frac{1}{\sigma^\alpha\Gamma(\alpha)} c_{ij}^{\alpha-1} \cdot e^{-\frac{c_{ij}}{\sigma}} & \text{if } 0 \leq c_{ij} <      \infty  \text{ and } \alpha, \sigma > 0 \\
 0 & \text{otherwise}
    \end{cases}
-\label{eq:gamma-imped}
+\label{eq:ch03-equation-09}
 \end{equation}
 
 The Gamma function introduces a flexible model, parameterized by \(\alpha\) and \(\sigma\), to represent impedance. This function can adjust its shape significantly based on the parameter values, offering a versatile tool for modeling various types of decay patterns in travel behavior.
@@ -1988,11 +1988,11 @@ The Gamma function introduces a flexible model, parameterized by \(\alpha\) and 
   \textbf{Log-logistic decay functions}
 \end{itemize}
 
-The log-logistic function was displayed in Equation \ref{eq:log-logistic-decay-functions}.
+The log-logistic function was displayed in Equation \ref{eq:ch03-equation-10}.
 
 \begin{equation}
 f(c_{ij}) = \frac {1}{1+ \exp(a + b\ln c_{ij})}
-\label{eq:log-logistic-decay-functions}
+\label{eq:ch03-equation-10}
 \end{equation}
 
 In this context, the variable \(c_{ij}\) denotes the travel time between locations \(i\) and \(j\), while parameters \(a\) and \(b\) are the subject of estimation. In this log-logistic model, the impedance is a function of the natural logarithm of travel time \(\ln c_{ij}\). Parameters \(a\)and \(b\) define the steepness of the decay curve. This function is helpful for scenarios where a logistic decay pattern is more representative of the travel behavior being modeled (Thorsen, Uboe, \& Naelig; vdal, 1999).
@@ -2003,7 +2003,7 @@ In this context, the variable \(c_{ij}\) denotes the travel time between locatio
   \textbf{Beta distribution}
 \end{itemize}
 
-The Beta distribution has probability density function (\ref{eq:beta-functions})
+The Beta distribution has probability density function (\ref{eq:ch03-equation-11})
 
 \begin{equation}
 f(c_{ij}) = 
@@ -2011,10 +2011,10 @@ f(c_{ij}) =
 \frac{1}{B(\alpha, \beta)} c_{ij}^{\alpha - 1}(1 - c_{ij})^{\beta - 1} & \text{if } 0 \leq c_{ij} < \infty \\
 0 & \text{otherwise}
 \end{cases}
-\label{eq:beta-functions}
+\label{eq:ch03-equation-11}
 \end{equation}
 
-The Equation \ref{eq:beta-functions} represents the probability density function of the Beta distribution, a continuous probability distribution with two shape parameters. In this formula, \(c_{ij}\)is a specific impedance or cost between a point \(i\) and point \(j\) which is between 0 and 1, inclusive. It represents the possible outcomes of the Beta distribution, where \(c_{ij}\) is the probability of an event occurring. \(\alpha\) is the first shape parameter, and \(\beta\) is the second shape parameter. These parameters control the shape of the Beta distribution, where both are positive and more than 0. They can be any positive real numbers, and they determine the behavior of the probability density function, dictating where most of the distribution's ``weight'' is. The term \(B(\alpha, \beta)\) in the denominator is the Beta function, which is a normalization constant to ensure that the total probability integrates to 1 over the interval from 0 to 1. The Beta function is related to the Gamma function and is defined for positive values of \(\alpha\) and \(\beta\). It ensures that the probability density function is scaled correctly. This formula gives us the likelihood of \(c_{ij}\) when the distribution is defined by particular \(\alpha\) and \(\beta\) parameters.
+The Equation \ref{eq:ch03-equation-11} represents the probability density function of the Beta distribution, a continuous probability distribution with two shape parameters. In this formula, \(c_{ij}\)is a specific impedance or cost between a point \(i\) and point \(j\) which is between 0 and 1, inclusive. It represents the possible outcomes of the Beta distribution, where \(c_{ij}\) is the probability of an event occurring. \(\alpha\) is the first shape parameter, and \(\beta\) is the second shape parameter. These parameters control the shape of the Beta distribution, where both are positive and more than 0. They can be any positive real numbers, and they determine the behavior of the probability density function, dictating where most of the distribution's ``weight'' is. The term \(B(\alpha, \beta)\) in the denominator is the Beta function, which is a normalization constant to ensure that the total probability integrates to 1 over the interval from 0 to 1. The Beta function is related to the Gamma function and is defined for positive values of \(\alpha\) and \(\beta\). It ensures that the probability density function is scaled correctly. This formula gives us the likelihood of \(c_{ij}\) when the distribution is defined by particular \(\alpha\) and \(\beta\) parameters.
 
 \begin{itemize}
 \tightlist
@@ -2024,10 +2024,10 @@ The Equation \ref{eq:beta-functions} represents the probability density function
 
 \begin{equation}
 P(c_{ij} = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad \text{for } k = 0, 1, 2, \ldots
-\label{eq:poisson-functions}
+\label{eq:ch03-equation-12}
 \end{equation}
 
-The Poisson distribution (\ref{eq:poisson-functions}) is a discrete probability distribution that expresses the likelihood of a given number of events occurring within a fixed interval of time or space, assuming these events occur with a known constant mean rate and independently of the time since the last event. It is named after the French mathematician Siméon Denis Poisson. In Equation \ref{eq:poisson-functions}, \(P(c_{ij} =k)\) represents the probability that the impedance between point \(i\) and point \(j\) is exactly \(k\). The impedance could refer to various factors such as travel time, cost, or distance that might impede the movement or flow between these two points.\(\lambda\) is the average rate of impedance observed in the system or estimated from data. It represents the expected number of impedances that occur over a given interval. In the context of accessibility, it could be the average number of barriers or frictions encountered when traveling between different locations. \(k\) is the actual observed number of impedances; for example, this could be the actual number of barriers experienced on a particular route. The use of the Poisson distribution to model impedance is based on the assumption that the events (or impedances) occur randomly and independently within a given spatial or temporal frame of reference.
+The Poisson distribution (\ref{eq:ch03-equation-12}) is a discrete probability distribution that expresses the likelihood of a given number of events occurring within a fixed interval of time or space, assuming these events occur with a known constant mean rate and independently of the time since the last event. It is named after the French mathematician Siméon Denis Poisson. In Equation \ref{eq:ch03-equation-12}, \(P(c_{ij} =k)\) represents the probability that the impedance between point \(i\) and point \(j\) is exactly \(k\). The impedance could refer to various factors such as travel time, cost, or distance that might impede the movement or flow between these two points.\(\lambda\) is the average rate of impedance observed in the system or estimated from data. It represents the expected number of impedances that occur over a given interval. In the context of accessibility, it could be the average number of barriers or frictions encountered when traveling between different locations. \(k\) is the actual observed number of impedances; for example, this could be the actual number of barriers experienced on a particular route. The use of the Poisson distribution to model impedance is based on the assumption that the events (or impedances) occur randomly and independently within a given spatial or temporal frame of reference.
 
 \begin{itemize}
 \tightlist
@@ -2043,10 +2043,10 @@ f(c_{ij}) =
 \left( \frac{\alpha}{\theta}\right) \left( \frac{c_{ij}}{\theta}\right)^{\alpha - 1} e^{-\left(\frac{c_{ij}}{\theta}\right)^\alpha} & \text{if } 0 \leq c_{ij} \\
 0 & \text{otherwise}
 \end{cases}
-\label{eq:weibull-functions}
+\label{eq:ch03-equation-13}
 \end{equation}
 
-The Weibull distribution (Equation \ref{eq:weibull-functions}) is a continuous probability distribution used to model various data types, particularly where the data shows a changing failure rate over time. This flexibility makes the Weibull distribution especially suited to reliability analysis, life data analysis, and modeling failure times. \(f(c_{ij})\) represents the probability density function (pdf) of the Weibull distribution, with \(c_{ij}\) being the variable of interest. here, \(c_{ij}\) would represent the impedance value, such as time or cost associated with traveling between two points. \(\alpha\) is the shape parameter of the Weibull distribution. It determines the form of the probability distribution function and can indicate whether the failure rate is increasing, constant, or decreasing over time. In fact,it would shape the distribution of impedance experiences, such as whether impedances are more common as trips get longer or shorter. \(\theta\) is the scale parameter of the Weibull distribution. It stretches or compresses the distribution along the horizontal axis and is akin to the `characteristic life' in reliability terminology.
+The Weibull distribution (Equation \ref{eq:ch03-equation-13}) is a continuous probability distribution used to model various data types, particularly where the data shows a changing failure rate over time. This flexibility makes the Weibull distribution especially suited to reliability analysis, life data analysis, and modeling failure times. \(f(c_{ij})\) represents the probability density function (pdf) of the Weibull distribution, with \(c_{ij}\) being the variable of interest. here, \(c_{ij}\) would represent the impedance value, such as time or cost associated with traveling between two points. \(\alpha\) is the shape parameter of the Weibull distribution. It determines the form of the probability distribution function and can indicate whether the failure rate is increasing, constant, or decreasing over time. In fact,it would shape the distribution of impedance experiences, such as whether impedances are more common as trips get longer or shorter. \(\theta\) is the scale parameter of the Weibull distribution. It stretches or compresses the distribution along the horizontal axis and is akin to the `characteristic life' in reliability terminology.
 
 Based on the above description, the inverse power, negative exponential, and modified Gaussian functions consistently diminish the influence of opportunities as travel time increases, governed by an impedance parameter \(\beta\) that incorporates travel cost considerations. Originating from early gravity models of spatial interaction (Stewart, 1948; Zipf, 1949), the inverse power function exhibits a rapid decrease in opportunity influence as travel time lengthens. While power functions draw parallels with Newtonian physics, their direct applicability to human travel behavior has faced scrutiny (Sen \& Smith, 2012). In contrast, the negative exponential function adopts a more gradual approach. Supported by robust theoretical foundations rooted in entropy maximization (Wilson, 1971) and choice behavior theory (Fotheringham \& O'Kelly, 1989), this function has emerged as a de facto standard in applied accessibility analysis due to its theoretically sound underpinnings. On the other hand, the modified Gaussian function displays a considerably gentler decline in influence near its origin and an overall slower decay rate.
 
