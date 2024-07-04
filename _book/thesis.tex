@@ -50,6 +50,7 @@ singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespac
 \usepackage{lscape} % for landscaping pages
 \usepackage{amsmath}
 \usepackage{multirow}
+\usepackage{xcolor}
 % New commands for landscape orientation
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
@@ -319,7 +320,7 @@ NUMBER OF PAGES: \pageref{lastoffront}, \pageref{LastPage}  % put in iv and numb
 % not actually included in most theses, though requested by the GSA
 % uncomment below lines if you want to include one
 \section*{Lay Abstract}
-  Active travel, encompassing walking and cycling, is pivotal in fostering sustainable and healthy urban transportation systems. This thesis comprises two interconnected studies comprehensively addressing the complexities and imperatives of active travel analysis within the Canadian context. The first study embarks on a journey through three decades of active travel behavior in Canada. Utilizing data from Canada's General Social Survey, this research calibrates empirical impedance functions to elucidate individuals' willingness to undertake trips to various destinations by walking and cycling. The study not only reveals evolving patterns in active mobility but also offers valuable insights for urban planners and policymakers seeking to elevate walking and cycling as essential components of urban transportation in Canada. The second study evaluates geographic accessibility measures and data specifics necessary for assessing these modes in the Canadian context, shifting the focus to data prerequisites and sources critical for active accessibility analysis. This comprehensive analysis compares metrics, origin-destination considerations, geographic scales, and methods for calculating travel time and distance for walking and cycling. Beyond its relevance in Canada, this examination yields broader insights into the challenges and considerations associated with active travel accessibility analysis worldwide. These integrated studies contribute significantly to the ongoing discourse on active travel and accessibility, emphasizing the need for a transition from mobility-centric to accessibility-focused urban transportation policies. This transition holds the key to creating more sustainable, vibrant, and healthier cities for the future.
+  Active travel, encompassing walking and cycling, is pivotal in fostering sustainable and healthy urban transportation systems. This thesis comprises two interconnected studies comprehensively addressing the complexities and imperatives of active travel analysis within the Canadian context. The first chapter evaluates geographic accessibility measures and data specifics necessary for assessing these modes in the Canadian context, shifting the focus to data prerequisites and sources critical for active accessibility analysis. This comprehensive analysis compares metrics, origin-destination considerations, geographic scales, and methods for calculating travel time and distance for walking and cycling. Beyond its relevance in Canada, this examination yields broader insights into the challenges and considerations associated with active travel accessibility analysis worldwide. The second chapter embarks on a journey through three decades of active travel behavior in Canada. Utilizing data from Canada's General Social Survey, this research calibrates empirical impedance functions to elucidate individuals' willingness to undertake trips to various destinations by walking and cycling. The study not only reveals evolving patterns in active mobility but also offers valuable insights for urban planners and policymakers seeking to elevate walking and cycling as essential components of urban transportation in Canada. These integrated studies contribute significantly to the ongoing discourse on active travel and accessibility, emphasizing the need for a transition from mobility-centric to accessibility-focused urban transportation policies. This transition holds the key to creating more sustainable, vibrant, and healthier cities for the future.
 \blankpage
 \clearpage
 
@@ -331,7 +332,7 @@ NUMBER OF PAGES: \pageref{lastoffront}, \pageref{LastPage}  % put in iv and numb
 \section*{\Huge Abstract}
 \addchaptertocentry{\abstractname}
 % Type your abstract here.
-Active travel, encompassing walking and cycling, has emerged as a vital component in pursuing sustainable, healthy, and efficient urban transportation systems. This thesis comprises two interrelated studies that collectively contribute to a comprehensive understanding of active travel behavior and its analysis within the Canadian context. At the first step, we focused on the data prerequisites and sources required for active accessibility analysis, systematically evaluates geographic accessibility measures and data specificity essential to assessing walking and cycling in the Canadian urban landscape. As accessibility increasingly takes center stage in urban transportation policies, it becomes imperative to understand the unique data requirements and methodological considerations for these non-motorized modes. This review thoroughly examines the accessibility measures used in recent literature and the various data sources and considerations associated with walking and cycling accessibility analysis. The comparative analysis encompasses metrics, origin-destination considerations, geographic scales, and travel time or distance calculations, shedding light on the complexities and nuances of active travel data analysis. In the subsequent phase of our research, we extensively analyzed active travel behavior trends in Canada, spanning three decades from 1986 to 2015. This study uses data from Canada's General Social Survey to examine individual preferences and behaviors related to walking and cycling. The focus is mainly on understanding how these behaviors vary according to different trip purposes and geographical contexts. Our approach involved the intricate calibration of empirical impedance functions to gain insights into the temporal willingness of individuals to travel to various destinations using active modes of transportation. This aspect of the study is crucial in quantifying the time individuals are willing to allocate to walking and cycling to reach their destinations. The investigation notably provides a historical perspective on the evolution of active mobility over the past 35 years. This historical analysis is pivotal in unraveling the changes in active travel behavior, influenced by factors such as urban development trends, societal attitudes towards health and environmental sustainability, and modifications in transportation infrastructure and policy frameworks. Our findings reveal significant and consistent disparities in trip durations between walking and cycling modes, accompanied by intriguing temporal variations over the years. Moreover, the study delves deeper into the analysis of specific destinations, uncovering evolving patterns and distance-decay effects in active travel behavior. These patterns indicate how the proximity of destinations influences the choice and duration of active travel.While primarily centered on the Canadian context, this study offers valuable insights that apply to the global discourse on sustainable and active transportation. It underscores the crucial role of active travel in shaping the future of urban transportation systems, advocating for a shift from traditional mobility-centric approaches to an accessibility-focused paradigm. This shift recognizes walking and cycling as alternative modes and fundamental elements of vibrant, sustainable urban environments. The comprehensive nature of this study goes beyond presenting empirical findings; it contributes significantly to the broader conversation on urban mobility, emphasizing the importance of these modes in promoting healthier, more sustainable, and livable cities. The research findings are a vital resource for urban planners, policymakers, and academic researchers worldwide, guiding decision-making processes to enhance urban mobility. By elucidating the data prerequisites and behavioral patterns associated with active travel, this thesis informs the development of strategies that foster urban settings conducive to active and sustainable transportation methods. These insights are instrumental in advancing our understanding of how to effectively integrate walking and cycling into the urban fabric, thereby supporting the evolution of urban areas towards greater sustainability and livability.
+Active travel, encompassing walking and cycling, has emerged as a vital component in pursuing sustainable, healthy, and efficient urban transportation systems. This thesis comprises two interrelated studies that collectively contribute to a comprehensive understanding of active travel behavior and its analysis within the Canadian context. At the first step, we focused on the data prerequisites and sources required for active accessibility analysis, systematically evaluates geographic accessibility measures and data specificity essential to assessing walking and cycling in the Canadian urban landscape. As accessibility increasingly takes center stage in urban transportation policies, it becomes imperative to understand the unique data requirements and methodological considerations for these non-motorized modes. This review thoroughly examines the accessibility measures used in recent literature and the various data sources and considerations associated with walking and cycling accessibility analysis. The comparative analysis encompasses metrics, origin-destination considerations, geographic scales, and travel time or distance calculations, shedding light on the complexities and nuances of active travel data analysis. In the subsequent phase of our research, we extensively analyzed active travel behavior trends in Canada, spanning three decades from 1986 to 2015. This study uses data from Canada's General Social Survey to examine individual preferences and behaviors related to walking and cycling. The focus is mainly on understanding how these behaviors vary according to different trip purposes and geographical contexts. Our approach involved the calibration of empirical impedance functions to gain insights into the willingness of individuals to travel to various destinations using active modes of transportation. This aspect of the study is crucial in quantifying the time individuals are willing to allocate to walking and cycling to reach their destinations. The investigation notably provides a historical perspective on the evolution of active mobility over the past 35 years. This historical analysis is pivotal in unraveling the changes in active travel behavior, influenced by factors such as urban development trends, societal attitudes towards health and environmental sustainability, and modifications in transportation infrastructure and policy frameworks. Our findings reveal significant and consistent disparities in trip durations between walking and cycling modes, accompanied by intriguing temporal variations over the years. Moreover, the study delves deeper into the analysis of specific destinations, uncovering evolving patterns and distance-decay effects in active travel behavior. These patterns indicate how the proximity of destinations influences the choice and duration of active travel.While primarily centered on the Canadian context, this study offers valuable insights that apply to the global discourse on sustainable and active transportation. It underscores the crucial role of active travel in shaping the future of urban transportation systems, advocating for a shift from traditional mobility-centric approaches to an accessibility-focused paradigm. This shift recognizes walking and cycling as alternative modes and fundamental elements of vibrant, sustainable urban environments. The comprehensive nature of this study goes beyond presenting empirical findings; it contributes significantly to the broader conversation on urban mobility, emphasizing the importance of these modes in promoting healthier, more sustainable, and livable cities. The research findings are a vital resource for urban planners, policymakers, and academic researchers worldwide, guiding decision-making processes to enhance urban mobility. By elucidating the data prerequisites and behavioral patterns associated with active travel, this thesis informs the development of strategies that foster urban settings conducive to active and sustainable transportation methods. These insights are instrumental in advancing our understanding of how to effectively integrate walking and cycling into the urban fabric, thereby supporting the evolution of urban areas towards greater sustainability and livability.
 \blankpage
 \clearpage
 
@@ -396,7 +397,7 @@ Active travel, encompassing walking and cycling, has emerged as a vital componen
 \chapter*{Introduction}\label{introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-The challenge of addressing sustainable transportation is increasingly recognized as a crucial issue in contemporary global societies. The European Environment Agency (2020) highlights a growing awareness of the numerous and significant adverse effects of transportation, which threaten all three pillars of sustainability (Agency, 2020). These detrimental effects are predominantly evident in urban regions, yet these areas also emerge as the primary arenas for developing and implementing innovative solutions. A key strategy among these is the shift from predominantly carbon-dependent and motorized personal transport to more active, non-motorized modes of mobility, recognized as one of the most effective approaches for promoting sustainable transportation.
+The challenge of addressing sustainable transportation is increasingly recognized as a crucial issue in contemporary societies. The European Environment Agency (2020) highlights a growing awareness of the numerous and significant adverse effects of transportation, which threaten all three pillars of sustainability (Agency, 2020). These detrimental effects are predominantly evident in urban regions, yet these areas also emerge as the primary arenas for developing and implementing innovative solutions. A key strategy among these is the shift from predominantly carbon-dependent and motorized personal transport to more active, non-motorized modes of mobility, recognized as one of the most effective approaches for promoting sustainable transportation.
 
 Based on this approach, active mobility sets itself apart from other transportation modalities with its unique benefits. Research by Koszowski et al.~(2019) illustrates that active mobility offers carbon neutrality, spatial efficiency, and considerable health advantages. This form of transportation is gaining preference among many urban dwellers over public transit, as evidenced by the rapid expansion of urban infrastructure designed to facilitate active travel (Dunning \& Nurse, 2020; Koszowski et al., 2019; Laverty, Millett, Majeed, \& Vamos, 2020). However, challenges remain, such as the decline in public transportation use and the potential rise in car usage, which pose significant threats to achieving sustainable transportation goals(Aloi et al., 2020; Beck \& Hensher, 2020). Despite these challenges, active mobility is viable in cities where walking and cycling account for a significant share of multi-modal transportation and play a pivotal role in shaping urban mobility and advancing sustainability.
 
@@ -435,7 +436,7 @@ The significance of accessibility-based planning becomes even more apparent when
 
 In principle, accessibility analysis is versatile enough to be applied to ATB accessibility analysis. However, it is crucial to acknowledge the distinctions between motorized and active travel and how these differences can influence the implementation of accessibility measures with a focus on active modes (Iacono et al., 2010). Active modes of transportation have captivated the attention of researchers due to their profound implications and unique advantages in terms of the environment, health, and social inclusion (Koszowski et al., 2019; Otero, Nieuwenhuijsen, \& Rojas-Rueda, 2018; Pucher, Buehler, Bassett, \& Dannenberg, 2010; Rojas-Rueda, De Nazelle, Tainio, \& Nieuwenhuijsen, 2011; Rojas-Rueda, Nazelle, Teixido, \& Nieuwenhuijsen, 2012; Tinessa, Pagliara, Biggiero, \& Veneri, 2021). They have been linked to various health benefits, such as improved longevity (Hakim et al., 1998), enhanced cognitive function (Weuve et al., 2004), and better quality of life (Leveille, Guralnik, Ferrucci, \& Langlois, 1999; Strawbridge, Cohen, Shema, \& Kaplan, 1996). Moreover, active modes are perceived as cleaner, more efficient, and more sustainable forms of transportation (Bhopal \& Unwin, 1995). Active travel also presents an excellent alternative for mobility, reducing transportation costs for families, promoting gender equality, fostering resilient infrastructure, and contributing to the aesthetic value of the environment (Koszowski et al., 2019). Furthermore, active travel improves accessibility for individuals who do not have access to other modes of transportation and contributes to the development of local and regional economies. However, compared to motorized travel, active travel entails slower speeds, occurs on more minor scales, poses more significant safety risks due to the higher likelihood of severe injuries in collisions, is used to reach potentially different destinations, and involves costs, such as physical exertion, which are typically disregarded in motorized travel analysis (Akgun, Dissanayake, Thorpe, \& Bell, 2018; Ng, Debnath, \& Heesch, 2017; Oehl, Brandenburg, \& Huemer, 2019; Pokorny, Pritchard, \& Pitera, 2018; Useche, Montoro, Sanmartin, \& Alonso, 2019).
 
-The objective of the present study is to investigate active travel-based (ATB) accessibility, with a specific focus on data sources and requirements, utilizing Canada as a case study. This research is motivated by a recent Canadian project establishing data-driven standards for analyzing transportation equity. A thorough understanding of how the input data influences the analysis and outcomes is essential to propose methods that can be applied uniformly across regions. It is worth noting that other reviews on ATB accessibility measures have been conducted (K. T. Geurs \& Van Wee, 2004; Iacono et al., 2010; Maghelal \& Capp, 2011; Talen \& Koschinsky, 2013; D. S. Vale, Saraiva, \& Pereira, 2016). This paper's contribution lies in addressing a literature gap by focusing on the data requirements for various ATB accessibility measures, comparing measures that can be consistently implemented in diverse contexts, and identifying the data needs for their standardized implementation.
+The objective of the present study is to investigate active travel-based (ATB) accessibility, with a specific focus on data sources and requirements, utilizing Canada as a case study. A thorough understanding of how the input data influences the analysis and outcomes is essential to propose methods that can be applied uniformly across regions. It is worth noting that other reviews on ATB accessibility measures have been conducted (K. T. Geurs \& Van Wee, 2004; Iacono et al., 2010; Maghelal \& Capp, 2011; Talen \& Koschinsky, 2013; D. S. Vale, Saraiva, \& Pereira, 2016). This paper's contribution lies in addressing a literature gap by focusing on the data requirements for various ATB accessibility measures, comparing measures that can be consistently implemented in diverse contexts, and identifying the data needs for their standardized implementation.
 
 \section{Background}\label{background}
 
@@ -471,7 +472,11 @@ This type of accessibility measure is based on Hansen's work in 1959, which quan
 
 The formulation of the decay function's cumulative opportunities (rectangular) can be expressed as equation \ref{eq:ch02-equation-04}:
 \begin{equation}
-f(c^p_{ij}) = X
+f(c^p_{ij}) = 
+\begin{cases}
+  1 & \text{if } c^p_{ij} \le \gamma^p \\
+  0 & \text{otherwise}
+\end{cases}
 \label{eq:ch02-equation-04}
 \end{equation}
 
@@ -531,11 +536,15 @@ The equation \ref{eq:ch02-equation-06} provides the measure of accessibility fro
 Cumulative opportunities, also referred to as isochrones or contour measures, count the number of opportunities within a specified catchment area. In contrast to the utility measure, which assesses accessibility based on the ``net utility'' gained from travel, the cumulative measure quantifies accessibility by considering the total number of reachable opportunities and their associated travel costs. In contrast with gravity-based measures, in a cumulative measure (equation \ref{eq:ch02-equation-06}), the distance decay function is binary and calculated using equation \ref{eq:ch02-equation-07}:
 
 \begin{equation}
-f(c_{ij} \le \gamma _i) = X
+f(c_{ij} \le \gamma _i) = 
+\begin{cases}
+  1 & \text{if } c_{ij} \le \gamma _i \\
+  0 & \text{otherwise}
+\end{cases}
 \label{eq:ch02-equation-07}
 \end{equation}
 
-In the equation \ref{eq:ch02-equation-07}, \(\gamma\) represents the threshold value. According to this formula, all opportunities located within the \(\gamma\) threshold are considered accessible. Additionally, \(f(c)\) is an indicator function that yields a value of 1 if the logical statement in the function's argument is valid (i.e.~if the cost of reaching \(j\) from \(i\) does not exceed the bandwidth parameter value), and 0 otherwise. Alternative distance-decay functions (such as inverse distance or negative exponential) can generate smoother map patterns, as discussed by (OKelly \& Horner, 2003). However, they require more parameters and introduce distance- or cost-discounted schemes that are more challenging to interpret. Prior research has indicated that cumulative opportunity measures exhibit a high degree of correlation, irrespective of the distance-decay function employed (Kwan, 1998a). Consequently, our preference lies with simplicity and interpretability when selecting our accessibility indicator.
+In the equation \ref{eq:ch02-equation-07}, \(\gamma\) represents the threshold value. According to this formula, all opportunities located within the \(\gamma\) threshold are considered accessible. Additionally, \(f(c)\) is an indicator function that yields a value of 1 if the logical statement in the function's argument is valid (i.e.~if the cost of reaching \(j\) from \(i\) does not exceed the bandwidth parameter value), and 0 otherwise. Alternative distance-decay functions (such as inverse distance or negative exponential) can generate smoother map patterns, as discussed by OKelly \& Horner (2003). However, they require more parameters and introduce distance- or cost-discounted schemes that are more challenging to interpret. Prior research has indicated that cumulative opportunity measures exhibit a high degree of correlation, irrespective of the distance-decay function employed (Kwan, 1998a). Consequently, our preference lies with simplicity and interpretability when selecting our accessibility indicator.
 
 \subsection{Distance-based measures}\label{distance-based-measures}
 
@@ -557,7 +566,11 @@ A^{ip} = \min_{j \in L^p} (d_{ij})
 In this equation \ref{eq:ch02-equation-08}, \(A^{ip}\) is the accessibility of zone \(i\) to the location of type p, \(L^p\) is a set of locations of type p, and \((d_{ij})\) is distance (or travel time for a given mode) from i to location j in set \(L_p\). This measure is consistent with a straightforward location model in which the nearest location is always chosen with a probability of 1.0. (equation \ref{eq:ch02-equation-09})
 
 \begin{equation}
-P^{ip}_j = X
+P^{ip}_j = 
+\begin{cases}
+  1 & \text{if } d_{ij} = \min_{j \in L^p} d_{ij} \\
+  0 & \text{otherwise}
+\end{cases}
 \label{eq:ch02-equation-09}
 \end{equation}
 
@@ -1145,7 +1158,7 @@ North Shore Transportation Survey (NSTS) & 2019 & Household employment & Age & L
 \endgroup{}
 \end{landscape}
 
-\textbf{The Linkable Open Data Environment (LOD)}
+\textbf{The Linkable Open Data Environment (LODE)}
 
 The Linkable Open Data Environment (LODE) is an exploratory initiative that aims to enhance the use and harmonization of open microdata primarily from municipal, provincial, and federal sources. It was compiled by the Centre for Special Business Projects (CSBP) at Statistics Canada in 2020.
 
@@ -1763,7 +1776,7 @@ Park trails and walkways & Non-conforming & 1\\
 \end{longtable}
 \endgroup{}
 
-\subsection{Origins/destinations \& applying weights}\label{originsdestinations-applying-weights}
+\subsection{Origins/destinations and applying weights}\label{originsdestinations-and-applying-weights}
 
 How opportunities are measured depends on the type of opportunity and whether one or multiple opportunity types are considered. For example, the studies measuring job accessibility or number of people served by transit consider a total count, whereas for urban park access, Reyes et al.~(2014) and Cheng et al.~(2019) consider cell counts to account for park area(Cheng et al., 2019; Reyes, Paez, \& Morency, 2014). Among walkability and bikeability indices, weights are expected to be applied to the variables depending on the goals for analysis (Arellana, Alvarez, Oviedo, \& Guzman, 2021; L. D. Frank et al., 2010; D. S. Vale et al., 2016).
 
@@ -1815,7 +1828,7 @@ There has been an increasing interest in urban and transportation planning regar
 
 In recent decades, a large body of literature has contributed to assessing the accessibility of active transportation. These studies agree that there are two primary components for measuring accessibility: (1) the location and attractiveness of urban opportunities (benefit side) and (2) the barrier to travel from the origin in the network to the destination (cost side). In particular, calculating accessibility using impedance functions has become an important research topic that has received much attention from scholars in the fields of transportation planning, urban geography, and sustainable development (Currie, 2010; L. D. Frank et al., 2005; Iacono et al., 2010; Krizek, 2005; Millward et al., 2013; Nassir et al., 2016; Saghapour et al., 2017; X. Wu et al., 2019; Yang \& Diez-Roux, 2012). In its various forms, the impedance function serves as a measure of the willingness to travel a certain distance to achieve desired goals. It is a valuable tool for analyzing spatial patterns of travel behavior (Eldridge \& Jones III, 1991; Fotheringham, 1981; Kwan, 1998b; Luoma, Mikkonen, \& Palomaki, 1993; Millward et al., 2013; Papa \& Coppola, 2012; Peter Taylor, 1975; D. S. Vale \& Pereira, 2017; Yang \& Diez-Roux, 2012). According to these definitions, areas with higher accessibility are those characterized by a lower impedance when traveling to desirable destinations. In other words, the greater the distance between two points, the less likely they can be reached on foot or by bike (Bhat et al., 2002; Cascetta, Carteni, \& Montanino, 2013; Church \& Marston, 2003; K. T. Geurs \& Ritsema van Eck, 2001; K. T. Geurs \& Van Wee, 2004; S. L. Handy \& Niemeier, 1997; Hansen, 1959; Kwan, Murray, OKelly, \& Tiefelsdorf, 2003; D. M. Levinson \& Krizek, 2005; Pirie, 1979). So, there needs to be more information on the willingness of some individuals to walk or cycle greater distances. Equally, there needs to be more data on how distance affects the nature of the activity, the desirability of the destinations, and the characteristics of those embarking on the trip in different contexts. Hence, it is imperative to investigate the evolution of impedance function over time due to its inherently dynamic nature, which fluctuates in response to the evolution of transportation networks and shifts in urban spatial configurations (Iacono et al., 2010, 2008). Luoma, Mikkonen, and Palomaki (1993) provided evidence highlighting a diminishing distance decay parameter over time, attributing this trend to enhanced travel velocities and the maturation of transportation infrastructures (Luoma et al., 1993). Subsequent research by Mikkonen and Luoma (1999) delved into elucidating the factors behind these noted shifts in the parameters of gravity models over periods (Mikkonen \& Luoma, 1999).
 
-Various impedance functions have been utilized to describe the distribution of walking and cycling trips, both in general and for specific purposes (Iacono et al., 2010, 2008; Larsen et al., 2010; Li et al., 2020a; Millward et al., 2013; D. S. Vale \& Pereira, 2017; Yang \& Diez-Roux, 2012). When assessing accessibility using impedance functions, different cost decay functions have been employed, including \textbf{threshold functions} (e.g., step function) and \textbf{smooth cost decay functions} (e.g., inverse-potential, log-normal, logistic, exponential square-root, and half-life function) (De Vries et al., 2009; ITF., 2017; Osth et al., 2016; Reggiani et al., 2011). Scholars place significant emphasis on selecting an appropriate impedance function, leading to a diverse range of functions being employed. These various specifications primarily vary in their treatment of the influence of distance, consequently impacting the accessibility measurement. However, negative exponential distance-decay functions are commonly used in assessing non-motorized accessibility, capturing the willingness of individuals to walk or cycle to destinations (K. T. Geurs \& Ritsema van Eck, 2001; S. L. Handy \& Niemeier, 1997; Iacono et al., 2010; Li et al., 2020a; Millward et al., 2013; D. S. Vale \& Pereira, 2017; Vega, 2012). The merit of this function lies in its ability to attribute decreasing influences to more remote opportunities, thereby offering a more accurate estimation for shorter journeys, especially those undertaken by non-motorized modes (Fotheringham \& O'Kelly, 1989; Iacono et al., 2010; Kanafani, 1983).
+Various impedance functions have been utilized to describe the distribution of walking and cycling trips, both in general and for specific purposes (Iacono et al., 2010, 2008; Larsen et al., 2010; Li et al., 2020a; Millward et al., 2013; D. S. Vale \& Pereira, 2017; Yang \& Diez-Roux, 2012). When assessing accessibility using impedance functions, different cost decay functions have been employed, including \textbf{threshold functions} (e.g., binary Step Function and multiple Step Function) and \textbf{smooth cost decay functions} (e.g., inverse-potential, log-normal, logistic, exponential square-root, and half-life function) (De Vries et al., 2009; ITF., 2017; Osth et al., 2016; Reggiani et al., 2011). Scholars place significant emphasis on selecting an appropriate impedance function, leading to a diverse range of functions being employed. These various specifications primarily vary in their treatment of the influence of distance, consequently impacting the accessibility measurement. However, negative exponential distance-decay functions are commonly used in assessing non-motorized accessibility, capturing the willingness of individuals to walk or cycle to destinations (K. T. Geurs \& Ritsema van Eck, 2001; S. L. Handy \& Niemeier, 1997; Iacono et al., 2010; Li et al., 2020a; Millward et al., 2013; D. S. Vale \& Pereira, 2017; Vega, 2012). The merit of this function lies in its ability to attribute decreasing influences to more remote opportunities, thereby offering a more accurate estimation for shorter journeys, especially those undertaken by non-motorized modes (Fotheringham \& O'Kelly, 1989; Iacono et al., 2010; Kanafani, 1983).
 
 In addition to determining the form of the impedance function, the analyst must also specify the variable used to measure impedance, which can be either time, cost, or a combination of both. Previous studies have employed both of these measures, and there are instances where the generalized cost concept has also been applied. The choice between time and distance as the impedance variable has been found to be acceptable based on previous research (Hull et al., 2012; Iacono et al., 2010; M. Lowry, Callister, Gresham, \& Moore, 2012; Sun, Lin, \& Li, 2012; Vasconcelos \& Farias, 2012 ). However, when it comes to non-motorized travel modes, extracting accurate travel times from existing network models can be challenging, which limits the options and makes distance a more practical choice (Arranz-Lopez et al., 2019a; S. L. Handy \& Niemeier, 1997; Iacono et al., 2010; Yang \& Diez-Roux, 2012). Furthermore, researchers specializing in active modes of transportation have faced challenges stemming from a need for more objective data concerning walking and cycling behavior. Estimating specialized impedance functions specific to non-motorized modes requires appropriate travel survey data that can capture pedestrian and cycle behavior. Often, researchers have resorted to relying on retrospective questionnaires, which assess subjective aspects such as the frequency and duration of walking and cycling activities. Notably, regional household travel surveys, including trips made by non-motorized modes, have been employed for this purpose (Iacono et al., 2010; Millward et al., 2013).
 
@@ -1845,8 +1858,8 @@ The second type pertains to the \textbf{Cumulative-opportunity} metrics, often r
 \begin{equation}
 C_{ij} =
 \begin{cases}
-  1 \& \text{if } c_{ij} \le x \\
-  0 \& \text{if } c_{ij} > x
+  1 & \text{if } c_{ij} \le x \\
+  0 & \text{if } c_{ij} > x
 \end{cases}
 \label{eq:ch03-equation-02}
 \end{equation}
@@ -1857,7 +1870,7 @@ The choice of the most appropriate impedance function and the associated paramet
 
 Researchers, from Stewart (1941) to Haggett (2001), have reached a consensus regarding the non-linear nature of inverse distance-decay functions in human geographical applications (Haggett, 2001; Johnston, 1973; Robinson, n.d.; Stewart, 1941; PJ Taylor, 1983; P. J. Taylor, 1971). At the same time, simplistic functions may not aptly reflect the observed data on distance-interaction intensity graphs, and intricate distance-decay functions have been promoted by Taylor (1983) and Robinson (1998). Among these functions, bell-shaped curves, such as the Tanner function, March's function, and the Box-Cox function, have gained prominence, directed by multiple parameters (Dios Ortuzar \& Willumsen, 2011; Gaudry, 1981; Halas, Klapka, \& Kladivo, 2014; Mandel, Gaudry, \& Rothengatter, 1997; Martinez \& Viegas, 2013; Paez et al., 2012a; Richardson et al., 1969; Robinson, n.d.; PJ Taylor, 1983; Tiefelsdorf, 2003; Van Wee, Hagoort, \& Annema, 2001). Mozolin et al.~(2000) introduced an approach that integrates distance and employment numbers, visualized in a 3D diagrammatic representation (Mozolin, Thill, \& Usery, 2000). However, while these functions provide precise fits for specific scenarios, their general application across varying contexts may be limited.
 
-As mentioned, the choice of impedance functions plays a pivotal role in modeling accessibility, particularly when analyzing travel behavior within urban environments. Among the various mathematical forms that can represent impedance functions, the negative exponential function has emerged as the dominant choice in traditional transportation planning models and recent studies (Apparicio et al., 2008; Gutierrez, Gonzalez, \& Gomez, 1996; Iacono et al., 2010, 2008; Kwan, 1998b; Larsen et al., 2010; Meyer \& Miller, 1984; Millward et al., 2013). Its prevalence in the literature can be attributed to several factors, including its compatibility with travel behavior theory and its ability to effectively estimate shorter trips, particularly those associated with non-motorized modes of transportation. As Song (1996) noted in his examination of alternative accessibility measures, the negative exponential form \((e ^-\beta x)\) stands out as the most useful in explaining population distribution due to its gradual decline, which aligns with empirical data and accurately captures the influence of proximity on accessibility (Song, 1996). This choice of impedance function aligns with the rationale that a more gradual decline near the origin is essential for estimating shorter trips, a characteristic highly relevant to active modes of transportation, such as walking and cycling. This preference for the negative exponential form is further corroborated by the work of Kanafani (1983), who highlighted its suitability for modeling non-motorized modes, emphasizing its capacity to better estimate shorter trips compared to the power function. The ubiquity of the negative exponential form in recent studies and its adaptability to various urban contexts make it a well-suited candidate for estimating impedance functions, as indicated by a record of numerous empirical applications (De Vries et al., 2009; Fotheringham \& O'Kelly, 1989; Iacono et al., 2010; Kanafani, 1983; Prins et al., 2014; Signorino et al., 2011).
+As mentioned, the choice of impedance functions plays a pivotal role in modeling accessibility, particularly when analyzing travel behavior within urban environments. Among the various mathematical forms that can represent impedance functions, the negative exponential function has emerged as the dominant choice in traditional transportation planning models and recent studies (Apparicio et al., 2008; Gutierrez, Gonzalez, \& Gomez, 1996; Iacono et al., 2010, 2008; Kwan, 1998b; Larsen et al., 2010; Meyer \& Miller, 1984; Millward et al., 2013). Its prevalence in the literature can be attributed to several factors, including its compatibility with travel behavior theory and its ability to effectively estimate shorter trips, particularly those associated with non-motorized modes of transportation. As Song (1996) noted in his examination of alternative accessibility measures, the negative exponential form \((e ^ {-\beta x})\) stands out as the most useful in explaining population distribution due to its gradual decline, which aligns with empirical data and accurately captures the influence of proximity on accessibility (Song, 1996). This choice of impedance function aligns with the rationale that a more gradual decline near the origin is essential for estimating shorter trips, a characteristic highly relevant to active modes of transportation, such as walking and cycling. This preference for the negative exponential form is further corroborated by the work of Kanafani (1983), who highlighted its suitability for modeling non-motorized modes, emphasizing its capacity to better estimate shorter trips compared to the power function. The ubiquity of the negative exponential form in recent studies and its adaptability to various urban contexts make it a well-suited candidate for estimating impedance functions, as indicated by a record of numerous empirical applications (De Vries et al., 2009; Fotheringham \& O'Kelly, 1989; Iacono et al., 2010; Kanafani, 1983; Prins et al., 2014; Signorino et al., 2011).
 
 Furthermore, recent investigations into impedance functions have shed light on their effectiveness in modeling walking accessibility, with particular attention to the negative exponential form. In the study conducted by Vale and Pereira (2017), which examined 20 pedestrian accessibility measures, both the modified Gaussian and exponential functions were found to be robust choices for accurately modeling walking accessibility. These findings corroborate the suitability of the negative exponential form for capturing the nuanced patterns of walking behavior within urban areas. Vale and Pereira's research introduced a novel cumulative Gaussian function that considers cumulative opportunities at close distances (e.g., 200 or 400 meters) and a modified Gaussian curve for longer distances. These functions showcase the adaptability and versatility of impedance modeling, especially in the context of active travel and pedestrian accessibility analysis (D. S. Vale \& Pereira, 2017). Thus, while alternative impedance functions may be considered in specific scenarios, the dominance of the negative exponential form underscores its utility as a fundamental choice for estimating impedance functions, mainly when dealing with active modes of transportation and urban accessibility modeling. We present a detailed exposition of the most widely recognized impedance functions to further elaborate on this aspect. These include the inverse power, negative exponential, modified Gaussian, logarithmic normal distribution, cumulative opportunities (both rectangular and linear), gamma, and Log-logistic decay functions. Each model offers a unique lens through which the relationship between distance or travel time and accessibility can be understood, thereby providing a comprehensive toolkit for urban planners and researchers to analyze and predict travel patterns in various contexts.
 
@@ -2108,7 +2121,7 @@ Mode & Statistic & 1986 & 1992 & 1998 & 2005 & 2010 & 2015\\
 
 Our primary method was rooted in descriptive analysis. We parsed vast quantities of data to discern overarching patterns and trends. A salient feature emerging from this analysis was the duration of trips undertaken.Table \ref{tab:ch03-table-01} contains a detailed compilation of descriptive statistics showing the fluctuating patterns of walking and cycling trips between 1986 and 2015. The data is categorized under two principal modes of transit: walking and cycling, with each category further explored through four statistical metrics: count, maximum (max), mean, and minimum (min), each quantified in minutes. In the walking trips section, the `count' metric represents the number of recorded trips for each year. The journey began in 1986 with 384 recorded walking trips, escalating to 1,473 by 1992, indicating a burgeoning preference for walking during this period. The peak was reached in 1998 with 1,657 trips, which increased to an unprecedented 5,517 trips by 2005, possibly reflecting societal shifts toward healthier lifestyles or environmental concerns. However, post-2005, a downward trend emerged, with counts reducing to 4,360 trips in 2010 and further to 2,796 in 2015, possibly due to changing urban landscapes or the advent of alternative transportation modes.
 
-The `max' time invested in walking trips is a constant 90 minutes across the years, suggesting a stable group of individuals who consistently engage in longer-duration walks, perhaps for exercise or leisure. However, the `mean' walking time varies: it starts at 24 minutes in 1986, drops to 17 minutes in 1992, and finally to 10 minutes in 1998. This trend reverses slightly to 12 minutes in both 2005 and 2010 and ascends to 16 minutes in 2015. This fluctuation in average walking time could reflect evolving urban designs, societal pace, or changing durations in individuals' routines. The `min' walking time, initially stable at 1 minute, drops to nonexistence in 2005 and 2010, then rebounds to 5 minutes in 2015, perhaps echoing the introduction and subsequent enforcement of minimum exercise guidelines.
+The `max' time invested in walking trips remains a constant 90 minutes across the years. However, the `mean' walking time varies: it starts at 24 minutes in 1986, drops to 17 minutes in 1992, and finally to 10 minutes in 1998. This trend reverses slightly to 12 minutes in both 2005 and 2010 and ascends to 16 minutes in 2015. This fluctuation in average walking time could reflect evolving urban designs, societal pace, or changing durations in individuals' routines. The `min' walking time, initially stable at 1 minute, drops to nonexistence in 2005 and 2010, then rebounds to 5 minutes in 2015.
 
 For cycling trips, data is absent for 1986. Starting in 1992, 126 trips are noted, dipping marginally to 119 in 1998, then more than doubling to 325 by 2005---indicative of a surge in cycling popularity, potentially driven by environmental campaigns or improvements in cycling infrastructure. The count declined to 214 trips in 2010 but experienced a marginal recovery to 217 trips by 2015. The `max' cycling time experiences a gradual reduction from 90 minutes in the early years to 80 minutes by 2015, possibly reflecting advancements in bicycle technology or changes in cyclists' behaviors. The `mean' time initially recedes from 24 minutes in 1992 to 18 minutes in 2005, then modestly increases, culminating at 22 minutes in 2015, suggesting that the average trip becomes slightly longer, which could be due to several factors such as increased commuting distances or a rise in recreational cycling. The `min' cycling time shows a sharp decline to 1 minute in 2005 and 2010, paralleling the walking trend, before climbing back to 5 minutes in 2015, which could indicate cycling's growing popularity as a short-distance travel alternative.
 
@@ -2259,40 +2272,40 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Home}}\\
-\hspace{1em}Gamma & 1986 & -679.70 & 1363.40 & 1369.64\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1986}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-679.70}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1363.40}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1369.64}}\endgroup\\
 \hspace{1em}Weibull & 1986 & NA & NA & \vphantom{2} NA\\
 \hspace{1em}Exponential & 1986 & -692.66 & 1387.32 & 1390.43\\
-\hspace{1em}Gamma & 1992 & -3445.93 & 6895.85 & 6905.38\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1992}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-3445.93}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{6895.85}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{6905.38}}\endgroup\\
 \hspace{1em}Weibull & 1992 & NA & NA & \vphantom{1} NA\\
 \hspace{1em}Exponential & 1992 & -3462.38 & 6926.75 & 6931.52\\
-\hspace{1em}Gamma & 1998 & -2822.99 & 5649.98 & 5659.47\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1998}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-2822.99}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{5649.98}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{5659.47}}\endgroup\\
 \hspace{1em}Weibull & 1998 & NA & NA & \vphantom{1} NA\\
 \hspace{1em}Exponential & 1998 & -2829.02 & 5660.04 & 5664.78\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Other's home}}\\
-\hspace{1em}Gamma & 1986 & -646.37 & 1296.75 & 1302.91\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1986}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-646.37}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1296.75}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1302.91}}\endgroup\\
 \hspace{1em}Weibull & 1986 & NA & NA & \vphantom{1} NA\\
 \hspace{1em}Exponential & 1986 & -655.12 & 1312.24 & 1315.32\\
 \hspace{1em}Lognormal & 1986 & NA & NA & \vphantom{1} NA\\
-\hspace{1em}Gamma & 1992 & -1097.09 & 2198.17 & 2205.70\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1992}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1097.09}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2198.17}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2205.70}}\endgroup\\
 \hspace{1em}Weibull & 1992 & -1108.03 & 2220.05 & 2227.58\\
 \hspace{1em}Exponential & 1992 & -1114.47 & 2230.94 & 2234.70\\
 \hspace{1em}Lognormal & 1992 & NA & NA & \vphantom{1} NA\\
-\hspace{1em}Gamma & 1998 & -1493.73 & 2991.47 & 2999.76\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1998}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1493.73}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2991.47}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2999.76}}\endgroup\\
 \hspace{1em}Weibull & 1998 & -1498.74 & 3001.47 & 3009.77\\
 \hspace{1em}Exponential & 1998 & -1499.40 & 3000.80 & 3004.95\\
 \hspace{1em}Lognormal & 1998 & NA & NA & \vphantom{1} NA\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Work or school}}\\
-\hspace{1em}Gamma & 1986 & -243.98 & 491.96 & 496.01\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1986}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-243.98}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{491.96}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{496.01}}\endgroup\\
 \hspace{1em}Weibull & 1986 & NA & NA & NA\\
 \hspace{1em}Exponential & 1986 & -246.96 & 495.93 & 497.96\\
 \hspace{1em}Lognormal & 1986 & NA & NA & NA\\
-\hspace{1em}Gamma & 1992 & -976.83 & 1957.66 & 1964.99\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1992}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-976.83}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1957.66}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1964.99}}\endgroup\\
 \hspace{1em}Weibull & 1992 & NA & NA & NA\\
 \hspace{1em}Exponential & 1992 & -1021.74 & 2045.48 & 2049.14\\
 \hspace{1em}Lognormal & 1992 & NA & NA & NA\\
-\hspace{1em}Gamma & 1998 & -1173.77 & 2351.53 & 2359.19\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1998}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1173.77}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2351.53}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2359.19}}\endgroup\\
 \hspace{1em}Weibull & 1998 & NA & NA & NA\\
 \hspace{1em}Exponential & 1998 & -1177.45 & 2356.91 & 2360.74\\
 \hspace{1em}Lognormal & 1998 & NA & NA & NA\\
@@ -2311,26 +2324,26 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Home}}\\
-\hspace{1em}Gamma & 2005 & -8561.05 & 17126.11 & 17137.71\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-8561.05}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{17126.11}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{17137.71}}\endgroup\\
 \hspace{1em}Weibull & 2005 & -8585.21 & 17174.43 & 17186.03\\
 \hspace{1em}Exponential & 2005 & -8618.16 & 17238.32 & 17244.12\\
-\hspace{1em}Gamma & 2010 & -6773.82 & 13551.64 & 13562.73\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-6773.82}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{13551.64}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{13562.73}}\endgroup\\
 \hspace{1em}Weibull & 2010 & -6785.96 & 13575.91 & 13587.01\\
 \hspace{1em}Exponential & 2010 & -6791.86 & 13585.73 & 13591.28\\
-\hspace{1em}Gamma & 2015 & -4899.43 & 9802.87 & 9813.22\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-4899.43}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{9802.87}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{9813.22}}\endgroup\\
 \hspace{1em}Weibull & 2015 & -4959.63 & 9923.26 & 9933.61\\
 \hspace{1em}Exponential & 2015 & -5050.70 & 10103.41 & 10108.58\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: work or school}}\\
-\hspace{1em}Gamma & 2005 & -2030.84 & 4065.68 & 4074.62\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-2030.84}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{4065.68}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{4074.62}}\endgroup\\
 \hspace{1em}Weibull & 2005 & -2035.93 & 4075.86 & 4084.80\\
 \hspace{1em}Exponential & 2005 & -2037.41 & 4076.81 & 4081.28\\
 \hspace{1em}Lognormal & 2005 & -1996.71 & 3997.42 & 4006.36\\
 \hspace{1em}Gamma & 2010 & -1565.60 & 3135.20 & 3143.61\\
-\hspace{1em}Weibull & 2010 & -1563.85 & 3131.70 & 3140.11\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Weibull}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1563.85}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{3131.70}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{3140.11}}\endgroup\\
 \hspace{1em}Exponential & 2010 & -1565.64 & 3133.28 & 3137.49\\
 \hspace{1em}Lognormal & 2010 & NA & NA & \vphantom{1} NA\\
-\hspace{1em}Gamma & 2015 & -805.12 & 1614.25 & 1621.11\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-805.12}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1614.25}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1621.11}}\endgroup\\
 \hspace{1em}Weibull & 2015 & -817.06 & 1638.13 & 1644.99\\
 \hspace{1em}Exponential & 2015 & -832.40 & 1666.81 & 1670.24\\
 \hspace{1em}Lognormal & 2015 & NA & NA & \vphantom{2} NA\\
@@ -2339,26 +2352,26 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \hspace{1em}Gamma & 2005 & -1672.51 & 3349.01 & 3357.51\\
 \hspace{1em}Exponential & 2005 & -1707.84 & 3417.67 & 3421.92\\
 \hspace{1em}Weibull & 2005 & -1685.20 & 3374.41 & 3382.91\\
-\hspace{1em}Lognormal & 2005 & -1657.24 & 3318.48 & 3326.98\\
-\hspace{1em}Gamma & 2010 & -1471.84 & 2947.67 & 2955.83\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1657.24}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{3318.48}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{3326.98}}\endgroup\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1471.84}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2947.67}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2955.83}}\endgroup\\
 \hspace{1em}Exponential & 2010 & -1480.30 & 2962.59 & 2966.68\\
 \hspace{1em}Weibull & 2010 & -1478.49 & 2960.99 & 2969.15\\
 \hspace{1em}Lognormal & 2010 & NA & NA & NA\\
-\hspace{1em}Gamma & 2015 & -884.43 & 1772.87 & 1779.91\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-884.43}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1772.87}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1779.91}}\endgroup\\
 \hspace{1em}Exponential & 2015 & -921.28 & 1844.56 & 1848.08\\
 \hspace{1em}Weibull & 2015 & NA & NA & NA\\
 \hspace{1em}Lognormal & 2015 & NA & NA & \vphantom{1} NA\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Outdoors }}\\
-\hspace{1em}Gamma & 2005 & -3241.56 & 6487.13 & 6496.83\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-3241.56}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{6487.13}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{6496.83}}\endgroup\\
 \hspace{1em}Weibull & 2005 & -3254.75 & 6513.50 & 6523.20\\
 \hspace{1em}Exponential & 2005 & -3277.81 & 6557.62 & 6562.47\\
 \hspace{1em}Lognormal & 2005 & NA & NA & NA\\
 \hspace{1em}Gamma & 2010 & -2243.15 & 4490.30 & 4499.27\\
 \hspace{1em}Weibull & 2010 & -2252.50 & 4509.00 & 4517.97\\
 \hspace{1em}Exponential & 2010 & -2269.31 & 4540.63 & 4545.11\\
-\hspace{1em}Lognormal & 2010 & -2229.51 & 4463.03 & 4472.00\\
-\hspace{1em}Gamma & 2015 & -1697.00 & 3398.00 & 3406.33\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-2229.51}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{4463.03}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{4472.00}}\endgroup\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1697.00}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{3398.00}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{3406.33}}\endgroup\\
 \hspace{1em}Weibull & 2015 & -1721.97 & 3447.95 & 3456.28\\
 \hspace{1em}Exponential & 2015 & -1789.93 & 3581.86 & 3586.02\\
 \hspace{1em}Lognormal & 2015 & NA & NA & NA\\
@@ -2375,44 +2388,44 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Grocery store}}\\
-\hspace{1em}Gamma & 2005 & -2374.42 & 4752.83 & 4761.91\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-2374.42}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{4752.83}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{4761.91}}\endgroup\\
 \hspace{1em}Weibull & 2005 & -2383.11 & 4770.22 & 4779.29\\
 \hspace{1em}Exponential & 2005 & -2395.37 & 4792.74 & 4797.28\\
-\hspace{1em}Gamma & 2010 & -1941.04 & 3886.07 & 3894.79\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1941.04}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{3886.07}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{3894.79}}\endgroup\\
 \hspace{1em}Weibull & 2010 & -1946.26 & 3896.51 & 3905.23\\
 \hspace{1em}Exponential & 2010 & -1951.49 & 3904.97 & 3909.33\\
-\hspace{1em}Gamma & 2015 & -1261.07 & 2526.14 & 2533.89\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-1261.07}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2526.14}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2533.89}}\endgroup\\
 \hspace{1em}Weibull & 2015 & -1281.20 & 2566.40 & 2574.15\\
 \hspace{1em}Exponential & 2015 & -1320.99 & 2643.99 & 2647.86\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Restaurant}}\\
-\hspace{1em}Gamma & 2005 & -634.37 & 1272.73 & 1279.31\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-634.37}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1272.73}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1279.31}}\endgroup\\
 \hspace{1em}Weibull & 2005 & -637.63 & 1279.26 & 1285.84\\
 \hspace{1em}Lognormal & 2005 & NA & NA & \vphantom{1} NA\\
 \hspace{1em}Exponential & 2005 & -642.38 & 1286.77 & 1290.05\\
 \hspace{1em}Gamma & 2010 & -96.31 & 196.62 & 199.35\\
 \hspace{1em}Weibull & 2010 & -96.99 & 197.97 & 200.71\\
-\hspace{1em}Lognormal & 2010 & -95.82 & 195.63 & 198.36\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-95.82}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{195.63}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{198.36}}\endgroup\\
 \hspace{1em}Exponential & 2010 & -99.43 & 200.87 & 202.24\\
 \hspace{1em}Gamma & 2015 & -155.78 & 315.55 & 319.25\\
 \hspace{1em}Weibull & 2015 & -159.04 & 322.08 & 325.79\\
-\hspace{1em}Lognormal & 2015 & -153.89 & 311.78 & 315.48\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-153.89}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{311.78}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{315.48}}\endgroup\\
 \hspace{1em}Exponential & 2015 & -172.58 & 347.16 & 349.01\\
 \hspace{1em}Gamma & 2005 & -107.53 & 219.06 & 221.99\\
 \hspace{1em}Poisson & 2005 & NA & NA & NA\\
 \hspace{1em}Weibull & 2005 & -108.59 & 221.18 & 224.11\\
 \hspace{1em}Exponential & 2005 & -115.65 & 233.31 & 234.77\\
 \hspace{1em}Normal & 2005 & -112.96 & 229.91 & 232.84\\
-\hspace{1em}Lognormal & 2005 & -107.00 & 217.99 & 220.92\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-107.00}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{217.99}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{220.92}}\endgroup\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Library}}\\
-\hspace{1em}Gamma & 2010 & -743.96 & 1491.92 & 1498.75\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-743.96}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1491.92}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1498.75}}\endgroup\\
 \hspace{1em}Poisson & 2010 & NA & NA & NA\\
 \hspace{1em}Weibull & 2010 & -747.32 & 1498.63 & 1505.46\\
 \hspace{1em}Exponential & 2010 & -750.52 & 1503.04 & 1506.45\\
 \hspace{1em}Normal & 2010 & NA & NA & NA\\
 \hspace{1em}Lognormal & 2010 & NA & NA & NA\\
-\hspace{1em}Gamma & 2015 & -334.68 & 673.36 & 678.38\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-334.68}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{673.36}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{678.38}}\endgroup\\
 \hspace{1em}Poisson & 2015 & -606.38 & 1214.76 & 1217.27\\
 \hspace{1em}Weibull & 2015 & -340.16 & 684.33 & 689.35\\
 \hspace{1em}Exponential & 2015 & -348.41 & 698.82 & 701.33\\
@@ -2420,12 +2433,12 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \hspace{1em}Lognormal & 2015 & NA & NA & NA\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Place of worship}}\\
-\hspace{1em}Gamma & 2005 & -154.97 & 313.93 & 317.63\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-154.97}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{313.93}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{317.63}}\endgroup\\
 \hspace{1em}Exponential & 2005 & -160.42 & 322.85 & 324.70\\
 \hspace{1em}Normal & 2005 & NA & NA & NA\\
 \hspace{1em}Lognormal & 2005 & NA & NA & NA\\
 \hspace{1em}Weibull & 2005 & NA & NA & NA\\
-\hspace{1em}Gamma & 2010 & -131.33 & 266.67 & 270.09\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-131.33}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{266.67}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{270.09}}\endgroup\\
 \hspace{1em}Exponential & 2010 & -135.90 & 273.81 & 275.52\\
 \hspace{1em}Normal & 2010 & -150.95 & 305.90 & 309.33\\
 \hspace{1em}Lognormal & 2010 & -139.70 & 283.40 & 286.83\\
@@ -2433,7 +2446,7 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \hspace{1em}Gamma & 2015 & -127.23 & 258.47 & 261.64\\
 \hspace{1em}Exponential & 2015 & -136.37 & 274.74 & 276.33\\
 \hspace{1em}Normal & 2015 & -132.78 & 269.56 & 272.73\\
-\hspace{1em}Lognormal & 2015 & -127.01 & 258.02 & 261.19\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-127.01}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{258.02}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{261.19}}\endgroup\\
 \hspace{1em}Weibull & 2015 & -128.23 & 260.46 & 263.63\\
 \bottomrule
 \end{tabular}
@@ -2451,10 +2464,10 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Home}}\\
-\hspace{1em}Gamma & 1992 & -296.80 & 597.61 & 602.07\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1992}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-296.80}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{597.61}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{602.07}}\endgroup\\
 \hspace{1em}Weibull & 1992 & -297.36 & 598.72 & 603.19\\
 \hspace{1em}Exponential & 1992 & -299.38 & 600.77 & 603.00\\
-\hspace{1em}Gamma & 1998 & -250.55 & 505.09 & 509.38\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1998}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-250.55}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{505.09}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{509.38}}\endgroup\\
 \hspace{1em}Weibull & 1998 & NA & NA & NA\\
 \hspace{1em}Exponential & 1998 & -253.36 & 508.72 & 510.86\\
 \addlinespace[0.3em]
@@ -2463,20 +2476,20 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \hspace{1em}Poisson & 1992 & NA & NA & NA\\
 \hspace{1em}Exponential & 1992 & -83.18 & 168.37 & 169.46\\
 \hspace{1em}Normal & 1992 & -91.85 & 187.69 & 189.87\\
-\hspace{1em}Lognormal & 1992 & -80.22 & 164.44 & 166.62\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1992}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-80.22}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{164.44}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{166.62}}\endgroup\\
 \hspace{1em}Gamma & 1998 & -77.65 & 159.31 & 161.40\\
 \hspace{1em}Poisson & 1998 & NA & NA & NA\\
 \hspace{1em}Exponential & 1998 & -78.97 & 159.95 & 160.99\\
 \hspace{1em}Normal & 1998 & -88.37 & 180.73 & 182.82\\
-\hspace{1em}Lognormal & 1998 & -75.86 & 155.73 & 157.82\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1998}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-75.86}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{155.73}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{157.82}}\endgroup\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Work or school}}\\
-\hspace{1em}Gamma & 1992 & -130.98 & 265.96 & 269.07\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1992}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-130.98}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{265.96}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{269.07}}\endgroup\\
 \hspace{1em}Weibull & 1992 & -131.06 & 266.11 & 269.22\\
 \hspace{1em}Exponential & 1992 & -138.32 & 278.64 & 280.19\\
 \hspace{1em}Normal & 1992 & -134.55 & 273.10 & 276.21\\
 \hspace{1em}Lognormal & 1992 & NA & NA & NA\\
-\hspace{1em}Gamma & 1998 & -141.00 & 286.00 & 289.11\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1998}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-141.00}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{286.00}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{289.11}}\endgroup\\
 \hspace{1em}Weibull & 1998 & -141.71 & 287.42 & 290.53\\
 \hspace{1em}Exponential & 1998 & -145.69 & 293.37 & 294.93\\
 \hspace{1em}Normal & 1998 & -148.73 & 301.45 & 304.56\\
@@ -2496,40 +2509,40 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Home}}\\
-\hspace{1em}Gamma & 2005 & -626.82 & 1257.63 & 1263.78\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-626.82}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1257.63}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{1263.78}}\endgroup\\
 \hspace{1em}Weibull & 2005 & -629.25 & 1262.51 & 1268.66\\
 \hspace{1em}Exponential & 2005 & -636.08 & 1274.17 & 1277.24\\
-\hspace{1em}Gamma & 2010 & -428.16 & 860.32 & 865.72\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-428.16}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{860.32}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{865.72}}\endgroup\\
 \hspace{1em}Weibull & 2010 & NA & NA & NA\\
 \hspace{1em}Exponential & 2010 & -436.23 & 874.46 & 877.16\\
-\hspace{1em}Gamma & 2015 & -411.02 & 826.04 & 831.33\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-411.02}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{826.04}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{831.33}}\endgroup\\
 \hspace{1em}Weibull & 2015 & -415.09 & 834.17 & 839.46\\
 \hspace{1em}Exponential & 2015 & -431.52 & 865.03 & 867.68\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Other's home}}\\
-\hspace{1em}Gamma & 2005 & -106.61 & 217.21 & 220.01\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-106.61}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{217.21}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{220.01}}\endgroup\\
 \hspace{1em}Poisson & 2005 & -161.62 & 325.24 & 326.64\\
 \hspace{1em}Exponential & 2005 & NA & NA & NA\\
 \hspace{1em}Normal & 2005 & -110.01 & 224.03 & 226.83\\
 \hspace{1em}Lognormal & 2005 & NA & NA & \vphantom{1} NA\\
-\hspace{1em}Gamma & 2010 & -78.57 & 161.14 & 163.32\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-78.57}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{161.14}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{163.32}}\endgroup\\
 \hspace{1em}Poisson & 2010 & -131.33 & 264.66 & 265.75\\
 \hspace{1em}Exponential & 2010 & -81.04 & 164.07 & 165.17\\
 \hspace{1em}Normal & 2010 & -84.37 & 172.74 & 174.93\\
 \hspace{1em}Lognormal & 2010 & NA & NA & NA\\
-\hspace{1em}Gamma & 2015 & -42.17 & 88.34 & 89.47\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-42.17}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{88.34}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{89.47}}\endgroup\\
 \hspace{1em}Poisson & 2015 & -51.23 & 104.45 & 105.02\\
 \hspace{1em}Exponential & 2015 & -47.87 & 97.73 & 98.30\\
 \hspace{1em}Normal & 2015 & -45.41 & 94.82 & 95.95\\
 \hspace{1em}Lognormal & 2015 & NA & NA & NA\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: work or school}}\\
-\hspace{1em}Gamma & 2005 & -292.44 & 588.88 & 593.46\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-292.44}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{588.88}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{593.46}}\endgroup\\
 \hspace{1em}Weibull & 2005 & NA & NA & NA\\
 \hspace{1em}Exponential & 2005 & -296.38 & 594.77 & 597.06\\
 \hspace{1em}Normal & 2005 & NA & NA & NA\\
 \hspace{1em}Lognormal & 2005 & NA & NA & NA\\
-\hspace{1em}Gamma & 2010 & -215.86 & 435.73 & 439.74\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-215.86}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{435.73}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{439.74}}\endgroup\\
 \hspace{1em}Weibull & 2010 & -216.67 & 437.34 & 441.35\\
 \hspace{1em}Exponential & 2010 & -222.50 & 446.99 & 449.00\\
 \hspace{1em}Normal & 2010 & NA & NA & NA\\
@@ -2538,13 +2551,13 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \hspace{1em}Weibull & 2015 & -258.10 & 520.20 & 524.67\\
 \hspace{1em}Exponential & 2015 & -279.83 & 561.66 & 563.89\\
 \hspace{1em}Normal & 2015 & -264.66 & 533.33 & 537.80\\
-\hspace{1em}Lognormal & 2015 & -254.79 & 513.58 & 518.05\\
+\begingroup\fontsize{10}{12}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{-254.79}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{513.58}}\endgroup & \begingroup\fontsize{10}{12}\selectfont \em{\textbf{518.05}}\endgroup\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}
-\centering\begingroup\fontsize{11}{13}\selectfont
+\centering\begingroup\fontsize{9}{11}\selectfont
 
 \begin{tabular}{llrrr}
 \toprule
@@ -2552,13 +2565,13 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Outdoors }}\\
-\hspace{1em}Gamma & 2005 & -110.07 & 224.14 & 227.14\\
+\begingroup\fontsize{9}{11}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{-110.07}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{224.14}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{227.14}}\endgroup\\
 \hspace{1em}Logistic & 2005 & NA & NA & NA\\
 \hspace{1em}Lognormal & 2005 & NA & NA & NA\\
 \hspace{1em}Normal & 2005 & NA & NA & NA\\
 \hspace{1em}Exponential & 2005 & -115.91 & 233.81 & 235.31\\
 \hspace{1em}Poisson & 2005 & -154.33 & 310.66 & 312.16\\
-\hspace{1em}Gamma & 2010 & -74.31 & 152.62 & 154.62\\
+\begingroup\fontsize{9}{11}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{-74.31}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{152.62}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{154.62}}\endgroup\\
 \hspace{1em}Logistic & 2010 & NA & NA & NA\\
 \hspace{1em}Lognormal & 2010 & NA & NA & NA\\
 \hspace{1em}Normal & 2010 & -83.24 & 170.48 & 172.47\\
@@ -2566,20 +2579,20 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \hspace{1em}Poisson & 2010 & NA & NA & NA\\
 \hspace{1em}Gamma & 2015 & -1261.07 & 2526.14 & 2533.89\\
 \hspace{1em}Logistic & 2015 & -1336.44 & 2676.89 & 2684.63\\
-\hspace{1em}Lognormal & 2015 & -1235.05 & 2474.09 & 2481.83\\
+\begingroup\fontsize{9}{11}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{-1235.05}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2474.09}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2481.83}}\endgroup\\
 \hspace{1em}Normal & 2015 & -1386.80 & 2777.60 & 2785.35\\
 \hspace{1em}Exponential & 2015 & NA & NA & \vphantom{1} NA\\
 \hspace{1em}Poisson & 2015 & NA & NA & \vphantom{1} NA\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Grocery store}}\\
-\hspace{1em}Gamma & 2005 & -70.26 & 144.53 & 146.52\\
+\begingroup\fontsize{9}{11}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{-70.26}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{144.53}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{146.52}}\endgroup\\
 \hspace{1em}Lognormal & 2005 & -70.63 & 145.27 & 147.26\\
 \hspace{1em}Normal & 2005 & -72.77 & 149.54 & 151.53\\
 \hspace{1em}Poisson & 2005 & NA & NA & NA\\
 \hspace{1em}Exponential & 2005 & -75.76 & 153.52 & 154.52\\
 \hspace{1em}Weibull & 2005 & -70.67 & 145.33 & 147.33\\
 \hspace{1em}Gamma & 2010 & -21.27 & 46.54 & 46.43\\
-\hspace{1em}Lognormal & 2010 & -21.27 & 46.55 & 46.44\\
+\begingroup\fontsize{9}{11}\selectfont \em{\textbf{\hspace{1em}Lognormal}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2010}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{-21.27}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{46.55}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{46.44}}\endgroup\\
 \hspace{1em}Normal & 2010 & -22.05 & 48.11 & 48.00\\
 \hspace{1em}Poisson & 2010 & -25.21 & 52.41 & 52.36\\
 \hspace{1em}Exponential & 2010 & -22.92 & 47.83 & 47.78\\
@@ -2593,14 +2606,14 @@ Impedance\_Function & year & logLik & AIC & BIC\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Destination: Restaurant}}\\
 \hspace{1em}Gamma & 2005 & -37.19 & 78.39 & 78.99\\
-\hspace{1em}Normal & 2005 & -37.08 & 78.15 & 78.76\\
+\begingroup\fontsize{9}{11}\selectfont \em{\textbf{\hspace{1em}Normal}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2005}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{-37.08}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{78.15}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{78.76}}\endgroup\\
 \hspace{1em}poisson & 2005 & -49.49 & 100.98 & 101.28\\
 \hspace{1em}Exponential & 2005 & -40.20 & 82.41 & 82.71\\
 \hspace{1em}Gamma & 2010 & NA & NA & NA\\
 \hspace{1em}Normal & 2010 & NA & NA & NA\\
 \hspace{1em}poisson & 2010 & NA & NA & NA\\
 \hspace{1em}Exponential & 2010 & NA & NA & NA\\
-\hspace{1em}Gamma & 2015 & -884.43 & 1772.87 & 1779.91\\
+\begingroup\fontsize{9}{11}\selectfont \em{\textbf{\hspace{1em}Gamma}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{2015}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{-884.43}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{1772.87}}\endgroup & \begingroup\fontsize{9}{11}\selectfont \em{\textbf{1779.91}}\endgroup\\
 \hspace{1em}Normal & 2015 & -1007.13 & 2018.27 & 2025.31\\
 \hspace{1em}poisson & 2015 & -1576.02 & 3154.05 & 3157.57\\
 \hspace{1em}Exponential & 2015 & -921.28 & 1844.56 & 1848.08\\
@@ -3291,9 +3304,6 @@ Nielsen, T. A. S., \& Skov-Petersen, H. (2018). Bikeability--urban structures su
 
 \bibitem[\citeproctext]{ref-oehl2019cyclists}
 Oehl, M., Brandenburg, S., \& Huemer, A. K. (2019). Cyclists anger experiences in traffic: The cycling anger scale. \emph{Transportation Research Part F: Traffic Psychology and Behaviour}, \emph{62}, 564--574.
-
-\bibitem[\citeproctext]{ref-o2003aggregate}
-OKelly, M. E., \& Horner, M. W. (2003). Aggregate accessibility to population at the county level: US 1940-2000. \emph{Journal of Geographical Systems}, \emph{5}(1), 5.
 
 \bibitem[\citeproctext]{ref-ortega2021evaluating}
 Ortega, E., MartiN, B., LOPez-Lambas, M. E., \& Soria-Lara, J. A. (2021). Evaluating the impact of urban design scenarios on walking accessibility: The case of the madrid `centro'district. \emph{Sustainable Cities and Society}, \emph{74}, 103156.

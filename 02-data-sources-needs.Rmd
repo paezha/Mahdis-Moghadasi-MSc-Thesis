@@ -25,7 +25,7 @@ The significance of accessibility-based planning becomes even more apparent when
 
 In principle, accessibility analysis is versatile enough to be applied to ATB accessibility analysis. However, it is crucial to acknowledge the distinctions between motorized and active travel and how these differences can influence the implementation of accessibility measures with a focus on active modes [@iacono2010]. Active modes of transportation have captivated the attention of researchers due to their profound implications and unique advantages in terms of the environment, health, and social inclusion [@pucher2010walking; @rojas2011health; @rojas2012replacing; @otero2018health; @koszowski2019active; @tinessa2021walkability]. They have been linked to various health benefits, such as improved longevity [@hakim1998effects], enhanced cognitive function [@weuve2004physical], and better quality of life [@strawbridge1996successful; @leveille1999aging]. Moreover, active modes are perceived as cleaner, more efficient, and more sustainable forms of transportation [@bhopal1995cycling]. Active travel also presents an excellent alternative for mobility, reducing transportation costs for families, promoting gender equality, fostering resilient infrastructure, and contributing to the aesthetic value of the environment [@koszowski2019active]. Furthermore, active travel improves accessibility for individuals who do not have access to other modes of transportation and contributes to the development of local and regional economies. However, compared to motorized travel, active travel entails slower speeds, occurs on more minor scales, poses more significant safety risks due to the higher likelihood of severe injuries in collisions, is used to reach potentially different destinations, and involves costs, such as physical exertion, which are typically disregarded in motorized travel analysis [@ng2017cyclist; @akgun2018cyclist; @pokorny2018conflicts; @oehl2019cyclists; @useche2019healthy].
 
-The objective of the present study is to investigate active travel-based (ATB) accessibility, with a specific focus on data sources and requirements, utilizing Canada as a case study. This research is motivated by a recent Canadian project establishing data-driven standards for analyzing transportation equity. A thorough understanding of how the input data influences the analysis and outcomes is essential to propose methods that can be applied uniformly across regions. It is worth noting that other reviews on ATB accessibility measures have been conducted [@geurs2004; @iacono2010; @maghelal2011; @talen2013; @vale2016active]. This paper's contribution lies in addressing a literature gap by focusing on the data requirements for various ATB accessibility measures, comparing measures that can be consistently implemented in diverse contexts, and identifying the data needs for their standardized implementation.
+The objective of the present study is to investigate active travel-based (ATB) accessibility, with a specific focus on data sources and requirements, utilizing Canada as a case study. A thorough understanding of how the input data influences the analysis and outcomes is essential to propose methods that can be applied uniformly across regions. It is worth noting that other reviews on ATB accessibility measures have been conducted [@geurs2004; @iacono2010; @maghelal2011; @talen2013; @vale2016active]. This paper's contribution lies in addressing a literature gap by focusing on the data requirements for various ATB accessibility measures, comparing measures that can be consistently implemented in diverse contexts, and identifying the data needs for their standardized implementation.
 
 
 ## Background
@@ -63,7 +63,11 @@ This type of accessibility measure is based on Hansen's work in 1959, which quan
 
 The formulation of the decay function's cumulative opportunities (rectangular) can be expressed as equation \ref{eq:ch02-equation-04}:
 \begin{equation}
-f(c^p_{ij}) = X
+f(c^p_{ij}) = 
+\begin{cases}
+  1 & \text{if } c^p_{ij} \le \gamma^p \\
+  0 & \text{otherwise}
+\end{cases}
 \label{eq:ch02-equation-04}
 \end{equation}
 
@@ -120,12 +124,16 @@ The equation \ref{eq:ch02-equation-06} provides the measure of accessibility fro
 Cumulative opportunities, also referred to as isochrones or contour measures, count the number of opportunities within a specified catchment area. In contrast to the utility measure, which assesses accessibility based on the "net utility" gained from travel, the cumulative measure quantifies accessibility by considering the total number of reachable opportunities and their associated travel costs. In contrast with gravity-based measures, in a cumulative measure (equation \ref{eq:ch02-equation-06}), the distance decay function is binary and calculated using equation \ref{eq:ch02-equation-07}: 
 
 \begin{equation}
-f(c_{ij} \le \gamma _i) = X
+f(c_{ij} \le \gamma _i) = 
+\begin{cases}
+  1 & \text{if } c_{ij} \le \gamma _i \\
+  0 & \text{otherwise}
+\end{cases}
 \label{eq:ch02-equation-07}
 \end{equation}
 
 
-In the equation \ref{eq:ch02-equation-07}, $\gamma$ represents the threshold value. According to this formula, all opportunities located within the $\gamma$ threshold are considered accessible. Additionally, $f(c)$ is an indicator function that yields a value of 1 if the logical statement in the function's argument is valid (i.e. if the cost of reaching $j$ from $i$ does not exceed the bandwidth parameter value), and 0 otherwise. Alternative distance-decay functions (such as inverse distance or negative exponential) can generate smoother map patterns, as discussed by [@o2003aggregate]. However, they require more parameters and introduce distance- or cost-discounted schemes that are more challenging to interpret. Prior research has indicated that cumulative opportunity measures exhibit a high degree of correlation, irrespective of the distance-decay function employed [@kwan1998]. Consequently, our preference lies with simplicity and interpretability when selecting our accessibility indicator.
+In the equation \ref{eq:ch02-equation-07}, $\gamma$ represents the threshold value. According to this formula, all opportunities located within the $\gamma$ threshold are considered accessible. Additionally, $f(c)$ is an indicator function that yields a value of 1 if the logical statement in the function's argument is valid (i.e. if the cost of reaching $j$ from $i$ does not exceed the bandwidth parameter value), and 0 otherwise. Alternative distance-decay functions (such as inverse distance or negative exponential) can generate smoother map patterns, as discussed by OKelly & Horner (2003). However, they require more parameters and introduce distance- or cost-discounted schemes that are more challenging to interpret. Prior research has indicated that cumulative opportunity measures exhibit a high degree of correlation, irrespective of the distance-decay function employed [@kwan1998]. Consequently, our preference lies with simplicity and interpretability when selecting our accessibility indicator.
 
 ### Distance-based measures
 
@@ -147,7 +155,11 @@ A^{ip} = \min_{j \in L^p} (d_{ij})
 In this equation \ref{eq:ch02-equation-08}, $A^{ip}$ is the accessibility of zone $i$ to the location of type p, $L^p$ is a set of locations of type p, and $(d_{ij})$ is distance (or travel time for a given mode) from i to location j in set $L_p$. This measure is consistent with a straightforward location model in which the nearest location is always chosen with a probability of 1.0. (equation \ref{eq:ch02-equation-09})
 
 \begin{equation}
-P^{ip}_j = X
+P^{ip}_j = 
+\begin{cases}
+  1 & \text{if } d_{ij} = \min_{j \in L^p} d_{ij} \\
+  0 & \text{otherwise}
+\end{cases}
 \label{eq:ch02-equation-09}
 \end{equation}
 
@@ -694,7 +706,7 @@ styled_ch02_table_07
 
 ```
 
-**The Linkable Open Data Environment (LOD)**
+**The Linkable Open Data Environment (LODE)**
 
 The Linkable Open Data Environment (LODE) is an exploratory initiative that aims to enhance the use and harmonization of open microdata primarily from municipal, provincial, and federal sources. It was compiled by the Centre for Special Business Projects (CSBP) at Statistics Canada in 2020.
 
@@ -1249,7 +1261,7 @@ styled_ch02_table_12
 ```
 
 
-### Origins/destinations & applying weights
+### Origins/destinations and applying weights
 
 How opportunities are measured depends on the type of opportunity and whether one or multiple opportunity types are considered. For example, the studies measuring job accessibility or number of people served by transit consider a total count, whereas for urban park access, Reyes et al. (2014) and Cheng et al. (2019) consider cell counts to account for park area[@reyes2014walking; @cheng2019investigating]. Among walkability and bikeability indices, weights are expected to be applied to the variables depending on the goals for analysis [@frank2010development; @vale2016active; @arellana2021walk].
 

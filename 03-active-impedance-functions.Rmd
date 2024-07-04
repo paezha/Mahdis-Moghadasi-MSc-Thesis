@@ -72,7 +72,7 @@ There has been an increasing interest in urban and transportation planning regar
 
 In recent decades, a large body of literature has contributed to assessing the accessibility of active transportation. These studies agree that there are two primary components for measuring accessibility: (1) the location and attractiveness of urban opportunities (benefit side) and (2) the barrier to travel from the origin in the network to the destination (cost side). In particular, calculating accessibility using impedance functions has become an important research topic that has received much attention from scholars in the fields of transportation planning, urban geography, and sustainable development [@frank2005linking; @krizek2005perspectives; @currie2010quantifying; @iacono2010; @yang2012walking; @millward2013active; @nassir2016utility; @saghapour2017measuring; @wu2019measuring]. In its various forms, the impedance function serves as a measure of the willingness to travel a certain distance to achieve desired goals. It is a valuable tool for analyzing spatial patterns of travel behavior [@taylor1975distance; @fotheringham1981spatial; @kwan1998space; @eldridge1991warped; @luoma1993threshold; @papa2012gravity; @yang2012walking; @millward2013active; @vale2017influence]. According to these definitions, areas with higher accessibility are those characterized by a lower impedance when traveling to desirable destinations. In other words, the greater the distance between two points, the less likely they can be reached on foot or by bike [@hansen1959accessibility; @pirie1979measuring; @handy1997measuring; @geurs2001accessibility; @bhat2002development; @church2003measuring; @kwan2003recent; @geurs2004; @levinson2005access; @cascetta2013new]. So, there needs to be more information on the willingness of some individuals to walk or cycle greater distances. Equally, there needs to be more data on how distance affects the nature of the activity, the desirability of the destinations, and the characteristics of those embarking on the trip in different contexts. Hence, it is imperative to investigate the evolution of impedance function over time due to its inherently dynamic nature, which fluctuates in response to the evolution of transportation networks and shifts in urban spatial configurations [@iacono2008access; @iacono2010]. Luoma, Mikkonen, and Palomaki (1993) provided evidence highlighting a diminishing distance decay parameter over time, attributing this trend to enhanced travel velocities and the maturation of transportation infrastructures [@luoma1993threshold]. Subsequent research by Mikkonen and Luoma (1999) delved into elucidating the factors behind these noted shifts in the parameters of gravity models over periods [@mikkonen1999parameters].
 
-Various impedance functions have been utilized to describe the distribution of walking and cycling trips, both in general and for specific purposes [@iacono2008access; @iacono2010; @larsen2010beyond; @yang2012walking; @millward2013active; @vale2017influence; @li2020approach]. When assessing accessibility using impedance functions, different cost decay functions have been employed, including **threshold functions** (e.g., step function) and **smooth cost decay functions** (e.g., inverse-potential, log-normal, logistic, exponential square-root, and half-life function) [@de2009exponential; @reggiani2011accessibility; @osth2016new; @itf2017linking]. Scholars place significant emphasis on selecting an appropriate impedance function, leading to a diverse range of functions being employed. These various specifications primarily vary in their treatment of the influence of distance, consequently impacting the accessibility measurement. However, negative exponential distance-decay functions are commonly used in assessing non-motorized accessibility, capturing the willingness of individuals to walk or cycle to destinations [@handy1997measuring; @geurs2001accessibility; @iacono2010; @vega2012using; @millward2013active; @vale2017influence; @li2020approach]. The merit of this function lies in its ability to attribute decreasing influences to more remote opportunities, thereby offering a more accurate estimation for shorter journeys, especially those undertaken by non-motorized modes [@iacono2010; @kanafani1983transportation; @fotheringham1989spatial].
+Various impedance functions have been utilized to describe the distribution of walking and cycling trips, both in general and for specific purposes [@iacono2008access; @iacono2010; @larsen2010beyond; @yang2012walking; @millward2013active; @vale2017influence; @li2020approach]. When assessing accessibility using impedance functions, different cost decay functions have been employed, including **threshold functions** (e.g., binary Step Function and multiple Step Function) and **smooth cost decay functions** (e.g., inverse-potential, log-normal, logistic, exponential square-root, and half-life function) [@de2009exponential; @reggiani2011accessibility; @osth2016new; @itf2017linking]. Scholars place significant emphasis on selecting an appropriate impedance function, leading to a diverse range of functions being employed. These various specifications primarily vary in their treatment of the influence of distance, consequently impacting the accessibility measurement. However, negative exponential distance-decay functions are commonly used in assessing non-motorized accessibility, capturing the willingness of individuals to walk or cycle to destinations [@handy1997measuring; @geurs2001accessibility; @iacono2010; @vega2012using; @millward2013active; @vale2017influence; @li2020approach]. The merit of this function lies in its ability to attribute decreasing influences to more remote opportunities, thereby offering a more accurate estimation for shorter journeys, especially those undertaken by non-motorized modes [@iacono2010; @kanafani1983transportation; @fotheringham1989spatial].
 
 In addition to determining the form of the impedance function, the analyst must also specify the variable used to measure impedance, which can be either time, cost, or a combination of both. Previous studies have employed both of these measures, and there are instances where the generalized cost concept has also been applied. The choice between time and distance as the impedance variable has been found to be acceptable based on previous research [@iacono2010; @hull2012accessibility; @sun2012measuring; @lowry2012using; @vasconcelos2012evaluation ]. However, when it comes to non-motorized travel modes, extracting accurate travel times from existing network models can be challenging, which limits the options and makes distance a more practical choice [@handy1997measuring; @iacono2010; @yang2012walking; @arranz2019measuring]. Furthermore, researchers specializing in active modes of transportation have faced challenges stemming from a need for more objective data concerning walking and cycling behavior. Estimating specialized impedance functions specific to non-motorized modes requires appropriate travel survey data that can capture pedestrian and cycle behavior. Often, researchers have resorted to relying on retrospective questionnaires, which assess subjective aspects such as the frequency and duration of walking and cycling activities. Notably, regional household travel surveys, including trips made by non-motorized modes, have been employed for this purpose [@iacono2010; @millward2013active].
 
@@ -105,8 +105,8 @@ The second type pertains to the **Cumulative-opportunity** metrics, often referr
 \begin{equation}
 C_{ij} =
 \begin{cases}
-  1 \& \text{if } c_{ij} \le x \\
-  0 \& \text{if } c_{ij} > x
+  1 & \text{if } c_{ij} \le x \\
+  0 & \text{if } c_{ij} > x
 \end{cases}
 \label{eq:ch03-equation-02}
 \end{equation}
@@ -118,7 +118,7 @@ The choice of the most appropriate impedance function and the associated paramet
 
 Researchers, from Stewart (1941) to Haggett (2001), have reached a consensus regarding the non-linear nature of inverse distance-decay functions in human geographical applications [@stewart1941inverse; @taylor1971distance; @taylor1983distance; @johnston1973frictions;@robinsonm; @haggett2001geography]. At the same time, simplistic functions may not aptly reflect the observed data on distance-interaction intensity graphs, and intricate distance-decay functions have been promoted by Taylor (1983) and Robinson (1998). Among these functions, bell-shaped curves, such as the Tanner function, March's function, and the Box-Cox function, have gained prominence, directed by multiple parameters [@richardson1969elements;@gaudry1981inverse; @taylor1983distance; @mandel1997disaggregate; @robinsonm; @tiefelsdorf2003misspecifications;@de2011modelling; @paez2012measuring; @halas2014distance; @martinez2013new; @van2001accessibility]. Mozolin et al. (2000) introduced an approach that integrates distance and employment numbers, visualized in a 3D diagrammatic representation [@mozolin2000trip]. However, while these functions provide precise fits for specific scenarios, their general application across varying contexts may be limited.
 
-As mentioned, the choice of impedance functions plays a pivotal role in modeling accessibility, particularly when analyzing travel behavior within urban environments. Among the various mathematical forms that can represent impedance functions, the negative exponential function has emerged as the dominant choice in traditional transportation planning models and recent studies [@meyer1984urban; @gutierrez1996european; @kwan1998space; @apparicio2008comparing; @iacono2008access; @iacono2010; @larsen2010beyond; @millward2013active]. Its prevalence in the literature can be attributed to several factors, including its compatibility with travel behavior theory and its ability to effectively estimate shorter trips, particularly those associated with non-motorized modes of transportation. As Song (1996) noted in his examination of alternative accessibility measures, the negative exponential form $(e ^-\beta x)$ stands out as the most useful in explaining population distribution due to its gradual decline, which aligns with empirical data and accurately captures the influence of proximity on accessibility [@song1996some]. This choice of impedance function aligns with the rationale that a more gradual decline near the origin is essential for estimating shorter trips, a characteristic highly relevant to active modes of transportation, such as walking and cycling. This preference for the negative exponential form is further corroborated by the work of Kanafani (1983), who highlighted its suitability for modeling non-motorized modes, emphasizing its capacity to better estimate shorter trips compared to the power function. The ubiquity of the negative exponential form in recent studies and its adaptability to various urban contexts make it a well-suited candidate for estimating impedance functions, as indicated by a record of numerous empirical applications [@kanafani1983transportation; @fotheringham1989spatial; @de2009exponential; @iacono2010; @signorino2011gravity; @prins2014many].
+As mentioned, the choice of impedance functions plays a pivotal role in modeling accessibility, particularly when analyzing travel behavior within urban environments. Among the various mathematical forms that can represent impedance functions, the negative exponential function has emerged as the dominant choice in traditional transportation planning models and recent studies [@meyer1984urban; @gutierrez1996european; @kwan1998space; @apparicio2008comparing; @iacono2008access; @iacono2010; @larsen2010beyond; @millward2013active]. Its prevalence in the literature can be attributed to several factors, including its compatibility with travel behavior theory and its ability to effectively estimate shorter trips, particularly those associated with non-motorized modes of transportation. As Song (1996) noted in his examination of alternative accessibility measures, the negative exponential form $(e ^ {-\beta x})$ stands out as the most useful in explaining population distribution due to its gradual decline, which aligns with empirical data and accurately captures the influence of proximity on accessibility [@song1996some]. This choice of impedance function aligns with the rationale that a more gradual decline near the origin is essential for estimating shorter trips, a characteristic highly relevant to active modes of transportation, such as walking and cycling. This preference for the negative exponential form is further corroborated by the work of Kanafani (1983), who highlighted its suitability for modeling non-motorized modes, emphasizing its capacity to better estimate shorter trips compared to the power function. The ubiquity of the negative exponential form in recent studies and its adaptability to various urban contexts make it a well-suited candidate for estimating impedance functions, as indicated by a record of numerous empirical applications [@kanafani1983transportation; @fotheringham1989spatial; @de2009exponential; @iacono2010; @signorino2011gravity; @prins2014many].
 
 Furthermore, recent investigations into impedance functions have shed light on their effectiveness in modeling walking accessibility, with particular attention to the negative exponential form. In the study conducted by Vale and Pereira (2017), which examined 20 pedestrian accessibility measures, both the modified Gaussian and exponential functions were found to be robust choices for accurately modeling walking accessibility. These findings corroborate the suitability of the negative exponential form for capturing the nuanced patterns of walking behavior within urban areas. Vale and Pereira's research introduced a novel cumulative Gaussian function that considers cumulative opportunities at close distances (e.g., 200 or 400 meters) and a modified Gaussian curve for longer distances. These functions showcase the adaptability and versatility of impedance modeling, especially in the context of active travel and pedestrian accessibility analysis [@vale2017influence]. Thus, while alternative impedance functions may be considered in specific scenarios, the dominance of the negative exponential form underscores its utility as a fundamental choice for estimating impedance functions, mainly when dealing with active modes of transportation and urban accessibility modeling. We present a detailed exposition of the most widely recognized impedance functions to further elaborate on this aspect. These include the inverse power, negative exponential, modified Gaussian, logarithmic normal distribution, cumulative opportunities (both rectangular and linear), gamma, and Log-logistic decay functions. Each model offers a unique lens through which the relationship between distance or travel time and accessibility can be understood, thereby providing a comprehensive toolkit for urban planners and researchers to analyze and predict travel patterns in various contexts.
 
@@ -284,7 +284,7 @@ Based on the above description, the inverse power, negative exponential, and mod
 
 ### The GSS survey
 
-IIt is critical to have appropriate travel survey data that includes pedestrian and cycling activities to derive impedance functions appropriate for non-motorized modes. The optimal approach would involve a dedicated survey, intricately designed to capture these specific behaviors predominantly, or data collected from Global Positioning Systems---an option that typically has higher costs. When these specific datasets are unavailable, a broader regional household travel survey can be employed, provided it encompasses trips made by non-motorized means [@iacono2010]. In this research, we utilized data from the General Social Survey (GSS), which is administered by Statistics Canada, to delve into active travel behavior in Canada. The GSS provides a comprehensive cross-sectional snapshot of the Canadian population through telephone surveys established in 1985. The study area for the GSS encompasses the entirety of Canada, from the famous cities like Toronto, Vancouver, and Montreal to the more serene and remote locations in provinces like Newfoundland and Labrador, Nunavut, and Yukon. It ensures a diverse and comprehensive representation of the Canadian demographic and lifestyle mosaic by casting such a wide net. These surveys encompass an array of socio-demographic inquiries combined with questions concentrating on specific core themes, such as health, time use, and aspects like social support and aging (Statistics Canada, 2015). One of the standout features of the GSS is its recurring "time use" cycle, which delves into the daily activities of Canadians. This cycle captures the amount of time individuals allocate to various tasks and the sequence, location, and concurrent activities, offering a holistic view of Canadians' daily lives. The questions within this cycle have been adapted and refined over the years to reflect the changing dynamics of daily life, ensuring that the data remains pertinent and contemporary.
+It is critical to have appropriate travel survey data that includes pedestrian and cycling activities to derive impedance functions appropriate for non-motorized modes. The optimal approach would involve a dedicated survey, intricately designed to capture these specific behaviors predominantly, or data collected from Global Positioning Systems---an option that typically has higher costs. When these specific datasets are unavailable, a broader regional household travel survey can be employed, provided it encompasses trips made by non-motorized means [@iacono2010]. In this research, we utilized data from the General Social Survey (GSS), which is administered by Statistics Canada, to delve into active travel behavior in Canada. The GSS provides a comprehensive cross-sectional snapshot of the Canadian population through telephone surveys established in 1985. The study area for the GSS encompasses the entirety of Canada, from the famous cities like Toronto, Vancouver, and Montreal to the more serene and remote locations in provinces like Newfoundland and Labrador, Nunavut, and Yukon. It ensures a diverse and comprehensive representation of the Canadian demographic and lifestyle mosaic by casting such a wide net. These surveys encompass an array of socio-demographic inquiries combined with questions concentrating on specific core themes, such as health, time use, and aspects like social support and aging (Statistics Canada, 2015). One of the standout features of the GSS is its recurring "time use" cycle, which delves into the daily activities of Canadians. This cycle captures the amount of time individuals allocate to various tasks and the sequence, location, and concurrent activities, offering a holistic view of Canadians' daily lives. The questions within this cycle have been adapted and refined over the years to reflect the changing dynamics of daily life, ensuring that the data remains pertinent and contemporary.
 
 In order to investigate the historical active travel behavior in Canada, Six GSS cycles were thoroughly considered for this study, namely those from 1986, 1992, 1998, 2005, 2010, and 2015. The 1986 cycle is notable because it was the first national random sample examining Canadian time-use patterns. Data filtering was essential given the research focus on travel behavior, particularly walking and cycling. It required an exhaustive extraction of entries relevant to these two travel modes. Each GSS Cycle is derived from two microdata sources: the Main and Episode files.  The Main file comprises questionnaire responses and associated data from participants, while the Episode files furnish detailed insights into every activity episode reported by the respondents. For this study, we employed the episode files to establish a comprehensive dataset for impedance function analysis. This dataset encompasses variables such as individual ID, start time, end time, time duration, origins and destinations of each walking and cycling trip, and weight. It should be noted that each record represents a single activity in a respondent's day, ensuring that all episodes collectively span twenty-four hours (or 1440 minutes). The weight parameter signifies the number of time-use episodes that a particular record in the Episode File represents.
 
@@ -371,7 +371,7 @@ styled_ch03_table_01
 
 Our primary method was rooted in descriptive analysis. We parsed vast quantities of data to discern overarching patterns and trends. A salient feature emerging from this analysis was the duration of trips undertaken.Table \ref{tab:ch03-table-01} contains a detailed compilation of descriptive statistics showing the fluctuating patterns of walking and cycling trips between 1986 and 2015. The data is categorized under two principal modes of transit: walking and cycling, with each category further explored through four statistical metrics: count, maximum (max), mean, and minimum (min), each quantified in minutes. In the walking trips section, the 'count' metric represents the number of recorded trips for each year. The journey began in 1986 with 384 recorded walking trips, escalating to 1,473 by 1992, indicating a burgeoning preference for walking during this period. The peak was reached in 1998 with 1,657 trips, which increased to an unprecedented 5,517 trips by 2005, possibly reflecting societal shifts toward healthier lifestyles or environmental concerns. However, post-2005, a downward trend emerged, with counts reducing to 4,360 trips in 2010 and further to 2,796 in 2015, possibly due to changing urban landscapes or the advent of alternative transportation modes. 
 
-The 'max' time invested in walking trips is a constant 90 minutes across the years, suggesting a stable group of individuals who consistently engage in longer-duration walks, perhaps for exercise or leisure. However, the 'mean' walking time varies: it starts at 24 minutes in 1986, drops to 17 minutes in 1992, and finally to 10 minutes in 1998. This trend reverses slightly to 12 minutes in both 2005 and 2010 and ascends to 16 minutes in 2015. This fluctuation in average walking time could reflect evolving urban designs, societal pace, or changing durations in individuals' routines. The 'min' walking time, initially stable at 1 minute, drops to nonexistence in 2005 and 2010, then rebounds to 5 minutes in 2015, perhaps echoing the introduction and subsequent enforcement of minimum exercise guidelines.
+The 'max' time invested in walking trips remains a constant 90 minutes across the years. However, the 'mean' walking time varies: it starts at 24 minutes in 1986, drops to 17 minutes in 1992, and finally to 10 minutes in 1998. This trend reverses slightly to 12 minutes in both 2005 and 2010 and ascends to 16 minutes in 2015. This fluctuation in average walking time could reflect evolving urban designs, societal pace, or changing durations in individuals' routines. The 'min' walking time, initially stable at 1 minute, drops to nonexistence in 2005 and 2010, then rebounds to 5 minutes in 2015.
 
 For cycling trips, data is absent for 1986. Starting in 1992, 126 trips are noted, dipping marginally to 119 in 1998, then more than doubling to 325 by 2005—indicative of a surge in cycling popularity, potentially driven by environmental campaigns or improvements in cycling infrastructure. The count declined to 214 trips in 2010 but experienced a marginal recovery to 217 trips by 2015. The 'max' cycling time experiences a gradual reduction from 90 minutes in the early years to 80 minutes by 2015, possibly reflecting advancements in bicycle technology or changes in cyclists’ behaviors. The 'mean' time initially recedes from 24 minutes in 1992 to 18 minutes in 2005, then modestly increases, culminating at 22 minutes in 2015, suggesting that the average trip becomes slightly longer, which could be due to several factors such as increased commuting distances or a rise in recreational cycling. The 'min' cycling time shows a sharp decline to 1 minute in 2005 and 2010, paralleling the walking trend, before climbing back to 5 minutes in 2015, which could indicate cycling's growing popularity as a short-distance travel alternative.
 
@@ -625,6 +625,19 @@ The evolution from 2005 to 2015 suggests an increasing preference for shorter, m
 
 #Creating walking heatmap in 2015
 
+# Combine all origin and destination labels from 2005, 2010, and 2015 datasets
+all_origins <- unique(c(as.character(walking_2005$orig_label), 
+                        as.character(walking_2010$orig_label), 
+                        as.character(walking_2015$orig_label)))
+all_destinations <- unique(c(as.character(walking_2005$dest_label), 
+                             as.character(walking_2010$dest_label), 
+                             as.character(walking_2015$dest_label)))
+
+# Apply consistent factor levels across all datasets
+walking_2015$orig_label <- factor(walking_2015$orig_label, levels = all_origins)
+walking_2015$dest_label <- factor(walking_2015$dest_label, levels = all_destinations)
+
+
 # Ensure WGHT_EPI is numeric
 walking_2015$WGHT_EPI <- as.numeric(as.character(walking_2015$WGHT_EPI))
 
@@ -654,6 +667,11 @@ rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig'
 # Melt the matrix for use with ggplot
 heatmap_melted_2015 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
 
+# Define the order of destinations for 2015
+destination_order <- c("Home", "Work or school", "Grocery store, other stores or mall", "Others' home",
+                       "Outdoors", "Library, museum or theatre", "Place of worship", "Restaurant, bar or club", "Sporting events, field or other")
+
+
 # Create the ggplot object and assign it to a variable
 heatmap_plot_2015<- ggplot(heatmap_melted_2015, aes(x = Destination, y = Origin, fill = value)) +
   geom_tile(color = "white") +
@@ -677,6 +695,9 @@ heatmap_plot_2015<- ggplot(heatmap_melted_2015, aes(x = Destination, y = Origin,
 
 ```{r ch03-make-Heatmap-walking_2010, echo=FALSE, cache=FALSE, include=FALSE}
 # Creating walking heatmap in 2010
+# Apply consistent factor levels across all datasets
+walking_2010$orig_label <- factor(walking_2010$orig_label, levels = all_origins)
+walking_2010$dest_label <- factor(walking_2010$dest_label, levels = all_destinations)
 
 # Ensure WGHT_EPI is numeric
 walking_2010$WGHT_EPI <- as.numeric(as.character(walking_2010$WGHT_EPI))
@@ -707,6 +728,10 @@ rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig'
 # Melt the matrix for use with ggplot
 heatmap_melted_2010 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
 
+# Define the order of destinations for 2010
+destination_order <- c("Home", "Work or school", "Grocery store, other stores or mall", "Others' home",
+                       "Outdoors", "Library, museum or theatre", "Place of worship", "Restaurant, bar or club", "Sporting events, field or other")
+
 # Create the ggplot object and assign it to a variable
 heatmap_plot_2010 <- ggplot(heatmap_melted_2010, aes(x = Destination, y = Origin, fill = value)) +
   geom_tile(color = "white") +
@@ -731,6 +756,10 @@ heatmap_plot_2010 <- ggplot(heatmap_melted_2010, aes(x = Destination, y = Origin
 ```{r ch03-make-Heatmap-walking_2005, echo=FALSE, cache=FALSE, include=FALSE}
 
 # Creating walking heatmap in 2005
+# Apply consistent factor levels across all datasets
+walking_2005$orig_label <- factor(walking_2005$orig_label, levels = all_origins)
+walking_2005$dest_label <- factor(walking_2005$dest_label, levels = all_destinations)
+
 # Ensure WGHT_EPI is numeric
 walking_2005$WGHT_EPI <- as.numeric(as.character(walking_2005$WGHT_EPI))
 
@@ -760,6 +789,10 @@ rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig'
 # Melt the matrix for use with ggplot
 heatmap_melted_2005 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
 
+# Define the order of destinations for 2005
+destination_order <- c("Home", "Work or school", "Grocery store, other stores or mall", "Others' home",
+                       "Outdoors", "Library, museum or theatre", "Place of worship", "Restaurant, bar or club", "Sporting events, field or other")
+
 # Create the ggplot object and assign it to a variable
 heatmap_plot_2005 <- ggplot(heatmap_melted_2005, aes(x = Destination, y = Origin, fill = value)) +
   geom_tile(color = "white") +
@@ -784,6 +817,19 @@ heatmap_plot_2005 <- ggplot(heatmap_melted_2005, aes(x = Destination, y = Origin
 ```{r ch03-make-Heatmap-walking_1998, echo=FALSE, cache=FALSE, include=FALSE} 
 
 # Creating walking heatmap in 1998
+# Combine all origin and destination labels from 1986, 1992, and 1998 datasets
+all_origins <- unique(c(as.character(walking_1986$orig_label), 
+                        as.character(walking_1992$orig_label), 
+                        as.character(walking_1998$orig_label)))
+all_destinations <- unique(c(as.character(walking_1986$dest_label), 
+                             as.character(walking_1992$dest_label), 
+                             as.character(walking_1998$dest_label)))
+
+# Apply consistent factor levels across all datasets
+walking_1998$orig_label <- factor(walking_1998$orig_label, levels = all_origins)
+walking_1998$dest_label <- factor(walking_1998$dest_label, levels = all_destinations)
+
+
 # Ensure WGHT_EPI is numeric
 walking_1998$WGHT_EPI <- as.numeric(as.character(walking_1998$WGHT_EPI))
 
@@ -813,6 +859,9 @@ rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig'
 # Melt the matrix for use with ggplot
 heatmap_melted_1998 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
 
+# Define the order of destinations for 1998
+destination_order <- c("Home", "Work or school", "Others' home")
+
 # Create the ggplot object and assign it to a variable
 heatmap_plot_1998 <- ggplot(heatmap_melted_1998, aes(x = Destination, y = Origin, fill = value)) +
   geom_tile(color = "white") +
@@ -836,6 +885,10 @@ heatmap_plot_1998 <- ggplot(heatmap_melted_1998, aes(x = Destination, y = Origin
 ```{r ch03-make-Heatmap-walking_1992, echo=FALSE, cache=FALSE, include=FALSE}
 
 # Creating walking heatmap in 1992
+# Apply consistent factor levels across all datasets
+walking_1992$orig_label <- factor(walking_1992$orig_label, levels = all_origins)
+walking_1992$dest_label <- factor(walking_1992$dest_label, levels = all_destinations)
+
 # Ensure WGHT_EPI is numeric
 walking_1992$WGHT_EPI <- as.numeric(as.character(walking_1992$WGHT_EPI))
 
@@ -866,6 +919,9 @@ rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig'
 # Melt the matrix for use with ggplot
 heatmap_melted_1992 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
 
+# Define the order of destinations for 1992
+destination_order <- c("Home", "Work or school", "Others' home")
+
 # Create the ggplot object and assign it to a variable
 heatmap_plot_1992 <- ggplot(heatmap_melted_1992, aes(x = Destination, y = Origin, fill = value)) +
   geom_tile(color = "white") +
@@ -889,6 +945,12 @@ heatmap_plot_1992 <- ggplot(heatmap_melted_1992, aes(x = Destination, y = Origin
 ```{r ch03-make-Heatmap-walking_1986, echo=FALSE, cache=FALSE, include=FALSE}
 
 # Creating walking heatmap in 1986
+
+# Apply consistent factor levels across all datasets
+walking_1986$orig_label <- factor(walking_1986$orig_label, levels = all_origins)
+walking_1986$dest_label <- factor(walking_1986$dest_label, levels = all_destinations)
+
+
 # Ensure WGHT_EPI is numeric
 walking_1986$WGHT_EPI <- as.numeric(as.character(walking_1986$WGHT_EPI))
 
@@ -918,6 +980,9 @@ rownames(heatmap_matrix) <- heatmap_data$orig # Assign row names from the 'orig'
 # Melt the matrix for use with ggplot
 heatmap_melted_1986 <- melt(heatmap_matrix, varnames = c("Origin", "Destination"))
 
+# Define the order of destinations for 1986
+destination_order <- c("Home", "Work or school", "Others' home")
+
 # Create the ggplot object and assign it to a variable
 heatmap_plot_1986 <- ggplot(heatmap_melted_1986, aes(x = Destination, y = Origin, fill = value)) +
   geom_tile(color = "white") +
@@ -940,8 +1005,18 @@ heatmap_plot_1986 <- ggplot(heatmap_melted_1986, aes(x = Destination, y = Origin
 
 
 ```{r ch03-make-Heatmap-cycling_2015,echo=FALSE, cache=FALSE, include=FALSE }
-
 # Creating cycling heatmap in 2015
+# Combine all origin and destination labels from 2005, 2010, and 2015 datasets
+all_origins <- unique(c(as.character(cycling_2005$orig_label), 
+                        as.character(cycling_2010$orig_label), 
+                        as.character(cycling_2015$orig_label)))
+all_destinations <- unique(c(as.character(cycling_2005$dest_label), 
+                             as.character(cycling_2010$dest_label), 
+                             as.character(cycling_2015$dest_label)))
+
+cycling_2015$orig_label <- factor(cycling_2015$orig_label, levels = all_origins)
+cycling_2015$dest_label <- factor(cycling_2015$dest_label, levels = all_destinations)
+
 # Ensure WGHT_EPI is numeric
 cycling_2015$WGHT_EPI <- as.numeric(as.character(cycling_2015$WGHT_EPI))
 
@@ -981,7 +1056,7 @@ heatmap_plot_c_2015 <- ggplot(heatmap_melted_2015, aes(x = Destination, y = Orig
                        labels = c("0%", paste0(max(heatmap_melted_2015$value, na.rm = TRUE), "%"))) +
   labs(x = "Destination", y = "Origin", fill = "Percentage", caption = "2015") +
   theme_minimal() +
- theme(
+  theme(
   axis.text.x = element_text(angle = 45, hjust = 1, size = 16),
   axis.text.y = element_text(size = 16, margin = margin(l = 15)),
   axis.title = element_text(size = 16),
@@ -991,8 +1066,19 @@ heatmap_plot_c_2015 <- ggplot(heatmap_melted_2015, aes(x = Destination, y = Orig
 )
 ```
 
+
+
+
+
+
+
 ```{r ch03-make-Heatmap-cycling_2010,echo=FALSE, cache=FALSE, include=FALSE }
 # Creating cycling heatmap in 2010
+
+# Convert labels in 2010 dataset to factors with consistent levels
+cycling_2010$orig_label <- factor(cycling_2010$orig_label, levels = all_origins)
+cycling_2010$dest_label <- factor(cycling_2010$dest_label, levels = all_destinations)
+
 # Ensure WGHT_EPI is numeric
 cycling_2010$WGHT_EPI <- as.numeric(as.character(cycling_2010$WGHT_EPI))
 
@@ -1046,6 +1132,10 @@ heatmap_plot_c_2010 <- ggplot(heatmap_melted_2010, aes(x = Destination, y = Orig
 ```{r ch03-make-Heatmap-cycling_2005,echo=FALSE, cache=FALSE, include=FALSE }
 
 # Creating cycling heatmap in 2005
+# Specify consistent factor levels for origins and destinations
+cycling_2005$orig_label <- factor(cycling_2005$orig_label, levels = all_origins)
+cycling_2005$dest_label <- factor(cycling_2005$dest_label, levels = all_destinations)
+
 # Ensure WGHT_EPI is numeric
 cycling_2005$WGHT_EPI <- as.numeric(as.character(cycling_2005$WGHT_EPI))
 
@@ -1363,21 +1453,25 @@ Following the detailed statistical analysis, we present four comprehensive table
 
 
 ```{r ch03-make-table-04, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
-
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Home", "work or school", "Other's home")
 walking_data_filtered <- walking_data[walking_data$Destinations %in% desired_destinations,]
 
 # Round the numeric columns to two decimal places
 numeric_columns <- c("logLik_1986", "AIC_1986", "BIC_1986",
-                    "logLik_1992", "AIC_1992", "BIC_1992", 
+                     "logLik_1992", "AIC_1992", "BIC_1992", 
                      "logLik_1998", "AIC_1998", "BIC_1998")
 walking_data_filtered[numeric_columns] <- round(walking_data_filtered[numeric_columns], 2)
+
+library(dplyr)
+library(tidyr)
+library(kableExtra)
 
 walking_data_filtered |> 
   dplyr::select(Destinations, 
                 Impedance_Function, 
-                ends_with("_1986") | ends_with("_1992") | ends_with("_1998"), -starts_with("Selected_")) |>
+                ends_with("_1986") | ends_with("_1992") | ends_with("_1998"), 
+                -starts_with("Selected_")) |>
   pivot_longer(cols = -c(Destinations, Impedance_Function, starts_with("Selected")), 
                names_to = c("fun", "year"), 
                names_sep = "_") |>
@@ -1390,7 +1484,17 @@ walking_data_filtered |>
   kable_styling(font_size = 12) |> 
   pack_rows("Destination: Home", 1, 9) |>
   pack_rows("Destination: Other's home", 10, 21) |>
-  pack_rows("Destination: Work or school", 22, 33)
+  pack_rows("Destination: Work or school", 22, 33) |>
+  row_spec(1, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(4, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(7, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(10, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(14, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(18, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(22, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(26, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(30, bold = TRUE, italic = TRUE, font_size = 10) 
+
 ```
 
 
@@ -1423,7 +1527,21 @@ walking_data_filtered |>
   pack_rows("Destination: Home", 1, 9) |>
   pack_rows("Destination: work or school", 10, 21) |>
   pack_rows("Destination: Other's home", 22, 33) |>
-  pack_rows("Destination: Outdoors ", 34, 45)
+  pack_rows("Destination: Outdoors ", 34, 45) |>
+  row_spec(1, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(4, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(7, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(10, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(15, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(18, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(25, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(26, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(30, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(34, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(41, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(42, bold = TRUE, italic = TRUE, font_size = 10)
+
+
 ```
 
 
@@ -1456,7 +1574,19 @@ walking_data_filtered |>
   pack_rows("Destination: Grocery store", 1, 9) |>
   pack_rows("Destination: Restaurant", 10, 27) |>
   pack_rows("Destination: Library", 28, 39) |>
-  pack_rows("Destination: Place of worship", 40, 54)
+  pack_rows("Destination: Place of worship", 40, 54)|>
+  row_spec(1, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(4, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(7, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(10, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(16, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(20, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(27, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(28, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(34, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(40, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(45, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(53, bold = TRUE, italic = TRUE, font_size = 10)
 
 ```
 
@@ -1489,7 +1619,13 @@ cycling_data_filtered |>
   kable_styling(font_size = 11) |> 
   pack_rows("Destination: Home", 1, 6) |>
   pack_rows("Destination: Other's home", 7, 16) |>
-  pack_rows("Destination: Work or school", 17, 26)
+  pack_rows("Destination: Work or school", 17, 26)|>
+ row_spec(1, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(4, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(11, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(16, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(17, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(22, bold = TRUE, italic = TRUE, font_size = 10) 
 ```
 
                                                                                                                  
@@ -1523,12 +1659,20 @@ cycling_data_filtered |>
   kable_styling(font_size = 11) |> 
   pack_rows("Destination: Home", 1, 9) |> 
   pack_rows("Destination: Other's home", 10, 24)|>
-  pack_rows("Destination: work or school", 25, 39)  
+  pack_rows("Destination: work or school", 25, 39) |>
+  row_spec(1, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(4, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(7, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(10, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(15, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(20, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(25, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(30, bold = TRUE, italic = TRUE, font_size = 10) |>
+  row_spec(39, bold = TRUE, italic = TRUE, font_size = 10)  
   
 ```
 
 ```{r ch03-make-table-09, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE}
-
 # Filter the dataframe to only include specific destinations
 desired_destinations <- c("Outdoors " ,  "Grocery store", "Restaurant" )
 cycling_data_filtered <- cycling_data[cycling_data$Destinations %in% desired_destinations,]
@@ -1551,11 +1695,20 @@ cycling_data_filtered |>
   dplyr::select(-Destinations) |>
   kable(format = "latex",
         booktabs = TRUE) |>
-  kable_styling(font_size = 11) |> 
+  kable_styling(font_size = 9) |> 
   pack_rows("Destination: Outdoors ", 1, 18) |>
   pack_rows("Destination: Grocery store", 19, 36)|>
-   pack_rows("Destination: Restaurant", 37, 48)
+  pack_rows("Destination: Restaurant", 37, 48) |>
+  row_spec(1, bold = TRUE, italic = TRUE, font_size = 9) |>
+  row_spec(7, bold = TRUE, italic = TRUE, font_size = 9) |>
+  row_spec(15, bold = TRUE, italic = TRUE, font_size = 9) |>
+  row_spec(19, bold = TRUE, italic = TRUE, font_size = 9) |>
+  row_spec(26, bold = TRUE, italic = TRUE, font_size = 9) |>
+  row_spec(38, bold = TRUE, italic = TRUE, font_size = 9) |>
+  row_spec(45, bold = TRUE, italic = TRUE, font_size = 9) 
 ```
+
+
 
 \newpage
 
@@ -1579,13 +1732,18 @@ home_peaks <- walking_data_f %>%
 
 
 home_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = walking_data_f %>% filter(dest_label == "Home"), aes(group = YEAR), color = "cyan3", linewidth = 1.2) +
-  geom_segment(data = home_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = home_peaks, aes(x = peak_duration, y = peak_ft), color = "red", size = 3) +
+  geom_line(data = walking_data_f %>% filter(dest_label == "Home"), aes(group = YEAR, colour = "Home"), linewidth = 1.2) +
+  geom_segment(data = home_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = home_peaks, aes(x = peak_duration, y = peak_ft, colour = "Peaks"), size = 3) +
   geom_text(data = home_peaks, aes(x = peak_duration, y = 0, label = peak_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of walking for home destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of walking for home destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -1594,15 +1752,17 @@ home_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Home" = "cyan3", "Other destinations" = "grey40", "Peaks" = "red"))
+
 
 ```
 
@@ -1624,13 +1784,18 @@ home_c_peaks <- cycling_data_f %>%
 
 # Plot the data
 home_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = cycling_data_f %>% filter(dest_label == "Home"), aes(group = YEAR), color = "cyan3", linewidth = 1.2) +
-  geom_segment(data = home_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = home_c_peaks, aes(x = peak_c_duration, y = peak_c_ft), color = "red", size = 3) +
+  geom_line(data = cycling_data_f %>% filter(dest_label == "Home"), aes(group = YEAR, colour = "Home"), linewidth = 1.2) +
+  geom_segment(data = home_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = home_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, colour = "Peaks"), size = 3) +
   geom_text(data = home_c_peaks, aes(x = peak_c_duration, y = 0, label = peak_c_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of cycling for home destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of cycling for home destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # This will be the title of the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -1647,9 +1812,8 @@ home_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
-
-
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Home" = "cyan3", "Other destinations" = "grey40", "Peaks" = "red"))
 ``` 
 
 ```{r ch03-make-fig-03, cache = FALSE, include=FALSE}
@@ -1678,25 +1842,33 @@ Conversely, Figure \ref{fig:ch03-plot-fig-03} captures the progression of cyclin
 walking_data_f <- walking_data_f %>% filter(!is.na(f_t))
 
 # Find the peaks for 'work or school' destination for each year
-work_peaks <- walking_data_f %>%
+work_w_peaks <- walking_data_f %>%
   filter(dest_label == "Work or school") %>%
   group_by(YEAR) %>%
   summarize(
-    peak_duration = DURATION[which.max(f_t)],
-    peak_ft = max(f_t, na.rm = TRUE)
+    peak_w_duration = DURATION[which.max(f_t)],
+    peak_w_ft = max(f_t, na.rm = TRUE)
   ) %>%
   ungroup()
 
+
 # Plot the data
-work_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+work_w_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = walking_data_f %>% filter(dest_label == "Work or school"), aes(group = YEAR), color = "deeppink2", linewidth = 1.2) +
-  geom_segment(data = work_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = work_peaks, aes(x = peak_duration, y = peak_ft), color = "red", size = 3) +
-  geom_text(data = work_peaks, aes(x = peak_duration, y = 0, label = peak_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of walking for work or school destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  geom_line(data = walking_data_f %>% filter(dest_label == "Work or school"), aes(group = YEAR, colour = "Work or school"), linewidth = 1.2) +
+  geom_segment(data = work_w_peaks, aes(x = peak_w_duration, y = peak_w_ft, xend = peak_w_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = work_w_peaks, aes(x = peak_w_duration, y = peak_w_ft, colour = "Peaks"), size = 3) +
+  geom_text(data = work_w_peaks, aes(x = peak_w_duration, y = 0, label = peak_w_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
+  labs(
+    title = "Modeling distance decay curves of walking for work or school destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # This will be the title of the legend
+  ) +
   theme_minimal(base_size = 12) +
+  scale_colour_manual(values = c("Work or school" = "deeppink2", "Other destinations" = "grey40", "Peaks" = "red"),
+                      labels = c("Library", "Other", "Peaks")) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
     axis.line = element_line(color = "grey40"),
@@ -1704,18 +1876,18 @@ work_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
-
-
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Work or school" = "deeppink2","Other destinations" = "grey40",  "Peaks" = "red"))
 ```
+
 
 
 ```{r ch03-make-impedance_graph_cycling_work, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
@@ -1733,16 +1905,24 @@ work_c_peaks <- cycling_data_f %>%
   ) %>%
   ungroup()
 
+
 # Plot the data
 work_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = cycling_data_f %>% filter(dest_label == "Work or school"), aes(group = YEAR), color = "deeppink2", linewidth = 1.2) +
-  geom_segment(data = work_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = work_c_peaks, aes(x = peak_c_duration, y = peak_c_ft), color = "red", size = 3) +
+  geom_line(data = cycling_data_f %>% filter(dest_label == "Work or school"), aes(group = YEAR, colour = "Work or school"), linewidth = 1.2) +
+  geom_segment(data = work_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = work_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, colour = "Peaks"), size = 3) +
   geom_text(data = work_c_peaks, aes(x = peak_c_duration, y = 0, label = peak_c_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of cycling for work or school destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of cycling for work or school destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # This will be the title of the legend
+  ) +
   theme_minimal(base_size = 12) +
+  scale_colour_manual(values = c("Work or school" = "deeppink2", "Other destinations" = "grey40", "Peaks" = "red"),
+                      labels = c("Library", "Other", "Peaks")) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
     axis.line = element_line(color = "grey40"),
@@ -1750,22 +1930,21 @@ work_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
-
-
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Work or school" = "deeppink2","Other destinations" = "grey40",  "Peaks" = "red"))
 ```
 
 
 ```{r ch03-make-fig-04, cache = FALSE, include=FALSE}
-ch03_fig_04 <- cowplot::plot_grid(work_plot,work_c_plot, nrow = 2, align = 'v')
+ch03_fig_04 <- cowplot::plot_grid(work_w_plot,work_c_plot, nrow = 2, align = 'v')
 
 
 ggsave(file = "figure/ch03_fig_04.jpg", 
@@ -1802,13 +1981,18 @@ other_peaks <- walking_data_f %>%
 
 # Plot the data
 other_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = walking_data_f %>% filter(dest_label == "Other's home"), aes(group = YEAR), color = "darkorchid3", linewidth = 1.2) +
-  geom_segment(data = other_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = other_peaks, aes(x = peak_duration, y = peak_ft), color = "red", size = 3) +
+  geom_line(data = walking_data_f %>% filter(dest_label == "Other's home"), aes(group = YEAR, colour = "Other's home"), linewidth = 1.2) +
+  geom_segment(data = other_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = other_peaks, aes(x = peak_duration, y = peak_ft, colour = "Peaks"), size = 3) +
   geom_text(data = other_peaks, aes(x = peak_duration, y = 0, label = peak_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of walking for other's home destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of walking for other's home destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # This will be the title of the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -1817,17 +2001,16 @@ other_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
-
-print(other_plot)
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Other's home" = "darkorchid3","Other destinations" = "grey40", "Peaks" = "red"))
 
 ```
 
@@ -1850,13 +2033,18 @@ other_c_peaks <- cycling_data_f %>%
 
 # Plot the data
 other_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = cycling_data_f %>% filter(dest_label == "Other's home"), aes(group = YEAR), color = "darkorchid3", linewidth = 1.2) +
-  geom_segment(data = other_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = other_c_peaks, aes(x = peak_c_duration, y = peak_c_ft), color = "red", size = 3) +
+  geom_line(data = cycling_data_f %>% filter(dest_label == "Other's home"), aes(group = YEAR, colour = "Other's home"), linewidth = 1.2) +
+  geom_segment(data = other_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = other_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, colour = "Peaks"), size = 3) +
   geom_text(data = other_c_peaks, aes(x = peak_c_duration, y = 0, label = peak_c_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of cycling for other's home destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of cycling for other's home destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -1865,18 +2053,16 @@ other_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
-
-print(other_c_plot)
-
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Other's home" = "darkorchid3","Other destinations" = "grey40", "Peaks" = "red"))
 
 ```
 
@@ -1920,13 +2106,18 @@ grocery_peaks <- walking_data_f %>%
 
 # Plot the data
 grocery_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = walking_data_f %>% filter(dest_label == "Grocery store, other stores or mall"), aes(group = YEAR), color = "red3", linewidth = 1.2) +
-  geom_segment(data = grocery_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = grocery_peaks, aes(x = peak_duration, y = peak_ft), color = "red", size = 3) +
+  geom_line(data = walking_data_f %>% filter(dest_label == "Grocery store, other stores or mall"), aes(group = YEAR, colour = "Grocery store"), linewidth = 1.2) +
+  geom_segment(data = grocery_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = grocery_peaks, aes(x = peak_duration, y = peak_ft, colour = "Peaks"), size = 3) +
   geom_text(data = grocery_peaks, aes(x = peak_duration, y = 0, label = peak_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of walking for Grocery store, other stores or mall destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of walking for Grocery store, other stores or mall destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -1935,15 +2126,16 @@ grocery_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Grocery store" = "red3","Other destinations" = "grey40", "Peaks" = "red"))
 ```
 
 ```{r ch03-make-impedance_graph_cycling_grocery, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
@@ -1964,13 +2156,18 @@ grocery_c_peaks <- cycling_data_f %>%
 
 # Plot the data
 grocery_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = cycling_data_f %>% filter(dest_label == "Grocery store, other stores or mall"), aes(group = YEAR), color = "red3", linewidth = 1.2) +
-  geom_segment(data = grocery_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = grocery_c_peaks, aes(x = peak_c_duration, y = peak_c_ft), color = "red", size = 3) +
+  geom_line(data = cycling_data_f %>% filter(dest_label == "Grocery store, other stores or mall"), aes(group = YEAR, colour = "Grocery store"), linewidth = 1.2) +
+  geom_segment(data = grocery_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = grocery_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, colour = "Peaks"), size = 3) +
   geom_text(data = grocery_c_peaks, aes(x = peak_c_duration, y = 0, label = peak_c_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of cycling for Grocery store, other stores or mall destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of cycling for Grocery store, other stores or mall destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -1979,15 +2176,17 @@ grocery_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Grocery store" = "red3","Other destinations" = "grey40", "Peaks" = "red"))
+
 ```
 
 ```{r ch03-make-fig-06, cache = FALSE, include=FALSE}
@@ -2032,13 +2231,18 @@ outdoors_peaks <- walking_data_f %>%
 
 # Plot the data
 outdoors_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = walking_data_f %>% filter(dest_label == "Outdoors"), aes(group = YEAR), color = "royalblue2", linewidth = 1.2) +
-  geom_segment(data = outdoors_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = outdoors_peaks, aes(x = peak_duration, y = peak_ft), color = "red", size = 3) +
+  geom_line(data = walking_data_f %>% filter(dest_label == "Outdoors"), aes(group = YEAR, colour = "Outdoors"), linewidth = 1.2) +
+  geom_segment(data = outdoors_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = outdoors_peaks, aes(x = peak_duration, y = peak_ft, colour = "Peaks"), size = 3) +
   geom_text(data = outdoors_peaks, aes(x = peak_duration, y = 0, label = peak_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of walking for outdoors destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of walking for outdoors destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -2047,15 +2251,16 @@ outdoors_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Outdoors" = "royalblue2","Other destinations" = "grey40", "Peaks" = "red"))
 
 ```
 
@@ -2077,13 +2282,18 @@ outdoors_c_peaks <- cycling_data_f %>%
 
 # Plot the data
 outdoors_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = cycling_data_f %>% filter(dest_label == "Outdoors"), aes(group = YEAR), color = "royalblue2", linewidth = 1.2) +
-  geom_segment(data = outdoors_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = outdoors_c_peaks, aes(x = peak_c_duration, y = peak_c_ft), color = "red", size = 3) +
+  geom_line(data = cycling_data_f %>% filter(dest_label == "Outdoors"), aes(group = YEAR, colour = "Outdoors"), linewidth = 1.2) +
+  geom_segment(data = outdoors_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = outdoors_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, colour = "Peaks"), size = 3) +
   geom_text(data = outdoors_c_peaks, aes(x = peak_c_duration, y = 0, label = peak_c_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of cycling for outdoors destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of cycling for outdoors destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -2092,15 +2302,16 @@ outdoors_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Outdoors" = "royalblue2","Other destinations" = "grey40", "Peaks" = "red"))
 
 ```
 
@@ -2139,15 +2350,19 @@ restaurant_peaks <- walking_data_f %>%
   ) %>%
   ungroup()
 
-# Plot the data
 restaurant_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = walking_data_f %>% filter(dest_label == "Restaurant, bar or club"), aes(group = YEAR), color = "yellow2", linewidth = 1.2) +
-  geom_segment(data = restaurant_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = restaurant_peaks, aes(x = peak_duration, y = peak_ft), color = "red", size = 3) +
+  geom_line(data = walking_data_f %>% filter(dest_label == "Restaurant, bar or club"), aes(group = YEAR, colour = "Restaurant"), linewidth = 1.2) +
+  geom_segment(data = restaurant_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = restaurant_peaks, aes(x = peak_duration, y = peak_ft, colour = "Peaks"), size = 3) +
   geom_text(data = restaurant_peaks, aes(x = peak_duration, y = 0, label = peak_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of walking for Restaurant, bar or club destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of walking for Restaurant, bar or club destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -2156,15 +2371,17 @@ restaurant_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Restaurant" = "yellow2","Other destinations" = "grey40", "Peaks" = "red"))
+
 ```
 
 ```{r ch03-make-impedance_graph_cycling_restaurant, cache=FALSE, include=FALSE, message=FALSE, echo=FALSE}
@@ -2186,13 +2403,18 @@ restaurant_c_peaks <- cycling_data_f %>%
 
 # Plot the data
 restaurant_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = cycling_data_f %>% filter(dest_label == "Restaurant, bar or club"), aes(group = YEAR), color = "yellow2", linewidth = 1.2) +
-  geom_segment(data = restaurant_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = restaurant_c_peaks, aes(x = peak_c_duration, y = peak_c_ft), color = "red", size = 3) +
+  geom_line(data = cycling_data_f %>% filter(dest_label == "Restaurant, bar or club"), aes(group = YEAR, colour = "Restaurant"), linewidth = 1.2) +
+  geom_segment(data = restaurant_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, xend = peak_c_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = restaurant_c_peaks, aes(x = peak_c_duration, y = peak_c_ft, colour = "Peaks"), size = 3) +
   geom_text(data = restaurant_c_peaks, aes(x = peak_c_duration, y = 0, label = peak_c_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of cycling for Restaurant, bar or club destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of cycling for Restaurant, bar or club destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -2201,15 +2423,16 @@ restaurant_c_plot <- ggplot(cycling_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Restaurant" = "yellow2","Other destinations" = "grey40", "Peaks" = "red"))
 ```
 
 ```{r ch03-make-fig-08, cache = FALSE, include=FALSE}
@@ -2248,13 +2471,18 @@ place_peaks <- walking_data_f %>%
 
 # Plot the data
 place_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = walking_data_f %>% filter(dest_label == "Place of worship"), aes(group = YEAR), color = "darkorange1", linewidth = 1.2) +
-  geom_segment(data = place_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = place_peaks, aes(x = peak_duration, y = peak_ft), color = "red", size = 3) +
+  geom_line(data = walking_data_f %>% filter(dest_label == "Place of worship"), aes(group = YEAR, colour = "Place of worship"), linewidth = 1.2) +
+  geom_segment(data = place_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = place_peaks, aes(x = peak_duration, y = peak_ft, colour = "Peaks"), size = 3) +
   geom_text(data = place_peaks, aes(x = peak_duration, y = 0, label = peak_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of walking for place of worship destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of walking for place of worship destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -2263,15 +2491,17 @@ place_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Place of worship" = "darkorange1","Other destinations" = "grey40", "Peaks" = "red"))
+
 ```
 
 ```{r ch03-make-fig-09, cache = FALSE, include=FALSE}
@@ -2312,13 +2542,18 @@ library_peaks <- walking_data_f %>%
 
 # Plot the data
 library_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
-  geom_line(aes(group = interaction(dest_label, YEAR)), color = "grey40", linewidth = 0.5) +
+  geom_line(aes(group = interaction(dest_label, YEAR), colour = "Other destinations"), linewidth = 0.5) +
   facet_wrap(~YEAR, scales = "free_y") +
-  geom_line(data = walking_data_f %>% filter(dest_label == "Library, museum or theatre"), aes(group = YEAR), color = "olivedrab4", linewidth = 1.2) +
-  geom_segment(data = library_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0), color = "red", linetype = "dashed", linewidth = 0.5) +
-  geom_point(data = library_peaks, aes(x = peak_duration, y = peak_ft), color = "red", size = 3) +
+  geom_line(data = walking_data_f %>% filter(dest_label == "Library, museum or theatre"), aes(group = YEAR, colour = "Library"), linewidth = 1.2) +
+  geom_segment(data = library_peaks, aes(x = peak_duration, y = peak_ft, xend = peak_duration, yend = 0, colour = "Peaks"), linetype = "dashed", linewidth = 0.5) +
+  geom_point(data = library_peaks, aes(x = peak_duration, y = peak_ft, colour = "Peaks"), size = 3) +
   geom_text(data = library_peaks, aes(x = peak_duration, y = 0, label = peak_duration), color = "red", size = 3, hjust = 1.5, vjust = -0.5) +
-  labs(title = "Modeling distance decay curves of walking for Library, museum or theatre destination", x = "Duration (minutes)", y = "Frequency (scaled)") +
+  labs(
+    title = "Modeling distance decay curves of walking for Library, museum or theatre destination",
+    x = "Duration (minutes)",
+    y = "Frequency (scaled)",
+    colour = "Legend"  # Title for the legend
+  ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.margin = unit(c(1, 1, 2, 1), "lines"),
@@ -2327,15 +2562,16 @@ library_plot <- ggplot(walking_data_f, aes(x = DURATION, y = f_t)) +
     axis.text.y = element_text(color = "grey40", size = 10),
     plot.title = element_text(hjust = 0.5, size = 14),
     strip.text = element_text(color = "grey40"),
-    panel.grid.major = element_line(color = "grey85", size = 0.2),  # Add light gray major grid lines
-    panel.grid.minor = element_line(color = "grey85", size = 0.1),  # Add light gray minor grid lines
+    panel.grid.major = element_line(color = "grey85", size = 0.2),
+    panel.grid.minor = element_line(color = "grey85", size = 0.1),
     panel.background = element_rect(fill = "white"),
     strip.background = element_rect(fill = "white"),
     panel.spacing = unit(0.5, "lines"),
     aspect.ratio = 1/2
   ) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
-  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1)))
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) +
+  scale_colour_manual(values = c("Library" = "olivedrab4","Other destinations" = "grey40", "Peaks" = "red"))
 
 ```
 
