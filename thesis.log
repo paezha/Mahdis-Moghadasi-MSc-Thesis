@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.12)  14 JUN 2024 06:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.12)  9 JUL 2024 18:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1252,11 +1252,6 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [11
 
 ]
-Underfull \hbox (badness 2384) in paragraph at lines 404--405
-[]\T1/lmr/m/n/10.95 The necessity for active mobility extends beyond just the development of
- []
-
-
 
 [1
 
@@ -1274,13 +1269,15 @@ Underfull \hbox (badness 1400) in paragraph at lines 409--410
 [3]
 
 [4]
+
+[5]
 Chapter 1.
 --------------------
  Master of Science-- Mahdis Moghadasi; McMaster University-- School of Earth, Environment and Society
 --------------------
 
 
-[5
+[6
 
 ]
 Underfull \hbox (badness 1048) in paragraph at lines 433--434
@@ -1289,35 +1286,35 @@ Underfull \hbox (badness 1048) in paragraph at lines 433--434
 
 
 
-[6]
+[7]
 Underfull \hbox (badness 1048) in paragraph at lines 437--438
 []\T1/lmr/m/n/10.95 In principle, accessibility analysis is versatile enough to be applied to ATB
  []
 
 
 
-[7]
+[8]
 Underfull \hbox (badness 1028) in paragraph at lines 445--446
 \T1/lmr/m/n/10.95 planning aims to ensure that all individuals have reasonable travel times to a
  []
 
 
 
-[8]
+[9]
 Underfull \hbox (badness 2111) in paragraph at lines 449--450
 []\T1/lmr/m/n/10.95 Location-based accessibility offers a notable advantage in terms of ease of
  []
 
 
 
-[9]
+[10]
 Underfull \hbox (badness 1297) in paragraph at lines 451--452
 []\T1/lmr/m/n/10.95 In contrast, place-based accessibility, which does not fully address temporal
  []
 
 
 
-[10{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+[11{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 Underfull \hbox (badness 2269) in paragraph at lines 490--491
 []\T1/lmr/m/n/10.95 Generally, proximity plays a significant role in determining preferences for
  []
@@ -1329,32 +1326,30 @@ Underfull \hbox (badness 2384) in paragraph at lines 501--503
 
 
 
-[11{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
+[12{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
 Underfull \hbox (badness 3460) in paragraph at lines 508--509
 \T1/lmr/m/n/10.95 activity-based, distance-based, topological or infrastructure-based, utility-based,
  []
 
 
 
-[12]
-
 [13]
 
 [14]
+
+[15]
 Underfull \hbox (badness 1264) in paragraph at lines 557--558
 []\T1/lmr/m/n/10.95 In distance-based accessibility measures, distance is considered as the travel
  []
 
 
 
-[15]
+[16]
 Underfull \hbox (badness 1067) in paragraph at lines 581--582
 \T1/lmr/m/n/10.95 Topological-based measures consider accessibility in terms of the street network
  []
 
 
-
-[16]
 
 [17]
 
@@ -1364,40 +1359,42 @@ Underfull \hbox (badness 1067) in paragraph at lines 581--582
 
 [20]
 
-[21
+[21]
+
+[22
 
 
 
 
-] [22
+] [23
 
-] [23] [24] [25] [26] [27]
+] [24] [25] [26] [27] [28]
 
-[28]
+[29]
 Underfull \hbox (badness 1502) in paragraph at lines 732--734
 []\T1/lmr/m/n/10.95 Explicit polygon features created around specific trajectories of individual
  []
 
 
 
-[29
+[30
 
-] [30
+] [31
 
-] [31] [32] [33] [34]
+] [32] [33] [34] [35]
 
-[35]
+[36]
 Underfull \hbox (badness 1024) in paragraph at lines 769--770
 \T1/lmr/m/n/10.95 information services, and communication infrastructures. The collected data is
  []
 
 
 
-[36
+[37
 
 ]
 
-[37]
+[38]
 Overfull \hbox (3.13248pt too wide) in paragraph at lines 789--789
  []|\T1/lmr/bx/n/10 Data/Methods| 
  []
@@ -1407,27 +1404,27 @@ Overfull \hbox (15.17378pt too wide) in paragraph at lines 794--794
 \T1/lmr/m/n/10 origins/destinations 
  []
 
-[38
+[39
 
-] [39]
+] [40]
 
-[40]
+[41]
 Underfull \hbox (badness 1112) in paragraph at lines 804--804
 []\T1/lmr/bx/n/14.4 Assessing Data Availability and Requirements for
  []
 
-<figure/ch02-Fig-01.jpg, id=605, 639.1077pt x 385.44pt>
+<figure/ch02-Fig-01.jpg, id=609, 639.1077pt x 385.44pt>
 File: figure/ch02-Fig-01.jpg Graphic file (type jpg)
 <use figure/ch02-Fig-01.jpg>
 Package pdftex.def Info: figure/ch02-Fig-01.jpg  used on input line 812.
 (pdftex.def)             Requested size: 418.25545pt x 252.25038pt.
 
 
-[41
+[42
 
 ]
 
-[42 <./figure/ch02-Fig-01.jpg>]
+[43 <./figure/ch02-Fig-01.jpg>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 855.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1441,9 +1438,9 @@ Overfull \hbox (44.53589pt too wide) in paragraph at lines 855--875
 
 
 
-[43]
-
 [44]
+
+[45]
 Underfull \hbox (badness 1478) in paragraph at lines 889--890
 []\T1/lmr/m/n/10.95 The Montreal OD (Origin-Destination) survey is a large-scale cross-sectional
  []
@@ -1455,7 +1452,7 @@ Underfull \hbox (badness 1142) in paragraph at lines 889--890
 
 
 
-[45]
+[46]
 Underfull \hbox (badness 1845) in paragraph at lines 899--900
 \T1/lmr/m/n/10.95 information on travel behavior, including trip purpose (such as work, school,
  []
@@ -1467,75 +1464,73 @@ Underfull \hbox (badness 2173) in paragraph at lines 899--900
 
 
 
-[46]
-
 [47]
 
 [48]
+
+[49]
 Underfull \hbox (badness 1052) in paragraph at lines 953--954
 \T1/lmr/m/n/10.95 programs. The data have been made available to the public. They can be
  []
 
 
 
-[49]
+[50]
 Underfull \hbox (badness 2035) in paragraph at lines 973--974
 []\T1/lmr/m/n/10.95 The 2018 survey was a household-based survey that collected demographic
  []
 
 
 
-[50]
-
 [51]
 
 [52]
+
+[53]
 Underfull \hbox (badness 2469) in paragraph at lines 1006--1007
 \T1/lmr/m/n/10.95 for each trip, the purpose of the trip (work, post-secondary school, school,
  []
 
 
 
-[53]
+[54]
 Underfull \hbox (badness 1527) in paragraph at lines 1029--1031
 \T1/lmr/m/n/10.95 and their households, as captured by the Survey, including age, gender,
  []
 
 
 
-[54]
+[55]
 
-[55] [56
+[56] [57
 
-] [57] [58]
+] [58] [59]
 
-[59]
+[60]
 
-[60
+[61
 
 ]
-
-[61]
 
 [62]
 
 [63]
+
+[64]
 Underfull \hbox (badness 1603) in paragraph at lines 1330--1331
 []\T1/lmr/m/n/10.95 Educational Institutions: This dataset provides information regarding the
  []
 
 
 
-[64]
-
 [65]
+
+[66]
 Underfull \hbox (badness 2080) in paragraph at lines 1426--1428
 []\T1/lmr/m/n/10.95 Outdoor Recreation Equipment: Points representation of HRM-owned or
  []
 
 
-
-[66]
 
 [67]
 
@@ -1543,45 +1538,47 @@ Underfull \hbox (badness 2080) in paragraph at lines 1426--1428
 
 [69]
 
-[70] [71
+[70]
 
-] [72]
+[71] [72
 
-[73]
-<figure/ch02-Fig-02.jpg, id=767, 462.97969pt x 335.00156pt>
+] [73]
+
+[74]
+<figure/ch02-Fig-02.jpg, id=771, 462.97969pt x 335.00156pt>
 File: figure/ch02-Fig-02.jpg Graphic file (type jpg)
 <use figure/ch02-Fig-02.jpg>
 Package pdftex.def Info: figure/ch02-Fig-02.jpg  used on input line 1636.
 (pdftex.def)             Requested size: 209.12772pt x 151.32181pt.
 
 
-[74
+[75
 
 ]
 
-[75 <./figure/ch02-Fig-02.jpg>]
+[76 <./figure/ch02-Fig-02.jpg>]
 Underfull \hbox (badness 1881) in paragraph at lines 1649--1650
 []\T1/lmr/m/n/10.95 Lundberg (2012) examined the local cycling and walking networks through
  []
 
 
 
-[76]
-
 [77]
-<figure/ch02-Fig-03.jpg, id=796, 248.78787pt x 385.65318pt>
+
+[78]
+<figure/ch02-Fig-03.jpg, id=800, 248.78787pt x 385.65318pt>
 File: figure/ch02-Fig-03.jpg Graphic file (type jpg)
 <use figure/ch02-Fig-03.jpg>
 Package pdftex.def Info: figure/ch02-Fig-03.jpg  used on input line 1736.
 (pdftex.def)             Requested size: 209.12772pt x 324.18182pt.
 
 
-[78]
+[79]
 
-[79 <./figure/ch02-Fig-03.jpg>] [80]
+[80 <./figure/ch02-Fig-03.jpg>] [81]
 
-[81]
-<figure/ch02-Fig-04.png, id=816, 1909.1325pt x 2161.57562pt>
+[82]
+<figure/ch02-Fig-04.png, id=820, 1909.1325pt x 2161.57562pt>
 File: figure/ch02-Fig-04.png Graphic file (type png)
 <use figure/ch02-Fig-04.png>
 Package pdftex.def Info: figure/ch02-Fig-04.png  used on input line 1799.
@@ -1593,42 +1590,40 @@ Underfull \hbox (badness 1466) in paragraph at lines 1806--1816
 
 
 
-[82]
+[83]
 
-[83 <./figure/ch02-Fig-04.png>]
+[84 <./figure/ch02-Fig-04.png>]
 Chapter 2.
 --------------------
  Master of Science-- Mahdis Moghadasi; McMaster University-- School of Earth, Environment and Society
 --------------------
 
 
-[84
+[85
 
 ]
-
-[85]
 
 [86]
 
 [87]
 
 [88]
+
+[89]
 Underfull \hbox (badness 1127) in paragraph at lines 1852--1853
 []\T1/lmr/m/n/10.95 Research demonstrates that two primary types of accessibility indicators are
  []
 
 
 
-[89]
-
 [90]
+
+[91]
 Underfull \hbox (badness 2790) in paragraph at lines 1871--1872
 \T1/lmr/m/n/10.95 regarding the non-linear nature of inverse distance-decay functions in human
  []
 
 
-
-[91]
 
 [92]
 
@@ -1641,112 +1636,117 @@ Underfull \hbox (badness 2790) in paragraph at lines 1871--1872
 [96]
 
 [97]
+Underfull \hbox (badness 1062) in paragraph at lines 2072--2073
+[]\T1/lmr/m/n/10.95 The GSS provides a comprehensive cross-sectional snapshot of the Canadian
+ []
+
+
 
 [98]
 
 [99]
 
 [100]
-Overfull \hbox (10.4746pt too wide) in paragraph at lines 2137--2137
- []|\T1/lmr/bx/n/6 Mode*| 
- []
-
-
-Overfull \hbox (4.64558pt too wide) in paragraph at lines 2137--2137
- []|\T1/lmr/bx/n/6 Min*| 
- []
-
-
-Overfull \hbox (6.0886pt too wide) in paragraph at lines 2137--2137
- []|\T1/lmr/bx/n/6 Med*| 
- []
-
-
-Overfull \hbox (6.1081pt too wide) in paragraph at lines 2137--2137
- []|\T1/lmr/bx/n/6 Max*| 
- []
-
-
-Overfull \hbox (1.9276pt too wide) in paragraph at lines 2137--2137
- []|\T1/lmr/bx/n/6 Med| 
- []
-
-
-Overfull \hbox (1.9471pt too wide) in paragraph at lines 2137--2137
- []|\T1/lmr/bx/n/6 Max| 
- []
-
-
-Overfull \hbox (1.9276pt too wide) in paragraph at lines 2137--2137
- []|\T1/lmr/bx/n/6 Med| 
- []
-
-
-Overfull \hbox (1.9471pt too wide) in paragraph at lines 2137--2137
- []|\T1/lmr/bx/n/6 Max| 
- []
-
-
-Overfull \hbox (11.98405pt too wide) in paragraph at lines 2140--2140
- []|\T1/lmr/m/n/6 Walking| 
- []
-
-
-Overfull \hbox (8.13403pt too wide) in paragraph at lines 2143--2143
- []|\T1/lmr/m/n/6 cycling| 
- []
-
-
-Overfull \hbox (10.4746pt too wide) in paragraph at lines 2157--2157
- []|\T1/lmr/bx/n/6 Mode*| 
- []
-
-
-Overfull \hbox (4.64558pt too wide) in paragraph at lines 2157--2157
- []|\T1/lmr/bx/n/6 Min*| 
- []
-
-
-Overfull \hbox (6.0886pt too wide) in paragraph at lines 2157--2157
- []|\T1/lmr/bx/n/6 Med*| 
- []
-
-
-Overfull \hbox (6.1081pt too wide) in paragraph at lines 2157--2157
- []|\T1/lmr/bx/n/6 Max*| 
- []
-
-
-Overfull \hbox (1.9276pt too wide) in paragraph at lines 2157--2157
- []|\T1/lmr/bx/n/6 Med| 
- []
-
-
-Overfull \hbox (1.9471pt too wide) in paragraph at lines 2157--2157
- []|\T1/lmr/bx/n/6 Max| 
- []
-
-
-Overfull \hbox (1.9276pt too wide) in paragraph at lines 2157--2157
- []|\T1/lmr/bx/n/6 Med| 
- []
-
-
-Overfull \hbox (1.9471pt too wide) in paragraph at lines 2157--2157
- []|\T1/lmr/bx/n/6 Max| 
- []
-
-
-Overfull \hbox (11.98405pt too wide) in paragraph at lines 2160--2160
- []|\T1/lmr/m/n/6 Walking| 
- []
-
-
-Overfull \hbox (8.13403pt too wide) in paragraph at lines 2173--2173
- []|\T1/lmr/m/n/6 cycling| 
- []
 
 [101]
+Overfull \hbox (10.4746pt too wide) in paragraph at lines 2141--2141
+ []|\T1/lmr/bx/n/6 Mode*| 
+ []
+
+
+Overfull \hbox (4.64558pt too wide) in paragraph at lines 2141--2141
+ []|\T1/lmr/bx/n/6 Min*| 
+ []
+
+
+Overfull \hbox (6.0886pt too wide) in paragraph at lines 2141--2141
+ []|\T1/lmr/bx/n/6 Med*| 
+ []
+
+
+Overfull \hbox (6.1081pt too wide) in paragraph at lines 2141--2141
+ []|\T1/lmr/bx/n/6 Max*| 
+ []
+
+
+Overfull \hbox (1.9276pt too wide) in paragraph at lines 2141--2141
+ []|\T1/lmr/bx/n/6 Med| 
+ []
+
+
+Overfull \hbox (1.9471pt too wide) in paragraph at lines 2141--2141
+ []|\T1/lmr/bx/n/6 Max| 
+ []
+
+
+Overfull \hbox (1.9276pt too wide) in paragraph at lines 2141--2141
+ []|\T1/lmr/bx/n/6 Med| 
+ []
+
+
+Overfull \hbox (1.9471pt too wide) in paragraph at lines 2141--2141
+ []|\T1/lmr/bx/n/6 Max| 
+ []
+
+
+Overfull \hbox (11.98405pt too wide) in paragraph at lines 2144--2144
+ []|\T1/lmr/m/n/6 Walking| 
+ []
+
+
+Overfull \hbox (8.13403pt too wide) in paragraph at lines 2147--2147
+ []|\T1/lmr/m/n/6 cycling| 
+ []
+
+
+Overfull \hbox (10.4746pt too wide) in paragraph at lines 2161--2161
+ []|\T1/lmr/bx/n/6 Mode*| 
+ []
+
+
+Overfull \hbox (4.64558pt too wide) in paragraph at lines 2161--2161
+ []|\T1/lmr/bx/n/6 Min*| 
+ []
+
+
+Overfull \hbox (6.0886pt too wide) in paragraph at lines 2161--2161
+ []|\T1/lmr/bx/n/6 Med*| 
+ []
+
+
+Overfull \hbox (6.1081pt too wide) in paragraph at lines 2161--2161
+ []|\T1/lmr/bx/n/6 Max*| 
+ []
+
+
+Overfull \hbox (1.9276pt too wide) in paragraph at lines 2161--2161
+ []|\T1/lmr/bx/n/6 Med| 
+ []
+
+
+Overfull \hbox (1.9471pt too wide) in paragraph at lines 2161--2161
+ []|\T1/lmr/bx/n/6 Max| 
+ []
+
+
+Overfull \hbox (1.9276pt too wide) in paragraph at lines 2161--2161
+ []|\T1/lmr/bx/n/6 Med| 
+ []
+
+
+Overfull \hbox (1.9471pt too wide) in paragraph at lines 2161--2161
+ []|\T1/lmr/bx/n/6 Max| 
+ []
+
+
+Overfull \hbox (11.98405pt too wide) in paragraph at lines 2164--2164
+ []|\T1/lmr/m/n/6 Walking| 
+ []
+
+
+Overfull \hbox (8.13403pt too wide) in paragraph at lines 2177--2177
+ []|\T1/lmr/m/n/6 cycling| 
+ []
 
 [102]
 
@@ -1755,55 +1755,55 @@ Overfull \hbox (8.13403pt too wide) in paragraph at lines 2173--2173
 [104]
 
 [105]
-<figure/ch03_fig_01.jpg, id=959, 5119.125pt x 6624.75pt>
-File: figure/ch03_fig_01.jpg Graphic file (type jpg)
-<use figure/ch03_fig_01.jpg>
-Package pdftex.def Info: figure/ch03_fig_01.jpg  used on input line 2222.
-(pdftex.def)             Requested size: 418.25545pt x 541.21132pt.
-<figure/ch03_fig_02.jpg, id=960, 5119.125pt x 6624.75pt>
-File: figure/ch03_fig_02.jpg Graphic file (type jpg)
-<use figure/ch03_fig_02.jpg>
-Package pdftex.def Info: figure/ch03_fig_02.jpg  used on input line 2231.
-(pdftex.def)             Requested size: 418.25545pt x 541.21132pt.
-
 
 [106]
+<figure/ch03_fig_01.jpg, id=963, 5119.125pt x 6624.75pt>
+File: figure/ch03_fig_01.jpg Graphic file (type jpg)
+<use figure/ch03_fig_01.jpg>
+Package pdftex.def Info: figure/ch03_fig_01.jpg  used on input line 2226.
+(pdftex.def)             Requested size: 418.25545pt x 541.21132pt.
+<figure/ch03_fig_02.jpg, id=964, 5119.125pt x 6624.75pt>
+File: figure/ch03_fig_02.jpg Graphic file (type jpg)
+<use figure/ch03_fig_02.jpg>
+Package pdftex.def Info: figure/ch03_fig_02.jpg  used on input line 2235.
+(pdftex.def)             Requested size: 418.25545pt x 541.21132pt.
 
-[107 <./figure/ch03_fig_01.jpg>]
 
-[108 <./figure/ch03_fig_02.jpg>]
+[107]
 
-[109]
-Underfull \hbox (badness 1062) in paragraph at lines 2258--2259
+[108 <./figure/ch03_fig_01.jpg>]
+
+[109 <./figure/ch03_fig_02.jpg>]
+
+[110]
+Underfull \hbox (badness 1062) in paragraph at lines 2262--2263
 []\T1/lmr/m/n/10.95 A methodical statistical approach was adopted to determine the appropriate
  []
 
 
 
-[110]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 2269.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 2321.
-
-LaTeX Warning: Float too large for page by 3.97156pt on input line 2380.
-
-
-LaTeX Warning: Float too large for page by 68.97156pt on input line 2454.
-
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 2461.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <11> on input line 2461.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.69997> on input line 2461.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.5> on input line 2461.
-
-LaTeX Warning: Float too large for page by 11.56528pt on input line 2557.
-
-
-
 [111]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 2273.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 2325.
+
+LaTeX Warning: Float too large for page by 3.97156pt on input line 2384.
+
+
+LaTeX Warning: Float too large for page by 68.97156pt on input line 2458.
+
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 2465.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <11> on input line 2465.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7.69997> on input line 2465.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5.5> on input line 2465.
+
+LaTeX Warning: Float too large for page by 11.56528pt on input line 2561.
+
+
 
 [112]
 
@@ -1816,172 +1816,183 @@ LaTeX Warning: Float too large for page by 11.56528pt on input line 2557.
 [116]
 
 [117]
-<figure/ch03_fig_03.jpg, id=1019, 2559.5625pt x 3312.375pt>
-File: figure/ch03_fig_03.jpg Graphic file (type jpg)
-<use figure/ch03_fig_03.jpg>
-Package pdftex.def Info: figure/ch03_fig_03.jpg  used on input line 2633.
-(pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-
 
 [118]
+<figure/ch03_fig_03.jpg, id=1023, 2559.5625pt x 3312.375pt>
+File: figure/ch03_fig_03.jpg Graphic file (type jpg)
+<use figure/ch03_fig_03.jpg>
+Package pdftex.def Info: figure/ch03_fig_03.jpg  used on input line 2637.
+(pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 
-[119 <./figure/ch03_fig_03.jpg>]
-<figure/ch03_fig_04.jpg, id=1030, 2559.5625pt x 3312.375pt>
+
+[119]
+
+[120 <./figure/ch03_fig_03.jpg>]
+<figure/ch03_fig_04.jpg, id=1034, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_04.jpg Graphic file (type jpg)
 <use figure/ch03_fig_04.jpg>
-Package pdftex.def Info: figure/ch03_fig_04.jpg  used on input line 2646.
+Package pdftex.def Info: figure/ch03_fig_04.jpg  used on input line 2650.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-<figure/ch03_fig_05.jpg, id=1033, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_05.jpg, id=1037, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_05.jpg Graphic file (type jpg)
 <use figure/ch03_fig_05.jpg>
-Package pdftex.def Info: figure/ch03_fig_05.jpg  used on input line 2659.
+Package pdftex.def Info: figure/ch03_fig_05.jpg  used on input line 2663.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 
 
-[120]
+[121]
 
-[121 <./figure/ch03_fig_04.jpg>]
+[122 <./figure/ch03_fig_04.jpg>]
 
-[122 <./figure/ch03_fig_05.jpg>]
-<figure/ch03_fig_06.jpg, id=1049, 2559.5625pt x 3312.375pt>
+[123 <./figure/ch03_fig_05.jpg>]
+<figure/ch03_fig_06.jpg, id=1053, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_06.jpg Graphic file (type jpg)
 <use figure/ch03_fig_06.jpg>
-Package pdftex.def Info: figure/ch03_fig_06.jpg  used on input line 2671.
+Package pdftex.def Info: figure/ch03_fig_06.jpg  used on input line 2675.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-<figure/ch03_fig_07.jpg, id=1054, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_07.jpg, id=1058, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_07.jpg Graphic file (type jpg)
 <use figure/ch03_fig_07.jpg>
-Package pdftex.def Info: figure/ch03_fig_07.jpg  used on input line 2685.
+Package pdftex.def Info: figure/ch03_fig_07.jpg  used on input line 2689.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 
 
-[123]
+[124]
 
-[124 <./figure/ch03_fig_06.jpg>]
+[125 <./figure/ch03_fig_06.jpg>]
 
-[125 <./figure/ch03_fig_07.jpg>]
-<figure/ch03_fig_08.jpg, id=1070, 2559.5625pt x 3312.375pt>
+[126 <./figure/ch03_fig_07.jpg>]
+<figure/ch03_fig_08.jpg, id=1074, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_08.jpg Graphic file (type jpg)
 <use figure/ch03_fig_08.jpg>
-Package pdftex.def Info: figure/ch03_fig_08.jpg  used on input line 2696.
+Package pdftex.def Info: figure/ch03_fig_08.jpg  used on input line 2700.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-<figure/ch03_fig_09.jpg, id=1073, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_09.jpg, id=1077, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_09.jpg Graphic file (type jpg)
 <use figure/ch03_fig_09.jpg>
-Package pdftex.def Info: figure/ch03_fig_09.jpg  used on input line 2706.
+Package pdftex.def Info: figure/ch03_fig_09.jpg  used on input line 2710.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 
 
-[126]
+[127]
 
-[127 <./figure/ch03_fig_08.jpg>]
+[128 <./figure/ch03_fig_08.jpg>]
 
-[128 <./figure/ch03_fig_09.jpg>]
-<figure/ch03_fig_10.jpg, id=1088, 2559.5625pt x 3312.375pt>
+[129 <./figure/ch03_fig_09.jpg>]
+<figure/ch03_fig_10.jpg, id=1092, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_10.jpg Graphic file (type jpg)
 <use figure/ch03_fig_10.jpg>
-Package pdftex.def Info: figure/ch03_fig_10.jpg  used on input line 2712.
+Package pdftex.def Info: figure/ch03_fig_10.jpg  used on input line 2716.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
-<figure/ch03_fig_11.jpg, id=1092, 2559.5625pt x 3312.375pt>
+<figure/ch03_fig_11.jpg, id=1096, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_11.jpg Graphic file (type jpg)
 <use figure/ch03_fig_11.jpg>
-Package pdftex.def Info: figure/ch03_fig_11.jpg  used on input line 2719.
+Package pdftex.def Info: figure/ch03_fig_11.jpg  used on input line 2723.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 
 
-[129]
+[130]
 
-[130 <./figure/ch03_fig_10.jpg>]
-<figure/ch03_fig_12.jpg, id=1101, 2559.5625pt x 3312.375pt>
+[131 <./figure/ch03_fig_10.jpg>]
+<figure/ch03_fig_12.jpg, id=1105, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_12.jpg Graphic file (type jpg)
 <use figure/ch03_fig_12.jpg>
-Package pdftex.def Info: figure/ch03_fig_12.jpg  used on input line 2723.
+Package pdftex.def Info: figure/ch03_fig_12.jpg  used on input line 2727.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 
 
-[131 <./figure/ch03_fig_11.jpg>]
+[132 <./figure/ch03_fig_11.jpg>]
 
-[132 <./figure/ch03_fig_12.jpg>]
-<figure/ch03_fig_13.jpg, id=1111, 2559.5625pt x 3312.375pt>
+[133 <./figure/ch03_fig_12.jpg>]
+<figure/ch03_fig_13.jpg, id=1116, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_13.jpg Graphic file (type jpg)
 <use figure/ch03_fig_13.jpg>
-Package pdftex.def Info: figure/ch03_fig_13.jpg  used on input line 2734.
+Package pdftex.def Info: figure/ch03_fig_13.jpg  used on input line 2738.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 
 
-[133]
-<figure/ch03_fig_14.jpg, id=1117, 2559.5625pt x 3312.375pt>
+[134]
+<figure/ch03_fig_14.jpg, id=1121, 2559.5625pt x 3312.375pt>
 File: figure/ch03_fig_14.jpg Graphic file (type jpg)
 <use figure/ch03_fig_14.jpg>
-Package pdftex.def Info: figure/ch03_fig_14.jpg  used on input line 2738.
+Package pdftex.def Info: figure/ch03_fig_14.jpg  used on input line 2742.
 (pdftex.def)             Requested size: 418.25545pt x 541.26186pt.
 
 
-[134 <./figure/ch03_fig_13.jpg>]
+[135 <./figure/ch03_fig_13.jpg>]
 
-[135 <./figure/ch03_fig_14.jpg>]
-
-[136]
+[136 <./figure/ch03_fig_14.jpg>]
 
 [137]
 
-[138
-
-]
+[138]
 
 [139
-
 
 ]
 
 [140]
 
-[141]
+[141
+
+
+]
 
 [142]
 
 [143]
 
 [144]
-Underfull \hbox (badness 1939) in paragraph at lines 3108--3109
-[]\T1/lmr/m/n/10.95 Iseki, H., & Tingstrom, M. (2014). A new approach for bikeshed analysis
- []
-
-
 
 [145]
 
 [146]
+Underfull \hbox (badness 1939) in paragraph at lines 3117--3118
+[]\T1/lmr/m/n/10.95 Iseki, H., & Tingstrom, M. (2014). A new approach for bikeshed analysis
+ []
+
+
 
 [147]
 
 [148]
 
 [149]
+Underfull \hbox (badness 1442) in paragraph at lines 3258--3259
+[]\T1/lmr/m/n/10.95 Martens, K. (2016). \T1/lmr/m/it/10.95 Transport justice: Designing fair transportation systems\T1/lmr/m/n/10.95 .
+ []
+
+
 
 [150]
-Underfull \hbox (badness 3068) in paragraph at lines 3390--3391
+
+[151]
+
+[152]
+Underfull \hbox (badness 3068) in paragraph at lines 3408--3409
 \T1/lmr/m/n/10.95 accessibility, and equality: An analysis of cycling commuting in bogota.
  []
 
 
-Underfull \hbox (badness 4686) in paragraph at lines 3408--3409
+Underfull \hbox (badness 4686) in paragraph at lines 3426--3427
 \T1/lmr/m/n/10.95 accessibility in metropolitan areas. \T1/lmr/m/it/10.95 International Journal of Sustainable
  []
 
 
 
-[151]
+[153]
 
-[152]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3525.
+[154]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3546.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-[153]
+[155]
 
-[154] 
+[156]
+
+[157] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./thesis.aux)
  ***********
@@ -1998,18 +2009,18 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 49405 strings out of 475559
- 1175160 string characters out of 5776435
- 2126810 words of memory out of 5000000
- 70787 multiletter control sequences out of 15000+600000
- 706869 words of font info for 111 fonts, out of 8000000 for 9000
+ 49418 strings out of 475559
+ 1175429 string characters out of 5776435
+ 2127028 words of memory out of 5000000
+ 70792 multiletter control sequences out of 15000+600000
+ 706872 words of font info for 111 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  115i,12n,115p,4278b,1224s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on thesis.pdf (172 pages, 20998966 bytes).
+Output written on thesis.pdf (175 pages, 21003241 bytes).
 PDF statistics:
- 1710 PDF objects out of 1728 (max. 8388607)
- 1451 compressed objects within 15 object streams
- 552 named destinations out of 1000 (max. 500000)
+ 1730 PDF objects out of 2073 (max. 8388607)
+ 1468 compressed objects within 15 object streams
+ 560 named destinations out of 1000 (max. 500000)
  407 words of extra memory for PDF output out of 10000 (max. 10000000)
 
